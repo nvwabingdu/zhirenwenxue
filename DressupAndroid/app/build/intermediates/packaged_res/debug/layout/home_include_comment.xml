@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/comment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--缺省-->
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_marginBottom="263dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:id="@+id/comment_default_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_marginTop="40dp"
+                android:src="@drawable/comment_default"
+                android:layout_width="96dp"
+                android:layout_height="38dp"/>
+            <LinearLayout
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="说点什么吧，点击评论"
+                    android:textColor="#7f7f7f"
+                    android:textSize="12sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="说点什么吧，点击评论"
+                    android:textColor="#222222"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+        <!--评论列表-->
+
+        <cn.dreamfruits.yaoguo.module.main.home.MaxRecyclerView
+            android:id="@+id/comment_recyclerview"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/comment_recyclerview"-->
+<!--            android:layout_marginTop="14dp"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+        <!--尾部-->
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/comment_end"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_marginTop="20dp"
+                android:background="#F0F0F0"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:background="#B3B3B3"
+                    android:layout_width="20dp"
+                    android:layout_height="1dp"/>
+
+                <TextView
+                    android:layout_marginLeft="6dp"
+                    android:layout_width="47dp"
+                    android:layout_height="17dp"
+                    android:text="The End"
+                    android:textColor="#ffb3b3b3"
+                    android:textSize="12sp"
+                    />
+
+                <View
+                    android:layout_marginLeft="6dp"
+                    android:background="#B3B3B3"
+                    android:layout_width="20dp"
+                    android:layout_height="1dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

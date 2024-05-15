@@ -1,0 +1,94 @@
+{
+  "messageReply": {
+    "message": {
+      "clientTime": 1688350331,
+      "cloudCustomBytes": [],
+      "excludedFromContentModeration": false,
+      "excludedFromLastMessage": false,
+      "excludedFromUnreadCount": false,
+      "faceUrl": "https://im.sdk.qcloud.com/download/tuikit-resource/avatar/avatar_13.png",
+      "friendRemark": "",
+      "groupID": "",
+      "hasSentReceipt": false,
+      "isBroadcastMessage": false,
+      "isForward": false,
+      "isMessageSender": false,
+      "isPeerRead": true,
+      "isSelfRead": false,
+      "lifeTime": 1,
+      "localCustomNumber": 0,
+      "localCustomString": "",
+      "messageBaseElements": [
+        {
+          "snapshotDownloadUrl": "https://cos.ap-shanghai.myqcloud.com/2d6e-shanghai-007-sharedv4-05-1303031839/e1b7-1400715776/f839-537086813760384/90b7df8f5d4d50d3453d5eb0f3ac2efa.jpg?imageMogr2/\u0026im-report-marked",
+          "snapshotFilePath": "",
+          "snapshotFileSize": 1067424,
+          "snapshotHeight": 1920,
+          "snapshotType": "",
+          "snapshotUUID": "1400715776_537086813760384_90b7df8f5d4d50d3453d5eb0f3ac2efa.jpg",
+          "snapshotWidth": 1080,
+          "videoBusinessID": 1769305094,
+          "videoDownloadUrl": "https://cos.ap-shanghai.myqcloud.com/2d6e-shanghai-007-sharedv4-05-1303031839/e1b7-1400715776/f839-537086813760384/f7466858fd0010e51098955b0e3f3a86.mp4?im-report-marked",
+          "videoDuration": 7,
+          "videoFilePath": "",
+          "videoFileSize": 16903510,
+          "videoType": "mp4",
+          "videoUUID": "1400715776_537086813760384_f7466858fd0010e51098955b0e3f3a86.mp4",
+          "elementType": 5
+        }
+      ],
+      "messageGroupAtInfoList": [],
+      "messageStatus": 2,
+      "messageType": 1,
+      "messageVersion": 0,
+      "msgID": "144115243226832512-1688350331-2569338943",
+      "nameCard": "",
+      "needReadReceipt": false,
+      "nickName": "测试一号",
+      "offlinePushInfo": {
+        "androidConfig": {
+          "description": "",
+          "fcmChannelID": "",
+          "huaweiCategory": "",
+          "notifyMode": 0,
+          "oppoChannelID": "",
+          "soundFilePath": "",
+          "title": "",
+          "vivoCategory": "",
+          "vivoClassification": 1,
+          "xiaomiChannelID": ""
+        },
+        "apnsConfig": {
+          "badgeMode": 0,
+          "description": "",
+          "iOSPushType": 0,
+          "soundFilePath": "",
+          "title": ""
+        },
+        "description": "",
+        "extension": [
+          123,
+          34,
+          49,
+          125,
+          125
+        ],
+        "pushFlag": 0,
+        "title": ""
+      },
+      "platform": 0,
+      "priority": 2,
+      "random": 2569338943,
+      "receiptPeerRead": false,
+      "receiptReadCount": 0,
+      "receiptUnreadCount": -1,
+      "receiverUserID": "534173445859712",
+      "revokerTinyID": 0,
+      "revokerUserID": "",
+      "senderUserID": "537086813760384",
+      "seq": 1280281018,
+      "serverTime": 1688350332,
+      "supportMessageExtension": false
+    }
+  }
+}

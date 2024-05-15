@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black_081116">#081116</color>
+    <color name="black_73">#BAABABAB</color>
+    <color name="color_white">#FFFFFF</color>
+    <declare-styleable name="CircularProgressView">
+        <attr format="dimension" name="backWidth"/>    
+        <attr format="dimension" name="progWidth"/>    
+        <attr format="color" name="backColor"/>        
+        <attr format="color" name="progColor"/>        
+        <attr format="color" name="progStartColor"/>   
+        <attr format="color" name="progFirstColor"/>   
+        <attr format="integer" name="progress1"/>       
+    </declare-styleable>
+</resources>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <com.example.zrtool.ui.custom.TitleBarView
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.example.zrtool.ui.custom.MyDrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <RelativeLayout
+                    android:background="#333"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_alignParentStart="true"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+
+                        <ImageView
+                            android:id="@+id/eng_img2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:background="@drawable/ic_baseline_format_list_bulleted_24"
+                            android:padding="5dp"
+                            android:rotation="180" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="match_parent"
+                        android:id="@+id/eng_edit"
+                        android:layout_height="40dp"
+                        android:background="@drawable/tv_search"
+                        android:gravity="center"
+                        android:hint="请输入单词"
+                        android:textColor="#666"
+                        android:textColorHint="#999" />
+
+                    <LinearLayout
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/eng_img"
+                            android:background="@drawable/find" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+                <WebView
+                    android:id="@+id/eng_webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+        <!--侧或菜单界面-->
+        <LinearLayout
+            android:clickable="true"
+            android:layout_gravity="start"
+            android:id="@+id/ll_tabs"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:focusable="true">
+
+            <ListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center" />
+        </LinearLayout>
+
+    </com.example.zrtool.ui.custom.MyDrawerLayout>
+
+
+</LinearLayout>

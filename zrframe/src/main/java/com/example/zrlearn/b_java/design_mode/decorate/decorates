@@ -1,0 +1,75 @@
+//装饰者模式
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Vector;
+
+public class BtClass {
+	public static void main(String[] args) {
+		// 创建普通人,只会走路
+		CommonPerson mCommonPerson = new CommonPerson();
+
+		// 柯洁教普通人下围棋
+		Kejie mNingzetao = new Kejie(mCommonPerson);
+		mNingzetao.skillMthod();
+	}
+}
+
+//技能接口  有一个技能方法
+interface Skill {
+	public abstract void skillMthod();
+}
+
+//普通人技能：走路
+class CommonPerson implements Skill {
+	@Override
+	public void skillMthod() {
+		System.out.println("普通人的技能：走路");
+	}
+}
+
+//大师
+class Master implements Skill {
+	private Skill mSkill;
+	public Master(Skill skill) {//大师通道  天生就有技能点
+		mSkill = skill;
+	}
+	@Override
+	public void skillMthod() {
+		mSkill.skillMthod();
+	}
+}
+
+//柯洁
+class Kejie extends Master {
+	public Kejie(Skill skill) {
+		super(skill);
+	}
+	@Override
+	public void skillMthod() {
+		super.skillMthod();
+		teachChess();
+	}
+	public void teachChess() {
+		System.out.println("柯洁教普通人下围棋");
+	}
+}
+
+
+//============================
+三、使用场景
+在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。
+需要动态地给一个对象添加功能，这些功能可以动态的撤销。
+当不能采用继承的方式对系统进行扩充或者采用继承不利于系统扩展和维护时。
+四、优缺点
+
+优点：
+通过组合而非继承的方式，动态地扩展一个对象的功能，在运行时可以选择不同的装饰器从而实现不同的功能。
+有效的避免了使用继承的方式扩展对象功能而带来的灵活性差、子类无限制扩张的问题。(瞎几把扯蛋，)
+具体组件类与具体装饰类可以独立变化，用户可以根据需要新增具体组件类跟装饰类，在使用时在对其进行组合，原有代码无须改变，符合"开闭原则"。
+
+缺点：
+因为所有对象均继承于Component，所以如果Component内部结构发生改变，则不可避免地影响到所有子类（装饰者于被装饰者）。如果基类改变，则势必影响对象的内部。
+装饰模式比继承更容易出错，拍错也比较困难。对于多次装饰的对象，调试时寻找错误可能需要逐级排查，较为繁琐。所以一般只在必要的时候使用装饰者模式。
+装饰层数不能过多，否则会影响效率。
+————————————————
+原文链接：https://blog.csdn.net/u012440207/article/details/111070772

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".module.splash.SplashActivity">
+
+    <RelativeLayout
+        android:id="@+id/logo_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash">
+
+        <TextView
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="美好生活，即刻分享"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:textColor="#F5F5F5"
+            android:textSize="16sp"
+            android:layout_marginBottom="40dp"/>
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:id="@+id/ad_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

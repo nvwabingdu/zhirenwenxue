@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/all_location_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="12sp"
+        android:text="定位到您的位置" />
+
+    <RelativeLayout
+        android:id="@+id/current_location_layout"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@drawable/shape_solid_ffffff_corners_2dp">
+
+        <ImageView
+            android:id="@+id/location_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_blue_location" />
+
+        <TextView
+            android:id="@+id/current_address_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/location_icon"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:textColor="@color/black_222222"
+            android:textSize="14sp"
+            tools:text="四川成都" />
+    </RelativeLayout>
+</LinearLayout>

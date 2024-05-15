@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="标题"
+        android:textColor="@color/ps_color_33"
+        android:textSize="16dp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:gravity="center"
+        android:text="拉黑后，对方将无法搜到你，也不能再给你发消息"
+        android:textColor="@color/ps_color_33"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_goneMarginTop="20dp" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/gray_E6E6E6"
+        app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
+    <View
+        android:id="@+id/view_line_spilt"
+        android:layout_width="1dp"
+        android:layout_height="44dp"
+        android:background="@color/gray_E6E6E6"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+
+    <TextView
+        android:id="@+id/tv_left"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:text="再忍忍"
+        android:textColor="@color/black_222222"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/view_line_spilt"
+        app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+
+    <TextView
+        android:id="@+id/tv_right"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:text="确认拉黑"
+        android:textColor="#ea4359"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toRightOf="@id/view_line_spilt"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

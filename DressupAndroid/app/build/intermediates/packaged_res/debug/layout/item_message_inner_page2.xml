@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="23dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <View
+        android:background="#F0F0F0"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginTop="23dp"
+            android:background="@drawable/home_test_1"
+            android:id="@+id/message_icon"
+            android:layout_width="52dp"
+            android:layout_height="52dp" />
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="28dp"
+                android:layout_marginRight="72dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/message_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="系统通2121212系统通2121212121212121知系统通2121212121212121知121212121知"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/message_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="你的头像违背了你的头像违背了社区规范你的头像违背了社区规范你的头像违背了社区规范社区规范，请尽快修改"
+                    android:textColor="#ffb3b3b3"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:background="#E6E6E6"
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:layout_marginLeft="3dp"
+                        android:ellipsize="end"
+                        android:maxLines="4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1211212121121212112121211212121121212112121211212121121212112121211212121121212112121211212121121212112121211212121121212112121211212121121212112121211212121121212112121212121"
+                        android:textColor="#ff7f7f7f"
+                        android:textSize="12sp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_marginTop="23dp"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/home_test_1" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

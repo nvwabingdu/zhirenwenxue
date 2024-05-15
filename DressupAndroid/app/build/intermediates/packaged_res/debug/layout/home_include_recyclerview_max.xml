@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smart.refresh.layout.SmartRefreshLayout
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.dreamfruits.yaoguo.module.main.home.refresh.MRefreshHeader2
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <cn.dreamfruits.yaoguo.module.main.home.MaxRecyclerView
+        android:id="@+id/max_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:background="#fff" />
+
+    <com.scwang.smart.refresh.footer.ClassicsFooter
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</com.scwang.smart.refresh.layout.SmartRefreshLayout>

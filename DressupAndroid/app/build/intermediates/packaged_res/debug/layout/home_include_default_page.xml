@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--缺省类型1-->
+    <LinearLayout
+        android:id="@+id/default_page_type1"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+        <ImageView
+            android:background="@drawable/home_default_page_img"
+            android:layout_width="200dp"
+            android:layout_height="145dp"/>
+        <TextView
+            android:layout_marginTop="30dp"
+            android:textColor="#7F7F7F"
+            android:text="网络好像不太给力，刷新一下试试"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/home_include_default_page_refresh_button"
+            android:gravity="center"
+            android:layout_marginTop="36dp"
+            android:background="@color/black"
+            android:textColor="#FFFFFF"
+            android:text="刷新"
+            android:textSize="14sp"
+            android:layout_width="64dp"
+            android:layout_height="32dp"/>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

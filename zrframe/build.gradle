@@ -1,0 +1,141 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.zrframe'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    //这段代码是在Gradle构建脚本中配置Android Lint工具的选项。具体来说，它禁用了'RestrictedApi'检查。
+    //Android Lint是一个静态分析工具，它可以检查Android项目中的代码，并提供有关潜在问题和错误的警告或建议。'RestrictedApi'检查是其中的一种检查，它会检查你的代码是否使用了Android系统中标记为“限制使用”的API，以及是否使用了非公共的API。这些API通常是在Android SDK文档中标记为“@hide”的API。
+    //在某些情况下，你可能需要使用这些API，但是使用它们会导致Android Lint警告。为了避免这些警告，你可以使用上述代码在Gradle构建脚本中禁用'RestrictedApi'检查。这意味着在Lint工具运行时，它将忽略'RestrictedApi'检查，不会发出相关的警告。
+    //需要注意的是，禁用'RestrictedApi'检查可能会隐藏一些潜在的问题，因此你应该在使用这些API之前，仔细考虑它们是否真的需要使用，并在需要使用时，确保你对其进行了正确的使用和测试。
+    lintOptions {
+        disable 'RestrictedApi'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies{
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    // Android官方库
+    api("androidx.appcompat:appcompat:1.5.1")
+    api("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    api("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
+    api("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    api("androidx.lifecycle:lifecycle-process:2.4.1")
+    api("androidx.activity:activity-ktx:1.5.1")
+    api("androidx.fragment:fragment-ktx:1.4.1")
+    api("androidx.recyclerview:recyclerview:1.2.1")
+
+    // 协程
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    //room
+    api("androidx.room:room-runtime:2.4.2")
+    api("androidx.room:room-rxjava2:2.4.2")
+    api("androidx.room:room-ktx:2.4.2")
+    annotationProcessor("androidx.room:room-compiler:2.4.2")
+
+    // 微信MMKV
+    api("com.tencent:mmkv:1.2.15")
+
+    // LeakCanary
+//    debugImplementation "com.squareup.leakcanary:leakcanary-android:2.9.1"
+
+    // JSON
+    api("com.alibaba:fastjson:1.1.71.android")
+    api("com.google.code.gson:gson:2.10.1")
+
+    // Retrofit2
+    api("com.squareup.retrofit2:retrofit:2.9.0")
+    api("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+    api("com.squareup.retrofit2:converter-gson:2.9.0")
+    api("com.squareup.retrofit2:converter-scalars:2.9.0")
+
+    // OkIO
+    api("com.squareup.okio:okio:3.0.0")
+
+    // OkHttp
+    api("com.squareup.okhttp3:okhttp:4.10.0")
+    // OkHttp日志拦截器 用于打印请求参数和返回结果
+    api("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+    // RxJava
+    api("io.reactivex.rxjava2:rxjava:2.2.21")
+    api("io.reactivex.rxjava2:rxandroid:2.1.1")
+
+    // 微信分享SDK
+    api("com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.7.9")
+
+    // Gif
+    api("pl.droidsonroids.gif:android-gif-drawable:1.2.23")
+
+    // Lottie
+    api("com.airbnb.android:lottie:6.0.0")
+
+    // Glide
+    api("com.github.bumptech.glide:glide:4.15.0")
+    api("com.github.bumptech.glide:okhttp3-integration:4.14.2")
+
+    // ImmersionBar(状态栏、导航栏适配)
+    api("com.gyf.immersionbar:immersionbar:3.0.0")
+    // fragment快速实现
+    api("com.gyf.immersionbar:immersionbar-components:3.0.0")
+    // kotlin扩展
+    api("com.gyf.immersionbar:immersionbar-ktx:3.0.0")
+
+    // 右滑返回
+    api("me.imid.swipebacklayout.lib:library:1.1.0")
+
+    // 下拉刷新
+    api("in.srain.cube:ultra-ptr:1.0.11")
+
+    // Banner
+    api("io.github.youth5201314:banner:2.2.2")
+
+    //爬虫库
+    implementation "org.jsoup:jsoup:1.14.2"
+
+    //巨好用工具
+    api 'com.blankj:utilcodex:1.31.1'
+
+    //拼音库
+    api 'com.belerweb:pinyin4j:2.5.0'
+}

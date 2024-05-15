@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    
+    <RelativeLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="260dp"
+        android:layout_height="128dp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="84dp">
+            <TextView
+                android:id="@+id/content"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:text="确定取消关注？"
+                android:textColor="#ff333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <TextView
+                android:id="@+id/confirm"
+                android:background="@drawable/shape_stroke_e6e6e6_dp01"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="确定"
+                android:textColor="#ffb3b3b3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/cancel"
+                android:backgroundTint="@color/black"
+                android:background="@drawable/shape_stroke_e6e6e6_dp01"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="取消"
+                android:textColor="#ffffffff"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

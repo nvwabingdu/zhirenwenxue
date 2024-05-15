@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="23dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <View
+        android:background="#F0F0F0"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginTop="23dp"
+            android:id="@+id/message_icon"
+            android:layout_width="52dp"
+            android:layout_height="52dp" />
+
+        <RelativeLayout
+            android:id="@+id/message_content_layout"
+            android:layout_marginTop="28dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_marginRight="72dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:id="@+id/message_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="#ff222222"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/message_my_friend"
+                        android:layout_marginLeft="8dp"
+                        android:background="@drawable/shape_stroke_f0f0f0_dp1"
+                        android:padding="3dp"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的好友"
+                        android:textColor="#ff7f7f7f"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/message_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="21"
+                    android:textColor="#ffb3b3b3"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="end"
+                    android:maxLines="4"
+                    android:id="@+id/message_content_str"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#ff222222"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/message_bottom_layout1"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:background="#E6E6E6"
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:id="@+id/message_reply_tv"
+                        android:layout_marginLeft="3dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1211212121121212112121211212121121212112121211212121121212112121211212121121212112121211212121121212112121211212121121212112121211212121121212112121211212121121212112121212121"
+                        android:textColor="#ff7f7f7f"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/message_bottom_layout2"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <LinearLayout
+                        android:id="@+id/message_comment_layout"
+                        android:background="#F0F0F0"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:background="@drawable/home_comment"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"/>
+
+                        <TextView
+                            android:layout_marginLeft="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="回复评论"
+                            android:textColor="#ff535353"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/message_laud_layout"
+                        android:layout_marginLeft="8dp"
+                        android:background="#F0F0F0"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/message_laud_img"
+                            android:background="@drawable/home_thumb"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"/>
+
+                        <TextView
+                            android:layout_marginLeft="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="点赞"
+                            android:textColor="#ff535353"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+<!--关注按钮-->
+            <TextView
+                android:id="@+id/message_follow"
+                android:visibility="gone"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:background="@color/black"
+                android:gravity="center"
+                android:text="回粉"
+                android:textColor="#B3B3B3"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <!--帖子图片-->
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/message_post_image"
+            android:layout_marginTop="23dp"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</RelativeLayout>

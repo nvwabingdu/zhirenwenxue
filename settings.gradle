@@ -1,0 +1,30 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+//        maven {url 'https://developer.huawei.com/repo/'}
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://jitpack.io' }
+        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        google()
+        mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://s01.oss.sonatype.org/content/groups/public' }
+        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+        maven { url 'https://developer.huawei.com/repo/' }
+    }
+}
+
+rootProject.name = "ZRWORD"
+include ':app'
+include ':zrframe'
+include ':zrdrawingboard'

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="110"
+        android:background="@drawable/home_bg_top"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal">
+                <!--tab上面部分-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:background="@drawable/home_tartish" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="美好生活，即刻分享"
+                        android:textColor="#ffa7aba9"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/start_unity"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/home_top_person" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/home_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/hp_icon_search" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="627">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/home_include_tab_viewpager" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/home_instagram" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/black" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+</LinearLayout>

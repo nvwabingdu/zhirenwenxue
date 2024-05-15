@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/shape_solid_ffffff_corners_5dp"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/view_top"
+        android:background="#f9f9f9"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <View
+        android:background="#f9f9f9"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/recyclerView_forYou"
+        android:background="#F0F0F0"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="260dp">
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:padding="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:textSize="14sp"
+                android:text="为你推荐"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:gravity="center_vertical"
+                android:id="@+id/forYou_look_more"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tf"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查看更多"
+                    android:textColor="#B3B3B3"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_toRightOf="@+id/tf"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/arrow_gray_right"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <cn.dreamfruits.yaoguo.module.main.home.MaxRecyclerView
+            android:layout_marginLeft="15dp"
+            android:id="@+id/home_attention_recommend_for_you_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/home_attention_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/home_attention_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"/>
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/home_attention_nickName"
+                    android:textStyle="bold"
+                    android:text="陈花花的绿玫瑰"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/home_attention_createTime"
+                        android:textSize="12sp"
+                        android:textColor="#B3B3B3"
+                        android:text="4个小时前"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:id="@+id/home_attention_address_img"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="2dp"
+                        android:background="@drawable/home_address"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"/>
+                    <TextView
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:id="@+id/home_attention_address"
+                        android:textSize="12sp"
+                        android:textColor="#B3B3B3"
+                        android:text=""
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <include layout="@layout/home_include_banner_indicator"  android:visibility="visible"/>
+        <include layout="@layout/home_include_dress_max_recyclerview"/>
+        <RelativeLayout
+            android:layout_marginTop="6dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/share"
+                android:src="@drawable/home_share"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:paddingRight="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:visibility="gone"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:src="@drawable/home_dress"
+                        android:layout_width="@dimen/laud_collect_comment"
+                        android:layout_height="@dimen/laud_collect_comment"/>
+                    <TextView
+                        android:textColor="#000000"
+                        android:textSize="@dimen/laud_collect_comment_tv"
+                        android:layout_marginLeft="2dp"
+                        android:text="12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/laud_layout"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/home_attention_laud_img"
+                        android:src="@drawable/home_thumb"
+                        android:layout_width="@dimen/laud_collect_comment"
+                        android:layout_height="@dimen/laud_collect_comment"/>
+                    <TextView
+                        android:layout_toRightOf="@+id/home_attention_laud_img"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/home_attention_laudCount"
+                        android:textColor="#464646"
+                        android:textSize="@dimen/laud_collect_comment_tv"
+                        android:layout_marginLeft="2dp"
+                        android:text="1212k"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/collect_layout"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:id="@+id/home_attention_collect_img"
+                            android:src="@drawable/home_collect"
+                            android:layout_width="@dimen/laud_collect_comment"
+                            android:layout_height="@dimen/laud_collect_comment"/>
+                    <TextView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/home_attention_collectCount"
+                        android:textColor="#464646"
+                        android:textSize="@dimen/laud_collect_comment_tv"
+                        android:layout_marginLeft="2dp"
+                        android:text="21.2k"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/comment_layout"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/home_comment_white"
+                            android:layout_width="@dimen/laud_collect_comment"
+                            android:layout_height="@dimen/laud_collect_comment"/>
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/home_attention_commentCount"
+                        android:textColor="#464646"
+                        android:textSize="@dimen/laud_collect_comment_tv"
+                        android:layout_marginLeft="2dp"
+                        android:text="评论"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/home_attention_title"
+            android:layout_marginLeft="15dp"
+            android:textStyle="bold"
+            android:text="快讯厦门连续天新增确诊和疑似福建连续天新"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <cn.dreamfruits.yaoguo.module.main.home.zrrichtext.ExpandableTextView
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="14dp"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:id="@+id/expanded_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="14dp"/>
+
+        <LinearLayout
+            android:id="@+id/home_attention_comment_layout"
+            android:orientation="vertical"
+            android:background="#FAFAFA"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/home_attention_comment_layout_t1"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="赵紫豪："
+                    android:textColor="#ff333333"
+                    android:textSize="12sp"
+                    />
+                <TextView
+                    android:id="@+id/home_attention_comment_layout_t2"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="抗击病毒不会成功抗击病毒不会成功病毒不8097868676767667678会成功病2121212121212"
+                    android:textColor="#ff000000"
+                    android:textSize="12sp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/home_attention_comment_layout_t3"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="赵紫豪："
+                    android:textColor="#ff000000"
+                    android:textSize="12sp"
+                    />
+                <TextView
+                    android:id="@+id/home_attention_comment_layout_t4"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="抗击病毒不会成功抗击病毒不会成功病毒不会成功病2121212121212"
+                    android:textColor="#ff333333"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="260dp"
+        android:layout_height="128dp">
+
+        <TextView
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="211dp"
+            android:layout_height="44dp"
+            android:text="酸想访问你的通讯录权限用于\n推荐好友"
+            android:textColor="#ff333333"
+            android:textSize="16sp" />
+
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:background="@drawable/shape_stroke_e7e7e7_dp1_solid_ffffff"
+                android:paddingBottom="11dp"
+                android:paddingTop="11dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="不允许"
+                android:textColor="#ffb3b3b3"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:paddingBottom="11dp"
+                android:paddingTop="11dp"
+                android:gravity="center"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="好"
+                android:textColor="#ffffffff"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

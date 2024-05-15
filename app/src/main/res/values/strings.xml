@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">智人百科</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <!--底部导航-->
+    <string name="bottom_nav_one">主页</string>
+    <string name="bottom_nav_two">音标</string>
+    <string name="bottom_nav_center">游戏</string>
+    <string name="bottom_nav_three">单词</string>
+    <string name="bottom_nav_four">我的</string>
+    <color name="bottom_nav_textview_color">#979797</color>
+    <color name="bottom_nav_textview_color_ed">#000000</color>
+
+
+</resources>

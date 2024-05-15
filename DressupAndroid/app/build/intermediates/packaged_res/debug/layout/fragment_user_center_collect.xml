@@ -1,0 +1,43 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!--toolbar指示器-->
+
+    <FrameLayout
+        android:paddingLeft="20dp"
+        android:id="@+id/viewpager_linear"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#f9f9f9">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/include_viewpager_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:contentInsetStart="0dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/magic_indicator"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!--viewpager-->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f9f9f9"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</LinearLayout>

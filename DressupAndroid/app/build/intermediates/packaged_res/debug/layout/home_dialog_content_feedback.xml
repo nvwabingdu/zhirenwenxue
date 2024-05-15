@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/content_callback_left_up"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_marginLeft="64dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:background="@drawable/home_content_feedback_part2"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"/>
+                <ImageView
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/home_content_feedback_part1"
+                    android:layout_width="22dp"
+                    android:layout_height="12dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/content_callback_right_up"
+                android:visibility="visible"
+                android:gravity="center"
+                android:layout_marginRight="64dp"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:background="@drawable/home_content_feedback_part2"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"/>
+                <ImageView
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/home_content_feedback_part1"
+                    android:layout_width="22dp"
+                    android:layout_height="12dp"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:paddingRight="14dp"
+            android:paddingLeft="14dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_width="336dp"
+            android:layout_height="223dp">
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_marginTop="13dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:background="@drawable/hp_icon_not"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#222222"
+                    android:text="不感兴趣"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/home_content_feedback_but1"
+                    android:background="#f0f0f0"
+                    android:gravity="center"
+                    android:textColor="#7F7F7F"
+                    android:text="不喜欢该内容"
+                    android:textSize="12sp"
+                    android:layout_width="146dp"
+                    android:layout_height="29dp"/>
+
+                <Button
+                    android:id="@+id/home_content_feedback_but2"
+                    android:background="#f0f0f0"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#7F7F7F"
+                    android:text="不喜欢该作者"
+                    android:textSize="12sp"
+                    android:layout_width="146dp"
+                    android:layout_height="29dp"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="20dp"
+                android:background="#F0F0F0"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:background="@drawable/hp_icon_feedback"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#222222"
+                    android:text="内容反馈"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/home_content_feedback_but3"
+                    android:background="#f0f0f0"
+                    android:gravity="center"
+                    android:textColor="#7F7F7F"
+                    android:text="广告"
+                    android:textSize="12sp"
+                    android:layout_width="146dp"
+                    android:layout_height="29dp"/>
+
+                <Button
+                    android:id="@+id/home_content_feedback_but4"
+                    android:background="#f0f0f0"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#7F7F7F"
+                    android:text="内容重复"
+                    android:textSize="12sp"
+                    android:layout_width="146dp"
+                    android:layout_height="29dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/home_content_feedback_but5"
+                    android:background="#f0f0f0"
+                    android:gravity="center"
+                    android:textColor="#7F7F7F"
+                    android:text="内容不适"
+                    android:textSize="12sp"
+                    android:layout_width="146dp"
+                    android:layout_height="29dp"/>
+
+                <Button
+                    android:id="@+id/home_content_feedback_but6"
+                    android:background="#f0f0f0"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#7F7F7F"
+                    android:text="色情低俗"
+                    android:textSize="12sp"
+                    android:layout_width="146dp"
+                    android:layout_height="29dp"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/content_callback_left_down"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_marginLeft="64dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:rotation="180"
+                    android:background="@drawable/home_content_feedback_part1"
+                    android:layout_width="22dp"
+                    android:layout_height="12dp"/>
+                <ImageView
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/home_content_feedback_part2"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/content_callback_right_down"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_marginRight="64dp"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:rotation="180"
+                    android:background="@drawable/home_content_feedback_part1"
+                    android:layout_width="22dp"
+                    android:layout_height="12dp"/>
+                <ImageView
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/home_content_feedback_part2"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"/>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</RelativeLayout>

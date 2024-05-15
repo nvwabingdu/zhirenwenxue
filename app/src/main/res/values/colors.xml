@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="ac_splash_bg_color">#2196F3</color>
+
+    <color name="word_text_background_0">#EEEEEE</color>
+    <color name="word_text_background_1">#EEEEE0</color>
+    <color name="word_text_background_2">#EEE9BF</color>
+    <color name="word_text_background_3">#EEE5DE</color>
+    <color name="word_text_background_4">#EED8AE</color>
+    <color name="word_text_background_5">#EECFA1</color>
+    <color name="word_text_background_6">#EEB4B4</color>
+    <color name="word_text_background_7">#EEA9B8</color>
+    <color name="word_text_background_8">#EE9572</color>
+    <color name="word_text_background_9">#EE799F</color>
+    <color name="word_text_background_10">#EE6AA7</color>
+    <color name="word_text_background_11">#EE4000</color>
+    <color name="word_text_background_12">#EE2C2C</color>
+
+
+    <color name="color_sound_mark_tv">#000</color>
+    <color name="color_sound_mark_tv2">#2196F3</color>
+</resources>

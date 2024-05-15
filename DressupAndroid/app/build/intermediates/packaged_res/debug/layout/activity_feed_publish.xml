@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:id="@+id/ll_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="3dp"
+            android:background="@drawable/ic_back" />
+    </LinearLayout>
+
+    <!--    <androidx.core.widget.NestedScrollView-->
+    <!--        android:id="@+id/nested_scroll_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/ll_top_bar">-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_top_bar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_media_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_height="86dp" />
+
+
+        <EditText
+            android:id="@+id/et_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:background="@null"
+            android:hint="添加标题会有更多流量哦"
+            android:maxLines="1"
+            android:textColor="@color/black_222222"
+            android:textCursorDrawable="@drawable/shape_cursor"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_title_hint"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_media_list" />
+
+        <TextView
+            android:id="@+id/tv_title_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="0/20"
+            android:textColor="@color/black_222222"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/et_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/et_title" />
+
+        <View
+            android:id="@+id/line_title"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginTop="14dp"
+            android:background="@color/gray_F0F0F0"
+            app:layout_constraintTop_toBottomOf="@id/et_title" />
+
+        <cn.dreamfruits.yaoguo.view.mention.MentionEditText
+            android:id="@+id/rich_edit"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="14dp"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="分享你的美好生活..."
+            android:maxLength="500"
+            android:paddingHorizontal="14dp"
+            android:textCursorDrawable="@drawable/shape_cursor"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/line_title" />
+
+        <LinearLayout
+            android:id="@+id/ll_add_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rich_edit">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_topic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加话题"
+                android:textColor="@color/black_222222"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_at_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toRightOf="@id/ll_add_topic"
+            app:layout_constraintTop_toTopOf="@id/ll_add_topic">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_at" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户"
+                android:textColor="@color/black_222222"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_hot_topic_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@id/ll_add_topic"
+            tools:layout_height="22dp" />
+
+        <View
+            android:id="@+id/line_gray"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/gray_F0F0F0"
+            app:layout_constraintTop_toBottomOf="@id/rv_hot_topic_list" />
+
+        <TextView
+            android:id="@+id/tv_selected_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="8dp"
+            android:drawableLeft="@drawable/sel_clothes_icon"
+            android:drawableRight="@drawable/ic_right_arrows"
+            android:gravity="center_vertical"
+            android:text="已选单品"
+            android:textColor="@color/ps_color_33"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_gray" />
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/iv_edit"-->
+        <!--            android:layout_width="24dp"-->
+        <!--            android:layout_height="24dp"-->
+        <!--            android:background="@drawable/ic_edit"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@id/tv_selected_hint"-->
+        <!--            app:layout_constraintLeft_toRightOf="@id/tv_selected_hint"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/tv_selected_hint" />-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_selected_clothes_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_selected_hint"
+            tools:layout_height="50dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/rv_selected_clothes_list">
+
+            <ImageView
+                android:id="@+id/iv_location_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_14dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="添加地址"
+                android:textColor="@color/ps_color_33"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/ic_right_arrows" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_topic_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/ll_add_topic">
+
+            <RelativeLayout
+                android:id="@+id/rl_local_topic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="14dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_topic_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_222222"
+                    android:textSize="14sp"
+                    tools:text="#国新办" />
+
+                <TextView
+                    android:id="@+id/tv_add_topic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="添加新话题"
+                    android:textColor="@color/blue_0D99FF" />
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_topic_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_local_topic" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_at_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/ll_add_topic">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_at_user_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    </androidx.core.widget.NestedScrollView>-->
+    <RelativeLayout
+        android:id="@+id/ll_dynamic_block"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <View
+            android:id="@+id/line2_gray"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray_F0F0F0" />
+
+        <TextView
+            android:id="@+id/tv_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:padding="5dp"
+            android:text="完成"
+            android:textColor="@color/black_222222" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_save_feed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_publish">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ic_save_feed" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保存并退出"
+            android:textColor="@color/black_222222"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_publish"
+        android:layout_width="272dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_black"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:text="发布"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/ll_save_feed"
+        app:layout_constraintLeft_toRightOf="@id/ll_save_feed"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

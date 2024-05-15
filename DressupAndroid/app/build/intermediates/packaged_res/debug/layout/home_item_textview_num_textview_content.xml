@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:id="@+id/srb_view"
+    android:paddingRight="12dp"
+    android:paddingLeft="16dp"
+    android:paddingBottom="16dp"
+    android:orientation="horizontal"
+    android:paddingTop="16dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/srb_num"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"/>
+
+    <TextView
+        android:id="@+id/srb_content"
+        android:layout_marginLeft="15dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="第三种：使用kotlin-android-extensions插件，省去了 findViewById()来实例化控件"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <cn.dreamfruits.yaoguo.module.main.home.MaxRecyclerView
+        android:layout_marginTop="14dp"
+        android:visibility="gone"
+        android:id="@+id/attention_dress_MaxRecyclerView"
+        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+</RelativeLayout>

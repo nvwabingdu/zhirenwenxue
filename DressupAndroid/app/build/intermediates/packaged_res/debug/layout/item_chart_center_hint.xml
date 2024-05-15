@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+     >
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="72dp"
+        android:layout_marginRight="72dp"
+        android:gravity="center"
+        android:text="对方关注对方关注你之前对方关注你之前对方关注你之前对方关注你之前你之前"
+        android:textColor="#7F7F7F"
+        android:textSize="12dp" />
+</FrameLayout>

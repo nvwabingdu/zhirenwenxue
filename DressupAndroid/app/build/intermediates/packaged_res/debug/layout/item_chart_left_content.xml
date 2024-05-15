@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="下午4:00"
+        android:textColor="#7F7F7F"
+        android:textSize="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iv_head_img"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_green_circle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_time" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/llayout_left_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="68dp"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@id/iv_head_img"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_head_img">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_chart_left_content_bg"
+            android:minHeight="42dp"
+            android:paddingLeft="12dp"
+            android:paddingTop="10dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="10dp"
+            android:text="文字显示部分"
+            android:textColor="@color/ps_color_33"
+            android:textSize="16dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/iv_fail"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_fail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/icon_chart_send_fail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/pr_is_send"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="@id/iv_fail"
+            app:layout_constraintRight_toRightOf="@id/iv_fail"
+            app:layout_constraintTop_toTopOf="@id/iv_fail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/llayout_quote_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="68dp"
+        app:layout_constraintLeft_toRightOf="@id/iv_head_img"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llayout_left_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_quote_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_quote_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingTop="10dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="10dp"
+                android:text="吃了范冰吃了范冰冰吃了范冰 "
+                android:textColor="@color/color_7F7F7F"
+                android:textSize="12dp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/iv_quote_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_quote_image"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginRight="5dp"
+                android:src="@color/ps_color_33"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/tv_quote_content"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

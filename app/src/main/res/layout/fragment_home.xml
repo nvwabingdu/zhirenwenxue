@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.zrtool.ui.uibase.BaseLinearLayoutSetTop
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <EditText
+                android:paddingLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:focusable="false"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:id="@+id/home_fragment_edit"
+                android:layout_height="match_parent"
+                android:background="@drawable/tv_search"
+                android:gravity="center"
+                android:hint="请输入需要查找的单词"
+                android:textColor="#666666"
+                android:textColorHint="#989ba0" />
+
+
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:layout_width="40dp"
+                android:layout_height="40dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/home_fragment_img"
+                    android:background="@drawable/find" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+        <ScrollView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.youth.banner.Banner
+                            android:id="@+id/banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
+                    android:id="@+id/fragment_home_RecyclerView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
+                    android:id="@+id/fragment_home_RecyclerView2"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="@drawable/shape_solid_fff_corners_20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RelativeLayout
+                            android:id="@+id/rl_stroll_1"
+                            android:layout_weight="130"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/shape_coners_8dp_gradient_1"
+                            android:layout_width="0dp"
+                            android:layout_height="214dp">
+                            <LinearLayout
+                                android:layout_marginTop="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="涂鸦画板"
+                                    android:textColor="#ff643eff"
+                                    android:textSize="18sp" />
+                                <TextView
+                                    android:layout_marginTop="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="随随便便画一画……"
+                                    android:textColor="#ff9880ca"
+                                    android:textSize="12sp" />
+                                <TextView
+                                    android:gravity="center"
+                                    android:background="@drawable/shape_diy_tv_bg"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_width="69dp"
+                                    android:layout_height="25dp"
+                                    android:text="点击开始"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+                            <ImageView
+                                android:layout_alignParentBottom="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="130dp"/>
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="200"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:id="@+id/rl_stroll_2"
+                                android:background="@drawable/shape_coners_8dp_gradient_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp">
+
+                                <LinearLayout
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="12dp"
+                                    android:orientation="vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="LED"
+                                        android:textColor="#ff4eb08d"
+                                        android:textSize="18sp" />
+
+
+                                    <TextView
+                                        android:layout_marginTop="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="滚动字幕玩一玩……"
+                                        android:textColor="#ff4eb08d"
+                                        android:textSize="12sp"
+                                        />
+
+                                    <TextView
+                                        android:layout_width="67dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/shape_diy_tv_bg_2"
+                                        android:gravity="center"
+                                        android:text="点击开始"
+                                        android:textColor="#ffffffff"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:layout_alignParentRight="true"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"/>
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:id="@+id/rl_stroll_3"
+                                android:background="@drawable/shape_coners_8dp_gradient_3"
+                                android:layout_marginTop="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp">
+                                <LinearLayout
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="12dp"
+                                    android:orientation="vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="幸运彩票"
+                                        android:textColor="#ff91b2c8"
+                                        android:textSize="18sp" />
+
+
+                                    <TextView
+                                        android:visibility="gone"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="点击开始……"
+                                        android:textColor="#ff91b2c8"
+                                        android:textSize="12sp"
+                                        />
+
+                                    <TextView
+                                        android:visibility="gone"
+                                        android:layout_width="67dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/shape_diy_tv_bg_3"
+                                        android:gravity="center"
+                                        android:text="点击开始"
+                                        android:textColor="#ffffffff"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:layout_alignParentRight="true"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</com.example.zrtool.ui.uibase.BaseLinearLayoutSetTop>

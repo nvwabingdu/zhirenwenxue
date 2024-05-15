@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:visibility="gone"
+        android:gravity="center"
+        android:id="@+id/word_title"
+        android:text="柯林斯五星级单词:a"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.example.zrtool.ui.custom.TitleBarView
+        android:id="@+id/title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabLayout
+                android:fadeScrollbars="false"
+                android:id="@+id/fragment_word_tabs"
+                app:tabMode="scrollable"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/fragment_word_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/img_word_clean_all"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/ic_baseline_delete_forever_24"
+                    android:padding="10dp" />
+                <ImageView
+                    android:layout_marginRight="15dp"
+                    android:padding="10dp"
+                    android:id="@+id/img_word_up"
+                    android:background="@drawable/ic_baseline_arrow_upward_24"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+                <ImageView
+                    android:layout_marginRight="15dp"
+                    android:padding="10dp"
+                    android:id="@+id/img_word_down"
+                    android:background="@drawable/ic_baseline_arrow_downward_24"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+                <ImageView
+                    android:layout_marginRight="15dp"
+                    android:padding="10dp"
+                    android:id="@+id/img_word_select"
+                    android:background="@drawable/word_select_0"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

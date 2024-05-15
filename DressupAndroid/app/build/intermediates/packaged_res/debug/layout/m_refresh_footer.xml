@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_refresh_footer"-->
+<!--        android:layout_width="20dp"-->
+<!--        android:layout_height="20dp"-->
+<!--        />-->
+<!--&lt;!&ndash;     android:src="@drawable/default_ptr_rotate"&ndash;&gt;-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:textSize="11sp" />-->
+
+    <ProgressBar
+        android:layout_width="16dp"
+        android:layout_height="16dp" />
+</LinearLayout>

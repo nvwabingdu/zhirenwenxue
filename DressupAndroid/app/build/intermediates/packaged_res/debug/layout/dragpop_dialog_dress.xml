@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pop_re_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.example.dragpopwindow.MyRelativeLayout
+        android:background="@drawable/shape_solid_ffffff_corners_10dp"
+        android:id="@+id/pop_MyRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="608dp"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/top_relativelayout"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+            <ImageView
+                android:id="@+id/pop_close"
+                android:layout_marginLeft="10dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/home_delete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="单品"
+                android:textColor="#ff333333"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/top_relativelayout"
+            android:id="@+id/pop_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ProgressBar
+            android:id="@+id/pop_ProgressBar"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+    </com.example.dragpopwindow.MyRelativeLayout>
+</RelativeLayout>

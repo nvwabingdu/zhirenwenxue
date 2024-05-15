@@ -1,0 +1,33 @@
+<!--
+  ~ Copyright 2018 Google LLC
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <!--popupwindow的动画 第一条属性有待考证-->
+    <style name="animTranslate">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowEnterAnimation">@anim/pop_up_in</item>
+        <item name="android:windowExitAnimation">@anim/pop_up_down</item>
+    </style>
+
+    <!--用于CheckBox图片过大的问题-->
+    <style name="CustomCheckBoxStyle" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/keyvisibily_selector</item>
+        <!--        <item name="android:padding">8dp</item>-->
+    </style>
+
+
+</resources>

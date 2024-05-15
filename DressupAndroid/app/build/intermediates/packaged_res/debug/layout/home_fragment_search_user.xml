@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@color/white"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--搜索-->
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/temp_layout"
+        android:background="@drawable/shape_solid_ffffff_stroke_ff949494_dp1"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/search_iv"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="13dp"
+                android:background="@drawable/home_search"
+                android:layout_width="18dp"
+                android:layout_height="18dp"/>
+
+            <EditText
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/search_et"
+                android:singleLine="true"
+                android:imeOptions="actionSearch"
+                android:layout_marginRight="28dp"
+                android:textSize="14sp"
+                android:hint=" "
+                android:textColorHint="#E6E6E6"
+                android:background="@null"
+                android:textColor="#333333"
+                android:layout_marginLeft="11dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/search_del"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/search_details_del" />
+    </RelativeLayout>
+
+    <!--我的粉丝-->
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/fans_text"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我的粉丝（23）"
+        android:textColor="#ff959595"
+        android:textSize="12sp" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<!--列表-->
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:background="@color/white"
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <cn.dreamfruits.yaoguo.module.main.home.refresh.MRefreshHeader2
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:background="#fff" />
+
+            <com.scwang.smart.refresh.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+<!--缺省-->
+        <cn.dreamfruits.yaoguo.module.main.home.customview.ZrDefaultPageView
+            android:id="@+id/default_page_view"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+
+
+</LinearLayout>

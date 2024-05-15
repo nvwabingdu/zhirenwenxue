@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/ool"
+    android:layout_height="wrap_content">
+        <!--@用户-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:background="@color/white"
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!--缺省-->
+        <TextView
+            android:visibility="gone"
+            android:background="@color/white"
+            android:id="@+id/at_user_default_tv"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="暂时搜不到相关结果哦~"
+            android:textColor="#ffafadad"
+            android:textSize="12sp" />
+
+        <!--评论-->
+    <RelativeLayout
+    android:background="@color/white"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="@drawable/home_shape_stroke_dp1_e6e6e6_corners_radius_dp33"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="82dp"
+        android:gravity="center_vertical">
+
+        <cn.dreamfruits.yaoguo.module.main.home.commentreplay.NoteContentEditText
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:hint=" 欢迎您的友善评论……"
+            android:id="@+id/comment_edittext"
+            android:background="@null"
+            android:textColorHint="#E6E6E6"
+            android:maxLines="4"
+            android:textSize="14sp"
+            android:layout_marginRight="64dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/comment_img_one"
+                android:src="@drawable/omment_edittext_tag_img1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/comment_img_two"
+                android:layout_marginLeft="4dp"
+                android:src="@drawable/omment_edittext_tag_img1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/omment_edittext_send"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:gravity="center"
+        android:background="@drawable/home_shape_solid_ffeeeeee_corners_radiu_dp33"
+        android:layout_width="56dp"
+        android:layout_height="36dp"
+        android:text="发送"
+        android:textColor="#ffffffff"
+        android:textSize="14sp" />
+
+</RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_pop_bg"
+        android:paddingBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <TextView
+            android:id="@+id/tv_share_wechat_friend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:drawableTop="@drawable/share_icon_pop_wechat"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="微信好友"
+            android:textColor="@color/ps_color_33"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_share_wechat_circle" />
+
+        <TextView
+            android:id="@+id/tv_share_wechat_circle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:drawableTop="@drawable/share_icon_pop_pyq"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="朋友圈"
+            android:textColor="@color/ps_color_33"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_share_wechat_friend"
+            app:layout_constraintRight_toLeftOf="@+id/tv_share_qq" />
+
+        <TextView
+            android:id="@+id/tv_share_qq"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:drawableTop="@drawable/share_icon_pop_qq"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="QQ好友"
+            android:textColor="@color/ps_color_33"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_share_wechat_circle"
+            app:layout_constraintRight_toLeftOf="@+id/tv_share_save" />
+
+        <TextView
+            android:id="@+id/tv_share_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="30dp"
+            android:drawableTop="@drawable/share_icon_save"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/ps_color_33"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_share_qq"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:text="分享到"
+            android:textColor="#8c8c8c"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_share_wechat_circle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:padding="16dp"
+            android:src="@drawable/share_icon_close"
+            app:layout_constraintBottom_toTopOf="@id/tv_share_wechat_circle"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/shape_share_post"
+        android:paddingBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@id/cl_bottom"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_cover_img"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:src="@drawable/default_user_center_laud_img"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_share_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="@id/iv_cover_img"
+            app:layout_constraintRight_toRightOf="@id/iv_cover_img"
+            app:layout_constraintTop_toBottomOf="@id/iv_cover_img" />
+
+
+        <ImageView
+            android:id="@+id/iv_head_img"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="30dp"
+            android:src="@mipmap/cicrle_default"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_share_list" />
+
+
+        <ImageView
+            android:id="@+id/iv_share_code_bg"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/shape_share_post_code_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_share_code"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/default_user_center_laud_img"
+            app:layout_constraintBottom_toBottomOf="@id/iv_share_code_bg"
+            app:layout_constraintLeft_toLeftOf="@id/iv_share_code_bg"
+            app:layout_constraintRight_toRightOf="@id/iv_share_code_bg"
+            app:layout_constraintTop_toTopOf="@id/iv_share_code_bg" />
+
+
+        <TextView
+            android:id="@+id/tv_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="名字"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_head_img"
+            app:layout_constraintLeft_toRightOf="@id/iv_head_img"
+            app:layout_constraintTop_toTopOf="@id/iv_head_img" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="微酸号：103902i103902i480490103902i480490103902i480490103902i480490480490"
+            android:textColor="#999"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/iv_head_img"
+            app:layout_constraintRight_toLeftOf="@id/iv_share_code_bg"
+            app:layout_constraintTop_toBottomOf="@id/iv_head_img" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

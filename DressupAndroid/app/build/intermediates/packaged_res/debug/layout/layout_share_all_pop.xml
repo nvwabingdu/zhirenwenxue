@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_pop_bg"
+    android:paddingBottom="20dp">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="分享到"
+        android:textColor="#8c8c8c"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:src="@drawable/share_icon_close"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_share_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="16dp"
+        android:background="#e6e6e6"
+        app:layout_constraintTop_toBottomOf="@id/rv_share_list" />
+
+
+    <TextView
+        android:id="@+id/tv_share_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:drawableTop="@drawable/share_icon_friend"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:text="私信好友"
+        android:textColor="@color/ps_color_33"
+        android:textSize="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+    <TextView
+        android:id="@+id/tv_share_wechat_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:drawableTop="@drawable/share_icon_pop_wechat"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:text="微信好友"
+        android:textColor="@color/ps_color_33"
+        android:textSize="12dp"
+        app:layout_constraintLeft_toRightOf="@id/tv_share_friend"
+        app:layout_constraintTop_toTopOf="@id/tv_share_friend" />
+
+    <TextView
+        android:id="@+id/tv_share_wechat_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:drawableTop="@drawable/share_icon_pop_pyq"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:text="朋友圈"
+        android:textColor="@color/ps_color_33"
+        android:textSize="12dp"
+        app:layout_constraintLeft_toRightOf="@id/tv_share_wechat_friend"
+        app:layout_constraintTop_toTopOf="@id/tv_share_friend" />
+
+    <TextView
+        android:id="@+id/tv_share_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:drawableTop="@drawable/share_icon_pop_qq"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:text="QQ好友"
+        android:textColor="@color/ps_color_33"
+        android:textSize="12dp"
+        app:layout_constraintLeft_toRightOf="@id/tv_share_wechat_circle"
+        app:layout_constraintTop_toTopOf="@id/tv_share_friend" />
+
+    <View
+        android:id="@+id/view_line_spilt"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="16dp"
+        android:background="#e6e6e6"
+        app:layout_constraintTop_toBottomOf="@id/tv_share_friend" />
+
+    <HorizontalScrollView
+        android:scrollbars="none"
+        android:background="@null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/view_line_spilt">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:paddingRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_create_poster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:drawableTop="@drawable/share_icon_poster"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="生成海报"
+                android:textColor="@color/ps_color_33"
+                android:textSize="12dp"
+                android:visibility="visible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_copy_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:drawableTop="@drawable/share_icon_copy_link"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="复制链接"
+                android:textColor="@color/ps_color_33"
+                android:textSize="12dp"
+                app:layout_constraintLeft_toRightOf="@id/tv_create_poster"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/tv_copy_tip_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:drawableTop="@drawable/share_icon_tip_off"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="举报"
+                android:textColor="@color/ps_color_33"
+                android:textSize="12dp"
+                app:layout_constraintLeft_toRightOf="@id/tv_copy_link"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:drawableTop="@drawable/share_icon_black"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="拉黑"
+                android:textColor="@color/ps_color_33"
+                android:textSize="12dp"
+                android:visibility="visible"
+                app:layout_constraintLeft_toRightOf="@id/tv_copy_tip_off"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--           编辑-->
+            <TextView
+                android:id="@+id/tv_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:drawableTop="@drawable/share_iv_edit"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="编辑"
+                android:textColor="@color/ps_color_33"
+                android:textSize="12dp"
+                android:visibility="gone"
+                app:layout_constraintLeft_toRightOf="@id/tv_black"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--           更名-->
+            <TextView
+                android:id="@+id/tv_change_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:drawableTop="@drawable/share_iv_name"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="更名"
+                android:textColor="@color/ps_color_33"
+                android:textSize="12dp"
+                android:visibility="gone"
+                app:layout_constraintLeft_toRightOf="@id/tv_edit"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--           设为私密-->
+            <TextView
+                android:id="@+id/tv_private"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:drawableTop="@drawable/share_iv_privacy"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="设为私密"
+                android:textColor="@color/ps_color_33"
+                android:textSize="12dp"
+                android:visibility="gone"
+                app:layout_constraintLeft_toRightOf="@id/tv_change_name"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--           删除-->
+            <TextView
+                android:id="@+id/tv_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:drawableTop="@drawable/share_iv_del"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="@color/ps_color_33"
+                android:textSize="12dp"
+                android:visibility="gone"
+                app:layout_constraintLeft_toRightOf="@id/tv_private"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--           设为公开-->
+            <TextView
+                android:id="@+id/tv_public"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:drawableTop="@drawable/share_iv_public"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="设为公开"
+                android:textColor="@color/ps_color_33"
+                android:textSize="12dp"
+                android:visibility="gone"
+                app:layout_constraintLeft_toRightOf="@id/tv_delete"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/shape_black_rad_4"
+        android:text="发送"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#f5f5f5"
+        android:gravity="start"
+        android:hint="跟朋友说点什么吧......"
+        android:padding="16dp"
+        android:textColor="@color/black_222222"
+        android:textColorHint="#cccccc"
+        android:textSize="14dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/btn_send"
+        app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

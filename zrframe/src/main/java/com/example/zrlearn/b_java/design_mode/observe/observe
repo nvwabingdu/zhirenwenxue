@@ -1,0 +1,208 @@
+import java.util.Vector;
+
+public class BtClass {
+	public static void main(String[] args) {
+		// 创建一个主题
+		ConcreteSubject subject = new ConcreteSubject();
+		// 定义一个观察者
+		Observer observer = new ConcreteObserver1();
+		Observer observer2 = new ConcreteObserver2();
+		// 注册观察者
+		subject.addObserver(observer);
+		subject.addObserver(observer2);
+		// 开始活动
+		subject.doSomething();
+	}
+}
+
+//首先定义一个观察者数组，并实现增、删及通知操作。它的职责很简单，就是定义谁能观察，谁不能观察，用Vector是线程同步的，比较安全，也可以使用ArrayList，是线程异步的，但不安全。
+class Subject {
+	// 观察者数组
+	private Vector<Observer> oVector = new Vector<>();
+	// 增加一个观察者，相当于观察者注册
+	public void addObserver(Observer observer) {
+		this.oVector.add(observer);
+	}
+	// 删除一个观察者
+	public void deleteObserver(Observer observer) {
+		this.oVector.remove(observer);
+	}
+	// 通知所有观察者，主题有变化时通知观察者
+	public void notifyObserver() {
+		for (Observer observer : this.oVector) {
+			observer.response();
+		}
+	}
+}
+
+//具体主题  继承Subject类，在这里实现具体业务，在具体项目中，该类会有很多变种。
+class ConcreteSubject extends Subject {
+	// 具体业务
+	public void doSomething() {
+		// ...
+		System.out.println("具体目标发生改变...");
+		System.out.println("--------------");
+		super.notifyObserver();
+	}
+
+}
+
+// 抽像观察者 观察者一般是一个接口，每一个实现该接口的实现类都是具体观察者。
+interface Observer {
+	// 响应
+	public void response();
+}
+
+//具体观察者1
+class ConcreteObserver1 implements Observer {
+	public void response() {
+		System.out.println("具体观察者1作出反应！");
+	}
+}
+
+//具体观察者1
+class ConcreteObserver2 implements Observer {
+   public void response() {
+       System.out.println("具体观察者2作出反应！");
+   }
+}
+//首先创建一个被观察者，然后定义一个观察者，将该被观察者添加到该观察者的观察者数组中，进行测试
+
+
+
+为了便于说明
+
+主题的爹：创建观察者的接口的爹的集合 然后有个通知所有观察者儿子做出响应的foreach方法    具体的主题：有一个方法  do("做自己的事的方法"  做完之后：super.notifyObserver())
+所有观察者的接口爹： 也可以用抽象类吧   里面有个response响应方法           观察者儿子，都实现这个方法 并定义自己的响应方法 比如我要唱歌
+
+关键点，通过主题爹添加观察者儿子  然后遍历他们的响应方法
+
+
+
+
+
+
+
+三、Java中的观察者模式
+
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Vector;
+
+public class BtClass {
+	public static void main(String[] args) {
+		 OilFutures oil = new OilFutures();
+	        Observer bull = new Bull(); //多方
+	        Observer bear = new Bear(); //空方
+	        oil.addObserver(bull);
+	        oil.addObserver(bear);
+	        oil.setPrice(10);
+	        oil.setPrice(-8);
+	}
+}
+
+//具体目标类：原油期货
+class OilFutures extends Observable {//这个爹是java提供的
+    private float price;
+
+    public float getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(float price) {
+        super.setChanged();  //设置内部标志位，注明数据发生变化
+        super.notifyObservers(price);    //通知观察者价格改变了
+        this.price = price;
+    }
+}
+
+//具体观察者类：多方
+class Bull implements Observer {//也是java提供的
+    public void update(Observable o, Object arg) {
+        Float price = ((Float) arg).floatValue();
+        if (price > 0) {
+            System.out.println("油价上涨" + price + "元，多方高兴了！");
+        } else {
+            System.out.println("油价下跌" + (-price) + "元，多方伤心了！");
+        }
+    }
+}
+
+//具体观察者类：空方
+class Bear implements Observer {
+    public void update(Observable o, Object arg) {
+        Float price = ((Float) arg).floatValue();
+        if (price > 0) {
+            System.out.println("油价上涨" + price + "元，空方伤心了！");
+        } else {
+            System.out.println("油价下跌" + (-price) + "元，空方高兴了！");
+        }
+    }
+}
+
+//
+
+
+在 Java 中，通过 java.util.Observable 类和 java.util.Observer 接口定义了观察者模式，只要实现它们的子类就可以编写观察者模式实例。
+
+3.1、Observable类
+Observable 类是抽象目标类，它有一个 Vector 向量，用于保存所有要通知的观察者对象，下面来介绍它最重要的 3 个方法。
+void addObserver(Observer o) 方法：用于将新的观察者对象添加到向量中。
+void notifyObservers(Object arg) 方法：调用向量中的所有观察者对象的 update() 方法，通知它们数据发生改变。通常越晚加入向量的观察者越先得到通知。
+void setChange() 方法：用来设置一个 boolean 类型的内部标志位，注明目标对象发生了变化。当它为真时，notifyObservers() 才会通知观察者。
+
+3.2、Observer 接口
+Observer 接口是抽象观察者，它监视目标对象的变化，当目标对象发生变化时，观察者得到通知，并调用 void update(Observable o,Object arg) 方法，
+进行相应的工作。
+————————————————
+版权声明：本文为CSDN博主「Java后端何哥」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/CSDN2497242041/article/details/120403205
+
+
+//手写线程安全
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Vector;
+
+public class BtClass {
+	public static void main(String[] args) {
+		Observale1 observale1 = new Observale1();
+
+		Obsever1 obsever1 = new Obsever1("孔明");
+		Obsever1 obsever2 = new Obsever1("关羽");
+		Obsever1 obsever3 = new Obsever1("张飞");
+
+	        //房东给打工仔（观察者）注册
+		observale1.addObserver(obsever1);
+		observale1.addObserver(obsever2);
+		observale1.addObserver(obsever3);
+
+	        //（被观察者）房东发信息了，通知所有观察者交房租
+		observale1.postChange("集结军队打仗了");
+	}
+}
+
+//Observer抽象观察者
+class Obsever1 implements Observer
+{
+  public String name;
+  public Obsever1(String name){
+      this.name = name;
+  }
+
+  @Override
+  public void update(Observable o, Object arg) {
+      System.out.println(name +" 收到要打仗的信息");
+  }
+}
+
+//Observable抽象目标类
+class Observale1 extends Observable
+{
+
+  public void postChange(String content)
+  {
+      setChanged();
+      notifyObservers(content);
+  }
+}

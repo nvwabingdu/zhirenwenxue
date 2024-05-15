@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/ps_color_33"
+    android:orientation="horizontal"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
+
+    <TextView
+        android:id="@+id/tv_chart_copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/chart_pop_copy"
+        android:paddingLeft="13dp"
+        android:paddingTop="9dp"
+        android:paddingRight="13dp"
+        android:paddingBottom="9dp"
+        android:text="复制"
+        android:textColor="#E6E6E6"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tv_chart_transpond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/chart_pop_transpond"
+        android:paddingLeft="13dp"
+        android:paddingTop="9dp"
+        android:paddingRight="13dp"
+        android:paddingBottom="9dp"
+        android:text="转发"
+        android:textColor="#E6E6E6"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tv_chart_quote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/chart_pop_quote"
+        android:paddingLeft="13dp"
+        android:paddingTop="9dp"
+        android:paddingRight="13dp"
+        android:paddingBottom="9dp"
+        android:text="引用"
+        android:textColor="#E6E6E6"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tv_chart_rollback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/chart_pop_rollback"
+        android:paddingLeft="13dp"
+        android:paddingTop="9dp"
+        android:paddingRight="13dp"
+        android:paddingBottom="9dp"
+        android:text="撤回"
+        android:textColor="#E6E6E6"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tv_chart_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/chart_pop_delete"
+        android:paddingLeft="13dp"
+        android:paddingTop="9dp"
+        android:paddingRight="13dp"
+        android:paddingBottom="9dp"
+        android:text="删除"
+        android:textColor="#E6E6E6"
+        android:textSize="12dp" />
+
+</LinearLayout>

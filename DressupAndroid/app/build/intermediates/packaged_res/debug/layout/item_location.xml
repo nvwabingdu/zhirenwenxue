@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/tv_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:textColor="@color/black_222222"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="花样年福年广场"/>
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:textSize="12sp"
+        android:layout_marginTop="2dp"
+        tools:text="成都市武侯区天赋三街130"
+        android:ellipsize="end"
+        android:maxLines="1"/>
+
+    <ImageView
+        android:id="@+id/iv_selected"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/ic_hook_select"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,41 @@
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Vector;
+
+public class BtClass {
+	public static void main(String[] args) {
+		Demo d = new RealDemo();
+		d.funA();
+	}
+}
+
+interface Demo {
+	public void funA();
+	public void funB();
+	public void funC();
+	public void funD();
+	public void funE();
+}
+
+abstract class DemoAdapter implements Demo {
+	public void funA() {
+	}
+	public void funB() {
+	}
+	public void funC() {
+	}
+	public void funD() {
+	}
+	public void funE() {
+	}
+};
+
+class RealDemo extends DemoAdapter {
+	public void funA() {
+		System.out.println("Hello World!!!");
+	}
+};
+
+
+//接口：接口中的方法子类要求全部实现
+//如果子类想根据自己的喜好实现对应的方法

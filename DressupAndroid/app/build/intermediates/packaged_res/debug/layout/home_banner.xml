@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/banner_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <cn.dreamfruits.yaoguo.module.main.home.ChildViewPager
+                    android:id="@+id/viewPager"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="800dp" />
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager2"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="800dp" />
+            <cn.dreamfruits.yaoguo.module.main.home.DotIndicatorView
+                android:layout_marginTop="8dp"
+                android:id="@+id/dot_indicator_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/img_number"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="1/9"
+            android:background="@drawable/shape_stroke_60000000_dp19"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="36dp"
+            android:layout_height="22dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

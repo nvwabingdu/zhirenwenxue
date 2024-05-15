@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9">
+    <!--缺省页面-->
+    <include
+        android:id="@+id/home_default_page"
+        layout="@layout/home_include_default_page"
+        android:visibility="gone" />
+
+    <!--主页瀑布流列表-->
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f9f9f9">
+
+        <cn.dreamfruits.yaoguo.module.main.home.refresh.MRefreshHeader2
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f9f9f9"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</FrameLayout>

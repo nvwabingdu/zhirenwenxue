@@ -1,0 +1,63 @@
+{
+  "messageReply": {
+    "message": {
+      "clientTime": 1688350492,
+      "cloudCustomBytes": [],
+      "excludedFromContentModeration": false,
+      "excludedFromLastMessage": false,
+      "excludedFromUnreadCount": false,
+      "faceUrl": "https://im.sdk.qcloud.com/download/tuikit-resource/avatar/avatar_13.png",
+      "friendRemark": "",
+      "groupID": "",
+      "hasSentReceipt": false,
+      "isBroadcastMessage": false,
+      "isForward": false,
+      "isMessageSender": false,
+      "isPeerRead": true,
+      "isSelfRead": false,
+      "lifeTime": 1,
+      "localCustomNumber": 0,
+      "localCustomString": "",
+      "messageBaseElements": [
+        {
+          "textContentBytes": [
+            -27,
+            -109,
+            -120,
+            -27,
+            -109,
+            -120,
+            -27,
+            -109,
+            -120
+          ],
+          "elementType": 1
+        }
+      ],
+      "messageGroupAtInfoList": [],
+      "messageStatus": 2,
+      "messageType": 1,
+      "messageVersion": 0,
+      "msgID": "144115243226832512-1688350492-2104921618",
+      "nameCard": "",
+      "needReadReceipt": false,
+      "nickName": "测试一号",
+      "platform": 0,
+      "priority": 2,
+      "random": 2104921618,
+      "receiptPeerRead": false,
+      "receiptReadCount": 0,
+      "receiptUnreadCount": -1,
+
+      "receiverUserID": "534173445859712",
+      "revokerTinyID": 0,
+      "revokerUserID": "",
+
+      "senderUserID": "537086813760384",
+      "seq": 1839083193,
+      "serverTime": 1688350492,
+      "supportMessageExtension": false
+
+    }
+  }
+}

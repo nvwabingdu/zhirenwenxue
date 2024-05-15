@@ -1,0 +1,78 @@
+<cn.dreamfruits.yaoguo.module.main.home.InterceptTouchLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9"
+    android:orientation="vertical">
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/ll_top_tab"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="47dp"-->
+<!--        android:background="#f9f9f9"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:visibility="gone">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_post"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingTop="3dp"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingBottom="3dp"-->
+<!--            android:text="帖子"-->
+<!--            android:textColor="#ff000000"-->
+<!--            android:textSize="14sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_label"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:background="@drawable/shape_solid_efefef"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingTop="3dp"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingBottom="3dp"-->
+<!--            android:text="话题"-->
+<!--            android:textColor="#ff8c8c8c"-->
+<!--            android:textSize="14sp" />-->
+<!--    </LinearLayout>-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="2.5dp"
+        android:layout_marginRight="2.5dp"
+        android:background="@color/white">
+        <!--帖子 收藏 赞过-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f9f9f9"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+<!--        &lt;!&ndash;帖子 话题&ndash;&gt;-->
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerview2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="#f9f9f9"-->
+<!--            android:overScrollMode="never"-->
+<!--            android:scrollbars="none"-->
+<!--            android:visibility="gone" />-->
+        <!--缺省-->
+        <cn.dreamfruits.yaoguo.module.main.home.customview.ZrDefaultPageView
+            android:id="@+id/default_page_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:visibility="gone" />
+    </FrameLayout>
+
+
+</cn.dreamfruits.yaoguo.module.main.home.InterceptTouchLinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/diy_right_img"
+            android:layout_width="106dp"
+            android:layout_height="106dp"/>
+
+<!--        <TextView-->
+<!--            android:visibility="gone"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            android:gravity="center"-->
+<!--            android:background="#5cd9d9d9"-->
+<!--            android:layout_width="106dp"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:text="已公开"-->
+<!--            android:textColor="#ff000000"-->
+<!--            android:textSize="12sp" />-->
+    </FrameLayout>
+
+    <TextView
+        android:layout_marginBottom="30dp"
+        android:id="@+id/diy_right_tv"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="棒球衫"
+        android:textColor="#ff000000"
+        android:textSize="12sp" />
+
+</LinearLayout>

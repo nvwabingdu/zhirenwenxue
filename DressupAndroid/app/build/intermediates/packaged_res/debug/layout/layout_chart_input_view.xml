@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/iv_switch_speak"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/mes_icon_yuyin"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/llayout_content"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="52dp"
+            android:layout_height="36dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/shape_chart_send_bg"
+            android:gravity="center"
+            android:text="发送"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/iv_switch_speak"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_switch_speak" />
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minHeight="36dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/mes_icon_photo"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/iv_switch_speak"
+            app:layout_constraintRight_toLeftOf="@id/tv_send"
+            app:layout_constraintTop_toTopOf="@id/iv_switch_speak" />
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minHeight="36dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/mes_icon_pic"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/iv_switch_speak"
+            app:layout_constraintRight_toLeftOf="@id/iv_photo"
+            app:layout_constraintTop_toTopOf="@id/iv_switch_speak" />
+
+
+        <LinearLayout
+            android:id="@+id/llayout_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/shape_chart_bottom_bg"
+            android:gravity="bottom"
+            android:minHeight="36dp"
+            app:layout_constraintLeft_toRightOf="@id/iv_switch_speak"
+            app:layout_constraintRight_toLeftOf="@id/iv_pic"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <cn.dreamfruits.yaoguo.module.main.message.chart.view.TIMMentionEditText
+                android:id="@+id/et_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:maxHeight="90dp"
+                android:minHeight="36dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:text=""
+                android:textColor="@color/ps_color_33"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tv_touch_speak"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:minHeight="36dp"
+                android:text="按住说话"
+                android:textColor="@color/ps_color_33"
+                android:textSize="14dp"
+                android:visibility="gone" />
+
+
+            <ImageView
+                android:id="@+id/iv_emoge"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:src="@drawable/mes_icon_emote" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llayout_quote"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/shape_chart_bottom_bg"
+            android:gravity="center_vertical"
+            android:minHeight="32dp"
+            android:paddingLeft="12dp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="@id/llayout_content"
+            app:layout_constraintRight_toRightOf="@id/llayout_content"
+            app:layout_constraintTop_toBottomOf="@id/llayout_content">
+
+
+            <TextView
+                android:id="@+id/tv_quote_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:text=""
+                android:textColor="#7F7F7F"
+                android:textSize="12dp"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/iv_delete_quote"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="12dp"
+                android:src="@drawable/ic_close_round" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/more_groups"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+
+</LinearLayout>

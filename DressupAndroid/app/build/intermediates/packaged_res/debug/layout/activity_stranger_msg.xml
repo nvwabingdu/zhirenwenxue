@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llayout_title"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="44dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="陌生人消息"
+            android:textColor="@color/black_222222"
+            android:textSize="16dp" />
+
+
+    </LinearLayout>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</LinearLayout>

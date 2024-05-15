@@ -1,0 +1,121 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:2:1-53:12
+	package
+		INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:2:1-53:12
+		INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.CAMERA
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:4:5-64
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:4:22-62
+uses-permission#android.permission.VIBRATE
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:5:5-65
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:5:22-63
+uses-permission#android.permission.FLASHLIGHT
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:6:5-68
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:6:22-66
+uses-permission#android.permission.INTERNET
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:8:5-66
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:8:22-64
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:9:5-75
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:9:22-73
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:10:5-75
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:10:22-73
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:11:5-80
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:11:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:12:5-79
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:12:22-77
+application
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:14:5-52:19
+activity#com.example.zrqrcode.ZrQrCodeActivity
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:15:9-18:38
+	android:screenOrientation
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:17:13-49
+	android:exported
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:18:13-36
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:16:13-45
+activity#com.example.zrqrcode.zxing.CaptureActivity
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:19:9-22:50
+	android:screenOrientation
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:21:13-49
+	android:theme
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:22:13-48
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:20:13-50
+activity#com.example.zrqrcode.test.EasyCaptureActivity
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:24:9-27:50
+	android:screenOrientation
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:26:13-49
+	android:theme
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:27:13-48
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:25:13-53
+activity#com.example.zrqrcode.test.CustomCaptureActivity
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:28:9-31:50
+	android:screenOrientation
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:30:13-49
+	android:theme
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:31:13-48
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:29:13-55
+activity#com.example.zrqrcode.test.CaptureFragmentActivity
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:33:9-36:50
+	android:screenOrientation
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:35:13-49
+	android:theme
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:36:13-48
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:34:13-57
+activity#com.example.zrqrcode.test.CustomFullScanActivity
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:38:9-41:50
+	android:screenOrientation
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:40:13-49
+	android:theme
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:41:13-48
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:39:13-56
+activity#com.example.zrqrcode.test.QRCodeActivity
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:43:9-46:50
+	android:screenOrientation
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:45:13-49
+	android:theme
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:46:13-48
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:44:13-48
+activity#com.example.zrqrcode.test.CodeActivity
+ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:48:9-50:51
+	android:screenOrientation
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:50:13-49
+	android:name
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml:49:13-46
+uses-sdk
+INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+		INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+		ADDED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml
+		INJECTED from /Users/qiwangi/work/mengguo/DressupAndroid/zrqrcode/src/main/AndroidManifest.xml

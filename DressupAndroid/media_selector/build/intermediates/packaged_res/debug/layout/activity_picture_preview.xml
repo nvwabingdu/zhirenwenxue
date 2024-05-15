@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="44dp"
+       android:background="#66000000">
+
+       <ImageView
+           android:id="@+id/back"
+           android:layout_width="30dp"
+           android:layout_height="30dp"
+           android:layout_centerVertical="true"
+           android:layout_marginLeft="3dp"
+           android:background="@drawable/ic_white_back" />
+
+
+       <LinearLayout
+           android:id="@+id/check_layout"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentEnd="true"
+           android:layout_centerVertical="true"
+           android:layout_marginRight="12dp"
+           android:orientation="horizontal">
+
+
+           <RelativeLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+               <ImageView
+                   android:id="@+id/check_image"
+                   android:layout_width="24dp"
+                   android:layout_height="24dp"
+                   tools:background="@drawable/ic_media_selected"/>
+
+               <TextView
+                   android:id="@+id/check_count"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerInParent="true"
+                   tools:text="1"
+                   android:textColor="@color/black_081116" />
+           </RelativeLayout>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical"
+               android:layout_marginLeft="4dp"
+               android:textColor="#FFFFFF"
+               android:text="选择"/>
+       </LinearLayout>
+   </RelativeLayout>
+
+
+
+</FrameLayout>

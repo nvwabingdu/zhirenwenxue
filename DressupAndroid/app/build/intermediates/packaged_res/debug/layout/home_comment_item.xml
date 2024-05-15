@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:paddingLeft="26dp"
+        android:id="@+id/comment_parent_layout"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/comment_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"/>
+
+        <include layout="@layout/home_include_comment_part"/>
+
+    </LinearLayout>
+
+    <cn.dreamfruits.yaoguo.module.main.home.MaxRecyclerView
+        android:id="@+id/comment_child_recyclerview"
+        android:layout_marginLeft="48dp"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_marginRight="53dp"
+        android:layout_marginLeft="58dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/comment_more_layout_one"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/comment_open"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开更多回复"
+                    android:textColor="#ff7f7f7f"
+                    android:textSize="14sp"/>
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/home_arrow_down"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
+            </LinearLayout>
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/comment_close_layout"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content">-->
+<!--                <TextView-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:id="@+id/comment_close"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="收起"-->
+<!--                    android:textColor="#ff646464"-->
+<!--                    android:textSize="14sp" />-->
+<!--                <ImageView-->
+<!--                    android:visibility="gone"-->
+<!--                    android:rotation="180"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:background="@drawable/home_arrow_down"-->
+<!--                    android:layout_width="16dp"-->
+<!--                    android:layout_height="16dp"/>-->
+<!--            </LinearLayout>-->
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/comment_more_layout_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="16dp"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/loading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="加载中..."
+                android:textSize="14sp" />
+            <!--                    android:text="Loading..."-->
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

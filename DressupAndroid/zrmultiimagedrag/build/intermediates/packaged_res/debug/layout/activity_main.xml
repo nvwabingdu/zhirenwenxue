@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.example.zrmultiimagedrag.UploadMultiImageView
+        android:id="@+id/uploadMultiImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:addRes="@drawable/img_add"
+        app:deleteRes="@drawable/img_delete"
+        app:column_count="3"
+        app:is_Drag="true"
+        app:is_showAdd="true"
+        app:item_spacing="2dp"
+        app:max_count="9" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:text="模拟最多显示9张图片，拖拽排序"/>
+
+</LinearLayout>

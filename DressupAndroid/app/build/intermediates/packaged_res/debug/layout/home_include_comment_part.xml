@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/comment_item"
+            android:layout_marginRight="53dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/comment_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="谜底时钟"
+                    android:textColor="#ffb3b3b3"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/comment_author"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:background="#B7EA5A"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="作者"
+                    android:textColor="#ff646464"
+                    android:textSize="10sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <cn.dreamfruits.yaoguo.module.main.home.zrrichtext.ExpandableTextView
+                        android:visibility="gone"
+                        android:id="@+id/comment_content1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="可以买了，他们的bug价是开他们的bug价是开了他们的bug价是开了京东新人白条见京东新人白条见了京东新人白条见"
+                        android:textColor="#ff333333"
+                        android:textSize="14sp"
+                        />
+                    <cn.dreamfruits.yaoguo.module.main.home.zrrichtext.ExpandableTextView2
+                        android:visibility="gone"
+                        android:id="@+id/comment_content2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="可以买了，他们的bug价是开他们的bug价是开了他们的bug价是开了京东新人白条见京东新人白条见了京东新人白条见"
+                        android:textColor="#ff333333"
+                        android:textSize="14sp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/comment_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="39分钟前"
+                    android:textColor="#ffb3b3b3"
+                    android:textSize="12sp"
+                    />
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/comment_address"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="四川"
+                    android:textColor="#ffb3b3b3"
+                    android:textSize="12sp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/comment_laud_layout"
+            android:layout_marginTop="2dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/comment_laud_img"
+                android:layout_marginTop="2dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+
+            <TextView
+                android:id="@+id/comment_laud_count"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.5万"
+                android:textColor="#ff7f7f7f"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

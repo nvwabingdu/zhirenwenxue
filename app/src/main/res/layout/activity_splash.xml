@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.zrtool.ui.uibase.BaseLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ac_splash_root_layout"
+    android:background="@color/ac_splash_bg_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center|bottom"
+        android:layout_weight="1.8"
+        android:layout_height="0dp">
+        <com.example.zrtool.ui.uibase.BaseTextView
+            android:id="@+id/ac_splash_tv_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="智"
+            android:textColor="#fff"
+            android:textSize="60dp" />
+        <com.example.zrtool.ui.uibase.BaseTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="人"
+            android:textColor="#fff"
+            android:textSize="90dp" />
+        <com.example.zrtool.ui.uibase.BaseTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="百科"
+            android:textColor="#fff"
+            android:textSize="60dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_height="0dp">
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <com.example.zrtool.ui.uibase.BaseTextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="left|top"
+            android:id="@+id/ac_splash_tv_"
+            android:text=""
+            android:textColor="#fff"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+
+</com.example.zrtool.ui.uibase.BaseLinearLayout>

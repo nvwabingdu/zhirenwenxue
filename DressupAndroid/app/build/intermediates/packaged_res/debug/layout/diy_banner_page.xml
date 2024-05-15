@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="#88000000"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_height="match_parent">
+    <ImageView
+        android:padding="10dp"
+        android:id="@+id/diy_page_back"
+        android:background="@drawable/home_cancel"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"/>
+
+    <ImageView
+        android:id="@+id/diy_page_confirm"
+        android:background="@drawable/diy_banner_page_confirm"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="56dp"
+        android:layout_height="27dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:layout_weight="236"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+        <cn.dreamfruits.yaoguo.module.main.diy.zrbannerpage.library.SpeedRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_weight="364"
+            android:layout_height="0dp"
+            android:layout_width="match_parent" />
+
+        <View
+            android:layout_weight="236"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+    </LinearLayout>
+
+</RelativeLayout>
+

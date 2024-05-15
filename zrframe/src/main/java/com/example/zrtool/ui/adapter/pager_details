@@ -1,0 +1,194 @@
+/*
+*
+*
+* 1：FragmentStateAdapter使用方法 是一个适配器类，用于在ViewPager2中管理Fragment的展示
+*
+*
+*
+/
+使用方法如下：
+创建一个自定义的FragmentStateAdapter类，继承自FragmentStateAdapter并重写以下方法：
+getItemCount(): 返回Fragment的数量。
+createFragment(int position): 根据位置返回对应的Fragment实例。
+
+public class MyFragmentStateAdapter extends FragmentStateAdapter {
+
+    public MyFragmentStateAdapter(Fragment fragment) {
+        super(fragment);
+    }
+
+    @Override
+    public int getItemCount() {
+        return 3; // 返回Fragment的数量
+    }
+
+    @NonNull
+    @Override
+    public Fragment createFragment(int position) {
+        switch (position) {
+            case 0:
+                return new Fragment1(); // 返回第一个Fragment实例
+            case 1:
+                return new Fragment2(); // 返回第二个Fragment实例
+            case 2:
+                return new Fragment3(); // 返回第三个Fragment实例
+        }
+        return null;
+    }
+}
+在Activity中使用ViewPager2和刚刚创建的自定义FragmentStateAdapter。首先在布局文件中添加一个ViewPager2组件：
+xml
+<androidx.viewpager2.widget.ViewPager2
+    android:id="@+id/viewPager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+然后在Activity中找到ViewPager2，创建并设置自定义的FragmentStateAdapter：
+
+java
+ViewPager2 viewPager = findViewById(R.id.viewPager);
+FragmentStateAdapter adapter = new MyFragmentStateAdapter(this);
+viewPager.setAdapter(adapter);
+这样就完成了FragmentStateAdapter的基本使用。
+
+
+
+/*
+*
+*
+* 2：FragmentStatePagerAdapter
+*
+*
+*
+/
+public class ViewPagerFragmentAdapter extends FragmentStatePagerAdapter {
+    private List<Fragment> mFragments;
+    private List<String> mTitles;
+
+    public ViewPagerFragmentAdapter(FragmentManager fm, List<Fragment> fragments, List<String> titles) {
+        super(fm);
+        mFragments = fragments;
+        mTitles = titles;
+    }
+    public ViewPagerFragmentAdapter(FragmentManager fm, List<Fragment> fragments) {
+        super(fm);
+        mFragments = fragments;
+    }
+
+    public void setData(List<Fragment> fragmentList) {
+        this.mFragments = fragmentList;
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        return mFragments.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return mFragments.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mTitles.get(position);
+    }
+}
+
+
+/*
+*
+*
+* 3：FragmentPagerAdapter
+*
+*
+*
+/
+    class MagicFragmentAdapter(fragmentManager: FragmentManager, private val fragments: MutableList<Fragment>) :
+        FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+
+        override fun getCount(): Int {
+            return fragments.size
+        }
+
+        override fun getItem(position: Int): Fragment {
+            return fragments[position]
+        }
+    }
+
+
+/*
+*
+*
+* 4：PagerAdapter  这种方式定制化程度高
+*
+*
+*
+/
+public class ExamplePagerAdapter extends PagerAdapter {
+    private ArrayList<String> mDataList;
+
+    public ExamplePagerAdapter(ArrayList<String> dataList) {
+        mDataList = dataList;
+    }
+
+    @Override
+    public int getCount() {
+        return mDataList == null ? 0 : mDataList.size();
+    }
+
+    //判断当前页面是否为对象所提供的视图。
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
+    }
+
+    //在给定的位置创建页面的视图。
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        TextView textView = new TextView(container.getContext());
+        textView.setText(mDataList.get(position));
+        textView.setGravity(Gravity.CENTER);
+        textView.setTextColor(Color.BLACK);
+        textView.setTextSize(24);
+        container.addView(textView);
+        return textView;
+    }
+
+//    @Override
+//    public Object instantiateItem(ViewGroup container, int position) {
+//        LayoutInflater inflater = LayoutInflater.from(container.getContext());
+//        View itemView = inflater.inflate(R.layout.pager_item, container, false);
+//
+//        ImageView imageView = itemView.findViewById(R.id.image_view);
+//        imageView.setImageResource(imageIds[position]);
+//
+//        container.addView(itemView);
+//
+//        return itemView;
+//    }
+
+
+    //移除给定位置的视图。
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((View) object);
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        TextView textView = (TextView) object;
+        String text = textView.getText().toString();
+        int index = mDataList.indexOf(text);
+        if (index >= 0) {
+            return index;
+        }
+        return POSITION_NONE;
+    }
+
+    //返回指定页面的标题。
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mDataList.get(position);
+    }
+}
+

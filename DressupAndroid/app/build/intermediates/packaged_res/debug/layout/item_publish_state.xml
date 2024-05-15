@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/iv_feed_cover"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_uploading_progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_black_round_50"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_feed_cover"
+        app:layout_constraintLeft_toLeftOf="@id/iv_feed_cover"
+        app:layout_constraintRight_toRightOf="@id/iv_feed_cover"
+        app:layout_constraintTop_toTopOf="@id/iv_feed_cover" />
+
+    <TextView
+        android:id="@+id/tv_uploading_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:text="正在上传中"
+        android:textColor="@color/black_222222"
+        app:layout_constraintLeft_toRightOf="@id/iv_feed_cover"
+        app:layout_constraintTop_toTopOf="@id/iv_feed_cover" />
+
+
+    <ImageView
+        android:id="@+id/iv_retry"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="7dp"
+        android:background="@drawable/ic_rotate"
+        android:visibility="gone"
+        app:layout_constraintRight_toLeftOf="@id/tv_cancel_publish"
+        app:layout_constraintTop_toTopOf="@id/iv_feed_cover" />
+
+    <TextView
+        android:id="@+id/tv_error_hint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="网络恢复后，系统将重新上传"
+        android:textSize="12dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/iv_feed_cover"
+        app:layout_constraintLeft_toRightOf="@id/iv_feed_cover"
+        app:layout_constraintRight_toLeftOf="@id/iv_retry" />
+
+    <ImageView
+        android:id="@+id/tv_cancel_publish"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="9dp"
+        android:background="@drawable/ic_trash_can"
+        android:visibility="gone"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_feed_cover" />
+
+
+    <ProgressBar
+        android:id="@+id/pb_uploading_progress"
+        style="?android:progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="6dp"
+        android:max="100"
+        android:progressDrawable="@drawable/green_progress"
+        app:layout_constraintTop_toBottomOf="@id/iv_feed_cover" />
+
+    <View
+        android:id="@+id/pb_error_mask"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#EA4359"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/pb_uploading_progress"
+        app:layout_constraintTop_toTopOf="@id/pb_uploading_progress" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

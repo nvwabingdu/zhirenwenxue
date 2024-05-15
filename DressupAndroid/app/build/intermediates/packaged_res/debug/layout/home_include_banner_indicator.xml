@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<!--加载图片-->
+        <include layout="@layout/home_banner" ></include>
+<!--临时-->
+        <ImageView
+            android:visibility="gone"
+            android:background="@drawable/home_test_1"
+            android:layout_width="match_parent"
+            android:layout_height="375dp"/>
+        <!--加载视频-->
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/player_container"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@android:color/black">
+            <com.zr.video.ui.view.CustomPrepareView
+                android:id="@+id/prepare_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+<!--加载表面UI-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/video_mute"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
+        </RelativeLayout>
+<!--点赞-->
+<!--        <cn.dreamfruits.yaoguo.module.main.home.loveview.Love-->
+<!--            android:visibility="gone"-->
+<!--            android:id="@+id/love_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
+    </FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="14dp"/>
+</LinearLayout>

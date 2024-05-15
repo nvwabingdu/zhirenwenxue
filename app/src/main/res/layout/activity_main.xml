@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.zrtool.ui.uibase.BaseConstraintLayoutSetBottom xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ac_main_root_layout"
+    tools:context=".MainActivity">
+
+    <com.example.zrtool.ui.uibase.BaseRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.example.zrtool.ui.noslidingconflictview.NoScrollViewPager
+            android:id="@+id/ac_main_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/bottom_nav_height" />
+
+        <com.example.zrtool.ui.uibase.BaseLinearLayout
+            android:id="@+id/ac_main_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_nav_height"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.example.zrtool.ui.uibase.BaseTextView
+                android:id="@+id/ac_main_tv_one"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:text="@string/bottom_nav_one"
+                android:textColor="#000000"
+                android:textSize="@dimen/bottom_nav_text_size" />
+
+            <com.example.zrtool.ui.uibase.BaseTextView
+                android:id="@+id/ac_main_tv_two"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:text="@string/bottom_nav_two"
+                android:textColor="#979797"
+                android:textSize="@dimen/bottom_nav_text_size" />
+
+            <com.example.zrtool.ui.uibase.BaseRelativeLayout
+                android:id="@+id/ac_main_relativeLayout_center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:id="@+id/ac_main_iv_center"
+                    android:background="@drawable/ac_main_center_bg"
+                    android:layout_width="@dimen/bottom_nav_center_iv_width"
+                    android:layout_height="@dimen/bottom_nav_center_iv_height">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <View
+                            android:layout_marginRight="17.5dp"
+                            android:layout_marginLeft="17.5dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp" />
+
+                        <View
+                            android:layout_marginBottom="7.5dp"
+                            android:layout_marginTop="7.5dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/white"
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+
+            </com.example.zrtool.ui.uibase.BaseRelativeLayout>
+
+            <com.example.zrtool.ui.uibase.BaseTextView
+                android:id="@+id/ac_main_tv_three"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:text="@string/bottom_nav_three"
+                android:textColor="#979797"
+                android:textSize="@dimen/bottom_nav_text_size" />
+
+            <com.example.zrtool.ui.uibase.BaseTextView
+                android:id="@+id/ac_main_tv_four"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:text="@string/bottom_nav_four"
+                android:textColor="#979797"
+                android:textSize="@dimen/bottom_nav_text_size" />
+        </com.example.zrtool.ui.uibase.BaseLinearLayout>
+    </com.example.zrtool.ui.uibase.BaseRelativeLayout>
+
+</com.example.zrtool.ui.uibase.BaseConstraintLayoutSetBottom>

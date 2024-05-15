@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+<ScrollView
+    android:paddingTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/tetris_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_weight="2"
+                android:id="@+id/tetris_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
+                android:layout_weight="2"
+                android:id="@+id/tetris_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
+                android:id="@+id/tetris_1"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
+                android:id="@+id/tetris_2"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
+                android:id="@+id/tetris_3"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </FrameLayout>
+</ScrollView>
+</LinearLayout>

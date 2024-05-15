@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.dreamfruits.yaoguo.module.main.home.InterceptTouchLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_synthesis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:gravity="center"
+            android:text="综合"
+            android:textColor="#ff222222"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_newest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+            android:text="最新"
+            android:textColor="#b6b6b6"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_hot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+            android:text="最热"
+            android:textColor="#b6b6b6"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!--    热榜-->
+    <!--    <LinearLayout-->
+    <!--        android:visibility="gone"-->
+    <!--        android:background="#FAFAFA"-->
+    <!--        android:gravity="center_vertical"-->
+    <!--        android:paddingTop="10dp"-->
+    <!--        android:paddingBottom="10dp"-->
+    <!--        android:paddingLeft="16dp"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <ImageView-->
+    <!--            android:background="@drawable/home_hot_list"-->
+    <!--            android:layout_width="48dp"-->
+    <!--            android:layout_height="20dp"/>-->
+
+    <!--    </LinearLayout>-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <cn.dreamfruits.yaoguo.module.main.home.refresh.MRefreshHeader2
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+            <com.scwang.smart.refresh.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_empty"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_cover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/empty_share_search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="没有找到相关搜素结果～"
+                android:textColor="@color/color_7F7F7F"
+                android:textSize="12dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_cover" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+
+</cn.dreamfruits.yaoguo.module.main.home.InterceptTouchLinearLayout>

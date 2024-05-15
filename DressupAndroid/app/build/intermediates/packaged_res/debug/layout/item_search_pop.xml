@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="47dp">
+
+        <TextView
+            android:id="@+id/search_history_pop_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="夏装"
+            android:textColor="#B3B3B3"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/search_history_pop_tv_count"
+            android:layout_alignParentRight="true"
+            android:layout_width="63dp"
+            android:layout_height="17dp"
+            android:text="1万+篇笔记"
+            android:textColor="#ffb3b3b3"
+            android:textSize="12sp"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="#eeeeee"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</LinearLayout>

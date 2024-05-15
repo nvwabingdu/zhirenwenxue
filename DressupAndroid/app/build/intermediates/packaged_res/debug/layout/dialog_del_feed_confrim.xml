@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_weight="16"
+            android:layout_width="0dp"
+            android:layout_height="45dp"/>
+        <TextView
+            android:background="@color/white"
+            android:layout_weight="343"
+            android:id="@+id/save_tv"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:text="确认删除这条帖子吗?"
+            android:textColor="#ffb3b3b3"
+            android:textSize="12sp" />
+        <View
+            android:layout_weight="16"
+            android:layout_width="0dp"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+    <View
+        android:background="#F0F0F0"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_weight="16"
+            android:layout_width="0dp"
+            android:layout_height="45dp"/>
+        <TextView
+            android:background="@color/white"
+            android:layout_weight="343"
+            android:id="@+id/confirm"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:text="确认删除"
+            android:textColor="#ffec6262"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_weight="16"
+            android:layout_width="0dp"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_weight="16"
+            android:layout_width="0dp"
+            android:layout_height="45dp"/>
+
+        <TextView
+            android:background="@color/white"
+            android:layout_weight="343"
+            android:id="@+id/cancel_tv"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:text="取消"
+            android:textColor="#ff000000"
+            android:textSize="18sp" />
+        <View
+            android:layout_weight="16"
+            android:layout_width="0dp"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+
+</LinearLayout>

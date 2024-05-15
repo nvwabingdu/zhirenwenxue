@@ -1,0 +1,25 @@
+com.example.zrmultiimagedrag
+attr addRes
+attr column_count
+attr deleteRes
+attr deleteResMargin
+attr deleteWH
+attr img_height
+attr is_Drag
+attr is_showAdd
+attr is_showDelete
+attr item_spacing
+attr max_count
+color colorAccent
+color colorPrimary
+color colorPrimaryDark
+drawable ic_launcher_background
+drawable img_add
+drawable img_delete
+id fl_layout
+id iv_delete
+id iv_item
+id uploadMultiImageView
+layout activity_main
+layout item_def
+styleable UploadMultiImageView addRes column_count deleteRes deleteResMargin deleteWH img_height is_Drag is_showAdd is_showDelete item_spacing max_count
