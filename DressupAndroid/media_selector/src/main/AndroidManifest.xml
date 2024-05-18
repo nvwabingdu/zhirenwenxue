@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.dreamfruits.selector">
+
+    <application>
+
+        <activity
+            android:name=".PublishPickerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PublishPickerActivity2"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".preview.PicturePreviewActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".AlbumActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="dialog_change_clarity" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@color/dialog_bg</item>
+    </style>
+
+
+    <style name="FloatWindowAnimation">
+        <item name="android:windowEnterAnimation">@anim/anim_window_enter</item>
+        <item name="android:windowExitAnimation">@anim/anim_window_exit</item>
+    </style>
+
+<!--右边倍数弹窗-->
+        <style name="speedPopAnim">
+            <item name="android:windowEnterAnimation">@anim/slide_in_right</item>
+            <item name="android:windowExitAnimation">@anim/slide_out_right</item>
+        </style>
+
+</resources>

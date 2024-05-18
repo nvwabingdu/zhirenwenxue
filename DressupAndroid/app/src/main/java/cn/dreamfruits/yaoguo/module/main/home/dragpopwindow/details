@@ -1,0 +1,129 @@
+
+
+dragpop_dialog_dress.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pop_re_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.example.dragpopwindow.MyRelativeLayout
+        android:background="@color/white"
+        android:id="@+id/pop_MyRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="608dp"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/top_relativelayout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/pop_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingTop="9dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="5dp"
+                    android:src="@mipmap/ic_launcher" />
+            </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/top_relativelayout"
+            android:layout_marginTop="-1dp"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/top_relativelayout"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/pop_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pop_ProgressBar"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+    </com.example.dragpopwindow.MyRelativeLayout>
+</RelativeLayout>
+
+
+
+使用：
+    private lateinit var mCustomDragPop: CustomDragPop
+    private var mStaggeredGridLayoutManager: StaggeredGridLayoutManager? = null
+    private  var  singleDressList: ArrayList<SingleDressDataEntity>?=null
+    private fun showDragPop(){
+        val inflate = LayoutInflater.from(this).inflate(R.layout.dragpop_dialog_dress, null)
+        val popReLayout=inflate.findViewById<RelativeLayout>(R.id.pop_re_layout)
+        val popMyRelativeLayout=inflate.findViewById<MyRelativeLayout>(R.id.pop_MyRelativeLayout)
+        val popRecyclerView=inflate.findViewById<RecyclerView>(R.id.pop_recyclerview)
+        /**
+         * 装载适配器
+         */
+        mStaggeredGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        mStaggeredGridLayoutManager!!.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE//1.防止item乱跳错位
+        popRecyclerView.layoutManager = mStaggeredGridLayoutManager
+        //2.防止第一页出现空白 3.使用notifyItemRangeChanged
+        popRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                mStaggeredGridLayoutManager!!.invalidateSpanAssignments()
+            }
+        })
+        if(singleDressList==null){ singleDressList= ArrayList() }
+        //初始化数据
+        for (i in 0..20){
+            singleDressList!!.add(SingleDressDataEntity(R.drawable.home_test_1))
+        }
+
+        //设置适配器
+        val adapter = SearchSingleDressAdapter(this,singleDressList!!)
+        popRecyclerView.adapter = adapter
+
+        //点击关闭
+        val popCloseImgView=inflate.findViewById<ImageView>(R.id.pop_close)
+        popCloseImgView.setOnClickListener {
+            //销毁弹出框
+            mCustomDragPop.dismiss()
+        }
+        mCustomDragPop = CustomDragPop(this,
+            inflate,
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            popReLayout,
+            popMyRelativeLayout,
+            popRecyclerView)
+
+        //动画
+//        mCustomDragPop.animationStyle= R.style.BottomDialogAnimation
+        if (mCustomDragPop.isShowing) {//如果正在显示，关闭弹窗。
+            mCustomDragPop.dismiss()
+        } else {
+            mCustomDragPop.isOutsideTouchable = true
+            mCustomDragPop.isTouchable = true
+            mCustomDragPop.isFocusable = true
+            mCustomDragPop.showAtLocation(inflate, Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 0)
+//            Singleton.bgAlpha(this.requireActivity(),0.5f) //设置透明度0.5
+            mCustomDragPop.setOnDismissListener {
+        //                Singleton.bgAlpha(this.requireActivity(),1f) //恢复透明度
+            }
+        }
+    }

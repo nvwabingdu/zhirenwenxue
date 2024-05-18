@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_weight="187"
+        android:background="@drawable/stroll_top_img"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    
+    <RelativeLayout
+        android:background="@drawable/shape_solid_fff_corners_20dp"
+        android:layout_marginTop="-23dp"
+        android:layout_weight="611"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/rl_stroll_1"
+                android:layout_weight="130"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/shape_coners_8dp_gradient_1"
+                android:layout_width="0dp"
+                android:layout_height="214dp">
+                <LinearLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="晒穿搭"
+                        android:textColor="#ff643eff"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="晒出你的心仪穿搭"
+                        android:textColor="#ff9880ca"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:gravity="center"
+                        android:background="@drawable/shape_diy_tv_bg"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="69dp"
+                        android:layout_height="25dp"
+                        android:text="立即参与"
+                        android:textColor="#ffffffff"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/diy_bg_yyiifu"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="200"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/rl_stroll_2"
+                    android:background="@drawable/shape_coners_8dp_gradient_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <LinearLayout
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="12dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DIY"
+                            android:textColor="#ff643eff"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="穿搭出你的潮流"
+                            android:textColor="#ff4eb08d"
+                            android:textSize="12sp"
+                            />
+
+                        <TextView
+                            android:layout_width="67dp"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/shape_diy_tv_bg_2"
+                            android:gravity="center"
+                            android:text="立即参与"
+                            android:textColor="#ffffffff"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/diy_bg_diy"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:background="@drawable/shape_coners_8dp_gradient_3"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+                    <TextView
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="敬请期待"
+                        android:textColor="#ff91b2c8"
+                        android:textSize="16sp"
+                        />
+
+                    <ImageView
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/diy_bg_more"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"/>
+                </RelativeLayout>
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+            <!--        <RelativeLayout-->
+            <!--            android:visibility="gone"-->
+            <!--            android:background="@drawable/bg_stoll_gradient_1"-->
+            <!--            android:gravity="center_vertical"-->
+            <!--            android:layout_marginTop="87dp"-->
+            <!--            android:layout_marginRight="16dp"-->
+            <!--            android:layout_marginLeft="16dp"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content">-->
+            <!--            <LinearLayout-->
+            <!--                android:layout_marginLeft="11dp"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content">-->
+            <!--                <ImageView-->
+            <!--                    android:background="@drawable/stoll_bg_1"-->
+            <!--                    android:layout_width="61dp"-->
+            <!--                    android:layout_height="58dp"/>-->
+
+            <!--                <LinearLayout-->
+            <!--                    android:orientation="vertical"-->
+            <!--                    android:layout_gravity="center_vertical"-->
+            <!--                    android:layout_marginLeft="27dp"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content">-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:text="晒穿搭"-->
+            <!--                        android:textColor="#ff000000"-->
+            <!--                        android:textSize="14sp" />-->
+
+            <!--                    <TextView-->
+            <!--                        android:layout_marginTop="6dp"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:text="快来晒晒你的心仪穿搭~"-->
+            <!--                        android:textColor="#ff7f7f7f"-->
+            <!--                        android:textSize="14sp" />-->
+
+
+            <!--                </LinearLayout>-->
+            <!--            </LinearLayout>-->
+
+
+            <!--            <ImageView-->
+            <!--                android:layout_width="9.69dp"-->
+            <!--                android:layout_height="13.52dp"-->
+            <!--                android:layout_alignParentRight="true"-->
+            <!--                android:layout_centerInParent="true"-->
+            <!--                android:layout_marginRight="9dp"-->
+            <!--                android:background="@drawable/ic_right_arrows" />-->
+
+            <!--        </RelativeLayout>-->
+            <!--        <RelativeLayout-->
+            <!--            android:visibility="gone"-->
+            <!--            -->
+            <!--            android:background="@drawable/bg_stoll_gradient_2"-->
+            <!--            android:gravity="center_vertical"-->
+            <!--            android:layout_marginTop="40dp"-->
+            <!--            android:layout_marginRight="16dp"-->
+            <!--            android:layout_marginLeft="16dp"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="75dp">-->
+            <!--            <LinearLayout-->
+            <!--                android:layout_marginLeft="11dp"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content">-->
+            <!--                <ImageView-->
+            <!--                    android:background="@drawable/stoll_bg_2"-->
+            <!--                    android:layout_width="61dp"-->
+            <!--                    android:layout_height="58dp"/>-->
+
+            <!--                <LinearLayout-->
+            <!--                    android:orientation="vertical"-->
+            <!--                    android:layout_gravity="center_vertical"-->
+            <!--                    android:layout_marginLeft="27dp"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content">-->
+            <!--                    <TextView-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:text="DIY"-->
+            <!--                        android:textColor="#ff000000"-->
+            <!--                        android:textSize="14sp" />-->
+
+            <!--                    <TextView-->
+            <!--                        android:layout_marginTop="6dp"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:text="快来设计潮流服饰~"-->
+            <!--                        android:textColor="#ff7f7f7f"-->
+            <!--                        android:textSize="14sp" />-->
+
+
+            <!--                </LinearLayout>-->
+            <!--            </LinearLayout>-->
+
+
+            <!--            <ImageView-->
+            <!--                android:layout_width="9.69dp"-->
+            <!--                android:layout_height="13.52dp"-->
+            <!--                android:layout_alignParentRight="true"-->
+            <!--                android:layout_centerInParent="true"-->
+            <!--                android:layout_marginRight="9dp"-->
+            <!--                android:background="@drawable/ic_right_arrows" />-->
+            <!--        </RelativeLayout>-->
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_stroll_back"
+            android:layout_width="59dp"
+            android:layout_height="59dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="38dp"
+            android:background="@drawable/stoll_back" />
+    </RelativeLayout>
+
+
+
+  
+</LinearLayout>

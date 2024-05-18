@@ -1,0 +1,275 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id "com.blankj.bus"
+    id 'com.google.gms.google-services'
+    id 'com.huawei.agconnect'
+}
+
+def keystorePropertiesFile = rootProject.file("./keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+//wq
+def generateTime() {
+    return new Date().format("yyyy_MM_dd_HH_mm_ss")
+}
+
+android {
+    compileSdk rootProject.ext.android["compileSdkVersion"]
+
+    defaultConfig {
+        applicationId "cn.dreamfruits.yaoguo"
+        minSdk rootProject.ext.android["minSdkVersion"]
+        targetSdk rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+//        ndk {
+//            // 设置支持的SO库架构
+//            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//        }
+
+
+        /*  集成组件 TUIOfflinePush 离线推送功能需要配置下厂商 vivo 的应用信息，不需要离线推送功能删除即可。
+         *
+         *  "VIVO_APPKEY" : 厂商推送平台注册应用的 AppKey
+         *  "VIVO_APPID" : 厂商推送平台注册应用的 AppID
+         */
+        manifestPlaceholders = [
+                "VIVO_APPKEY": " 1",
+                "VIVO_APPID" : " ",
+                "HONOR_APPID": " "
+        ]
+
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+
+        debug {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    aaptOptions {
+        noCompress = ['.unity3d', '.ress', '.resource', '.obb', '.bundle', '.unityexp'] + unityStreamingAssets.tokenize(', ')
+        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    //自定义apk名称,这里会打出所有渠道的包/wq
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+//                outputFileName = "微酸Android${buildType.name}_v${versionName}_${generateTime()}.apk"
+                outputFileName = "微酸Android${generateTime()}.apk"
+            }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+//    sourceSets {//用于layout目录下创建独立的文件夹，便于区别，分类
+//        main {
+//            res.srcDirs = [
+//                    'src/main/res/layout/mine',
+//                    'src/main/res/layout/message',
+//                    'src/main/res/layout/issue',
+//                    'src/main/res/layout/home',
+//                    'src/main/res/layout/classify',
+//                    'src/main/res/layout',
+//                    'src/main/res'
+//            ]
+//        }
+//    }
+}
+
+dependencies {
+
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    implementation project(path: ':zrsinglephoto')
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+
+    implementation(project(':baselib'))
+    implementation 'com.blankj:utilcodex:1.31.1'
+    //{
+    //  "BusUtilsClass": "com.blankj.utilcode.util.BusUtils",
+    //  "rightBus": {
+    //    "REFRESH_SEL_DATA": [
+    //      "{ desc: cn.dreamfruits.yaoguo.module.selectclothes.SelectClothesActivity#getSearchData(java.util.List list) }"
+    //    ]
+    //  },
+    //  "wrongBus": {}
+    //}
+    implementation(project(':zrsinglephoto'))
+    implementation(project(':zrqrcode'))
+    implementation(project(':unityLibrary'))
+    implementation(project(':zrmultiimagedrag'))
+    implementation files('../unityLibrary/libs/unity-classes.jar')
+
+
+    //动画 https://github.com/airbnb/lottie-android
+    implementation 'com.airbnb.android:lottie:6.0.0'
+
+    //沉浸式状态栏 https://github.com/gyf-dev/ImmersionBar
+    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+    implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
+
+    //协程
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
+
+    //lifecycleScope
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+
+    //flexbox/wq
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+    //glide/wq
+    implementation 'com.github.bumptech.glide:glide:4.15.0'
+
+    //指示器库/wq    need   maven { url 'https://jitpack.io' }
+    implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
+
+    //banner/wq    need  maven { url "https://s01.oss.sonatype.org/content/groups/public" }
+    /*implementation 'io.github.youth5201314:banner:2.2.2'*/
+
+    //SmartRefreshLayout/wq     https://github.com/scwang90/SmartRefreshLayout
+    //如果使用 AndroidX 先在 gradle.properties 中添加，两行都不能少噢~
+    //android.useAndroidX=true
+    //android.enableJetifier=true
+    implementation 'androidx.appcompat:appcompat:1.0.0'                 //必须 1.0.0 以上
+    implementation 'io.github.scwang90:refresh-layout-kernel:2.0.5'      //核心必须依赖
+    implementation 'io.github.scwang90:refresh-header-classics:2.0.5'    //经典刷新头
+    implementation 'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载
+    implementation 'io.github.scwang90:refresh-header-two-level:2.0.6'   //二级刷新头
+
+    //Rx权限 保存图片视频需要/wq
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
+
+    //阿里云一键登录
+    implementation files('libs/auth_number_product-2.12.11.2-log-online-standard-release.aar')
+    implementation files('libs/logger-2.1.5.2-release.aar')
+    implementation files('libs/main-2.1.4-release.aar')
+
+    implementation(project(":sociallib"))
+
+    //视频播放需要/wq
+    //垂直viewpager
+    implementation 'com.yc:PagerLib:1.0.4'
+    //引入videoplayer
+    implementation project(':VideoPlayer')
+
+    //图片选择库(临时)
+    //https://github.com/LuckSiege/PictureSelector
+//    implementation 'io.github.lucksiege:pictureselector:v3.10.8'
+    // 高德定位
+    // https://lbs.amap.com/api/android-location-sdk/locationsummary/
+    implementation 'com.amap.api:location:6.3.0'
+    //poi搜索
+    //https://lbs.amap.com/api/android-sdk/guide/map-data/poi
+    implementation 'com.amap.api:search:9.5.0'
+    // 腾讯云对象存储 https://cloud.tencent.com/document/product/436/12159
+    implementation('com.qcloud.cos:cos-android:5.9.12') {
+        exclude group: 'com.tencent.qcloud', module: 'beacon-android-release'
+    }
+    //运行时权限请求框架
+    implementation 'com.guolindev.permissionx:permissionx:1.6.4'
+
+    //日期选择 https://github.com/Bigkoo/Android-PickerView
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
+
+    implementation project(":media_selector")
+
+    //banner /wq  这个更好
+    implementation 'io.github.youth5201314:banner:2.2.2'
+
+//    implementation "io.github.cymchad:BaseRecyclerViewAdapterHelper:3.0.14"
+
+    implementation 'com.tencent.bugly:crashreport:4.1.9.2'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如4.0.3
+
+    implementation "androidx.multidex:multidex:2.0.1"
+
+    api 'com.tencent.imsdk:imsdk-plus-pro:7.3.4358'
+
+    api 'com.github.CarGuo:GSYRecordWave:2.0.2'
+
+    implementation 'androidx.compose.ui:ui-graphics:1.1.1'
+
+    //wq
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    // Google FCM
+    implementation "com.tencent.tpns:fcm:1.3.3.3-release"
+    // google 云消息传递
+    implementation('com.google.firebase:firebase-messaging:23.1.2')
+    // 小米
+    implementation "com.tencent.tpns:xiaomi:1.3.3.3-release"
+    // 魅族
+    implementation "com.tencent.tpns:meizu:1.3.3.3-release"
+    // OPPO
+    implementation "com.tencent.tpns:oppo:1.3.3.3-release"
+    implementation 'commons-codec:commons-codec:1.15'
+    // vivo
+    implementation "com.tencent.tpns:vivo:1.3.3.3-release"
+    // 华为
+    implementation 'com.tencent.tpns:huawei:1.3.3.3-release'
+    implementation 'com.huawei.hms:push:6.10.0.300'
+    // honor
+    implementation 'com.tencent.tpns:honor:1.3.3.3-release'
+//    //侧滑返回 wq
+//    implementation 'com.gongwen:swipeback:1.0.2'
+
+}

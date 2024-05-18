@@ -1,0 +1,204 @@
+package com.example.saveimageandvideo;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
+
+public class MainActivity extends AppCompatActivity {
+    private TextView tvSaveImage, tvSaveVideo;
+    private boolean flag = true;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        // 请求权限
+        loadPermission();
+        initView();
+        initListener();
+    }
+
+    /**
+     * 动态请求权限
+     */
+    private void loadPermission() {
+        PermissionsUtil.requestCamera(this, aBoolean -> {
+
+                }
+        );
+    }
+
+    private void initView() {
+        tvSaveImage = findViewById(R.id.tv_save_image);
+        tvSaveVideo = findViewById(R.id.tv_save_video);
+    }
+
+    private void initListener() {
+        tvSaveImage.setOnClickListener(v -> {
+            if (false) {
+                Toast.makeText(MainActivity.this, "图片开始下载", Toast.LENGTH_SHORT).show();
+                flag = false;
+            } else {
+                Toast.makeText(MainActivity.this, "图片正在下载", Toast.LENGTH_SHORT).show();
+            }
+            //String url = "https://pic.cnblogs.com/avatar/1142647/20170416093225.png";
+            //String url = "http://ww3.sinaimg.cn/bmiddle/6e91531djw1e8l3c7wo7xj20f00qo755.jpg";
+//            String url = "https://ae01.alicdn.com/kf/U29ad1424fd024374bf8ba95a61a60d8ai.jpg";
+            String url = "https://devfile.dreamfruits.cn/app/461198752304160/D1A17F1F085A7EDF5B12745B364F551E.jpg?sign=1683275958-NNGdXS3jfxEBd4gKDrrt3LbLakYJkZoRP9lpsiWG2ZTPh2taTM25xc0RxzOG6dbZ4nc3MezcHV7MfHOrFw0UzfY67uSMO8RYzzDa-0-c4a3de5dad73300f01b228d3e85d4194";
+//            String url = "https://ae01.alicdn.com/kf/Ua227945b506241af975a9b0a16d6df3bA.jpg";
+            //保存图片
+            downLoadImage(url);
+        });
+
+        tvSaveVideo.setOnClickListener(v -> {
+            if (false) {
+                Toast.makeText(MainActivity.this, "视频下载开始", Toast.LENGTH_SHORT).show();
+                flag = false;
+            } else {
+                Toast.makeText(MainActivity.this, "视频正在下载", Toast.LENGTH_SHORT).show();
+            }
+            downLoadVideo("https://www.w3school.com.cn/example/html5/mov_bbb.mp4");
+        });
+    }
+
+    /**
+     * 保存图片到相册
+     * @param path
+     */
+    private void downLoadImage(String path) {
+        new Thread(() -> new AndroidDownloadManager(MainActivity.this, path)
+                .setListener(new AndroidDownloadManagerListener() {
+                    @Override
+                    public void onPrepare() {
+                        Log.d("downloadVideo", "onPrepare");
+                    }
+
+                    @Override
+                    public void onSuccess(String path) {
+                        String tempFile = FileUtils.getSDcardDCIMFile(".jpg");
+                        FileUtils.copyFile(new File(path).getAbsolutePath(), tempFile);
+                        FileUtils.saveImage(MainActivity.this, new File(path)); //保存图片逻辑
+                        Toast.makeText(MainActivity.this, "已保存到系统图库", Toast.LENGTH_SHORT).show();
+                        flag = true;
+                        Log.d("downloadVideo", "onSuccess >>>>" + path);
+                    }
+
+                    @Override
+                    public void onFailed(Throwable throwable) {
+                        Toast.makeText(MainActivity.this, "图片下载失败，请重新下载！", Toast.LENGTH_SHORT).show();
+                        Log.e("downloadVideo", "onFailed", throwable);
+                        flag = true;
+                    }
+                }).download()).start();
+    }
+
+    /**
+     * 保存视频到相册
+     * @param path
+     */
+    private void downLoadVideo(String path) {
+        new Thread(() -> new AndroidDownloadManager(MainActivity.this, path)
+                .setListener(new AndroidDownloadManagerListener() {
+                    @Override
+                    public void onPrepare() {
+                        Log.d("downloadVideo", "onPrepare");
+                    }
+
+                    @Override
+                    public void onSuccess(String path) {
+                        Toast.makeText(MainActivity.this, "视频已保存到相册", Toast.LENGTH_SHORT).show();
+                        FileUtils.saveVideo(MainActivity.this,new File(path));
+                        flag = true;
+                        Log.d("downloadVideo", "onSuccess >>>>" + path);
+                    }
+
+                    @Override
+                    public void onFailed(Throwable throwable) {
+                        Toast.makeText(MainActivity.this, "视频下载失败，请重新下载！", Toast.LENGTH_SHORT).show();
+                        Log.e("downloadVideo", "onFailed", throwable);
+                        flag = true;
+                    }
+                }).download()).start();
+    }
+}
+
+
+
+
+minifest
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.saveimageandvideo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        //重要
+        android:usesCleartextTraffic="true">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+//重要
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.saveimageandvideo.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"
+                tools:replace="android:resource" />
+        </provider>
+
+    </application>
+
+</manifest>
+
+
+
+
+
+
+
+file_paths.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- 解决 Android N 7.0 上 报错：android.os.FileUriExposedException-->
+    <external-path
+        name="camera.photos"
+        path="." />
+    <!--<external-path path="." name="external_storage_root" />-->
+</paths>

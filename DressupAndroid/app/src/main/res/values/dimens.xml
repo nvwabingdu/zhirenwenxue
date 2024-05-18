@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 评论点赞等  视频 图片详情页 首页关注-->
+    <dimen name="laud_collect_comment">20dp</dimen>
+    <!-- 评论点赞等  视频 图片详情页 首页关注文本-->
+    <dimen name="laud_collect_comment_tv">14sp</dimen>
+
+
+
+</resources>

@@ -17,9 +17,11 @@ import com.example.zrtool.utilsjava.SoftKeyboardStateHelper
 import com.example.zrwenxue.moudel.BaseActivity
 import com.example.zrwenxue.moudel.main.center.CenterActivity
 import com.example.zrwenxue.moudel.main.home.HomeFragment
-import com.example.zrwenxue.moudel.main.memory.MemoryFragment
 import com.example.zrwenxue.moudel.main.word.WordFragment
 import com.example.zrwenxue.moudel.main.mine.MineFragment
+import com.example.zrwenxue.moudel.main.pagefour.FourFragment
+import com.example.zrwenxue.moudel.main.pageone.OneFragment
+import com.example.zrwenxue.moudel.main.pagetwo.TwoFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -152,7 +154,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     private var acMainTvThree: BaseTextView? = null
     private var acMainTvFour: BaseTextView? = null
 
-    private var homeFragment: HomeFragment? = null
+    private var homeFragment: OneFragment? = null
     private val fragmentList = ArrayList<Fragment>()
 
     private fun bottomNavLogic() {
@@ -174,12 +176,12 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
 
         //2.添加Fragment页面
-        homeFragment = HomeFragment()
+        homeFragment = OneFragment()
         fragmentList.add(homeFragment!!)
-        fragmentList.add(MemoryFragment())
+        fragmentList.add(TwoFragment())
         //中间或还有一个
         fragmentList.add(WordFragment())
-        fragmentList.add(MineFragment())
+        fragmentList.add(FourFragment())
 
         //3.设置适配器
         val fragmentPagerAdapter = MyFragmentAdapter(this.supportFragmentManager, fragmentList)

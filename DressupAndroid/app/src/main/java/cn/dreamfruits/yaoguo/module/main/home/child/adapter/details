@@ -1,0 +1,301 @@
+//原始推荐页 图片比例
+
+package cn.dreamfruits.yaoguo.module.main.home.child.adapter
+
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import cn.dreamfruits.yaoguo.R
+import cn.dreamfruits.yaoguo.global.ThirdPartyInfo.type
+import cn.dreamfruits.yaoguo.module.main.home.GlideRoundTransform
+import cn.dreamfruits.yaoguo.module.main.home.postdetails.PostDetailsActivity
+import cn.dreamfruits.yaoguo.module.main.home.vlistvideo.ListVideoActivity
+import cn.dreamfruits.yaoguo.repository.bean.feed.WaterfallFeedBean
+import cn.dreamfruits.yaoguo.util.ScreenUtil
+import cn.dreamfruits.yaoguo.util.SpannableStringUtils
+import cn.dreamfruits.yaoguo.util.ToolJava
+import com.blankj.utilcode.util.ActivityUtils.startActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+
+
+/**
+ * @Author wq
+ * @Date 2023/2/22-17:20
+ */
+open class RecommendAdapter(private var mContent: Context, private var space: Float,
+                            private var dataList: MutableList<WaterfallFeedBean.Item>
+                            ) : RecyclerView.Adapter<RecommendAdapter.MyViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.home_item_recommend, parent, false)
+        return MyViewHolder(view)
+    }
+
+    @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        /**预加载回调*/
+        if (dataList.size > 6 && position == dataList.size - 6) {
+            mPreloadListener!!.invoke(position)
+        }
+        //是否是视频对应显示视频的tag
+        if (dataList[position].info.type==1){//0-图文动态，1-视频动态，2-广告
+            /**图片设置逻辑*/
+            //1.计算图片宽高
+            val layoutParams = holder.attentionImg.layoutParams
+            //2.瀑布流，屏幕宽度减去两列间的间距space所的值再除以2，计算出单列的imageview的宽度，space的值在RecyclerView初始化时传入
+            val imageWidth: Float = (ScreenUtil.getScreenWidth(mContent) - space) / 2
+            layoutParams.width = imageWidth.toInt()//装入图片宽的值
+            //3.图片默认值
+            // TODO: 后期考虑更合适的默认值 当图片加载失败后
+            var width=0
+            var height=0
+            try {
+                width = dataList[position].info.videoUrls[0].width
+                height = dataList[position].info.videoUrls[0].height
+            } catch (e: Exception) {
+                width = 500
+                height = 800
+            }
+            //4.设置图片宽高
+            val scale = height / width.toDouble()//图片的实际宽高比
+            val modeA = 1.1            //当图片宽高比例大于STANDARD_SCALE时，采用3:4比例，小于时，则采用1:1比例
+            val modeB = 4 * 1.0f / 3   //图片缩放比例
+            if (scale > modeA) {//采用3:4显示
+                layoutParams.height = (imageWidth * modeB).toInt()
+            } else { //采用1:1显示
+                layoutParams.height = imageWidth.toInt()
+            }
+
+            holder.attentionImg.layoutParams = layoutParams//动态设置Img的宽高
+
+            holder.recommendVideoPlayImg.visibility = View.VISIBLE
+            //视频封面
+            Glide.with(mContent)
+                .asBitmap()
+                .override(layoutParams.width, layoutParams.height)
+                .dontAnimate()
+                .skipMemoryCache(false)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .transform(GlideRoundTransform(5))
+                .error("https://img03.sogoucdn.com/app/a/100520021/654c3ac89cde01fb5e029510557f81ba")
+                .load(dataList[position].info.picUrls[0].url)
+                .into(holder.attentionImg)
+        } else {
+            /**图片设置逻辑*/
+            //1.计算图片宽高
+            val layoutParams = holder.attentionImg.layoutParams
+            //2.瀑布流，屏幕宽度减去两列间的间距space所的值再除以2，计算出单列的imageview的宽度，space的值在RecyclerView初始化时传入
+            val imageWidth: Float = (ScreenUtil.getScreenWidth(mContent) - space) / 2
+            layoutParams.width = imageWidth.toInt()//装入图片宽的值
+            //3.图片默认值
+            // TODO: 后期考虑更合适的默认值 当图片加载失败后
+            var width=0
+            var height=0
+            try {
+                width = dataList[position].info.picUrls[0].width
+                height = dataList[position].info.picUrls[0].height
+            } catch (e: Exception) {
+                width = 500
+                height = 800
+            }
+
+            //4.设置图片宽高
+            val scale = height / width.toDouble()//图片的实际宽高比
+            val modeA = 1.1            //当图片宽高比例大于STANDARD_SCALE时，采用3:4比例，小于时，则采用1:1比例
+            val modeB = 4 * 1.0f / 3   //图片缩放比例
+            if (scale > modeA) {//采用3:4显示
+                layoutParams.height = (imageWidth * modeB).toInt()
+            } else { //采用1:1显示
+                layoutParams.height = imageWidth.toInt()
+            }
+
+            holder.attentionImg.layoutParams = layoutParams//动态设置Img的宽高
+
+            holder.recommendVideoPlayImg.visibility=View.GONE
+            //图片
+            try {
+                Glide.with(mContent)
+                    .asBitmap()
+                    .override(layoutParams.width, layoutParams.height)
+                    .dontAnimate()
+                    .skipMemoryCache(false)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .transform(GlideRoundTransform(5))
+                    .load(dataList[position].info.picUrls[0].url)
+                    .into(holder.attentionImg)
+
+                Log.e("adada2121",dataList[position].info.picUrls[0].url)
+            } catch (e: Exception) {
+                // TODO: 后续考虑设置异常后的图片
+                Glide.with(mContent)
+                    .asBitmap()
+                    .override(layoutParams.width, layoutParams.height)
+                    .dontAnimate()
+                    .skipMemoryCache(false)
+                    .transform(GlideRoundTransform(5))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .load("https://img03.sogoucdn.com/app/a/100520021/654c3ac89cde01fb5e029510557f81ba")
+                    .into(holder.attentionImg)
+            }
+        }
+
+        /**
+         * 点击图片跳转到详情页面
+         */
+        holder.attentionImg.setOnClickListener {
+            if (dataList[position].info.type==1) {
+                val intent = Intent(mContent, ListVideoActivity::class.java)//视频列表页面
+                intent.putExtra("feedId", dataList[position].info.id)
+                startActivity(intent)
+            } else {
+                val intent = Intent(mContent, PostDetailsActivity::class.java)//帖子详情页
+                intent.putExtra("feedId", dataList[position].info.id)
+                // TODO: 高度 可能
+                intent.putExtra("coverHeight", dataList[position].info.picUrls[0].height)
+                intent.putExtra("coverWidth", dataList[position].info.picUrls[0].width)
+                startActivity(intent)
+            }
+        }
+        /**
+         * 长按回调，弹出内容反馈
+         */
+        holder.attentionImg.setOnLongClickListener {
+            mInterface!!.onclick(position, dataList[position].info.id)//回调
+            true
+        }
+
+        /**头像*/
+        Glide.with(mContent)
+            .asBitmap()
+            .dontAnimate()
+            .skipMemoryCache(false)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .circleCrop()
+            .error(R.drawable.temp_icon)
+            .load(dataList[position].info.userInfo.avatarUrl)
+            .into(holder.attentionUserIcon)
+
+
+        //你的关注显示与否
+        if (dataList[position].info.relation==1){
+            holder.attentionYours.visibility=View.VISIBLE
+        }else{
+            holder.attentionYours.visibility=View.GONE
+        }
+//        holder.attentionContent.text = dataList[position].info.content
+        SpannableStringUtils.setRichTextAndOnclick( holder.attentionContent,dataList[position].info.content,mContent,arrayOf("#"))
+        holder.attentionUsername.text = dataList[position].info.userInfo.nickName
+
+
+        /**
+         * 点赞逻辑
+         */
+        if (dataList[position].info.laudCount==0){
+            holder.attentionLaudCount.text ="点赞"
+        } else if (dataList[position].info.laudCount>9999){
+            holder.attentionLaudCount.text = "${ToolJava.getDecimalFormatOne(dataList[position].info.laudCount)}万"
+        }else{
+            holder.attentionLaudCount.text = dataList[position].info.laudCount.toString()
+        }
+
+        if (dataList[position].info.isLaud==1){
+            holder.attentionLaudImg.setImageResource(R.drawable.home_thumb_ed)
+        }else{
+            holder.attentionLaudImg.setImageResource(R.drawable.home_thumb)
+        }
+
+        holder.attentionLaudImg.setOnClickListener {
+            if (dataList[position].info.isLaud==1){
+                Log.e("daddada","取消点赞了")
+                holder.attentionLaudImg.setImageResource(R.drawable.home_thumb)
+                dataList[position].info.isLaud=0
+                dataList[position].info.laudCount=dataList[position].info.laudCount-1
+                mLaudInterface!!.onclick(false,dataList[position].info.id)//传递此条动态的ID
+            }else{
+                Log.e("daddada","点赞了")
+                holder.attentionLaudImg.setImageResource(R.drawable.home_thumb_ed)
+                dataList[position].info.isLaud=1
+                dataList[position].info.laudCount=dataList[position].info.laudCount+1
+                mLaudInterface!!.onclick(true,dataList[position].info.id)//传递此条动态的ID
+            }
+            notifyDataSetChanged()
+//            notifyItemChanged(position)
+        }
+    }
+
+
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var attentionImg: ImageView = itemView.findViewById(R.id.attention_img)//图片
+        var attentionYours: View = itemView.findViewById(R.id.recommend_yours_attention)//你的关注
+        var attentionContent: TextView = itemView.findViewById(R.id.recommend_content)//原来这就是30岁的温柔和气质……
+        var attentionUserIcon: ImageView = itemView.findViewById(R.id.recommend_usericon)//头像
+        var attentionUsername: TextView = itemView.findViewById(R.id.recommend_username)//陈阿姨smile
+        var attentionLaudImg: ImageView = itemView.findViewById(R.id.recommend_laud)//点赞
+        var recommendVideoPlayImg: ImageView = itemView.findViewById(R.id.recommend_video_play_img)//视频图标
+        var attentionLaudCount: TextView = itemView.findViewById(R.id.recommend_laud_count)//点赞数量
+    }
+
+
+    override fun getItemCount(): Int {
+        return dataList.size
+    }
+
+    /**
+     * 删除item
+     */
+    fun delItem(position: Int) {
+        dataList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, dataList.size - position)
+    }
+
+
+    /**
+     * 点赞回调
+     */
+    interface MLaudInterface { fun onclick(isLaud: Boolean, id: Long) }
+    private var mLaudInterface: MLaudInterface? = null
+    open fun setOnLaudClickListener(mLaudInterface: MLaudInterface?) {
+        this.mLaudInterface = mLaudInterface
+    }
+
+
+    /**
+     * 内容反馈回调
+     */
+    interface MInterface { fun onclick(position: Int, id: Long) }
+    private var mInterface: MInterface? = null
+    open fun setOnItemClickListener(mInterface: MInterface?) {
+        this.mInterface = mInterface
+    }
+
+    /**
+     * 预加载回调
+     */
+    private var mPreloadListener: ((a: Int) -> Unit)? = null
+    fun setOnPreloadListener(mPreloadListener: (position: Int) -> Unit) {
+        this.mPreloadListener = mPreloadListener
+    }
+
+    /**
+     * 设置数据
+     */
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(tempList: MutableList<WaterfallFeedBean.Item>, isClear: Boolean) {
+        if (isClear) {
+            this.dataList.clear()
+            this.dataList = tempList
+        } else {
+            this.dataList += tempList
+        }
+      notifyItemRangeChanged(dataList.size, dataList.size+tempList.size)//避免播放视频停止
+    }
+}

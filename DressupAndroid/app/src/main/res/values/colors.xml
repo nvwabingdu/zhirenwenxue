@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="gray_AFADAD">#AFADAD</color>
+    <color name="black_222222">#222222</color>
+    <color name="gray_E6E6E6">#E6E6E6</color>
+    <color name="gray_B3B3B3">#B3B3B3</color>
+    <color name="gray_F6F6F6">#F6F6F6</color>
+    <color name="gray_F0F0F0">#F0F0F0</color>
+    <color name="color_0066FF">#0066FF</color>
+
+    <color name="color_F2F2F2">#F2F2F2</color>
+
+    <color name="blue_0D99FF">#0D99FF</color>
+
+    <!--关于-->
+    <color name="color_line">#DAA66D</color>
+    <color name="color_pitch_ed">#333333</color>
+    <color name="color_pitch">#7F7F7F</color>
+
+    <color name="color_pitch_ed2">#222222</color>
+    <color name="color_pitch2">#B6B6B6</color>
+    <color name="color_bfbfbf">#bfbfbf</color>
+
+
+    <!--主页-->
+    <color name="color_tab_title_pitch">#202020</color>
+    <color name="color_tab_title_pitch_ed">#202020</color>
+    <color name="color_tab_title_pitch2">#ff7f7f7f</color>
+    <color name="color_tab_title_pitch_ed2">#ff333333</color>
+    <color name="color_tab_indicator_line">#161614</color>
+    <color name="color_tab_indicator_line2">#B7EA5A</color>
+    <color name="color_tab_indicator_line3">#8BD85F</color>
+
+    <!--搜索-->
+    <color name="color_7F7F7F">#7F7F7F</color>
+    <color name="color_202020">#202020</color>
+    <color name="color_a16355">#a16355</color>
+    <color name="color_ec6262">#ec6262</color>
+
+
+
+    <!--个人中心 编辑资料-->
+    <color name="color_title">#ff636363</color>
+    <color name="color_hint_content">#ff9b9b9b</color>
+    <color name="color_content">#000000</color>
+
+
+    <!-- bottom 文字颜色-->
+    <color name="bottom_nav_textview_color">#979797</color>
+    <color name="bottom_nav_textview_color_ed">#000000</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="blue_67B2F7">#67B2F7</color>
+    <color name="pink_F85A5A">#F85A5A</color>
+
+    <color name="black_30">#4D000000</color><!--30%透明度-->
+    <color name="black_40">#66000000</color><!--40%透明度-->
+    <color name="black_50">#80000000</color><!--50%透明度-->
+    <color name="black_161614">#161614</color><!--50%透明度-->
+    <color name="color_d9">#d9d9d9</color>
+
+    <!-- 颜色规范 start -->
+    <color name="core_light_bg_title_text_color_light">#FF000000</color>
+    <color name="core_light_bg_primary_text_color_light">#FF444444</color>
+    <color name="core_light_bg_secondary_text_color_light">#FF888888</color>
+    <color name="core_light_bg_secondary2_text_color_light">#FF999999</color>
+    <color name="core_light_bg_disable_text_color_light">#FFBBBBBB</color>
+    <color name="core_dark_bg_primary_text_color_light">#FFFFFFFF</color>
+
+    <color name="core_primary_bg_color_light">#FFFFFFFF</color>
+    <color name="core_bg_color_light">#FFF2F3F5</color>
+    <color name="core_primary_color_light">#FF147AFF</color>
+    <color name="core_error_tip_color_light">#FFFF584C</color>
+    <color name="core_success_tip_color_light">#FF26CB3E</color>
+    <color name="core_bubble_bg_color_light">#FFDCEAFD</color>
+    <color name="core_divide_color_light">#FFE5E5E5</color>
+    <color name="core_border_color_light">#FFDDDDDD</color>
+    <color name="core_header_start_color_light">#FFEBF0F6</color>
+    <color name="core_header_end_color_light">#FFEBF0F6</color>
+    <color name="core_header_text_color_light">#FF000000</color>
+
+    <color name="core_btn_normal_color_light">#FF147AFF</color>
+    <color name="core_btn_pressed_color_light">#FF0064E7</color>
+    <color name="core_btn_disable_color_light">#4D147AFF</color>
+    <!-- 颜色规范 end -->
+
+    <!-- 颜色规范 start -->
+    <color name="core_light_bg_title_text_color_lively">#FF000000</color>
+    <color name="core_light_bg_primary_text_color_lively">#FF444444</color>
+    <color name="core_light_bg_secondary_text_color_lively">#FF888888</color>
+    <color name="core_light_bg_secondary2_text_color_lively">#FF999999</color>
+    <color name="core_light_bg_disable_text_color_lively">#FFBBBBBB</color>
+    <color name="core_dark_bg_primary_text_color_lively">#FFFFFFFF</color>
+
+    <color name="core_primary_bg_color_lively">#FFFFFFFF</color>
+    <color name="core_bg_color_lively">#FFF2F3F5</color>
+    <color name="core_primary_color_lively">#FFFF8E82</color>
+    <color name="core_error_tip_color_lively">#FFFF584C</color>
+    <color name="core_success_tip_color_lively">#FF26CB3E</color>
+    <color name="core_bubble_bg_color_lively">#FF9D85</color>
+    <color name="core_divide_color_lively">#FFE5E5E5</color>
+    <color name="core_border_color_lively">#FFDDDDDD</color>
+    <color name="core_header_start_color_lively">#FFFF7B7B</color>
+    <color name="core_header_end_color_lively">#FFFFA88B</color>
+    <color name="core_header_text_color_lively">#FFFFFFFF</color>
+
+    <color name="core_btn_normal_color_lively">#FFFF8E82</color>
+    <color name="core_btn_pressed_color_lively">#FFF86657</color>
+    <color name="core_btn_disable_color_lively">#4DFF8E82</color>
+    <!-- 颜色规范 end -->
+
+    <!-- 颜色规范 start -->
+    <color name="core_light_bg_title_text_color_serious">#FF000000</color>
+    <color name="core_light_bg_primary_text_color_serious">#FF444444</color>
+    <color name="core_light_bg_secondary_text_color_serious">#FF888888</color>
+    <color name="core_light_bg_secondary2_text_color_serious">#FF999999</color>
+    <color name="core_light_bg_disable_text_color_serious">#FFBBBBBB</color>
+    <color name="core_dark_bg_primary_text_color_serious">#FFFFFFFF</color>
+
+    <color name="core_primary_bg_color_serious">#FFFFFFFF</color>
+    <color name="core_bg_color_serious">#FFF2F3F5</color>
+    <color name="core_primary_color_serious">#FF0052FF</color>
+    <color name="core_error_tip_color_serious">#FFFF584C</color>
+    <color name="core_success_tip_color_serious">#FF26CB3E</color>
+    <color name="core_bubble_bg_color_serious">#FF4F87FF</color>
+    <color name="core_divide_color_serious">#FFE5E5E5</color>
+    <color name="core_border_color_serious">#FFDDDDDD</color>
+    <color name="core_header_start_color_serious">#FF6395FF</color>
+    <color name="core_header_end_color_serious">#FF0052FF</color>
+    <color name="core_header_text_color_serious">#FFFFFFFF</color>
+
+    <color name="core_btn_normal_color_serious">#FF0052FF</color>
+    <color name="core_btn_pressed_color_serious">#FF0049E4</color>
+    <color name="core_btn_disable_color_serious">#4D0052FF</color>
+    <!-- 颜色规范 end -->
+
+
+</resources>

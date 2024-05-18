@@ -1,0 +1,9 @@
+{
+  "BusUtilsClass": "com.blankj.utilcode.util.BusUtils",
+  "rightBus": {
+    "REFRESH_SEL_DATA": [
+      "{ desc: cn.dreamfruits.yaoguo.module.selectclothes.SelectClothesActivity#getSearchData(java.util.List list) }"
+    ]
+  },
+  "wrongBus": {}
+}

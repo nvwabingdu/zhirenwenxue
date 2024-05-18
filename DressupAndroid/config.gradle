@@ -1,0 +1,14 @@
+ext {
+
+    android = [
+            minSdkVersion      : 22,
+            targetSdkVersion   : 33,
+            compileSdkVersion  : 33,
+            versionCode        : 1,
+            versionName        : "1.0"
+    ]
+
+    kotlinVersion = '1.6.21'
+
+
+}

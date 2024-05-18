@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.dreamfruits.sociallib">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
+    <application>
+
+        <!--  微信配置     -->
+        <activity
+            android:name=".handler.wx.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity="cn.dreamfruits.yaoguo"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <activity-alias
+            android:name="${applicationId}.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:targetActivity=".handler.wx.WXEntryActivity"
+            android:theme="@android:style/Theme.Translucent" />
+        <!--   end     -->
+
+        <!--   QQ配置     -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1112142925" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+<!--        &lt;!&ndash;   end     &ndash;&gt;-->
+<!--        <provider-->
+<!--            android:name=".MyProvider"-->
+<!--            android:authorities="cn.dreamfruits.sociallib.fileprovider"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/file_paths" />-->
+<!--        </provider>-->
+
+    </application>
+
+
+</manifest>
