@@ -460,6 +460,7 @@ open class HomeSearchHistoryActivity : BaseActivity() {
         mHistoryRecyclerview!!.setHasFixedSize(false)//设置item大小是否固定 关键参数  这里设置为不固定
         mHistoryAdapter = HistorySearchAdapter(this, mHistoryList!!)
         mHistoryRecyclerview!!.adapter = mHistoryAdapter
+
         mHistoryAdapter!!.setHistorySearchAdapterCallBack(object :
             HistorySearchAdapter.InnerInterface {
             override fun onclick(str: String) {

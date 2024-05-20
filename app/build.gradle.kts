@@ -42,6 +42,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -63,6 +64,10 @@ dependencies {
     implementation("io.github.scwang90:refresh-header-two-level:2.0.6")   //二级刷新头
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
     //evenbus
     implementation("org.greenrobot:eventbus:3.1.1")
+
+    //flexbox/wq
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
 }

@@ -11,11 +11,11 @@
     <string name="login_failed">"Login failed"</string>
 
     <!--底部导航-->
-    <string name="bottom_nav_one">主页</string>
-    <string name="bottom_nav_two">音标</string>
+    <string name="bottom_nav_one">诗词</string>
+    <string name="bottom_nav_two">成语</string>
     <string name="bottom_nav_center">游戏</string>
     <string name="bottom_nav_three">单词</string>
-    <string name="bottom_nav_four">我的</string>
+    <string name="bottom_nav_four">字典</string>
     <color name="bottom_nav_textview_color">#979797</color>
     <color name="bottom_nav_textview_color_ed">#000000</color>
 

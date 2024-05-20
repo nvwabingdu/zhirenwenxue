@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/ac_main_root_layout"
-    tools:context=".MainActivity">
+    android:id="@+id/ac_main_root_layout">
 
     <com.example.zrtool.ui.uibase.BaseRelativeLayout
         android:layout_width="match_parent"

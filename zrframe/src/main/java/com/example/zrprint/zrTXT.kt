@@ -1,19 +1,15 @@
 package com.example.zrprint
 
 import java.io.File
-import net.sourceforge.pinyin4j.PinyinHelper
-import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat
-import net.sourceforge.pinyin4j.format.HanyuPinyinToneType
-import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination
 
 
-val inStr="C:\\Users\\1\\Desktop\\各类词典 - 副本 - 副本\\全唐诗作者生平.txt"
-val outStr="C:\\Users\\1\\Desktop\\各类词典 - 副本 - 副本\\全唐诗作者生平-整理后.txt"
+val inStr="C:\\Users\\1\\Desktop\\各类词典 - 副本 - 副本\\中国诗词词典-整理后.txt"
+val outStr="C:\\Users\\1\\Desktop\\各类词典 - 副本 - 副本\\中国诗词词典-整理后-整理后.txt"
 fun main() {
 //    getLeftTag(inStr,outStr)
-    deleteLeftTag(inStr,outStr,"<")
+//    deleteLeftTag(inStr,outStr,"<")
 //    addEndTag(inStr,outStr,"<3>")
-//    subMiddleStr(inStr,outStr,"<2>","<3>")
+    subMiddleStr(inStr,outStr,"<2>","<3>")
 //      deleteTagStr(inStr,outStr)
 }
 
@@ -104,19 +100,19 @@ fun subMiddleStr(inputFileStr: String, outputFileStr: String,leftStr: String,rig
             extractTextBetweenTags(it,leftStr,rightStr)
         }
 
-        extractedLines.forEach { subMiddleStrResults.add(it) }
+//        extractedLines.forEach { subMiddleStrResults.add(it) }
         outputFile.writeText(extractedLines.joinToString("\n"))
 
         println("提取完成！1")
     } catch (e: Exception) {
         println("处理文件时出现错误1：${e.message}")
     }
-
-//    // 排序并去重
-    val sortedUniqueResults = subMiddleStrResults.distinct().sorted()
-    println(sortedUniqueResults.size)
+//
+////    // 排序并去重
+//    val sortedUniqueResults = subMiddleStrResults.distinct().sorted()
+//    println(sortedUniqueResults.size)
 //    // 输出结果
-    sortedUniqueResults.forEach { println(it) }
+//    sortedUniqueResults.forEach { println(it) }
 
 }
 fun extractTextBetweenTags(input: String,leftStr:String,rightStr:String): String {
