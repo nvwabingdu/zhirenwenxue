@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <declare-styleable name="TriangleButton">
+            <attr name="buttonColor" format="color" />
+            <attr name="isDownTriangle" format="boolean" />
+        </declare-styleable>
+</resources>

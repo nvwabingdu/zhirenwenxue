@@ -51,52 +51,52 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
 
     private lateinit var handler: Handler
-    override fun onResume() {
-        super.onResume()
-        setNavSelected(2)
-//        handler = Handler(Looper.getMainLooper())
-//        val timer = Timer()
-//        timer.schedule(object : TimerTask() {
-//            override fun run() {
-//                // 发送消息到主线程
-//                handler.post {
-//                //强制下线广播
-//                    val intent = Intent("com.example.zrword.moudel.FORCE_OFFLINE")
-//                    sendBroadcast(intent)
-//                }
-//            }
-//        }, 1000)
-
-
-//        //通知基础知识
-//        val manager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-////            val channel=NotificationChannel("normal","Normal",NotificationManager.IMPORTANCE_DEFAULT)
-//            val channel=NotificationChannel("important","Important", NotificationManager.IMPORTANCE_HIGH)//高等级通知
-//            manager.createNotificationChannel(channel)
-//        }
+//    override fun onResume() {
+//        super.onResume()
+//        setNavSelected(2)
+////        handler = Handler(Looper.getMainLooper())
+////        val timer = Timer()
+////        timer.schedule(object : TimerTask() {
+////            override fun run() {
+////                // 发送消息到主线程
+////                handler.post {
+////                //强制下线广播
+////                    val intent = Intent("com.example.zrword.moudel.FORCE_OFFLINE")
+////                    sendBroadcast(intent)
+////                }
+////            }
+////        }, 1000)
 //
-//        findViewById<TextView>(R.id.tv).setOnClickListener {
-//            Toast.makeText(this,"",Toast.LENGTH_LONG).show()
-//            val intent=Intent(this,LoginActivity::class.java)
-//            val pi=PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 //
-//            val notification=NotificationCompat.Builder(this,"important")
-//                .setContentTitle("标题")
-//                .setContentText("内容")
-//                .setSmallIcon(R.drawable.ic_launcher_background)
-//                .setLargeIcon(BitmapFactory.decodeResource(resources,R.drawable.ic_launcher_foreground))
-//                .setContentIntent(pi)
-//                .setAutoCancel(true)//1.自动取消
-//                .build()
+////        //通知基础知识
+////        val manager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+////        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+//////            val channel=NotificationChannel("normal","Normal",NotificationManager.IMPORTANCE_DEFAULT)
+////            val channel=NotificationChannel("important","Important", NotificationManager.IMPORTANCE_HIGH)//高等级通知
+////            manager.createNotificationChannel(channel)
+////        }
+////
+////        findViewById<TextView>(R.id.tv).setOnClickListener {
+////            Toast.makeText(this,"",Toast.LENGTH_LONG).show()
+////            val intent=Intent(this,LoginActivity::class.java)
+////            val pi=PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+////
+////            val notification=NotificationCompat.Builder(this,"important")
+////                .setContentTitle("标题")
+////                .setContentText("内容")
+////                .setSmallIcon(R.drawable.ic_launcher_background)
+////                .setLargeIcon(BitmapFactory.decodeResource(resources,R.drawable.ic_launcher_foreground))
+////                .setContentIntent(pi)
+////                .setAutoCancel(true)//1.自动取消
+////                .build()
+////
+////            manager.notify(1,notification)
+////        }
 //
-//            manager.notify(1,notification)
-//        }
-
-        //2手动取消
-//        val manager2=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//        manager2.cancel(1)
-    }
+//        //2手动取消
+////        val manager2=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+////        manager2.cancel(1)
+//    }
 
 
     /**

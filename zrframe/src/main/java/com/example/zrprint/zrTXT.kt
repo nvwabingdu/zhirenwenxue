@@ -3,13 +3,13 @@ package com.example.zrprint
 import java.io.File
 
 
-val inStr="C:\\Users\\1\\Desktop\\各类词典 - 副本 - 副本\\中国诗词词典-整理后.txt"
-val outStr="C:\\Users\\1\\Desktop\\各类词典 - 副本 - 副本\\中国诗词词典-整理后-整理后.txt"
+val inStr="C:\\Users\\1\\Desktop\\新建文件夹\\1.txt"
+val outStr="C:\\Users\\1\\Desktop\\新建文件夹\\11.txt"
 fun main() {
 //    getLeftTag(inStr,outStr)
 //    deleteLeftTag(inStr,outStr,"<")
 //    addEndTag(inStr,outStr,"<3>")
-    subMiddleStr(inStr,outStr,"<2>","<3>")
+    subMiddleStr(inStr,outStr,"<1>","<2>")
 //      deleteTagStr(inStr,outStr)
 }
 

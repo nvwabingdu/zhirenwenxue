@@ -15,12 +15,12 @@ import com.example.newzr.R
  * @Date 2023/2/22-17:20
  */
 open class DicAdapter(
-    private var dataList: MutableList<DicBean>
+    private var dataList: List<DicBean>
                             ) : RecyclerView.Adapter<DicAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_dictionaryidiom_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_dic, parent, false)
         return MyViewHolder(view)
     }
 
@@ -28,13 +28,29 @@ open class DicAdapter(
     @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.hanzi.text = dataList[position].hanzi
+
+        //点击回调事件用于  全唐诗作者
+        holder.hanzi.setOnClickListener {
+            mInterface!!.onclick(dataList[position].explain)
+        }
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var hanzi: TextView = itemView.findViewById(R.id.lsss_content_textview)
+        var hanzi: TextView = itemView.findViewById(R.id.tv1)
     }
 
     override fun getItemCount(): Int {
         return dataList.size
     }
+
+    //回调
+        interface  InnerInterface{
+            fun onclick(explan: String)
+        }
+        private var mInterface: InnerInterface? = null
+
+        fun setDicAdapterCallBack(mInterface: InnerInterface){
+            this.mInterface=mInterface
+        }
+
 }

@@ -28,3 +28,4 @@ rootProject.name = "ZRWORD"
 include ':app'
 include ':zrframe'
 include ':zrdrawingboard'
+//include ':DressupAndroid'

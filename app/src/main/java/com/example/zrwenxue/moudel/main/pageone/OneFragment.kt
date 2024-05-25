@@ -15,6 +15,9 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.util.ArrayList
 
+/**
+ * 中国诗词词典
+ */
 class OneFragment : Fragment() {
     private var mRootView: View? = null
     private var mLayoutManager: LinearLayoutManager? = null
@@ -63,7 +66,7 @@ class OneFragment : Fragment() {
             }
             reader.close()
 
-            //适配器
+            //适配器1
             mLayoutManager = LinearLayoutManager(context)
             mRecyclerview!!.layoutManager = mLayoutManager
             mAdapter = DictionaryOfChinesePoetryAdapter(mList!!)

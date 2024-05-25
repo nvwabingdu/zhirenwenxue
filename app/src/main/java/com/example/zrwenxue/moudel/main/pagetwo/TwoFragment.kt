@@ -10,8 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newzr.R
-import com.example.zrwenxue.moudel.main.pageone.DictionaryOfChinesePoetryAdapter
-import com.example.zrwenxue.moudel.main.pageone.DictionaryOfChinesePoetryBean
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -50,7 +48,7 @@ class TwoFragment : Fragment() {
         //第二步：取出相应的内容装在集合
         val assetManager = context!!.assets
         try {
-            val inputStream = assetManager.open("dict/中华成语大词典-拼音检索-整理后.txt")
+            val inputStream = assetManager.open("dict/zgcycd_pinyin_index.txt")
             val reader = BufferedReader(InputStreamReader(inputStream))
 
             var line: String?
@@ -61,7 +59,7 @@ class TwoFragment : Fragment() {
 
                     if (!it.equals("")){
                         mItemList.add(DictionaryIdiomIBean.Item(
-                            it, "","","","","","","",""
+                            it
                         ))
                     }
                 }
@@ -70,7 +68,7 @@ class TwoFragment : Fragment() {
                 mList!!.add(
                     DictionaryIdiomIBean(
                         extractTextBetweenTags(line!!,"<1>","<2>"),
-                        true,
+                        false,
                         mItemList
                         )
                 )
