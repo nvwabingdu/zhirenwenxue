@@ -3,16 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d8d7c3"
+    android:background="#eee"
     android:orientation="vertical">
-    <View
-        android:background="@color/ac_splash_bg_color"
+    <com.example.zrtool.ui.custom.TitleBarView
+        android:id="@+id/title_bar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

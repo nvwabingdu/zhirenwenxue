@@ -2,56 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
-    <View
-        android:background="@color/ac_splash_bg_color"
+
+    <com.example.zrtool.ui.custom.TitleBarView
+        android:id="@+id/title_bar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <com.example.zrwenxue.moudel.main.pagefour.TriangleButton
-            android:id="@+id/t1"
+        <View
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            app:buttonColor="#FF0000"
-            app:isDownTriangle="true" />
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
 
-        <com.example.zrwenxue.moudel.main.pagefour.TriangleButton
-            android:id="@+id/t2"
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_weight="33"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:scrollbars="none" />
+
+
+        <View
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            app:buttonColor="#00FF00" />
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
 
-        <com.example.zrwenxue.moudel.main.pagefour.TriangleButton
-            android:id="@+id/t3"
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_gravity="center"
+            android:id="@+id/RecyclerView_ABC"
+            android:layout_weight="3"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            app:isDownTriangle="true"
-            app:buttonColor="#0000FF" />
+            android:background="@drawable/bg_letter_all"
+            android:scrollbars="none"
+            android:layout_height="wrap_content" />
 
-        <com.example.zrwenxue.moudel.main.pagefour.TriangleButton
-            android:id="@+id/t4"
+
+        <View
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            app:buttonColor="#FFFF00"
-            />
-
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none" />
+
 
 </LinearLayout>

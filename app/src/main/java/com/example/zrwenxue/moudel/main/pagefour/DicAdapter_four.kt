@@ -15,13 +15,13 @@ import com.example.newzr.R
  * @Author wq
  * @Date 2023/2/22-17:20
  */
-open class DicAdapter(
-    private var dataList: List<DicBean.Item>
-                            ) : RecyclerView.Adapter<DicAdapter.MyViewHolder>() {
+open class DicAdapter_four(
+    private var dataList: List<DicBean>
+                            ) : RecyclerView.Adapter<DicAdapter_four.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_dic, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_dic_four, parent, false)
         return MyViewHolder(view)
     }
 
@@ -30,28 +30,23 @@ open class DicAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.hanzi.text = dataList[position].hanzi
 
-        //点击回调事件用于  全唐诗作者
-        holder.hanzi.setOnClickListener {
-            mInterface!!.onclick(dataList[position].explain)
-        }
+
+
+        //设置适配器
+        val m= StaggeredGridLayoutManager(6, StaggeredGridLayoutManager.VERTICAL)
+        holder.recyclerView_dic.layoutManager = m
+        holder.recyclerView_dic.isNestedScrollingEnabled=false//解决滑动冲突
+        val mAdapter = DicAdapter(dataList[position].list)
+        holder.recyclerView_dic.adapter = mAdapter
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var hanzi: TextView = itemView.findViewById(R.id.tv1)
+        var recyclerView_dic: RecyclerView = itemView.findViewById(R.id.recyclerView_dic)
     }
 
     override fun getItemCount(): Int {
         return dataList.size
     }
-
-    //回调
-        interface  InnerInterface{
-            fun onclick(explan: String)
-        }
-        private var mInterface: InnerInterface? = null
-
-        fun setDicAdapterCallBack(mInterface: InnerInterface){
-            this.mInterface=mInterface
-        }
 
 }

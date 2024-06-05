@@ -22,4 +22,7 @@
 
     <color name="color_sound_mark_tv">#000</color>
     <color name="color_sound_mark_tv2">#2196F3</color>
+
+
+    <color name="TOP_BOTTOM">#EEEEEE</color>
 </resources>

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newzr.R
+import com.example.zrtool.ui.custom.TitleBarView
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -21,6 +22,7 @@ class TwoFragment : Fragment() {
     private var mRootView: View? = null
     private var mLayoutManager: LinearLayoutManager? = null
     private var mRecyclerview: RecyclerView? = null
+
     private var mAdapter: DictionaryIdiomAdapter? = null
     private var mList: MutableList<DictionaryIdiomIBean>? = ArrayList()//推荐页面的feed列表
 
@@ -31,7 +33,30 @@ class TwoFragment : Fragment() {
     ): View? {
         mRootView = inflater.inflate(R.layout.fragment_two, container, false)
         mRecyclerview = mRootView?.findViewById(R.id.recyclerView)
+
+        setTopView()
+
+
+
+
         return mRootView
+    }
+
+
+
+    /**
+     * 设置顶部
+     */
+    var topView: TitleBarView? = null
+    private fun setTopView() {
+        topView = mRootView?.findViewById(R.id.title_bar)
+        topView!!.title = "成语词典"
+        //左边返回
+        topView!!.setOnclickLeft(
+            View.INVISIBLE,
+            View.OnClickListener {  })
+        //右边弹出pop
+        topView!!.setOnclickRight(View.VISIBLE, View.OnClickListener { })
     }
 
     @Deprecated("Deprecated in Java")
@@ -98,4 +123,9 @@ class TwoFragment : Fragment() {
             ""
         }
     }
+
+
+
+
+
 }

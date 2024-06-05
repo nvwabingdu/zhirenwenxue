@@ -5,12 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
-
-<View
-    android:background="@color/ac_splash_bg_color"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"/>
+        <com.example.zrtool.ui.custom.TitleBarView
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

@@ -29,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <com.google.android.material.tabs.TabLayout
+                android:background="#eee"
                 android:fadeScrollbars="false"
                 android:id="@+id/fragment_word_tabs"
                 app:tabMode="scrollable"

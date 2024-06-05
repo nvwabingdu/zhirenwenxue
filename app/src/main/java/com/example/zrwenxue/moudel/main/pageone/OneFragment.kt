@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newzr.R
+import com.example.zrtool.ui.custom.TitleBarView
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -33,8 +34,28 @@ class OneFragment : Fragment() {
         mRootView = inflater.inflate(R.layout.fragment_one, container, false)
         mRecyclerview = mRootView?.findViewById(R.id.recyclerView)
         Log.e("adadadada","我进来了哦")
+
+        setTopView()
         return mRootView
     }
+
+
+
+    /**
+     * 设置顶部
+     */
+    var topView: TitleBarView? = null
+    private fun setTopView() {
+        topView = mRootView?.findViewById(R.id.title_bar)
+        topView!!.title = "诗词词典大全"
+        //左边返回
+        topView!!.setOnclickLeft(
+            View.INVISIBLE,
+            View.OnClickListener {  })
+        //右边弹出pop
+        topView!!.setOnclickRight(View.VISIBLE, View.OnClickListener { })
+    }
+
 
     @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
