@@ -51,7 +51,6 @@ dependencies {
 
     //zr系列
     implementation(project(":zrframe"))
-    implementation(project(":zrdrawingboard"))
 //    implementation(project(":DressupAndroid"))
 
     //指示器库/wq    need   maven { url 'https://jitpack.io' }

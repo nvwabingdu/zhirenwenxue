@@ -5,7 +5,6 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newzr.R
-import com.example.zrdrawingboard.DoodleViewActivity
 import com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
 import com.example.zrwenxue.moudel.BaseFragment
 import com.example.zrwenxue.moudel.main.home.eng.SearchWordActivity
@@ -17,6 +16,7 @@ import com.example.zrwenxue.moudel.main.home.sczz.SczzActivity
 import com.example.zrwenxue.moudel.main.memory.MemoryActivity
 import com.example.zrwenxue.moudel.main.memory.MemoryViewModel
 import com.example.zrwenxue.moudel.main.word.MyStatic
+import com.example.zrwenxue.others.zrdrawingboard.DoodleViewActivity
 import java.util.Arrays
 import java.util.Random
 

@@ -5,7 +5,7 @@ import android.view.View;
 import android.webkit.WebView;
 
 import com.example.newzr.R;
-import com.example.zrtool.ui.custom.TitleBarView;
+import com.example.zrwenxue.app.TitleBarView;
 import com.example.zrwenxue.moudel.main.home.eng.EngNode;
 import com.example.zrwenxue.moudel.BaseActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -43,7 +43,7 @@ public class PhraseActivity extends BaseActivity {
     private TitleBarView topView;
 
     private void setTopView(String title) {
-        topView = findViewById(com.example.zrdrawingboard.R.id.title_view);
+        topView = findViewById(R.id.title_view);
         topView.setTitle(title);
         topView.setOnclickLeft(View.VISIBLE, new View.OnClickListener() {
             @Override

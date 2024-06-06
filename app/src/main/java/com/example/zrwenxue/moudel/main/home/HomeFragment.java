@@ -16,7 +16,6 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
 import com.example.newzr.R;
-import com.example.zrdrawingboard.DoodleViewActivity;
 
 import com.example.zrwenxue.moudel.main.home.anims.MyAnimActivity;
 import com.example.zrwenxue.moudel.main.home.eng.SearchWordActivity;
@@ -26,6 +25,7 @@ import com.example.zrwenxue.moudel.main.home.news.newsitem.NewsActivity;
 import com.example.zrwenxue.moudel.main.home.phrase.PhraseActivity;
 import com.example.zrwenxue.moudel.main.word.MyStatic;
 import com.example.zrwenxue.moudel.main.word.WordFromShardToSingleton;
+import com.example.zrwenxue.others.zrdrawingboard.DoodleViewActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerImageAdapter;
 import com.youth.banner.holder.BannerImageHolder;

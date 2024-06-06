@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ededed"
+    android:background="@color/theme_up"
     android:id="@+id/ac_main_root_layout">
 
     <com.example.zrtool.ui.uibase.BaseRelativeLayout
@@ -12,14 +12,14 @@
         android:background="@color/white">
 
         <com.example.zrtool.ui.noslidingconflictview.NoScrollViewPager
-            android:background="#ffffff"
+            android:background="@color/theme_down"
             android:id="@+id/ac_main_viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/bottom_nav_height" />
 
         <com.example.zrtool.ui.uibase.BaseLinearLayout
-            android:background="@color/TOP_BOTTOM"
+            android:background="@color/theme_up"
             android:id="@+id/ac_main_linearLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_nav_height"

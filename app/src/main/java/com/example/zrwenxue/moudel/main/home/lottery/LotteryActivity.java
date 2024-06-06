@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 
 import com.example.newzr.R;
-import com.example.zrtool.ui.custom.TitleBarView;
+import com.example.zrwenxue.app.TitleBarView;
 import com.example.zrwenxue.moudel.BaseActivity;
 
 import java.util.ArrayList;

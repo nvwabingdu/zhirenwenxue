@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newzr.R;
 import com.example.zrtool.ui.custom.MyDrawerLayout;
-import com.example.zrtool.ui.custom.TitleBarView;
+import com.example.zrwenxue.app.TitleBarView;
 import com.example.zrwenxue.moudel.main.word.MyStatic;
 import com.example.zrwenxue.moudel.main.word.Singleton;
 import com.example.zrwenxue.moudel.BaseActivity;

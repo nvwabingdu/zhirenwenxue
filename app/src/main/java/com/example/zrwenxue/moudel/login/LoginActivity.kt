@@ -11,9 +11,9 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.newzr.R
-import com.example.zrtool.ui.custom.TitleBarView
 import com.example.zrtool.utils.ToastUtils
 import com.example.zrwenxue.MainActivity
+import com.example.zrwenxue.app.TitleBarView
 import com.example.zrwenxue.moudel.BaseActivity
 
 

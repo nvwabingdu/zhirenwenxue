@@ -10,12 +10,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.newzr.R
-import com.example.zrtool.ui.custom.TitleBarView
-import com.example.zrwenxue.app.Single
-import com.example.zrwenxue.moudel.main.pagetwo.TwoFragment
-import kotlinx.coroutines.DelicateCoroutinesApi
+import com.example.zrwenxue.app.Single.toPinyin2
+import com.example.zrwenxue.app.TitleBarView
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.util.ArrayList
@@ -112,6 +109,8 @@ class FourFragment : Fragment() {
 //        }
 //    }
 
+
+    private var tempL: MutableList<DicBean.Item>?=null
     @SuppressLint("NotifyDataSetChanged")
     fun setData2() {
         mList!!.clear()
@@ -120,21 +119,58 @@ class FourFragment : Fragment() {
         //第二步：取出相应的内容装在集合
         val assetManager = context!!.assets
         try {
-            val inputStream = assetManager.open("dict/xhzd.txt")
+
+            val inputStream = assetManager.open("dict/xhzd_dan.txt")
             val reader = BufferedReader(InputStreamReader(inputStream))
 
             var line: String?
+            var oldStr=""
+
+
+
             while (reader.readLine().also { line = it } != null) {
 
-                if (extractTextBetweenTags(line!!, "<1>", "<2>").length == 1) {
+                //标记等于空
+                if (oldStr==""){
+                    oldStr=extractTextBetweenTags(line!!, "<1>", "<2>").substring(0,1).toPinyin2()
+                    Log.e("tag222",oldStr)
+                }
+
+                //子集合添加
+                if(oldStr==extractTextBetweenTags(line!!, "<1>", "<2>").substring(0,1).toPinyin2()){
+//                    Log.e("tag222",oldStr)
+                    if (tempL==null){
+                        tempL=ArrayList()
+                    }
+
+                    tempL!!.add(DicBean.Item(
+                        extractTextBetweenTags(line!!, "<1>", "<2>"),
+                        "",
+                        extractTextBetweenTags(line!!, "<2>", "<3>"),
+                    ))
+
+                    Log.e("tag222",tempL.toString())
+                }else{
+
                     mList!!.add(
                         DicBean(
-                            extractTextBetweenTags(line!!, "<1>", "<2>"),
+                            extractTextBetweenTags(line!!, "<1>", "<2>").substring(0,1).toPinyin2(),
                             "",
-                            extractTextBetweenTags(line!!, "<2>", "<3>"),
-                            null
+                            "",
+                            tempL!!
                         )
                     )
+
+
+                    tempL=ArrayList()
+
+                    tempL!!.add(DicBean.Item(
+                        extractTextBetweenTags(line!!, "<1>", "<2>"),
+                        "",
+                        "",
+                    ))
+
+                    oldStr=extractTextBetweenTags(line!!, "<1>", "<2>").substring(0,1).toPinyin2()
                 }
 
             }
@@ -150,10 +186,8 @@ class FourFragment : Fragment() {
 //            mRecyclerview!!.adapter = mAdapter
 
             //设置适配器
-            val m= StaggeredGridLayoutManager(6, StaggeredGridLayoutManager.VERTICAL)
-            mRecyclerview!!.layoutManager = m
-            mRecyclerview!!.isNestedScrollingEnabled=false//解决滑动冲突
-            val mAdapter = DicAdapter_four(mList!!)
+            mRecyclerview!!.layoutManager = LinearLayoutManager(requireActivity())
+            val mAdapter = DicAdapter_four(mList!!,requireActivity())
             mRecyclerview!!.adapter = mAdapter
 
 
@@ -172,6 +206,8 @@ class FourFragment : Fragment() {
             ""
         }
     }
+
+
 
 
 
@@ -208,7 +244,5 @@ class FourFragment : Fragment() {
             letterTextView.text = letter.toString()
         }
     }
-
-
 
 }

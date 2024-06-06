@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <com.example.zrtool.ui.custom.TitleBarView
+    <com.example.zrwenxue.app.TitleBarView
         android:id="@+id/paint_topView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

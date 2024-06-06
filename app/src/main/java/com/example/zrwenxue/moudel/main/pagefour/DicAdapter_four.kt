@@ -1,6 +1,7 @@
 package com.example.zrwenxue.moudel.main.pagefour
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -10,18 +11,21 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.newzr.R
+import com.example.zrwenxue.app.Single
 
 /**
  * @Author wq
  * @Date 2023/2/22-17:20
  */
 open class DicAdapter_four(
-    private var dataList: List<DicBean>
-                            ) : RecyclerView.Adapter<DicAdapter_four.MyViewHolder>() {
+    private var dataList: List<DicBean>,
+    private val mActivity: Activity
+) : RecyclerView.Adapter<DicAdapter_four.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_dic_four, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_dic_four, parent, false)
         return MyViewHolder(view)
     }
 
@@ -31,13 +35,19 @@ open class DicAdapter_four(
         holder.hanzi.text = dataList[position].hanzi
 
 
-
         //设置适配器
-        val m= StaggeredGridLayoutManager(6, StaggeredGridLayoutManager.VERTICAL)
+        val m = StaggeredGridLayoutManager(6, StaggeredGridLayoutManager.VERTICAL)
         holder.recyclerView_dic.layoutManager = m
-        holder.recyclerView_dic.isNestedScrollingEnabled=false//解决滑动冲突
+        holder.recyclerView_dic.isNestedScrollingEnabled = false//解决滑动冲突
         val mAdapter = DicAdapter(dataList[position].list)
         holder.recyclerView_dic.adapter = mAdapter
+
+        //回调
+        mAdapter.setDicAdapterCallBack(object : DicAdapter.InnerInterface {
+            override fun onclick(explan: String) {
+                Single.showHtml(mActivity, explan)
+            }
+        })
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

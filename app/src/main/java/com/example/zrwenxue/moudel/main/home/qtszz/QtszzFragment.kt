@@ -59,13 +59,13 @@ class QtszzFragment : Fragment() {
 
             var line: String?
             while (reader.readLine().also { line = it } != null) {
-                mList!!.add(
-                    DicBean(
-                        extractTextBetweenTags(line!!,"<1>","<2>"),
-                        "",
-                        extractTextBetweenTags(line!!,"<2>","<3>"),
-                    )
-                )
+//                mList!!.add(
+//                    DicBean(
+//                        extractTextBetweenTags(line!!,"<1>","<2>"),
+//                        "",
+//                        extractTextBetweenTags(line!!,"<2>","<3>"),
+//                    )
+//                )
             }
 
             reader.close()

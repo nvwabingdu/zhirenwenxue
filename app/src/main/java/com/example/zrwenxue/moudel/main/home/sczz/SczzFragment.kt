@@ -56,42 +56,42 @@ class SczzFragment : Fragment() {
 
             var line: String?
             while (reader.readLine().also { line = it } != null) {
-                mList!!.add(
-                    DicBean(
-                        extractTextBetweenTags(line!!,"<2>","<3>").split("·")[0]+"·"+extractTextBetweenTags(line!!,"<2>","<3>").split("·")[1],
-                        "",
-                        ""
-                    )
-                )
+//                mList!!.add(
+//                    DicBean(
+//                        extractTextBetweenTags(line!!,"<2>","<3>").split("·")[0]+"·"+extractTextBetweenTags(line!!,"<2>","<3>").split("·")[1],
+//                        "",
+//                        ""
+//                    )
+//                )
             }
 
             reader.close()
 
 //           val  mList2=mList!!.distinctBy { it.hanzi }//去重后的集合
+//
+//            /**
+//             * 去重加上统计数量
+//             */
+//            val mList2 = mList!!.groupingBy { it.hanzi }
+//                .eachCount()
+//                .map { (hanzi, count) -> DicBean("$hanzi ($count)", "","") }
+//                .toList()
+//
+//            //设置适配器
+//            mRecyclerview!!.isNestedScrollingEnabled = false//禁止滑动 解决滑动冲突
+//            val mFlexboxLayoutManager= FlexBoxLayoutMaxLines(requireActivity())
+//            mFlexboxLayoutManager.flexWrap = FlexWrap.WRAP // 设置换行方式为换行
+//            mRecyclerview!!.layoutManager = mFlexboxLayoutManager
+//            mRecyclerview!!.setHasFixedSize(false)//设置item大小是否固定 关键参数  这里设置为不固定
+//            val mAdapter = CommonAdapter(mList2)
+//            mRecyclerview!!.adapter = mAdapter
 
-            /**
-             * 去重加上统计数量
-             */
-            val mList2 = mList!!.groupingBy { it.hanzi }
-                .eachCount()
-                .map { (hanzi, count) -> DicBean("$hanzi ($count)", "","") }
-                .toList()
-
-            //设置适配器
-            mRecyclerview!!.isNestedScrollingEnabled = false//禁止滑动 解决滑动冲突
-            val mFlexboxLayoutManager= FlexBoxLayoutMaxLines(requireActivity())
-            mFlexboxLayoutManager.flexWrap = FlexWrap.WRAP // 设置换行方式为换行
-            mRecyclerview!!.layoutManager = mFlexboxLayoutManager
-            mRecyclerview!!.setHasFixedSize(false)//设置item大小是否固定 关键参数  这里设置为不固定
-            val mAdapter = CommonAdapter(mList2)
-            mRecyclerview!!.adapter = mAdapter
-
-            //回调
-            mAdapter.setCommonAdapterCallBack(object : CommonAdapter.InnerInterface{
-                override fun onclick(explan: String) {
-
-                }
-            })
+//            //回调
+//            mAdapter.setCommonAdapterCallBack(object : CommonAdapter.InnerInterface{
+//                override fun onclick(explan: String) {
+//
+//                }
+//            })
 
         } catch (e: Exception) {
             Log.e("111111111", e.toString())

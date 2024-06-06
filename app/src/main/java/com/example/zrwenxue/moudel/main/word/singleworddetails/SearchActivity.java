@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.newzr.R;
-import com.example.zrtool.ui.custom.TitleBarView;
 import com.example.zrtool.utilsjava.Tools;
+import com.example.zrwenxue.app.TitleBarView;
 import com.example.zrwenxue.moudel.main.word.MyStatic;
 import com.example.zrwenxue.moudel.main.word.Singleton;
 import com.example.zrwenxue.moudel.main.word.Wordbean;
@@ -65,7 +65,7 @@ public class SearchActivity extends BaseActivity {
 
     private TitleBarView topView;
     private void setTopView(String title) {
-        topView = findViewById(com.example.zrdrawingboard.R.id.title_view);
+        topView = findViewById(R.id.title_view);
         topView.setTitle(title);
         topView.setOnclickLeft(View.VISIBLE, new View.OnClickListener() {
             @Override

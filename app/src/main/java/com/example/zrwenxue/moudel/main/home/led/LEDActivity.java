@@ -164,7 +164,7 @@ public class LEDActivity extends AppCompatActivity {
         );
 
         //动画
-        popupWindow.setAnimationStyle(com.example.zrdrawingboard.R.style.BottomDialogAnimation);
+        popupWindow.setAnimationStyle(R.style.BottomDialogAnimation);
 
         if (popupWindow.isShowing()) {//如果正在显示，关闭弹窗。
             popupWindow.dismiss();

@@ -3,6 +3,7 @@ package com.example.zrwenxue.moudel.main.word;
 
 import static android.content.Context.MODE_PRIVATE;
 
+
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
@@ -24,8 +25,8 @@ import androidx.viewpager.widget.ViewPager;
 
 
 import com.example.newzr.R;
-import com.example.zrtool.ui.custom.TitleBarView;
 import com.example.zrtool.utils.ToastUtils;
+import com.example.zrwenxue.app.TitleBarView;
 import com.example.zrwenxue.moudel.main.word.pickerandpop.CommonPopWindow;
 import com.example.zrwenxue.moudel.main.word.pickerandpop.PickerScrollView;
 import com.example.zrwenxue.moudel.main.word.singleworddetails.tabwebview.ViewPagerFragmentAdapter;
@@ -60,7 +61,6 @@ public class WordFragment extends Fragment {
      * 设置顶部
      */
     TitleBarView topView;
-
     private void setTopView() {
         topView = view.findViewById(R.id.title_view);
         topView.setTitle("手写单词");
@@ -71,7 +71,7 @@ public class WordFragment extends Fragment {
             }
         });
         //右边弹出pop
-        topView.setOnclickRight(View.VISIBLE, getResources().getDrawable(com.example.zrframe.R.drawable.icon_set), new View.OnClickListener() {
+        topView.setOnclickRight(View.VISIBLE, getResources().getDrawable(R.drawable.icon_set), new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //显示音标和不显示音标

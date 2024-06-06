@@ -14,6 +14,11 @@ import android.webkit.WebView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import com.example.newzr.R
+import net.sourceforge.pinyin4j.PinyinHelper
+import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType
+import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat
+import net.sourceforge.pinyin4j.format.HanyuPinyinToneType
+import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination
 import kotlin.random.Random
 
 
@@ -137,5 +142,35 @@ object Single {
             })
     }
 
+    /**
+     * 将汉字转为拼音
+     */
+    fun String.toPinyin(): String {
+        val converter = PinyinHelper.toHanyuPinyinStringArray(this.first())[0]
+        return converter.replaceFirstChar { it.uppercase() }
+    }
+
+    fun String.toPinyin2(): String {
+        val outputFormat = HanyuPinyinOutputFormat()
+        outputFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE)
+        outputFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE)
+
+        if (this.isNotEmpty()) {
+            val c = this[0]
+            if (Character.toString(c).matches(Regex("[\u4e00-\u9fa5]"))) {
+                try {
+                    val pinyins = PinyinHelper.toHanyuPinyinStringArray(c, outputFormat)
+                    if (pinyins != null && pinyins.isNotEmpty()) {
+                        return pinyins[0]
+                    }
+                } catch (e: BadHanyuPinyinOutputFormatCombination) {
+                    e.printStackTrace()
+                }
+            } else {
+                return this.substring(0, 1)
+            }
+        }
+        return ""
+    }
 
 }

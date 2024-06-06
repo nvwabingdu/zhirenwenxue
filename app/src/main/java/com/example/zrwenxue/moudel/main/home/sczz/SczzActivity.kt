@@ -2,7 +2,7 @@ package com.example.zrwenxue.moudel.main.home.sczz
 
 import android.view.View
 import com.example.newzr.R
-import com.example.zrtool.ui.custom.TitleBarView
+import com.example.zrwenxue.app.TitleBarView
 import com.example.zrwenxue.moudel.BaseActivity
 
 class SczzActivity : BaseActivity()  {

@@ -30,4 +30,65 @@
     </style>
 
 
+    <style name="bubble_dialog" parent="android:Theme.Dialog">
+
+        <item name="android:windowIsFloating">true</item>
+
+        <item name="android:windowIsTranslucent">false</item>
+
+        <item name="android:windowNoTitle">true</item>
+
+        <item name="android:windowFullscreen">true</item>
+
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <item name="android:windowAnimationStyle">@null</item>
+
+        <item name="android:backgroundDimEnabled">true</item>
+
+        <item name="android:backgroundDimAmount">0.4</item>
+
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- 自定义Dialog动画 -->
+    <style name="BottomDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/anim_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_bottom_out</item>
+    </style>
+
+
+
+    <style name="TextAppearance.Sunflower.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+
+
+
+
+    <style name="TUIBaseTheme">
+    </style>
+
+
+    <style name="TUIBaseLightTheme" parent="@style/TUIBaseTheme">
+
+        <!-- 颜色规范 end -->
+
+    </style>
+
+    <style name="TUIBaseLivelyTheme" parent="@style/TUIBaseTheme">
+        <!-- 颜色规范 start -->
+
+        <!-- 颜色规范 end -->
+    </style>
+
+
+    <style name="TUIBaseSeriousTheme" parent="@style/TUIBaseTheme">
+
+        <!-- 颜色规范 end -->
+    </style>
+
 </resources>
