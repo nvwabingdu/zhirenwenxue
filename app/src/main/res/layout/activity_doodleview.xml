@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.example.zrtool.ui.custom.TitleBarView
+        <com.example.zrwenxue.app.TitleBarView
             android:id="@+id/title_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -17,7 +17,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.example.zrdrawingboard.doodleview.DoodleView
+            <com.example.zrwenxue.others.zrdrawingboard.doodleview.DoodleView
                 android:id="@+id/doodle_doodleview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

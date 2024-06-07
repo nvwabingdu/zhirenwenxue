@@ -133,7 +133,7 @@ class FourFragment : Fragment() {
                 //标记等于空
                 if (oldStr==""){
                     oldStr=extractTextBetweenTags(line!!, "<1>", "<2>").substring(0,1).toPinyin2()
-                    Log.e("tag222",oldStr)
+//                    Log.e("tag222",oldStr)
                 }
 
                 //子集合添加
@@ -149,7 +149,7 @@ class FourFragment : Fragment() {
                         extractTextBetweenTags(line!!, "<2>", "<3>"),
                     ))
 
-                    Log.e("tag222",tempL.toString())
+//                    Log.e("tag222",tempL.toString())
                 }else{
 
                     mList!!.add(

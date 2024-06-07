@@ -68,7 +68,7 @@
 
             </LinearLayout>
 
-            <com.example.zrdrawingboard.brushviewdemo.BrushView
+            <com.example.zrwenxue.others.zrdrawingboard.brushviewdemo.BrushView
                 android:id="@+id/brushView"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
