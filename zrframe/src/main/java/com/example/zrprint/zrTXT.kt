@@ -4,14 +4,43 @@ import java.io.File
 
 
 val inStr="C:\\Users\\1\\Desktop\\新建文件夹\\1.txt"
-val outStr="C:\\Users\\1\\Desktop\\新建文件夹\\11.txt"
+val outStr="C:\\Users\\1\\Desktop\\新建文件夹\\113.txt"
 fun main() {
 //    getLeftTag(inStr,outStr)
 //    deleteLeftTag(inStr,outStr,"<")
 //    addEndTag(inStr,outStr,"<3>")
-    subMiddleStr(inStr,outStr,"<1>","<2>")
+//    subMiddleStr(inStr,outStr,"<1>","<2>")
 //      deleteTagStr(inStr,outStr)
+
+    main2()
 }
+
+fun main2() {
+    // 定义一个包含所有中文字符的正则表达式
+    val chineseRegex = Regex("[\u4e00-\u9fff]")
+
+    // 从Unicode编码中获取所有中文字符
+    val chineseChars = ('\u4e00'..'\u9fff').map { it.toChar() }
+
+    // 将中文字符拼接成字符串
+    val chineseText = chineseChars.joinToString("")
+
+    // 将字符串写入到文本文件
+    val file = File(outStr)
+    file.writeText(chineseText)
+
+    // 统计中文字符的数量
+    val chineseCharCount = chineseText.length
+
+    // 输出结果
+    println("中文字符已写入 chinese_characters.txt 文件")
+    println("中文字符总数: $chineseCharCount")
+}
+
+
+
+
+
 
 
 //①提取txt文本中的每一行<之前的文本并重新输出一个文本文件

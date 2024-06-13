@@ -24,8 +24,11 @@
     <color name="color_sound_mark_tv2">#2196F3</color>
 
 
-    <color name="theme_up">#eee</color>
+
     <color name="theme_down">#fff</color>
+    <color name="theme_up">#eee</color>
+    <color name="theme_text">#000</color>
+    <color name="theme_select">#888</color>
 
 
 

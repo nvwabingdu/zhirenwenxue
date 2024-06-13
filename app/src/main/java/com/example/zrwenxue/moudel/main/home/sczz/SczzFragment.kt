@@ -15,6 +15,7 @@ import com.example.zrwenxue.moudel.main.pagetwo.FlexBoxLayoutMaxLines
 import com.google.android.flexbox.FlexWrap
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.io.BufferedReader
+import java.io.File
 import java.io.InputStreamReader
 import java.util.ArrayList
 
@@ -24,7 +25,7 @@ import java.util.ArrayList
 class SczzFragment : Fragment() {
     private var mRootView: View? = null
     private var mRecyclerview: RecyclerView? = null
-    private var mList: MutableList<DicBean>? = ArrayList()//推荐页面的feed列表
+    private var mList: MutableList<DicBean.Item>? = ArrayList()//推荐页面的feed列表
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,26 +57,47 @@ class SczzFragment : Fragment() {
 
             var line: String?
             while (reader.readLine().also { line = it } != null) {
-//                mList!!.add(
-//                    DicBean(
-//                        extractTextBetweenTags(line!!,"<2>","<3>").split("·")[0]+"·"+extractTextBetweenTags(line!!,"<2>","<3>").split("·")[1],
-//                        "",
-//                        ""
-//                    )
-//                )
+                mList!!.add(
+                    DicBean.Item(
+                        extractTextBetweenTags(line!!,"<2>","<3>").split("·")[0]+"·"+extractTextBetweenTags(line!!,"<2>","<3>").split("·")[1],
+                        "",
+                        ""
+                    )
+                )
             }
 
             reader.close()
 
-//           val  mList2=mList!!.distinctBy { it.hanzi }//去重后的集合
-//
-//            /**
-//             * 去重加上统计数量
-//             */
-//            val mList2 = mList!!.groupingBy { it.hanzi }
-//                .eachCount()
-//                .map { (hanzi, count) -> DicBean("$hanzi ($count)", "","") }
-//                .toList()
+//           val  mList3=mList!!.distinctBy { it.hanzi }//去重后的集合
+
+            /**
+             * 去重加上统计数量
+             */
+            val mList3 = mList!!.groupingBy { it.hanzi }
+                .eachCount()
+                .map { (hanzi, count) -> DicBean.Item("$hanzi ($count)", "","") }
+                .toList()
+
+//            Log.e("adad",mList3.toString())
+
+
+
+
+
+            // 创建一个文件对象
+            val file = File("C:\\Users\\1\\Desktop\\新建文件夹\\1.txt", "rw")
+
+            // 将集合遍历输出到文件
+            file.bufferedWriter().use { writer ->
+                for (item in mList3) {
+                    writer.write(item.hanzi)
+                    writer.newLine() // 添加换行符
+                }
+            }
+
+            println("内容已写入到 output.txt 文件中。")
+
+
 //
 //            //设置适配器
 //            mRecyclerview!!.isNestedScrollingEnabled = false//禁止滑动 解决滑动冲突

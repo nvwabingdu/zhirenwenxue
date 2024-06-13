@@ -32,7 +32,7 @@ open class DicAdapter(
 
         //点击回调事件用于  全唐诗作者
         holder.hanzi.setOnClickListener {
-            mInterface!!.onclick(dataList[position].explain)
+            mInterface!!.onclick(dataList[position].hanzi)
         }
     }
 
@@ -46,7 +46,7 @@ open class DicAdapter(
 
     //回调
         interface  InnerInterface{
-            fun onclick(explan: String)
+            fun onclick(hanzi: String)
         }
         private var mInterface: InnerInterface? = null
 

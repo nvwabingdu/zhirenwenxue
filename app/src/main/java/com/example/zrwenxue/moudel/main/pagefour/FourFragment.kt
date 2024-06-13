@@ -120,58 +120,35 @@ class FourFragment : Fragment() {
         val assetManager = context!!.assets
         try {
 
-            val inputStream = assetManager.open("dict/xhzd_dan.txt")
+            val inputStream = assetManager.open("dict/汉字字典2万.txt")
             val reader = BufferedReader(InputStreamReader(inputStream))
 
             var line: String?
-            var oldStr=""
-
-
 
             while (reader.readLine().also { line = it } != null) {
+                tempL=ArrayList()
 
-                //标记等于空
-                if (oldStr==""){
-                    oldStr=extractTextBetweenTags(line!!, "<1>", "<2>").substring(0,1).toPinyin2()
-//                    Log.e("tag222",oldStr)
+
+
+                line!!.split("=")[1].split("-").forEach{
+                    tempL!!.add(DicBean.Item(
+                        it,
+                        "",
+                        "",
+                    ))
                 }
 
-                //子集合添加
-                if(oldStr==extractTextBetweenTags(line!!, "<1>", "<2>").substring(0,1).toPinyin2()){
-//                    Log.e("tag222",oldStr)
-                    if (tempL==null){
-                        tempL=ArrayList()
-                    }
 
-                    tempL!!.add(DicBean.Item(
-                        extractTextBetweenTags(line!!, "<1>", "<2>"),
+
+                mList!!.add(
+                    DicBean(
+                        extractStringBeforePlus(line!!),
                         "",
-                        extractTextBetweenTags(line!!, "<2>", "<3>"),
-                    ))
-
-//                    Log.e("tag222",tempL.toString())
-                }else{
-
-                    mList!!.add(
-                        DicBean(
-                            extractTextBetweenTags(line!!, "<1>", "<2>").substring(0,1).toPinyin2(),
-                            "",
-                            "",
-                            tempL!!
-                        )
+                        line!!.split("=")[1].split("-").size,
+                        tempL!!
                     )
+                )
 
-
-                    tempL=ArrayList()
-
-                    tempL!!.add(DicBean.Item(
-                        extractTextBetweenTags(line!!, "<1>", "<2>"),
-                        "",
-                        "",
-                    ))
-
-                    oldStr=extractTextBetweenTags(line!!, "<1>", "<2>").substring(0,1).toPinyin2()
-                }
 
             }
             reader.close()
@@ -192,7 +169,7 @@ class FourFragment : Fragment() {
 
 
         } catch (e: Exception) {
-            Log.e("tag", e.toString())
+            Log.e("tag121", e.toString())
         }
     }
 
@@ -208,7 +185,14 @@ class FourFragment : Fragment() {
     }
 
 
-
+    fun extractStringBeforePlus(inputString: String): String {
+        val plusIndex = inputString.indexOf('=')
+        return if (plusIndex != -1) {
+            inputString.substring(0, plusIndex)
+        } else {
+            inputString
+        }
+    }
 
 
 

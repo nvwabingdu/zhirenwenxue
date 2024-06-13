@@ -3,6 +3,7 @@ package com.example.zrwenxue.moudel.main.pagefour
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.newzr.R
 import com.example.zrwenxue.app.Single
+import com.example.zrwenxue.app.Single.extractTextBetweenTags
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 /**
  * @Author wq
@@ -33,6 +37,7 @@ open class DicAdapter_four(
     @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.hanzi.text = dataList[position].hanzi
+        holder.num.text = dataList[position].num.toString()
 
 
         //设置适配器
@@ -44,14 +49,41 @@ open class DicAdapter_four(
 
         //回调
         mAdapter.setDicAdapterCallBack(object : DicAdapter.InnerInterface {
-            override fun onclick(explan: String) {
-                Single.showHtml(mActivity, explan)
+            override fun onclick(hanzi: String) {
+
+                var isHave=true
+                val assetManager = mActivity.assets
+                try {
+                    val inputStream = assetManager.open("dict/新华字典-整理后.txt")
+                    val reader = BufferedReader(InputStreamReader(inputStream))
+
+                    var line: String?
+                    while (reader.readLine().also { line = it } != null) {
+                        if (extractTextBetweenTags(line!!,"<1>","<2>").contains(hanzi)){
+                            Single.showHtml(mActivity,extractTextBetweenTags(line!!,"<2>","<3>"))
+                            isHave=false
+                            break
+                        }
+                    }
+                    reader.close()
+
+                    if(isHave){
+                        Single.showHtml(mActivity,"暂未收录")
+                    }
+                } catch (e: Exception) {
+                    Log.e("tag11", "DicAdapter_four"+e.toString())
+                }
+
+
+
+
             }
         })
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var hanzi: TextView = itemView.findViewById(R.id.tv1)
+        var num: TextView = itemView.findViewById(R.id.tv2)
         var recyclerView_dic: RecyclerView = itemView.findViewById(R.id.recyclerView_dic)
     }
 

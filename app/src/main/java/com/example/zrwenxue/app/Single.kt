@@ -173,4 +173,16 @@ object Single {
         return ""
     }
 
+
+    fun extractTextBetweenTags(input: String,leftStr:String,rightStr:String): String {
+        val startIndex = input.indexOf(leftStr)
+        val endIndex = input.indexOf(rightStr)
+
+        return if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
+            input.substring(startIndex + leftStr.length, endIndex)
+        }else{
+            ""
+        }
+    }
+
 }
