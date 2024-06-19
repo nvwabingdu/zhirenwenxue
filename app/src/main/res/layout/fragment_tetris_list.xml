@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
-            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_marginBottom="100dp"
             android:id="@+id/tetris_6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -76,5 +76,6 @@
         </LinearLayout>
 
     </FrameLayout>
+
 </ScrollView>
 </LinearLayout>

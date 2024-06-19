@@ -117,7 +117,7 @@ public class DoodleViewActivity extends AppCompatActivity {
                 finish();
             }
         });
-        topView.setOnclickRight(View.VISIBLE, getResources().getDrawable(com.example.zrframe.R.drawable.icon_set), new View.OnClickListener() {
+        topView.setOnclickRight(View.VISIBLE, getResources().getDrawable(R.drawable.show_yb2), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                showShapeDialog();

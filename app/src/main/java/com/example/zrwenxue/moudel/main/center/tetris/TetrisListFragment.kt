@@ -11,8 +11,6 @@ import com.example.zrwenxue.moudel.main.home.eng.SearchWordActivity
 import com.example.zrwenxue.moudel.main.home.led.LEDActivity
 import com.example.zrwenxue.moudel.main.home.lottery.LotteryActivity
 import com.example.zrwenxue.moudel.main.home.phrase.PhraseActivity
-import com.example.zrwenxue.moudel.main.home.qtszz.QtszzActivity
-import com.example.zrwenxue.moudel.main.home.sczz.SczzActivity
 import com.example.zrwenxue.moudel.main.memory.MemoryActivity
 import com.example.zrwenxue.moudel.main.memory.MemoryViewModel
 import com.example.zrwenxue.moudel.main.word.MyStatic
@@ -94,8 +92,6 @@ class TetrisListFragment : BaseFragment() {
         temp4(3, "搜索单词")
         temp4(4, "短语学习")
         temp4(5, "认识音标")
-        temp4(6, "中国诗词作者")
-        temp4(7, "全唐诗作者")
 
 
         m1 = rootView!!.findViewById(R.id.tetris_1)
@@ -411,14 +407,6 @@ class TetrisListFragment : BaseFragment() {
                     5->{
                         //跳转短语页面
                         MyStatic.setActivityString(activity, MemoryActivity::class.java, "", "")
-                    }
-                    6->{
-                        //跳转短语页面
-                        MyStatic.setActivityString(activity, SczzActivity::class.java, "", "")
-                    }
-                    7->{
-                        //跳转短语页面
-                        MyStatic.setActivityString(activity, QtszzActivity::class.java, "", "")
                     }
                 }
 

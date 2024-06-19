@@ -3,9 +3,13 @@ package com.example.zrwenxue.moudel.main.pagetwo
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.PopupWindow
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +18,6 @@ import com.example.zrwenxue.app.TitleBarView
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.util.ArrayList
 
 
 class TwoFragment : Fragment() {
@@ -55,8 +58,18 @@ class TwoFragment : Fragment() {
         topView!!.setOnclickLeft(
             View.INVISIBLE,
             View.OnClickListener {  })
+
+
         //右边弹出pop
-        topView!!.setOnclickRight(View.VISIBLE, View.OnClickListener { })
+        topView!!.setOnclickRight(
+            View.VISIBLE, resources.getDrawable(R.drawable.hp_icon_search)
+        ) {
+
+
+        }
+
+
+
     }
 
     @Deprecated("Deprecated in Java")
@@ -123,9 +136,5 @@ class TwoFragment : Fragment() {
             ""
         }
     }
-
-
-
-
 
 }

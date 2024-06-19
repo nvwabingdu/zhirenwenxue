@@ -13,9 +13,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,7 +49,7 @@ import java.util.ArrayList;
  */
 public class WordFragment extends Fragment {
     View view;
-    ImageView imgview, up, down, cleanAll;
+    ImageView imgview, up, down, cleanAll,show_yb;
 
 
     @Nullable
@@ -71,16 +74,11 @@ public class WordFragment extends Fragment {
             }
         });
         //右边弹出pop
-        topView.setOnclickRight(View.VISIBLE, getResources().getDrawable(R.drawable.icon_set), new View.OnClickListener() {
+        topView.setOnclickRight(View.VISIBLE, getResources().getDrawable(R.drawable.hp_icon_search), new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //显示音标和不显示音标
-                if (Singleton.getInstance().showSoundMark) {
-                    Singleton.getInstance().showSoundMark = false;
-                } else {
-                    Singleton.getInstance().showSoundMark = true;
-                }
-                turnON();
+
+                Toast.makeText(requireActivity(), "点击搜索", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -113,6 +111,25 @@ public class WordFragment extends Fragment {
                 setAddressSelectorPopup(v);
             }
         });
+
+
+        //显示音标
+        show_yb=view.findViewById(R.id.img_word_show_yb);
+
+        show_yb.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startRotation(show_yb, 1, 500);// 旋转3次，时长为1秒
+                 //显示音标和不显示音标
+                 if (Singleton.getInstance().showSoundMark) {
+                     Singleton.getInstance().showSoundMark = false;
+                 } else {
+                     Singleton.getInstance().showSoundMark = true;
+                 }
+                 turnON();
+             }
+         });
+
 
         //向下翻页
         up = view.findViewById(R.id.img_word_up);
@@ -422,6 +439,23 @@ public class WordFragment extends Fragment {
                 return "★★★★★";
         }
         return "";
+    }
+
+    private void startRotation(ImageView imageView, int rotationCount, int duration) {
+        // 计算旋转角度
+        float fromDegree = 0.0f;
+        float toDegree = 360.0f * rotationCount;
+
+        // 创建旋转动画
+        RotateAnimation rotateAnimation = new RotateAnimation(
+                fromDegree, toDegree,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f
+        );
+        rotateAnimation.setDuration(duration); // 设置旋转时长
+        rotateAnimation.setFillAfter(true); // 让ImageView保持在最后一帧旋转的状态
+
+        // 启动旋转动画
+        imageView.startAnimation(rotateAnimation);
     }
 
 }

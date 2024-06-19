@@ -26,16 +26,6 @@
             android:exported="false"
             tools:ignore="WrongManifestParent" />
         <activity
-
-            android:name="com.example.zrwenxue.moudel.main.home.sczz.SczzActivity"
-            android:exported="false"
-            tools:ignore="WrongManifestParent" />
-        <activity
-
-            android:name="com.example.zrwenxue.moudel.main.home.qtszz.QtszzActivity"
-            android:exported="false"
-            tools:ignore="WrongManifestParent" />
-        <activity
             android:name="com.example.zrwenxue.moudel.main.memory.MemoryActivity"
             android:exported="false"
             android:screenOrientation="portrait"
