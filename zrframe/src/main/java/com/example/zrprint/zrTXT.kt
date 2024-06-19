@@ -3,16 +3,16 @@ package com.example.zrprint
 import java.io.File
 
 
-val inStr="C:\\Users\\1\\Desktop\\新建文件夹\\1.txt"
-val outStr="C:\\Users\\1\\Desktop\\新建文件夹\\113.txt"
+val inStr="C:\\Users\\1\\Desktop\\1\\zgsccd.txt"
+val outStr="C:\\Users\\1\\Desktop\\1\\113.txt"
 fun main() {
 //    getLeftTag(inStr,outStr)
 //    deleteLeftTag(inStr,outStr,"<")
 //    addEndTag(inStr,outStr,"<3>")
-//    subMiddleStr(inStr,outStr,"<1>","<2>")
+    subMiddleStr(inStr,outStr,"<4>","<5>")
 //      deleteTagStr(inStr,outStr)
 
-    main2()
+//    main2()
 }
 
 fun main2() {
@@ -129,19 +129,19 @@ fun subMiddleStr(inputFileStr: String, outputFileStr: String,leftStr: String,rig
             extractTextBetweenTags(it,leftStr,rightStr)
         }
 
-//        extractedLines.forEach { subMiddleStrResults.add(it) }
+        extractedLines.forEach { subMiddleStrResults.add(it) }
         outputFile.writeText(extractedLines.joinToString("\n"))
 
         println("提取完成！1")
     } catch (e: Exception) {
         println("处理文件时出现错误1：${e.message}")
     }
-//
-////    // 排序并去重
-//    val sortedUniqueResults = subMiddleStrResults.distinct().sorted()
-//    println(sortedUniqueResults.size)
-//    // 输出结果
-//    sortedUniqueResults.forEach { println(it) }
+
+//    // 排序并去重
+    val sortedUniqueResults = subMiddleStrResults.distinct().sorted()
+    println(sortedUniqueResults.size)
+    // 输出结果
+    sortedUniqueResults.forEach { println(it) }
 
 }
 fun extractTextBetweenTags(input: String,leftStr:String,rightStr:String): String {
