@@ -12,8 +12,8 @@ object LEDSingle {
     var mBgColorB = 35
 
     var mDoodleViewColorAlpha=255
-    var mTvColorR = 153
-    var mTvColorG = 153
+    var mTvColorR = 0
+    var mTvColorG = 0
     var mTvColorB = 0
 
 

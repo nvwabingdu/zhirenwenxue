@@ -108,6 +108,8 @@ public class DoodleViewActivity extends AppCompatActivity {
                 mDoodleView.back();
             }
         });
+
+
            }
 
     private TitleBarView topView;
@@ -203,10 +205,18 @@ public class DoodleViewActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mDoodleView.setColor(PaintSingle.INSTANCE.getMDoodleViewColor());
         mDoodleView.setBgColor(PaintSingle.INSTANCE.getMDoodleViewBgColor());
         mDoodleView.setType(PaintSingle.INSTANCE.getMDoodleViewType());
-        mDoodleView.setSize(dip2px(PaintSingle.INSTANCE.getMDoodleViewSize()));
+
+        mDoodleView.setSize(dip2px(PaintSingle.INSTANCE.getMDoodleViewSize()+1));
+        mDoodleView.setColor(
+                toHexString(Color.argb(
+                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                        LEDSingle.INSTANCE.getMTvColorR(),
+                        LEDSingle.INSTANCE.getMTvColorG(),
+                        LEDSingle.INSTANCE.getMTvColorB()
+                ))
+        );
     }
 
 
@@ -492,8 +502,6 @@ public class DoodleViewActivity extends AppCompatActivity {
         );
     }
 
-
-
     /**
      * 显示选择画笔形状的对话框
      */
@@ -534,7 +542,6 @@ public class DoodleViewActivity extends AppCompatActivity {
         }
         mShapeDialog.show();
     }
-
 
     /**
      * 工具
