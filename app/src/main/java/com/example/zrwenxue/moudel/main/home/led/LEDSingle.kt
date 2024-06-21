@@ -11,9 +11,11 @@ object LEDSingle {
     var mBgColorG = 51
     var mBgColorB = 35
 
+    var mDoodleViewColorAlpha=255
     var mTvColorR = 153
     var mTvColorG = 153
     var mTvColorB = 0
+
 
     var mTvSize = 60    //文本大小
 

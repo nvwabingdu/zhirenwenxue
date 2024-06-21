@@ -13,6 +13,6 @@ object PaintSingle {
     var mDoodleViewBgColor="#ffffff"
     var mDoodleViewSize=4
     var mDoodleViewType= ActionType.Path
-    var progress=4
+
 
 }

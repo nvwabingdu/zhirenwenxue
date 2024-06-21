@@ -38,7 +38,7 @@ public class DoodleView extends SurfaceView implements SurfaceHolder.Callback {
     private int currentBgColor = Color.YELLOW;
 
     // 画笔的粗细
-    private int currentSize = 5;
+    private int currentSize = 4;
 
     private Paint mPaint;
 

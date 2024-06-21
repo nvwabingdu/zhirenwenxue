@@ -5,7 +5,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,6 +29,7 @@ import com.example.newzr.R;
 import com.example.zrdrawingboard.PaintSingle;
 import com.example.zrtool.ui.noslidingconflictview.NoScrollGridView;
 import com.example.zrwenxue.app.TitleBarView;
+import com.example.zrwenxue.moudel.main.home.led.LEDSingle;
 import com.example.zrwenxue.others.zrdrawingboard.brushviewdemo.AdapterColors;
 import com.example.zrwenxue.others.zrdrawingboard.brushviewdemo.BrushView;
 import com.example.zrwenxue.others.zrdrawingboard.brushviewdemo.ModelColors;
@@ -174,6 +177,7 @@ public class DoodleViewActivity extends AppCompatActivity {
                 }
             });
         }
+
     }
     public void bgAlpha(Activity context, float f) {
         WindowManager.LayoutParams lp = context.getWindow().getAttributes();
@@ -215,25 +219,33 @@ public class DoodleViewActivity extends AppCompatActivity {
     private AdapterColors adapter;
     private ArrayList<ModelColors> itemsColors;
     private View v1;
+
+
+    private AppCompatSeekBar seekBarT1;
+    private TextView seekBarT1Tv;
+    private AppCompatSeekBar seekBarT2;
+    private TextView seekBarT2Tv;
+    private AppCompatSeekBar seekBarT3;
+    private TextView seekBarT3Tv;
     private void brushViewInit(View rootView) {
         /**
          * Getting Colors from resources and add to ArrayList
          */
-        v1=rootView.findViewById(R.id.v1);
-        v1.setBackground(DrawableUtils.createCircleDrawable(R.color.ac_splash_bg_color));
+//        v1=rootView.findViewById(R.id.v1);
+//        v1.setBackground(DrawableUtils.createCircleDrawable(R.color.ac_splash_bg_color));
 
-        int[] col = getResources().getIntArray(R.array.colors);
-        itemsColors = new ArrayList<ModelColors>();
-        for (int i = 0; i < col.length; i++) {
-            ModelColors model = new ModelColors();
-            model.setColor(col[i]);
-            itemsColors.add(model);
-        }
+//        int[] col = getResources().getIntArray(R.array.colors);
+//        itemsColors = new ArrayList<ModelColors>();
+//        for (int i = 0; i < col.length; i++) {
+//            ModelColors model = new ModelColors();
+//            model.setColor(col[i]);
+//            itemsColors.add(model);
+//        }
 
         /**
          * Initialize Views
          */
-        brushView = (BrushView) rootView.findViewById(R.id.brushView);
+
         popClose = (View) rootView.findViewById(R.id.pop_close);
 
         popClose.setOnClickListener(new View.OnClickListener() {
@@ -243,27 +255,44 @@ public class DoodleViewActivity extends AppCompatActivity {
             }
         });
 
-        seekBarSize = (AppCompatSeekBar) rootView.findViewById(R.id.seekBarSize);
-        seekBarAlpha = (AppCompatSeekBar) rootView.findViewById(R.id.seekBarAlpha);
 
+        //预览画笔
+        brushView = (BrushView) rootView.findViewById(R.id.brushView);
+
+
+        seekBarSize = (AppCompatSeekBar) rootView.findViewById(R.id.seekBarSize);
         txtSize = (TextView) rootView.findViewById(R.id.textViewBrushSize);
+
+
+        seekBarAlpha = (AppCompatSeekBar) rootView.findViewById(R.id.seekBarAlpha);
         txtAlpha = (TextView) rootView.findViewById(R.id.textViewBrushAlpha);
 
-        gridView = (NoScrollGridView) rootView.findViewById(R.id.gridViewColors);
+//        gridView = (NoScrollGridView) rootView.findViewById(R.id.gridViewColors);
 
-        /**
-         * SeekBar Listeners
-         */
-        txtSize.setText(PaintSingle.INSTANCE.getProgress()+"");
-        seekBarSize.setProgress(PaintSingle.INSTANCE.getProgress());
+        //颜色  文字
+        seekBarT1 = rootView.findViewById(R.id.seekBar_t_1);
+        seekBarT1Tv = rootView.findViewById(R.id.seekBar_t_1_tv);
+        setSeekBarsss(seekBarT1, seekBarT1Tv, LEDSingle.INSTANCE.getMTvColorR(), 3);
+        seekBarT2 = rootView.findViewById(R.id.seekBar_t_2);
+        seekBarT2Tv = rootView.findViewById(R.id.seekBar_t_2_tv);
+        setSeekBarsss(seekBarT2, seekBarT2Tv, LEDSingle.INSTANCE.getMTvColorG(), 4);
+        seekBarT3 = rootView.findViewById(R.id.seekBar_t_3);
+        seekBarT3Tv = rootView.findViewById(R.id.seekBar_t_3_tv);
+        setSeekBarsss(seekBarT3, seekBarT3Tv, LEDSingle.INSTANCE.getMTvColorB(), 5);
+
+        //初始化
+        setInitSeekBarsss();
 
         seekBarSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                txtSize.setText(String.valueOf(progress));
+                txtSize.setText(progress+"");
+
                 brushView.setRadius(progress);
                 mDoodleView.setSize(dip2px(progress+1));
-                PaintSingle.INSTANCE.setProgress(progress);
+
+                PaintSingle.INSTANCE.setMDoodleViewSize(progress);
             }
 
             @Override
@@ -276,10 +305,146 @@ public class DoodleViewActivity extends AppCompatActivity {
         });
 
         seekBarAlpha.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                txtAlpha.setText(String.valueOf(progress));
+
+                txtAlpha.setText(progress+"");
                 brushView.setAlphaValue(progress);
+                mDoodleView.setColor(toHexString(Color.argb(
+                                       progress,
+                                        LEDSingle.INSTANCE.getMTvColorR(),
+                                        LEDSingle.INSTANCE.getMTvColorG(),
+                                        LEDSingle.INSTANCE.getMTvColorB()
+                                )
+                        )
+                );
+
+                LEDSingle.INSTANCE.setMDoodleViewColorAlpha(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+//                Log.e("tag124654",LEDSingle.INSTANCE.getMDoodleViewColorAlpha()+
+//                        " ===="+LEDSingle.INSTANCE.getMTvColorR()+
+//                        "===="+LEDSingle.INSTANCE.getMTvColorG()+
+//                "===="+LEDSingle.INSTANCE.getMTvColorB());
+
+                Log.e("tag124654",toHexString(Color.argb(
+                                LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                LEDSingle.INSTANCE.getMTvColorR(),
+                                LEDSingle.INSTANCE.getMTvColorG(),
+                                LEDSingle.INSTANCE.getMTvColorB()
+                        )));
+
+
+
+            }
+        });
+//
+//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                brushView.setColor(itemsColors.get(position).getColor());
+//                Log.e("taggg111",itemsColors.get(position).getColor()+"");
+//                mDoodleView.setColor("#" + Integer.toHexString(itemsColors.get(position).getColor()));
+//                Log.e("taggg222","#" + Integer.toHexString(itemsColors.get(position).getColor()));
+//            }
+//        });
+//
+//        adapter = new AdapterColors(this, itemsColors);
+//        gridView.setAdapter(adapter);
+    }
+
+    private void setSeekBarsss(SeekBar mSeekBar, TextView tv, int getProgress, int singleType) {
+        //初始化 进度条
+        mSeekBar.setProgress(getProgress);
+        //初始化 进度条后面文本
+        switch (singleType) {
+            case 3:
+                tv.setText(LEDSingle.INSTANCE.getMTvColorR() + "");
+                break;
+            case 4:
+                tv.setText(LEDSingle.INSTANCE.getMTvColorG() + "");
+                break;
+            case 5:
+                tv.setText(LEDSingle.INSTANCE.getMTvColorB() + "");
+                break;
+        }
+
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                tv.setText(String.valueOf(progress));//进度监听
+                switch (singleType) {
+                    case 3:
+                        LEDSingle.INSTANCE.setMTvColorR(progress);
+                        brushView.setColor(
+                                Color.argb(
+                                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                        progress,
+                                        LEDSingle.INSTANCE.getMTvColorG(),
+                                        LEDSingle.INSTANCE.getMTvColorB()
+                                )
+                        );
+                        mDoodleView.setColor(toHexString(Color.argb(
+                                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                                progress,
+                                                LEDSingle.INSTANCE.getMTvColorG(),
+                                                LEDSingle.INSTANCE.getMTvColorB()
+                                        )
+                                )
+                        );
+                        break;
+                    case 4:
+                        LEDSingle.INSTANCE.setMTvColorG(progress);
+                        brushView.setColor(
+                                Color.argb(
+                                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                        LEDSingle.INSTANCE.getMTvColorR(),
+                                        progress,
+                                        LEDSingle.INSTANCE.getMTvColorB()
+                                )
+                        );
+                        mDoodleView.setColor(
+                                toHexString(Color.argb(
+                                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                                LEDSingle.INSTANCE.getMTvColorR(),
+                                                progress,
+                                                LEDSingle.INSTANCE.getMTvColorB()
+                                        )
+                                )
+                        );
+
+                        break;
+                    case 5:
+                        LEDSingle.INSTANCE.setMTvColorB(progress);
+                        brushView.setColor(
+                                Color.argb(
+                                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                        LEDSingle.INSTANCE.getMTvColorR(),
+                                        LEDSingle.INSTANCE.getMTvColorG(),
+                                        progress
+                                )
+                        );
+                        mDoodleView.setColor(
+                                toHexString(Color.argb(
+                                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                                LEDSingle.INSTANCE.getMTvColorR(),
+                                                LEDSingle.INSTANCE.getMTvColorG(),
+                                                progress
+                                        )
+                                )
+                        );
+                        break;
+                }
+
+
             }
 
             @Override
@@ -290,21 +455,42 @@ public class DoodleViewActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                brushView.setColor(itemsColors.get(position).getColor());
-                mDoodleView.setColor("#" + Integer.toHexString(itemsColors.get(position).getColor()));
-            }
-        });
-
-        adapter = new AdapterColors(this, itemsColors);
-        gridView.setAdapter(adapter);
     }
 
 
+    /**
+     * 设置初始化逻辑
+     */
+    private void setInitSeekBarsss(){
+        txtSize.setText(PaintSingle.INSTANCE.getMDoodleViewSize()+"");
+        seekBarSize.setProgress(PaintSingle.INSTANCE.getMDoodleViewSize());
 
+
+        txtAlpha.setText(LEDSingle.INSTANCE.getMDoodleViewColorAlpha()+"");
+        seekBarAlpha.setProgress(LEDSingle.INSTANCE.getMDoodleViewColorAlpha());
+
+
+        brushView.setRadius(PaintSingle.INSTANCE.getMDoodleViewSize());
+        brushView.setColor(
+                Color.argb(
+                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                        LEDSingle.INSTANCE.getMTvColorR(),
+                        LEDSingle.INSTANCE.getMTvColorG(),
+                        LEDSingle.INSTANCE.getMTvColorB()
+                )
+        );
+
+
+        mDoodleView.setSize(dip2px(PaintSingle.INSTANCE.getMDoodleViewSize()+1));
+        mDoodleView.setColor(
+                        toHexString(Color.argb(
+                                LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                LEDSingle.INSTANCE.getMTvColorR(),
+                                LEDSingle.INSTANCE.getMTvColorG(),
+                                LEDSingle.INSTANCE.getMTvColorB()
+                        ))
+        );
+    }
 
 
 
@@ -359,6 +545,12 @@ public class DoodleViewActivity extends AppCompatActivity {
         final float scale = getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
+
+
+    public static String toHexString(int color) {
+        return String.format("#%08X",  color);
+    }
+
 }
 
 
