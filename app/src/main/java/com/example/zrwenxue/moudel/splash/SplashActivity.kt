@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import com.example.newzr.R
 import com.example.zrwenxue.MainActivity
 import com.example.zrwenxue.moudel.BaseActivity
+import com.example.zrwenxue.moudel.login.LoginActivity
 
 
 @SuppressLint("CustomSplashScreen")
@@ -28,7 +29,7 @@ class SplashActivity : BaseActivity() {
                 /**
                  * 直接跳到主页
                  */
-                MainActivity.startAc(this,"","")
+                LoginActivity.startAc(this,"","")
         }, 2000)
     }
 
@@ -44,6 +45,7 @@ class SplashActivity : BaseActivity() {
      * 本页面屏蔽返回键
      */
     override fun onBackPressed() {
+
         return
     }
 

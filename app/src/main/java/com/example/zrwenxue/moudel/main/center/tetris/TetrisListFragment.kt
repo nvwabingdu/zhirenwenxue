@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newzr.R
 import com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
 import com.example.zrwenxue.moudel.BaseFragment
+import com.example.zrwenxue.moudel.main.center.crypt.CryptActivity
 import com.example.zrwenxue.moudel.main.home.eng.SearchWordActivity
 import com.example.zrwenxue.moudel.main.home.led.LEDActivity
 import com.example.zrwenxue.moudel.main.home.lottery.LotteryActivity
@@ -87,11 +88,11 @@ class TetrisListFragment : BaseFragment() {
 //            temp4(i, Singleton.getInstance().fileLines!![i].split("：")[0])
 //        }
         temp4(0, "涂鸦画板")
-        temp4(1, "LED滚动字幕")
-        temp4(2, "幸运彩票")
-        temp4(3, "搜索单词")
-        temp4(4, "短语学习")
-        temp4(5, "认识音标")
+        temp4(1, "幸运彩票")
+        temp4(2, "搜索单词")
+        temp4(3, "短语学习")
+        temp4(4, "认识音标")
+        temp4(5, "加密解密")
 
 
         m1 = rootView!!.findViewById(R.id.tetris_1)
@@ -388,25 +389,29 @@ class TetrisListFragment : BaseFragment() {
                             DoodleViewActivity::class.java, "", ""
                         )
                     }
+//                    1->{
+//                        //跳转LED页面
+//                        MyStatic.setActivityString(activity, LEDActivity::class.java, "", "")
+//                    }
                     1->{
-                        //跳转LED页面
-                        MyStatic.setActivityString(activity, LEDActivity::class.java, "", "")
-                    }
-                    2->{
                         //跳转抽奖页面
                         MyStatic.setActivityString(activity, LotteryActivity::class.java, "", "")
                     }
-                    3->{
+                    2->{
                         //跳转查找单词页面
                         MyStatic.setActivityString(activity, SearchWordActivity::class.java, "", "")
                     }
-                    4->{
+                    3->{
                         //跳转短语页面
                         MyStatic.setActivityString(activity, PhraseActivity::class.java, "", "")
                     }
-                    5->{
+                    4->{
                         //跳转短语页面
                         MyStatic.setActivityString(activity, MemoryActivity::class.java, "", "")
+                    }
+                    5->{
+                        //加密解密
+                        MyStatic.setActivityString(activity, CryptActivity::class.java, "", "")
                     }
                 }
 

@@ -13,12 +13,18 @@ import android.view.WindowManager
 import android.webkit.WebView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
+import android.widget.TextView
+import android.widget.Toast
 import com.example.newzr.R
 import net.sourceforge.pinyin4j.PinyinHelper
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
 import kotlin.random.Random
 
 
@@ -28,6 +34,11 @@ import kotlin.random.Random
  * @TIME 09:51
  */
 object Single {
+
+
+
+
+
     fun generateRandomColors(): Triple<String, String, String> {
         val colorSet = HashSet<Int>()
         val colors = arrayListOf<String>()
@@ -183,6 +194,78 @@ object Single {
         }else{
             ""
         }
+    }
+
+
+
+
+    /**
+     * 加密解密
+     */
+    fun encryptAES(plaintext: String, key: String): String {
+
+
+        val keyBytes = key.toByteArray(Charsets.UTF_8)
+        val secretKey = SecretKeySpec(keyBytes, "AES")
+
+        val cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey)
+        val encryptedBytes = cipher.doFinal(plaintext.toByteArray(Charsets.UTF_8))
+
+
+        return encryptedBytes.toHexString()
+    }
+
+    fun decryptAES(ciphertext: String, key: String): String {
+
+
+        val keyBytes = key.toByteArray(Charsets.UTF_8)
+        val secretKey = SecretKeySpec(keyBytes, "AES")
+
+        val cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
+        cipher.init(Cipher.DECRYPT_MODE, secretKey)
+        val decryptedBytes = cipher.doFinal(ciphertext.hexStringToByteArray())
+
+
+        return decryptedBytes.toString(Charsets.UTF_8)
+    }
+
+    private fun ByteArray.toHexString() = joinToString("") { "%02x".format(it) }
+    private fun String.hexStringToByteArray() = chunked(2).map { it.toInt(16).toByte() }.toByteArray()
+
+
+    /**
+     * 中央吐司
+     */
+    @SuppressLint("MissingInflatedId", "SuspiciousIndentation")
+    fun centerToast(context: Context, text: String) {
+        val toast = Toast(context)
+        val view: View =
+            LayoutInflater.from(context)
+                .inflate(R.layout.home_dialog_net_error, null)
+        val tv: TextView = view.findViewById(R.id.center_toast_text)
+        tv.text = text
+        toast.setView(view)
+        toast.setGravity(Gravity.CENTER, 0, 0)
+        toast.show()
+    }
+
+
+    //获取MD5  小写
+    fun getMD5Hash(text: String): String? {
+        try {
+            val md = MessageDigest.getInstance("MD5")
+            md.update(text.toByteArray())
+            val digest = md.digest()
+            val builder = StringBuilder()
+            for (b in digest) {
+                builder.append(String.format("%02x", b.toInt() and 0xff))
+            }
+            return builder.toString()
+        } catch (e: NoSuchAlgorithmException) {
+            e.printStackTrace()
+        }
+        return null
     }
 
 }
