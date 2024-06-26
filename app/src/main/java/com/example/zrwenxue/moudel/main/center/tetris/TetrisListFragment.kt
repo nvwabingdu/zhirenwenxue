@@ -87,12 +87,12 @@ class TetrisListFragment : BaseFragment() {
 //        for (i in 0..10){
 //            temp4(i, Singleton.getInstance().fileLines!![i].split("：")[0])
 //        }
-        temp4(0, "涂鸦画板")
-        temp4(1, "幸运彩票")
+        temp4(0, "智人币")
+        temp4(1, "智人涂鸦")
         temp4(2, "搜索单词")
         temp4(3, "短语学习")
         temp4(4, "认识音标")
-        temp4(5, "加密解密")
+        temp4(5, "幸运彩票")
 
 
         m1 = rootView!!.findViewById(R.id.tetris_1)
@@ -383,19 +383,22 @@ class TetrisListFragment : BaseFragment() {
 //                    Toast.LENGTH_SHORT).show()
                 when(tempPosition){
                     0->{
-                        //跳转涂鸦页面
-                        MyStatic.setActivityString(
-                            activity,
-                            DoodleViewActivity::class.java, "", ""
-                        )
+
+                        //智人币
+                        MyStatic.setActivityString(activity, CryptActivity::class.java, "", "")
+
                     }
 //                    1->{
 //                        //跳转LED页面
 //                        MyStatic.setActivityString(activity, LEDActivity::class.java, "", "")
 //                    }
                     1->{
-                        //跳转抽奖页面
-                        MyStatic.setActivityString(activity, LotteryActivity::class.java, "", "")
+                        //跳转涂鸦页面
+                        MyStatic.setActivityString(
+                            activity,
+                            DoodleViewActivity::class.java, "", ""
+                        )
+
                     }
                     2->{
                         //跳转查找单词页面
@@ -410,8 +413,8 @@ class TetrisListFragment : BaseFragment() {
                         MyStatic.setActivityString(activity, MemoryActivity::class.java, "", "")
                     }
                     5->{
-                        //加密解密
-                        MyStatic.setActivityString(activity, CryptActivity::class.java, "", "")
+                        //跳转抽奖页面
+                        MyStatic.setActivityString(activity, LotteryActivity::class.java, "", "")
                     }
                 }
 

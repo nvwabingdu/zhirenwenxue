@@ -6,21 +6,42 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.newzr.R
 import com.example.zrwenxue.app.Single
+import com.example.zrwenxue.app.TitleBarView
+import com.example.zrwenxue.moudel.BaseActivity
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class CryptActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_crypt)
+class CryptActivity : BaseActivity(){
 
+
+
+    override fun layoutResId(): Int = R.layout.activity_crypt
+
+    override fun init() {
+        //设置顶部
+        setTopView()
         //设置智人币
         setZrb()
+    }
+    /**
+     * 设置顶部
+     */
+    var topView: TitleBarView? = null
+    private fun setTopView() {
+        topView = findViewById(R.id.title_bar)
+        topView!!.setTitle("智人币")
+        //左边返回
+        topView!!.setOnclickLeft(
+            View.VISIBLE,
+            View.OnClickListener { finish() })
+        //右边弹出pop
+        topView!!.setOnclickRight(View.INVISIBLE, View.OnClickListener { })
     }
 
 
