@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.SeekBar;
@@ -251,6 +250,25 @@ public class DoodleViewActivity extends AppCompatActivity {
 //            model.setColor(col[i]);
 //            itemsColors.add(model);
 //        }
+
+
+
+
+
+
+//// 将 Bitmap 对象转换为 Base64 编码的字符串
+//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+//        byte[] byteArray = outputStream.toByteArray();
+//        String base64String = Base64.encodeToString(byteArray, Base64.DEFAULT);
+//
+//// 将 Base64 编码的字符串还原为 Bitmap 对象
+//        byte[] decodedByteArray = Base64.decode(base64String, Base64.DEFAULT);
+//        Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedByteArray, 0, decodedByteArray.length);
+
+
+
+
 
         /**
          * Initialize Views
