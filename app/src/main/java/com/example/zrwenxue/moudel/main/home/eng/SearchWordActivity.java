@@ -2,7 +2,6 @@ package com.example.zrwenxue.moudel.main.home.eng;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newzr.R;
@@ -33,7 +31,6 @@ import com.example.zrwenxue.moudel.BaseActivity;
  * Time: 13:00
  */
 public class SearchWordActivity extends BaseActivity {
-
     /**
      * 设置顶部
      */
@@ -42,10 +39,10 @@ public class SearchWordActivity extends BaseActivity {
         topView = findViewById(R.id.title_bar);
         topView.setTitle("搜索单词");
         //左边返回
-        topView.setOnclickLeft(View.VISIBLE, new View.OnClickListener() {
+        topView.setOnclickLeft(View.INVISIBLE, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+
             }
         });
         //右边弹出pop
@@ -66,27 +63,22 @@ public class SearchWordActivity extends BaseActivity {
     @Override
     protected void init() {
         setTopView();
+        initView();//初始化数据
+        webView = findViewById(R.id.eng_webview);
+        //查找数据
+        EngNode.startThread(this,webView, Singleton.getInstance().rawID[DictTAG],Singleton.getInstance().nameArry[DictTAG],"good",2);
     }
 
     RecyclerView recyclerView;
     EditText editText;
     ImageView img,img2;
+    View img1;
     private MyDrawerLayout mDrawerLayout;
     private ListView listView;
     private int DictTAG=0;
 
 
     WebView webView;
-
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-            initView();//初始化数据
-            webView = findViewById(R.id.eng_webview);
-            //查找数据
-            EngNode.startThread(this,webView, Singleton.getInstance().rawID[DictTAG],Singleton.getInstance().nameArry[DictTAG],"good",2);
-    }
 
     /**
      * 初始化控件等数据
@@ -131,6 +123,15 @@ public class SearchWordActivity extends BaseActivity {
 
             }
         });
+
+        img1=findViewById(R.id.eng_img1);
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         img2=findViewById(R.id.eng_img2);
         img2.setOnClickListener(new View.OnClickListener() {//设置Drawerlayout的开关
             @Override

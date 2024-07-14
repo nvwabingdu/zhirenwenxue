@@ -3,76 +3,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <com.example.zrwenxue.app.TitleBarView
         android:id="@+id/title_bar"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <View
+        android:background="@color/theme_up"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
 
     <com.example.zrtool.ui.custom.MyDrawerLayout
         android:id="@+id/drawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:background="@color/theme_up"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="60dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:id="@+id/eng_img1"
+                    android:gravity="center"
+                    android:layout_weight="1.5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:rotation="90"
+                        android:background="@drawable/ic_baseline_arrow_downward_24" />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:background="#999">
+                    android:gravity="center">
 
-                    <LinearLayout
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_alignParentStart="true"
-                        android:gravity="center">
+                    <ImageView
+                        android:id="@+id/eng_img2"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/ic_baseline_format_list_bulleted_24" />
+                </LinearLayout>
+                <EditText
+                    android:layout_weight="7"
+                    android:id="@+id/eng_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/tv_search"
+                    android:gravity="center"
+                    android:hint="请输入单词"
+                    android:textColor="#666"
+                    android:textColorHint="#999" />
 
-                        <ImageView
-                            android:id="@+id/eng_img2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:background="@drawable/ic_baseline_format_list_bulleted_24"
-                            android:padding="5dp"
-                            android:rotation="180" />
-                    </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
 
-                    <EditText
-                        android:id="@+id/eng_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="80dp"
-                        android:layout_marginRight="80dp"
-                        android:background="@drawable/tv_search"
-                        android:gravity="center"
-                        android:hint="请输入单词"
-                        android:textColor="#666"
-                        android:textColorHint="#999" />
-
-                    <LinearLayout
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_alignParentEnd="true"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:id="@+id/eng_img"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/find" />
-                    </LinearLayout>
-
-
-                </RelativeLayout>
-            </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/eng_img"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/home_search_1" />
+                </LinearLayout>
+            </LinearLayout>
 
             <WebView
                 android:id="@+id/eng_webview"
@@ -81,6 +89,8 @@
 
 
         </LinearLayout>
+
+
         <!--侧或菜单界面-->
         <LinearLayout
             android:id="@+id/ll_tabs"

@@ -30,6 +30,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.newzr.R;
 import com.example.zrtool.utils.ToastUtils;
 import com.example.zrwenxue.app.TitleBarView;
+import com.example.zrwenxue.moudel.main.home.eng.SearchWordActivity;
 import com.example.zrwenxue.moudel.main.word.pickerandpop.CommonPopWindow;
 import com.example.zrwenxue.moudel.main.word.pickerandpop.PickerScrollView;
 import com.example.zrwenxue.moudel.main.word.singleworddetails.tabwebview.ViewPagerFragmentAdapter;
@@ -49,7 +50,7 @@ import java.util.ArrayList;
  */
 public class WordFragment extends Fragment {
     View view;
-    ImageView imgview, up, down, cleanAll,show_yb;
+    ImageView imgview, up, down, cleanAll, show_yb;
 
 
     @Nullable
@@ -64,6 +65,7 @@ public class WordFragment extends Fragment {
      * 设置顶部
      */
     TitleBarView topView;
+
     private void setTopView() {
         topView = view.findViewById(R.id.title_view);
         topView.setTitle("手写单词");
@@ -77,8 +79,8 @@ public class WordFragment extends Fragment {
         topView.setOnclickRight(View.VISIBLE, getResources().getDrawable(R.drawable.hp_icon_search), new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Toast.makeText(requireActivity(), "点击搜索", Toast.LENGTH_SHORT).show();
+                //跳转查找单词页面
+                MyStatic.setActivityString(requireActivity(), SearchWordActivity.class, "", "");
             }
         });
     }
@@ -114,21 +116,21 @@ public class WordFragment extends Fragment {
 
 
         //显示音标
-        show_yb=view.findViewById(R.id.img_word_show_yb);
+        show_yb = view.findViewById(R.id.img_word_show_yb);
 
         show_yb.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 startRotation(show_yb, 1, 500);// 旋转3次，时长为1秒
-                 //显示音标和不显示音标
-                 if (Singleton.getInstance().showSoundMark) {
-                     Singleton.getInstance().showSoundMark = false;
-                 } else {
-                     Singleton.getInstance().showSoundMark = true;
-                 }
-                 turnON();
-             }
-         });
+            @Override
+            public void onClick(View v) {
+                startRotation(show_yb, 1, 500);// 旋转3次，时长为1秒
+                //显示音标和不显示音标
+                if (Singleton.getInstance().showSoundMark) {
+                    Singleton.getInstance().showSoundMark = false;
+                } else {
+                    Singleton.getInstance().showSoundMark = true;
+                }
+                turnON();
+            }
+        });
 
 
         //向下翻页
@@ -172,8 +174,8 @@ public class WordFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         WordFromShardToSingleton.setShardWordTimes(getActivity(), "");
-                        
-                        ToastUtils.INSTANCE.showCenterToast(getActivity(),"您已清空操作记录，重启APP之后生效");
+
+                        ToastUtils.INSTANCE.showCenterToast(getActivity(), "您已清空操作记录，重启APP之后生效");
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {//添加取消

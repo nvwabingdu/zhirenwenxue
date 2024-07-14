@@ -89,10 +89,10 @@ class TetrisListFragment : BaseFragment() {
 //        }
         temp4(0, "智人币")
         temp4(1, "智人涂鸦")
-        temp4(2, "搜索单词")
-        temp4(3, "短语学习")
-        temp4(4, "认识音标")
-        temp4(5, "幸运彩票")
+//        temp4(2, "搜索单词")
+        temp4(2, "短语学习")
+        temp4(3, "认识音标")
+        temp4(4, "幸运彩票")
 
 
         m1 = rootView!!.findViewById(R.id.tetris_1)
@@ -400,19 +400,19 @@ class TetrisListFragment : BaseFragment() {
                         )
 
                     }
+//                    2->{
+//                        //跳转查找单词页面
+//                        MyStatic.setActivityString(activity, SearchWordActivity::class.java, "", "")
+//                    }
                     2->{
-                        //跳转查找单词页面
-                        MyStatic.setActivityString(activity, SearchWordActivity::class.java, "", "")
-                    }
-                    3->{
                         //跳转短语页面
                         MyStatic.setActivityString(activity, PhraseActivity::class.java, "", "")
                     }
-                    4->{
+                    3->{
                         //跳转短语页面
                         MyStatic.setActivityString(activity, MemoryActivity::class.java, "", "")
                     }
-                    5->{
+                    4->{
                         //跳转抽奖页面
                         MyStatic.setActivityString(activity, LotteryActivity::class.java, "", "")
                     }
