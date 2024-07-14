@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Zrb"
         android:textColor="@color/black"
+        android:text="Zrb智人币"
         android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
@@ -69,15 +69,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Creat Time："
+                android:text="创建时间："
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_zrb_time"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -91,7 +90,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Holder："
+                android:text="持有者："
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -99,7 +98,7 @@
                 android:id="@+id/tv_zrb_holder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="" />
+                 />
         </LinearLayout>
 
         <LinearLayout
@@ -110,17 +109,17 @@
             android:orientation="horizontal">
 
             <TextView
+                android:layout_gravity="start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Holder Password："
+                android:text="智人简介："
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_zrb_holder_password"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,20 +130,23 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Balance："
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:text="余额："
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tv_zrb_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:textColor="#ffd600"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/zrb_explain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -162,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="1.智人币仅能在本APP使用\n\n2.智人币来源于各种任务和特殊渠道\n\n3.每天能获取的智人币上限为0.1个智人币\n\n4.智人交易单位最小为1个智人币\n\n5.智人币的作用可用于购买涂鸦画" />
+                android:text="1.智人币仅能在本APP使用\n\n2.智人币来源于各种任务和特殊渠道\n\n3.每天能获取的智人币上限为1个智人币\n\n4.智人交易单位最小为1个智人币\n\n5.智人币的作用可用于购买涂鸦画" />
         </LinearLayout>
 
     </LinearLayout>

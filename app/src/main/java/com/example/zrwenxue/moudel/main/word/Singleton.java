@@ -175,4 +175,9 @@ public class Singleton {
     public int gameWordBeanListTAG=-1;//用于存储game的对象的角标
     public int gameWordBean_time=0;//用于存储game的对象点击的次数
 
+
+
+
+
+
 }

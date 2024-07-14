@@ -4,24 +4,20 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.example.newzr.R
 import com.example.zrwenxue.app.Single
 import com.example.zrwenxue.app.TitleBarView
 import com.example.zrwenxue.moudel.BaseActivity
 import com.example.zrwenxue.moudel.main.word.MyStatic
-import com.example.zrwenxue.others.zrdrawingboard.DoodleViewActivity
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class CryptActivity : BaseActivity(){
-
+class CryptActivity : BaseActivity() {
 
 
     override fun layoutResId(): Int = R.layout.activity_crypt
@@ -32,6 +28,7 @@ class CryptActivity : BaseActivity(){
         //设置智人币
         setZrb()
     }
+
     /**
      * 设置顶部
      */
@@ -65,7 +62,7 @@ class CryptActivity : BaseActivity(){
 
     //设置输入
     @SuppressLint("SetTextI18n")
-    private fun setZrb(){
+    private fun setZrb() {
         ciphertextOutput = findViewById(R.id.ciphertext_output)
         tvZrb = findViewById(R.id.tv_zrb)
         tvZrbCopy = findViewById(R.id.tv_zrb_copy)
@@ -76,7 +73,6 @@ class CryptActivity : BaseActivity(){
 
         b1 = findViewById(R.id.b1)
         b1!!.setOnClickListener {
-            //跳转涂鸦页面
             MyStatic.setActivityString(
                 this,
                 ZrbTradeActivity::class.java, "", ""
@@ -85,7 +81,6 @@ class CryptActivity : BaseActivity(){
 
         b2 = findViewById(R.id.b2)
         b2!!.setOnClickListener {
-            //跳转涂鸦页面
             MyStatic.setActivityString(
                 this,
                 ZrbGraffitiActivity::class.java, "", ""
@@ -94,7 +89,6 @@ class CryptActivity : BaseActivity(){
 
         b3 = findViewById(R.id.b3)
         b3!!.setOnClickListener {
-            //跳转涂鸦页面
             MyStatic.setActivityString(
                 this,
                 GetZrbActivity::class.java, "", ""
@@ -103,16 +97,11 @@ class CryptActivity : BaseActivity(){
 
         b4 = findViewById(R.id.b4)
         b4!!.setOnClickListener {
-            //跳转涂鸦页面
             MyStatic.setActivityString(
                 this,
                 BuyZrbActivity::class.java, "", ""
             )
         }
-
-
-
-
 
 
         //这里只是做展示  通过共享参数来取
@@ -130,28 +119,31 @@ class CryptActivity : BaseActivity(){
             Single.centerToast(this, "已复制")
         }
 
-//        val timestamp = 1624553400000L // 2021-06-23 12:30:00
-        val date = Date(time!!.toLong())
+        val date = Date(time!!.toLong())//val timestamp = 1624553400000L // 2021-06-23 12:30:00
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val formattedDate = dateFormat.format(date)
-        tvZrbTime!!.text=formattedDate
+        tvZrbTime!!.text = formattedDate
 
-        tvZrbHolder!!.text=savedName
-        tvZrbHolderPassword!!.text=savedPassword
-        tvZrbBalance!!.text=balance
+        tvZrbHolder!!.text = savedName
+        tvZrbHolderPassword!!.text = savedPassword
+        tvZrbBalance!!.text = balance
 
-        val zrbShow="我爱张娟"+"|"+time+"|"+savedName+"|"+savedPassword+"|"+balance
+        val zrbShow = "我爱张娟" + "|" + time + "|" + savedName + "|" + savedPassword + "|" + balance+ "|"+"我这辈子最喜欢张娟"
 
-        Log.e("tag4546","明文："+zrbShow)
+        Log.e("tag4546", "明文：" + zrbShow)
 
         try {
             //通过AES加密明文   并将密码转为md5  作为密钥
-            val zrb="Zrb-"+Single.encryptAES(zrbShow,Single.getMD5Hash(savedPassword!!)!!)+Single.getMD5Hash(savedPassword)!!
-            tvZrb!!.text=zrb
+            val zrb = "Zrb-" + Single.encryptAES(
+                zrbShow,
+                Single.getMD5Hash(savedPassword!!)!!
+            ) + Single.getMD5Hash(savedPassword)!!
+            tvZrb!!.text = zrb
 
-            Log.e("tag4546","zrb："+zrb)
-        }catch (e:Exception){
-            Log.e("tag4546",e.toString())
+            Log.e("tag4546", "zrb：" + zrb)
+        } catch (e: Exception) {
+            MyStatic.showToast(this,e.toString())
+            Log.e("tag4546", e.toString())
         }
     }
 }

@@ -940,7 +940,40 @@ public class MyStatic {
     }
 
 
+    /**
+     * 截取字符串最后32位 这里用于截取智人币的MD5密码
+     * @param input
+     * @return
+     */
+    public static String trimAndTakeLast32(String input) {
+        // 去除字符串前后的空格
+        String trimmed = input.trim();
 
+        // 如果字符串长度小于32位,则直接返回
+        if (trimmed.length() <= 32) {
+            return trimmed;
+        }
+
+        // 否则,截取最后32位
+        return trimmed.substring(trimmed.length() - 32);
+    }
+
+
+    /**
+     * 截取字符串4-倒数33位
+     * @param input
+     * @return
+     */
+    public static String extractSubstring(String input) {
+        // 检查输入字符串的长度
+        if (input.length() < 37) {
+            // 如果字符串长度小于37,直接返回
+            return input;
+        }
+
+        // 从第四位开始截取,截取到倒数第33位
+        return input.substring(4, input.length() - 32);
+    }
 
 
 }

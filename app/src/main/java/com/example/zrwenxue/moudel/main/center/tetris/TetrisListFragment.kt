@@ -89,7 +89,6 @@ class TetrisListFragment : BaseFragment() {
 //        }
         temp4(0, "智人币")
         temp4(1, "智人涂鸦")
-//        temp4(2, "搜索单词")
         temp4(2, "短语学习")
         temp4(3, "认识音标")
         temp4(4, "幸运彩票")
@@ -400,10 +399,6 @@ class TetrisListFragment : BaseFragment() {
                         )
 
                     }
-//                    2->{
-//                        //跳转查找单词页面
-//                        MyStatic.setActivityString(activity, SearchWordActivity::class.java, "", "")
-//                    }
                     2->{
                         //跳转短语页面
                         MyStatic.setActivityString(activity, PhraseActivity::class.java, "", "")
@@ -416,6 +411,9 @@ class TetrisListFragment : BaseFragment() {
                         //跳转抽奖页面
                         MyStatic.setActivityString(activity, LotteryActivity::class.java, "", "")
                     }
+
+
+
                 }
 
                 return true
