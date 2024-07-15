@@ -1,32 +1,23 @@
 package com.example.zrwenxue.moudel.main.center.crypt
 
-import android.annotation.SuppressLint
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
-import android.util.Log
+
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
 import com.example.newzr.R
-import com.example.zrwenxue.app.Single
 import com.example.zrwenxue.app.TitleBarView
 import com.example.zrwenxue.moudel.BaseActivity
-import com.example.zrwenxue.moudel.main.word.MyStatic
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import com.example.zrwenxue.moudel.main.word.singleworddetails.tabwebview.ViewPagerFragmentAdapter
+import com.google.android.material.tabs.TabLayout
 
 class CryptActivity : BaseActivity() {
-
-
     override fun layoutResId(): Int = R.layout.activity_crypt
 
     override fun init() {
         //设置顶部
         setTopView()
-        //设置智人币
-        setZrb()
+        //设置联动布局
+        setTabLayout_viewpager_fragment()
     }
 
     /**
@@ -44,107 +35,54 @@ class CryptActivity : BaseActivity() {
         topView!!.setOnclickRight(View.INVISIBLE, View.OnClickListener { })
     }
 
+    /**
+     * ====================================================设置setTabLayout  + fragment
+     */
+    private var mViewPager: ViewPager? = null
+    private var mTabLayout: TabLayout? = null
 
-    private var ciphertextOutput: TextView? = null
-    private var tvZrb: TextView? = null
-    private var tvZrbCopy: TextView? = null
-    private var tvZrbTime: TextView? = null
-    private var tvZrbHolder: TextView? = null
-    private var tvZrbHolderPassword: TextView? = null
-    private var tvZrbBalance: TextView? = null
+    fun setTabLayout_viewpager_fragment() {
+        mViewPager = findViewById<ViewPager>(R.id.fragment_word_viewpager)
+        mTabLayout = findViewById<TabLayout>(R.id.fragment_word_tabs)
+        //tab文字的集合
+        val mTitleList = ArrayList<String>()
+        mTitleList.add("我的")
+        mTitleList.add("获取")
+        mTitleList.add("买画")
 
+        val webAdapter =
+            ViewPagerFragmentAdapter(
+                getSupportFragmentManager(),
+                getFragmentList(),
+                mTitleList
+            ) //数组转化为集合
+        //给ViewPager设置适配器
+        mViewPager!!.adapter = webAdapter
 
-    private var b1: Button? = null
-    private var b2: Button? = null
-    private var b3: Button? = null
-    private var b4: Button? = null
-
-
-    //设置输入
-    @SuppressLint("SetTextI18n")
-    private fun setZrb() {
-        ciphertextOutput = findViewById(R.id.ciphertext_output)
-        tvZrb = findViewById(R.id.tv_zrb)
-        tvZrbCopy = findViewById(R.id.tv_zrb_copy)
-        tvZrbTime = findViewById(R.id.tv_zrb_time)
-        tvZrbHolder = findViewById(R.id.tv_zrb_holder)
-        tvZrbHolderPassword = findViewById(R.id.tv_zrb_holder_password)
-        tvZrbBalance = findViewById(R.id.tv_zrb_balance)
-
-        b1 = findViewById(R.id.b1)
-        b1!!.setOnClickListener {
-            MyStatic.setActivityString(
-                this,
-                ZrbTradeActivity::class.java, "", ""
-            )
-        }
-
-        b2 = findViewById(R.id.b2)
-        b2!!.setOnClickListener {
-            MyStatic.setActivityString(
-                this,
-                ZrbGraffitiActivity::class.java, "", ""
-            )
-        }
-
-        b3 = findViewById(R.id.b3)
-        b3!!.setOnClickListener {
-            MyStatic.setActivityString(
-                this,
-                GetZrbActivity::class.java, "", ""
-            )
-        }
-
-        b4 = findViewById(R.id.b4)
-        b4!!.setOnClickListener {
-            MyStatic.setActivityString(
-                this,
-                BuyZrbActivity::class.java, "", ""
-            )
-        }
-
-
-        //这里只是做展示  通过共享参数来取
-        val sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE)
-        val time = sharedPreferences.getString("time", null)
-        val savedName = sharedPreferences.getString("name", null)
-        val savedPassword = sharedPreferences.getString("password", null)
-        val balance = sharedPreferences.getString("balance", null)
-
-        tvZrbCopy!!.setOnClickListener {
-            val clipboard: ClipboardManager =
-                this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("label", tvZrb!!.text.toString())
-            clipboard.setPrimaryClip(clip)
-            Single.centerToast(this, "已复制")
-        }
-
-        val date = Date(time!!.toLong())//val timestamp = 1624553400000L // 2021-06-23 12:30:00
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-        val formattedDate = dateFormat.format(date)
-        tvZrbTime!!.text = formattedDate
-
-        tvZrbHolder!!.text = savedName
-        tvZrbHolderPassword!!.text = savedPassword
-        tvZrbBalance!!.text = balance
-
-        val zrbShow = "我爱张娟" + "|" + time + "|" + savedName + "|" + savedPassword + "|" + balance+ "|"+"我这辈子最喜欢张娟"
-
-        Log.e("tag4546", "明文：" + zrbShow)
-
-        try {
-            //通过AES加密明文   并将密码转为md5  作为密钥
-            val zrb = "Zrb-" + Single.encryptAES(
-                zrbShow,
-                Single.getMD5Hash(savedPassword!!)!!
-            ) + Single.getMD5Hash(savedPassword)!!
-            tvZrb!!.text = zrb
-
-            Log.e("tag4546", "zrb：" + zrb)
-        } catch (e: Exception) {
-            MyStatic.showToast(this,e.toString())
-            Log.e("tag4546", e.toString())
-        }
+        //将TabLayout和ViewPager关联起来。
+        mTabLayout!!.setupWithViewPager(mViewPager)
+        //给TabLayout设置适配器
+        mTabLayout!!.setTabsFromPagerAdapter(webAdapter)
     }
+
+    /**
+     * @return 获取带参数的fragment集合 用于装载在viewpager里面
+     */
+    private val fragmentArrayList = ArrayList<Fragment>()
+
+    fun getFragmentList(): ArrayList<Fragment> {
+        val f1 = C1Fragment()
+        fragmentArrayList.add(f1)
+
+        val f2 = C2Fragment()
+        fragmentArrayList.add(f2)
+
+        val f3 = C3Fragment()
+        fragmentArrayList.add(f3)
+
+        return fragmentArrayList
+    }
+
+
 }
 
