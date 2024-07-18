@@ -137,7 +137,8 @@ class LoginActivity : BaseActivity() {
                 editor.putString("name", name)
                 editor.putString("password", password)
                 editor.putString("time", System.currentTimeMillis().toString())
-                editor.putString("balance", "0")
+                editor.putString("balance", "0.0")
+                editor.putString("tempTime", "")
                 editor.apply()
 
 

@@ -2,9 +2,12 @@ package com.example.zrwenxue.app
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.Application
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +18,7 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.example.newzr.R
 import net.sourceforge.pinyin4j.PinyinHelper
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType
@@ -23,9 +27,11 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import java.time.Instant
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
 import kotlin.random.Random
+import kotlin.time.Duration
 
 
 /**
@@ -35,7 +41,16 @@ import kotlin.random.Random
  */
 object Single {
 
+    // 数据库表名
+    const val TABLE_NAME = "image_info"
 
+    // 列名
+    const val COLUMN_ID = "id"
+    const val COLUMN_IMAGE_NAME = "image_name"
+    const val COLUMN_IMAGE_DESCRIPTION = "image_description"
+    const val COLUMN_AUTHOR = "author"
+    const val COLUMN_TEXT = "text"
+    const val COLUMN_IMAGE_DATA = "image_data"
 
 
 
@@ -267,5 +282,57 @@ object Single {
         }
         return null
     }
+
+
+    /**
+     * 截取字符串从第二个开始到最后
+     */
+    fun extractSubstring(text: String): String {
+        // 检查字符串长度是否大于等于 3
+        if (text.length >= 3) {
+            // 从第三个字符开始截取到最后
+            return text.substring(2)
+        } else {
+            // 如果字符串长度小于 3,则返回原字符串
+            return text
+        }
+    }
+
+
+    /**
+     * 图片比例类型
+     */
+    fun getImageType(width: Int, height: Int): Int {
+        // 计算宽高比
+        val aspectRatio = width.toDouble() / height.toDouble()
+        Log.e("daddada2121", "图片宽高比" + aspectRatio)
+        try {
+            // 判断哪种类型
+            return when {
+                aspectRatio <= (3.0 / 4.0) -> 1//比例小于3：4   就为3：4
+                aspectRatio > (3.0 / 4.0) && aspectRatio < (4.0 / 3.0) -> 2//比例大于3：4  小于4：3  就为1：1
+                aspectRatio >= (4.0 / 3.0) -> 3//比例大于4：3  就为4：3
+                else -> 2
+            }
+        } catch (e: Exception) {
+            Log.e("zqr", "图片宽高比异常" + e.message)
+            return 4
+        }
+    }
+
+    fun showConfirmationDialog(context: Context, title: String, message: String, onConfirm: () -> Unit, onCancel: () -> Unit) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(title)
+        builder.setMessage(message)
+        builder.setPositiveButton("确定") { _, _ ->
+            onConfirm()
+        }
+        builder.setNegativeButton("取消") { _, _ ->
+            onCancel()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
 
 }

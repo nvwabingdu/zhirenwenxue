@@ -74,6 +74,17 @@
                     android:text="撤销"
                     android:textColor="#ddd" />
 
+                <TextView
+                    android:id="@+id/tv5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#333"
+                    android:gravity="center"
+                    android:text="保存"
+                    android:textColor="#ddd" />
+
 
             </LinearLayout>
         </FrameLayout>

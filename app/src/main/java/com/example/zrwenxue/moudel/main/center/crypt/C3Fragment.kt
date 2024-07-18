@@ -17,18 +17,12 @@ import java.util.Locale
 
 class C3Fragment : BaseFragment() {
 
-
-
-
     override fun setLayout(): Int {
         return R.layout.fragment_c3
     }
 
-
-
     override fun initView() {
         getZrb()
-
 
     }
 

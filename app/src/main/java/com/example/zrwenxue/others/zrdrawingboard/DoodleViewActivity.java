@@ -4,7 +4,9 @@ package com.example.zrwenxue.others.zrdrawingboard;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +31,7 @@ import com.example.zrdrawingboard.PaintSingle;
 import com.example.zrtool.ui.noslidingconflictview.NoScrollGridView;
 import com.example.zrwenxue.app.TitleBarView;
 import com.example.zrwenxue.moudel.main.home.led.LEDSingle;
+import com.example.zrwenxue.moudel.main.word.MyStatic;
 import com.example.zrwenxue.others.zrdrawingboard.brushviewdemo.AdapterColors;
 import com.example.zrwenxue.others.zrdrawingboard.brushviewdemo.BrushView;
 import com.example.zrwenxue.others.zrdrawingboard.brushviewdemo.ModelColors;
@@ -70,12 +73,15 @@ public class DoodleViewActivity extends AppCompatActivity {
     private TextView tv2;
     private TextView tv3;
     private TextView tv4;
+    private TextView tv5;
+
     private void setBrush() {
         topSet = findViewById(R.id.top_set);
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
         tv3 = findViewById(R.id.tv3);
         tv4 = findViewById(R.id.tv4);
+        tv5 = findViewById(R.id.tv5);
 
         tv1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,9 +92,6 @@ public class DoodleViewActivity extends AppCompatActivity {
         tv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //保存
-//                String path = mDoodleView.saveBitmap(mDoodleView);
-//                ToastUtils.INSTANCE.showCenterToast(getApplicationContext(),"保存路径:" + path);
                 //形状
                 showShapeDialog();
             }
@@ -108,10 +111,24 @@ public class DoodleViewActivity extends AppCompatActivity {
             }
         });
 
+        // 现在你可以将 byte 数组保存到内存中,例如保存到 SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
-           }
+        //保存
+        tv5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("bitmap_key", sharedPreferences.getString("bitmap_key", null)+MyStatic.getBase64String(mDoodleView.getBitmap())+"<ycrg>");
+                editor.apply();
+                MyStatic.showToast(getApplicationContext(),"已保存");
+            }
+        });
+    }
+
 
     private TitleBarView topView;
+
     private void setTopView(String title) {
         topView = findViewById(R.id.title_view);
         topView.setTitle(title);
@@ -140,12 +157,11 @@ public class DoodleViewActivity extends AppCompatActivity {
     }
 
 
-
-
     /**
      * 弹窗设置
      */
     private PopupWindow popupWindow = null;
+
     private void showSetColorPopupWindow() {
         View inflateView = LinearLayout.inflate(this, R.layout.brush_view, null);
         brushViewInit(inflateView);
@@ -180,11 +196,13 @@ public class DoodleViewActivity extends AppCompatActivity {
         }
 
     }
+
     public void bgAlpha(Activity context, float f) {
         WindowManager.LayoutParams lp = context.getWindow().getAttributes();
         lp.alpha = f;
         context.getWindow().setAttributes(lp);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -201,13 +219,14 @@ public class DoodleViewActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         mDoodleView.setBgColor(PaintSingle.INSTANCE.getMDoodleViewBgColor());
         mDoodleView.setType(PaintSingle.INSTANCE.getMDoodleViewType());
 
-        mDoodleView.setSize(dip2px(PaintSingle.INSTANCE.getMDoodleViewSize()+1));
+        mDoodleView.setSize(dip2px(PaintSingle.INSTANCE.getMDoodleViewSize() + 1));
         mDoodleView.setColor(
                 toHexString(Color.argb(
                         LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
@@ -236,6 +255,7 @@ public class DoodleViewActivity extends AppCompatActivity {
     private TextView seekBarT2Tv;
     private AppCompatSeekBar seekBarT3;
     private TextView seekBarT3Tv;
+
     private void brushViewInit(View rootView) {
         /**
          * Getting Colors from resources and add to ArrayList
@@ -250,23 +270,6 @@ public class DoodleViewActivity extends AppCompatActivity {
 //            model.setColor(col[i]);
 //            itemsColors.add(model);
 //        }
-
-
-
-
-
-
-//// 将 Bitmap 对象转换为 Base64 编码的字符串
-//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-//        byte[] byteArray = outputStream.toByteArray();
-//        String base64String = Base64.encodeToString(byteArray, Base64.DEFAULT);
-//
-//// 将 Base64 编码的字符串还原为 Bitmap 对象
-//        byte[] decodedByteArray = Base64.decode(base64String, Base64.DEFAULT);
-//        Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedByteArray, 0, decodedByteArray.length);
-
-
 
 
 
@@ -315,10 +318,10 @@ public class DoodleViewActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                txtSize.setText(progress+"");
+                txtSize.setText(progress + "");
 
                 brushView.setRadius(progress);
-                mDoodleView.setSize(dip2px(progress+1));
+                mDoodleView.setSize(dip2px(progress + 1));
 
                 PaintSingle.INSTANCE.setMDoodleViewSize(progress);
             }
@@ -337,10 +340,10 @@ public class DoodleViewActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-                txtAlpha.setText(progress+"");
+                txtAlpha.setText(progress + "");
                 brushView.setAlphaValue(progress);
                 mDoodleView.setColor(toHexString(Color.argb(
-                                       progress,
+                                        progress,
                                         LEDSingle.INSTANCE.getMTvColorR(),
                                         LEDSingle.INSTANCE.getMTvColorG(),
                                         LEDSingle.INSTANCE.getMTvColorB()
@@ -363,13 +366,12 @@ public class DoodleViewActivity extends AppCompatActivity {
 //                        "===="+LEDSingle.INSTANCE.getMTvColorG()+
 //                "===="+LEDSingle.INSTANCE.getMTvColorB());
 
-                Log.e("tag124654",toHexString(Color.argb(
-                                LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
-                                LEDSingle.INSTANCE.getMTvColorR(),
-                                LEDSingle.INSTANCE.getMTvColorG(),
-                                LEDSingle.INSTANCE.getMTvColorB()
-                        )));
-
+                Log.e("tag124654", toHexString(Color.argb(
+                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                        LEDSingle.INSTANCE.getMTvColorR(),
+                        LEDSingle.INSTANCE.getMTvColorG(),
+                        LEDSingle.INSTANCE.getMTvColorB()
+                )));
 
 
             }
@@ -421,7 +423,7 @@ public class DoodleViewActivity extends AppCompatActivity {
                                 )
                         );
                         mDoodleView.setColor(toHexString(Color.argb(
-                                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                                LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
                                                 progress,
                                                 LEDSingle.INSTANCE.getMTvColorG(),
                                                 LEDSingle.INSTANCE.getMTvColorB()
@@ -441,7 +443,7 @@ public class DoodleViewActivity extends AppCompatActivity {
                         );
                         mDoodleView.setColor(
                                 toHexString(Color.argb(
-                                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                                LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
                                                 LEDSingle.INSTANCE.getMTvColorR(),
                                                 progress,
                                                 LEDSingle.INSTANCE.getMTvColorB()
@@ -462,7 +464,7 @@ public class DoodleViewActivity extends AppCompatActivity {
                         );
                         mDoodleView.setColor(
                                 toHexString(Color.argb(
-                                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                                                LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
                                                 LEDSingle.INSTANCE.getMTvColorR(),
                                                 LEDSingle.INSTANCE.getMTvColorG(),
                                                 progress
@@ -489,12 +491,12 @@ public class DoodleViewActivity extends AppCompatActivity {
     /**
      * 设置初始化逻辑
      */
-    private void setInitSeekBarsss(){
-        txtSize.setText(PaintSingle.INSTANCE.getMDoodleViewSize()+"");
+    private void setInitSeekBarsss() {
+        txtSize.setText(PaintSingle.INSTANCE.getMDoodleViewSize() + "");
         seekBarSize.setProgress(PaintSingle.INSTANCE.getMDoodleViewSize());
 
 
-        txtAlpha.setText(LEDSingle.INSTANCE.getMDoodleViewColorAlpha()+"");
+        txtAlpha.setText(LEDSingle.INSTANCE.getMDoodleViewColorAlpha() + "");
         seekBarAlpha.setProgress(LEDSingle.INSTANCE.getMDoodleViewColorAlpha());
 
 
@@ -509,14 +511,14 @@ public class DoodleViewActivity extends AppCompatActivity {
         );
 
 
-        mDoodleView.setSize(dip2px(PaintSingle.INSTANCE.getMDoodleViewSize()+1));
+        mDoodleView.setSize(dip2px(PaintSingle.INSTANCE.getMDoodleViewSize() + 1));
         mDoodleView.setColor(
-                        toHexString(Color.argb(
-                                LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
-                                LEDSingle.INSTANCE.getMTvColorR(),
-                                LEDSingle.INSTANCE.getMTvColorG(),
-                                LEDSingle.INSTANCE.getMTvColorB()
-                        ))
+                toHexString(Color.argb(
+                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+                        LEDSingle.INSTANCE.getMTvColorR(),
+                        LEDSingle.INSTANCE.getMTvColorG(),
+                        LEDSingle.INSTANCE.getMTvColorB()
+                ))
         );
     }
 
@@ -524,6 +526,7 @@ public class DoodleViewActivity extends AppCompatActivity {
      * 显示选择画笔形状的对话框
      */
     private AlertDialog mShapeDialog;
+
     private void showShapeDialog() {
         if (mShapeDialog == null) {
             mShapeDialog = new AlertDialog.Builder(this)
@@ -563,6 +566,7 @@ public class DoodleViewActivity extends AppCompatActivity {
 
     /**
      * 工具
+     *
      * @param dpValue
      * @return
      */
@@ -573,7 +577,7 @@ public class DoodleViewActivity extends AppCompatActivity {
 
 
     public static String toHexString(int color) {
-        return String.format("#%08X",  color);
+        return String.format("#%08X", color);
     }
 
 }

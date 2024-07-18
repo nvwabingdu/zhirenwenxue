@@ -46,9 +46,12 @@ class CryptActivity : BaseActivity() {
         mTabLayout = findViewById<TabLayout>(R.id.fragment_word_tabs)
         //tab文字的集合
         val mTitleList = ArrayList<String>()
-        mTitleList.add("我的")
+        mTitleList.add("我的涂鸦")
+        mTitleList.add("智人币")
         mTitleList.add("获取")
-        mTitleList.add("买画")
+        mTitleList.add("购买涂鸦画")
+        mTitleList.add("赠送智人币")
+        mTitleList.add("打赏智人币")
 
         val webAdapter =
             ViewPagerFragmentAdapter(
@@ -71,6 +74,9 @@ class CryptActivity : BaseActivity() {
     private val fragmentArrayList = ArrayList<Fragment>()
 
     fun getFragmentList(): ArrayList<Fragment> {
+        val f0 = C0Fragment()
+        fragmentArrayList.add(f0)
+
         val f1 = C1Fragment()
         fragmentArrayList.add(f1)
 
@@ -79,6 +85,12 @@ class CryptActivity : BaseActivity() {
 
         val f3 = C3Fragment()
         fragmentArrayList.add(f3)
+
+        val f4 = C4Fragment()
+        fragmentArrayList.add(f4)
+
+        val f5 = C5Fragment()
+        fragmentArrayList.add(f5)
 
         return fragmentArrayList
     }

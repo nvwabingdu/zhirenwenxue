@@ -33,8 +33,12 @@ class RecommendFragment : Fragment() {
     private var mRecyclerview: RecyclerView? = null
     private val feedViewModel by viewModels<FeedViewModel>()
     private val commonViewModel by viewModels<CommonViewModel>()//公共的viewmodel
+
+
     private var mStaggeredGridLayoutManager: StaggeredGridLayoutManager? = null
     private var mAdapter: WaterfallAdapter? = null
+
+
     private var mRootView: View? = null
     private var refreshLayout: SmartRefreshLayout? = null
     private var refreshState: Int = 0//0 刷新  1 加载  2预加载

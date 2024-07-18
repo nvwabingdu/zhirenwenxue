@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.util.Log
 import android.widget.TextView
 import com.example.newzr.R
 import com.example.zrwenxue.app.Single
@@ -69,14 +68,15 @@ class C1Fragment : BaseFragment() {
         tvZrbHolder!!.text = savedName
         tvZrbExplain!!.text = "私有财产"
         tvZrbBalance!!.text = balance
-        tvZrbKind!!.text="普通"
+        val kind="赠送"
+        tvZrbKind!!.text=kind
 
 
         /**
          * 普通 赠送 打赏
          */
-        val zrbShow = "我爱张娟" + "|" + time + "|" + savedName + "|" + savedPassword + "|" + balance+ "|"+"普通"+ "|" +"私有财产"
-
+        val zrbShow = "我爱张娟" + "|" + time + "|" + savedName + "|" + savedPassword + "|" + balance+ "|"+kind+ "|" +"私有财产"
+0
 //        Log.e("tag4546", "明文：" + zrbShow)
 
         try {

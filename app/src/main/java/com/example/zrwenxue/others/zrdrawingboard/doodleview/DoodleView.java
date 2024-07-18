@@ -237,7 +237,7 @@ public class DoodleView extends SurfaceView implements SurfaceHolder.Callback {
         try {
             fileOutputStream = new FileOutputStream(filePath);
             if (null != fileOutputStream) {
-                bitmap.compress(Bitmap.CompressFormat.PNG, 90, fileOutputStream);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
                 fileOutputStream.flush();
                 fileOutputStream.close();
             }

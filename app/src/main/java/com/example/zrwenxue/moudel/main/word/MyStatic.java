@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -16,6 +17,7 @@ import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -36,6 +38,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.newzr.R;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -974,6 +977,52 @@ public class MyStatic {
         // 从第四位开始截取,截取到倒数第33位
         return input.substring(4, input.length() - 32);
     }
+
+
+    /**
+     * 是否大于10分钟
+     * @param inputTimestamp
+     * @return
+     */
+    public static boolean isMoreThan10Minutes(long inputTimestamp) {
+        // 获取当前时间的毫秒数
+        long currentTimeMillis = System.currentTimeMillis();
+
+        // 计算两个时间的差值
+        long timeDifferenceMillis = currentTimeMillis - inputTimestamp;
+
+        // 判断时间差是否大于 10 分钟
+        return timeDifferenceMillis > 10 * 60 * 1000;
+    }
+
+
+    /**
+     * 将bitmap转为字符串
+     * @param bitmap
+     * @return
+     */
+    public  static String getBase64String(Bitmap bitmap){
+        // 将 Bitmap 对象转换为 Base64 编码的字符串
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+        byte[] byteArray = outputStream.toByteArray();
+        String base64String = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+        return base64String;
+
+    }
+
+
+    /**
+     * 将 Base64 编码的字符串还原为 Bitmap 对象
+     */
+    public  static Bitmap getBase64Bitmap(String base64String) {
+        byte[] decodedByteArray = Base64.decode(base64String, Base64.DEFAULT);
+        return  BitmapFactory.decodeByteArray(decodedByteArray, 0, decodedByteArray.length);
+    }
+
+
+
 
 
 }

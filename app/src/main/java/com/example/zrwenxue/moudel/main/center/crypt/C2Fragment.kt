@@ -59,8 +59,107 @@ class C2Fragment : BaseFragment() {
         tvZrbCopy!!.text="粘贴"
         btu1 = fvbi(R.id.btu1)
         btu1!!.visibility= View.GONE
-        btu1!!.setOnClickListener { //收取智人币
 
+
+
+
+        //这里只是做展示  通过共享参数来取
+        val sharedPreferences = requireActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE)
+        val time = sharedPreferences.getString("time", null)
+        val savedName = sharedPreferences.getString("name", null)
+        val savedPassword = sharedPreferences.getString("password", null)
+        val balance = sharedPreferences.getString("balance", null)
+        val tempTime = sharedPreferences.getString("tempTime", null)
+
+
+
+
+        btu1!!.setOnClickListener { //收取智人币
+            //1.比较两个时间戳   临时币中的时间戳 和现在的时间对比   1 大于现在的时间 说明是预约时间可以领取  提示 多少时间开始领取
+            //2.符合时间的情况下   如果当前时间大于临时币中的时间10分钟  则不可以领取   赠送的情况下 需要判断种类后面的时间戳是否是自己的时间戳      赠送15456454
+            //3.打赏的情况    一般可以定义时间  到了时间有10分钟可以领取    赏金123456
+
+            if (zrb!=""){
+                when(zrb.split("|")[5]){
+                    in "赠送" -> {//包含赠送
+
+                        if (!MyStatic.isMoreThan10Minutes(zrb.split("|")[1].toLong())){//大于十分钟
+
+                            if (zrb.split("|")[5].contains(time.toString())){//包含自己的时间戳
+
+                                if (tempTime!=null&&tempTime!=""){
+                                    if (!tempTime.contains(zrb.split("|")[1])){//表示已经领取过了
+
+
+                                        val tempBalance=balance!!.toDouble()+zrb.split("|")[4].toDouble()
+                                        // 保存用户信息到共享参数
+                                        val editor = sharedPreferences.edit()
+                                        editor.putString("balance", tempBalance.toString())
+                                        editor.putString("tempTime", tempTime+"|"+zrb.split("|")[1])
+                                        editor.apply()
+
+                                        MyStatic.showToast(requireActivity(),"已收取"+zrb.split("|")[4].toDouble()+"个智人币")
+                                    }else{
+                                        MyStatic.showToast(requireActivity(),"重复领取")
+                                    }
+                                }else{
+
+                                    val tempBalance=balance!!.toDouble()+zrb.split("|")[4].toDouble()
+                                    // 保存用户信息到共享参数
+                                    val editor = sharedPreferences.edit()
+                                    editor.putString("balance", tempBalance.toString())
+                                    editor.putString("tempTime", zrb.split("|")[1])
+                                    editor.apply()
+
+                                    MyStatic.showToast(requireActivity(),"已收取"+zrb.split("|")[4].toDouble()+"个智人币")
+                                }
+
+                            }else{
+                                MyStatic.showToast(requireActivity(),"馈赠对象有误，并非赠送给自己")
+                            }
+                        }else{
+                            MyStatic.showToast(requireActivity(),"已超过领取时间")
+                        }
+
+                    }
+                    in "赏金" -> {
+
+                        if (!MyStatic.isMoreThan10Minutes(Single.extractSubstring(zrb.split("|")[5]).toLong())){//大于十分钟
+
+                                if (tempTime!=null&&tempTime!=""){
+                                    if (!tempTime.contains(Single.extractSubstring(zrb.split("|")[5]))){//表示已经领取过了
+
+
+                                        val tempBalance=balance!!.toDouble()+zrb.split("|")[4].toDouble()
+                                        // 保存用户信息到共享参数
+                                        val editor = sharedPreferences.edit()
+                                        editor.putString("balance", tempBalance.toString())
+                                        editor.putString("tempTime", tempTime+"|"+Single.extractSubstring(zrb.split("|")[5]))
+                                        editor.apply()
+
+                                        MyStatic.showToast(requireActivity(),"已收取"+zrb.split("|")[4].toDouble()+"个智人币")
+                                    }else{
+                                        MyStatic.showToast(requireActivity(),"重复领取")
+                                    }
+                                }else{
+
+                                    val tempBalance=balance!!.toDouble()+zrb.split("|")[4].toDouble()
+                                    // 保存用户信息到共享参数
+                                    val editor = sharedPreferences.edit()
+                                    editor.putString("balance", tempBalance.toString())
+                                    editor.putString("tempTime", Single.extractSubstring(zrb.split("|")[5]))
+                                    editor.apply()
+
+                                    MyStatic.showToast(requireActivity(),"已收取"+zrb.split("|")[4].toDouble()+"个智人币")
+                                }
+
+                        }else{
+                            MyStatic.showToast(requireActivity(),"不在领取时间内，参考生效时间")
+                        }
+
+                    }
+                }
+            }
         }
 
         tvZrbCopy!!.setOnClickListener {
@@ -92,11 +191,12 @@ class C2Fragment : BaseFragment() {
     /**
      * 解析智人币
      */
+    var zrb=""
     private fun parseZrb(input: String){
         if (input==""){
             MyStatic.showToast(requireActivity(),"未获取到智人币信息")
         }else{
-            val zrb= Single.decryptAES(
+            zrb = Single.decryptAES(
                 MyStatic.extractSubstring(input),
                 MyStatic.trimAndTakeLast32(input)
             )
@@ -113,13 +213,25 @@ class C2Fragment : BaseFragment() {
             tvZrbTime!!.text = formattedDate
             tvZrbHolder!!.text = zrb.split("|")[2]
             tvZrbBalance!!.text = zrb.split("|")[4]
-            tvZrbKind!!.text=zrb.split("|")[5]
-            if(zrb.split("|")[5]!="普通"){
-                btu1!!.visibility= View.VISIBLE
+
+
+            when(zrb.split("|")[5]){
+                    in "赠送" -> {
+                        tvZrbKind!!.text="赠送"
+                        btu1!!.visibility= View.VISIBLE
+                        btu1!!.text="收取馈赠"
+                    }
+                    in "赏金" -> {
+                        tvZrbKind!!.text="赏金"
+                        btu1!!.visibility= View.VISIBLE
+                        btu1!!.text="领取赏金"
+                    }
             }
             tvZrbExplain!!.text = zrb.split("|")[6]
-
         }
-
     }
+
+
+
+
 }
