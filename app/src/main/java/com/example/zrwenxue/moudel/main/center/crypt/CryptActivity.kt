@@ -26,7 +26,7 @@ class CryptActivity : BaseActivity() {
     var topView: TitleBarView? = null
     private fun setTopView() {
         topView = findViewById(R.id.title_bar)
-        topView!!.setTitle("智人币")
+        topView!!.setTitle("智人社区")
         //左边返回
         topView!!.setOnclickLeft(
             View.VISIBLE,
@@ -46,12 +46,12 @@ class CryptActivity : BaseActivity() {
         mTabLayout = findViewById<TabLayout>(R.id.fragment_word_tabs)
         //tab文字的集合
         val mTitleList = ArrayList<String>()
-        mTitleList.add("我的涂鸦")
+        mTitleList.add("涂鸦画作")
         mTitleList.add("智人币")
-        mTitleList.add("获取")
+        mTitleList.add("获取智人币")
         mTitleList.add("购买涂鸦画")
-        mTitleList.add("赠送智人币")
-        mTitleList.add("打赏智人币")
+        mTitleList.add("赠送")
+        mTitleList.add("打赏")
 
         val webAdapter =
             ViewPagerFragmentAdapter(

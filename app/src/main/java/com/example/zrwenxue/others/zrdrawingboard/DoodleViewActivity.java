@@ -4,9 +4,7 @@ package com.example.zrwenxue.others.zrdrawingboard;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +28,7 @@ import com.example.newzr.R;
 import com.example.zrdrawingboard.PaintSingle;
 import com.example.zrtool.ui.noslidingconflictview.NoScrollGridView;
 import com.example.zrwenxue.app.TitleBarView;
+import com.example.zrwenxue.moudel.main.center.crypt.database.MyDatabaseHelper;
 import com.example.zrwenxue.moudel.main.home.led.LEDSingle;
 import com.example.zrwenxue.moudel.main.word.MyStatic;
 import com.example.zrwenxue.others.zrdrawingboard.brushviewdemo.AdapterColors;
@@ -49,7 +48,7 @@ import java.util.ArrayList;
 
 public class DoodleViewActivity extends AppCompatActivity {
     private DoodleView mDoodleView;
-
+    private MyDatabaseHelper dbHelper;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +65,10 @@ public class DoodleViewActivity extends AppCompatActivity {
 
         setBrush();
         setTopView("涂鸦板");
+
+        //数据库
+        dbHelper = new MyDatabaseHelper(this);
+
     }
 
     private View topSet;
@@ -111,16 +114,18 @@ public class DoodleViewActivity extends AppCompatActivity {
             }
         });
 
-        // 现在你可以将 byte 数组保存到内存中,例如保存到 SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
         //保存
         tv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editor.putString("bitmap_key", sharedPreferences.getString("bitmap_key", null)+MyStatic.getBase64String(mDoodleView.getBitmap())+"<ycrg>");
-                editor.apply();
+
+                //ID是作者的app使用时间搓+当前时间戳+名字
+                MyStatic.insertData(dbHelper,
+                        System.currentTimeMillis()+"",
+                        "张小娟",
+                        "杜鹃花,娇艳绚丽,如火焰般盛放。它们簇拥在枝头,争妍斗艳,犹如天上的明星点缀大地。它们的花瓣如丝,轻柔如绒,羞怯地低垂,又骄傲地昂首,散发着迷人的芳香,让人流连忘返。",
+                        MyStatic.getBase64String(mDoodleView.getBitmap()));// 插入数据
+
                 MyStatic.showToast(getApplicationContext(),"已保存");
             }
         });
@@ -258,25 +263,8 @@ public class DoodleViewActivity extends AppCompatActivity {
 
     private void brushViewInit(View rootView) {
         /**
-         * Getting Colors from resources and add to ArrayList
-         */
-//        v1=rootView.findViewById(R.id.v1);
-//        v1.setBackground(DrawableUtils.createCircleDrawable(R.color.ac_splash_bg_color));
-
-//        int[] col = getResources().getIntArray(R.array.colors);
-//        itemsColors = new ArrayList<ModelColors>();
-//        for (int i = 0; i < col.length; i++) {
-//            ModelColors model = new ModelColors();
-//            model.setColor(col[i]);
-//            itemsColors.add(model);
-//        }
-
-
-
-        /**
          * Initialize Views
          */
-
         popClose = (View) rootView.findViewById(R.id.pop_close);
 
         popClose.setOnClickListener(new View.OnClickListener() {

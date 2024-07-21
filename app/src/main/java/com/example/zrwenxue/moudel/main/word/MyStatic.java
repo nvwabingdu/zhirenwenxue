@@ -1,10 +1,13 @@
 package com.example.zrwenxue.moudel.main.word;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
@@ -37,11 +40,13 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 
 import com.example.newzr.R;
+import com.example.zrwenxue.moudel.main.center.crypt.database.MyDatabaseHelper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -1012,7 +1017,6 @@ public class MyStatic {
 
     }
 
-
     /**
      * 将 Base64 编码的字符串还原为 Bitmap 对象
      */
@@ -1022,7 +1026,168 @@ public class MyStatic {
     }
 
 
+    /**
+     * 涂鸦画保存在数据库中   下面是增删改查
+     * @param dbHelper
+     * @param text
+     */
+//    // 插入数据
+//    public static void insertData(MyDatabaseHelper dbHelper, String text) {
+//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(MyDatabaseHelper.COLUMN_TEXT, text);
+//        db.insert(MyDatabaseHelper.TABLE_NAME, null, values);
+//        db.close();
+//    }
+//
+//    // 查询数据
+//    public static List<String> getAllData(MyDatabaseHelper dbHelper) {
+//        List<String> dataList = new ArrayList<>();
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        Cursor cursor = db.query(MyDatabaseHelper.TABLE_NAME, new String[]{MyDatabaseHelper.COLUMN_TEXT}, null, null, null, null, null);
+//        if (cursor.moveToFirst()) {
+//            do {
+//                String text = cursor.getString(cursor.getColumnIndexOrThrow(MyDatabaseHelper.COLUMN_TEXT));
+//                dataList.add(text);
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        db.close();
+//        return dataList;
+//    }
+//
+//    //指定查询数量
+//    public static List<String> getAllData(MyDatabaseHelper dbHelper, int startPosition, int endPosition) {
+//        List<String> dataList = new ArrayList<>();
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        Cursor cursor = db.query(MyDatabaseHelper.TABLE_NAME, new String[]{MyDatabaseHelper.COLUMN_TEXT}, null, null, null, null, null, startPosition + ", " + (endPosition - startPosition));
+//        if (cursor.moveToFirst()) {
+//            do {
+//                String text = cursor.getString(cursor.getColumnIndexOrThrow(MyDatabaseHelper.COLUMN_TEXT));
+//                dataList.add(text);
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        db.close();
+//        return dataList;
+//    }
+//
+//
+//    //获取数据的条数
+//    public static int getDataCount(MyDatabaseHelper dbHelper) {
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + MyDatabaseHelper.TABLE_NAME, null);
+//        int count = 0;
+//        if (cursor.moveToFirst()) {
+//            count = cursor.getInt(0);
+//        }
+//        cursor.close();
+//        db.close();
+//        return count;
+//    }
+//
+//    // 更新数据
+//    public static void updateData(MyDatabaseHelper dbHelper, String oldText, String newText) {
+//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(MyDatabaseHelper.COLUMN_TEXT, newText);
+//        db.update(MyDatabaseHelper.TABLE_NAME, values, MyDatabaseHelper.COLUMN_TEXT + " = ?", new String[]{oldText});
+//        db.close();
+//    }
+//
+//    // 删除数据
+//    public static void deleteData(MyDatabaseHelper dbHelper, String text) {
+//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//        db.delete(MyDatabaseHelper.TABLE_NAME, MyDatabaseHelper.COLUMN_TEXT + " = ?", new String[]{text});
+//        db.close();
+//    }
 
+    // 插入数据
+    public static void insertData(MyDatabaseHelper dbHelper,String id, String name, String description, String text) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(MyDatabaseHelper.COLUMN_ID, id);
+        values.put(MyDatabaseHelper.COLUMN_NAME, name);
+        values.put(MyDatabaseHelper.COLUMN_DESCRIPTION, description);
+        values.put(MyDatabaseHelper.COLUMN_TEXT, text);
+        db.insert(MyDatabaseHelper.TABLE_NAME, null, values);
+        db.close();
+    }
 
+    // 查询数据
+    public static List<String[]> getAllData(MyDatabaseHelper dbHelper) {
+        List<String[]> dataList = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(MyDatabaseHelper.TABLE_NAME, new String[]{MyDatabaseHelper.COLUMN_ID, MyDatabaseHelper.COLUMN_NAME, MyDatabaseHelper.COLUMN_DESCRIPTION, MyDatabaseHelper.COLUMN_TEXT}, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String id = cursor.getString(cursor.getColumnIndexOrThrow(MyDatabaseHelper.COLUMN_ID));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(MyDatabaseHelper.COLUMN_NAME));
+                String description = cursor.getString(cursor.getColumnIndexOrThrow(MyDatabaseHelper.COLUMN_DESCRIPTION));
+                String text = cursor.getString(cursor.getColumnIndexOrThrow(MyDatabaseHelper.COLUMN_TEXT));
+                dataList.add(new String[]{id, name, description, text});
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return dataList;
+    }
+
+    // 指定查询数量
+    public static List<String[]> getAllData(MyDatabaseHelper dbHelper, int startPosition, int endPosition) {
+        List<String[]> dataList = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(MyDatabaseHelper.TABLE_NAME, new String[]{MyDatabaseHelper.COLUMN_ID, MyDatabaseHelper.COLUMN_NAME, MyDatabaseHelper.COLUMN_DESCRIPTION, MyDatabaseHelper.COLUMN_TEXT}, null, null, null, null, null, startPosition + ", " + (endPosition - startPosition));
+        if (cursor.moveToFirst()) {
+            do {
+                String id = cursor.getString(cursor.getColumnIndexOrThrow(MyDatabaseHelper.COLUMN_ID));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(MyDatabaseHelper.COLUMN_NAME));
+                String description = cursor.getString(cursor.getColumnIndexOrThrow(MyDatabaseHelper.COLUMN_DESCRIPTION));
+                String text = cursor.getString(cursor.getColumnIndexOrThrow(MyDatabaseHelper.COLUMN_TEXT));
+                dataList.add(new String[]{id, name, description, text});
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return dataList;
+    }
+
+    // 获取数据的条数
+    public static int getDataCount(MyDatabaseHelper dbHelper) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + MyDatabaseHelper.TABLE_NAME, null);
+        int count = 0;
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return count;
+    }
+
+    // 更新数据
+    public static void updateData(MyDatabaseHelper dbHelper, String id, String name, String description, String text) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(MyDatabaseHelper.COLUMN_NAME, name);
+        values.put(MyDatabaseHelper.COLUMN_DESCRIPTION, description);
+        values.put(MyDatabaseHelper.COLUMN_TEXT, text);
+        db.update(MyDatabaseHelper.TABLE_NAME, values, MyDatabaseHelper.COLUMN_ID + " = ?", new String[]{id});
+        db.close();
+    }
+
+    // 删除数据
+    public static void deleteData(MyDatabaseHelper dbHelper, String id) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(MyDatabaseHelper.TABLE_NAME, MyDatabaseHelper.COLUMN_ID + " = ?", new String[]{id});
+        db.close();
+    }
+
+    //删除整个表
+    public static void deleteTable(MyDatabaseHelper dbHelper) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.execSQL("DROP TABLE " + MyDatabaseHelper.TABLE_NAME);
+        db.close();
+    }
 
 }

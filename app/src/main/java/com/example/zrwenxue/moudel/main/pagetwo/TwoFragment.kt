@@ -27,7 +27,7 @@ class TwoFragment : Fragment() {
     private var mRecyclerview: RecyclerView? = null
 
     private var mAdapter: DictionaryIdiomAdapter? = null
-    private var mList: MutableList<DictionaryIdiomIBean>? = ArrayList()//推荐页面的feed列表
+    private var mList: MutableList<DictionaryIdiomIBean>? = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,

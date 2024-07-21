@@ -20,6 +20,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.newzr.R
+import com.example.zrwenxue.moudel.main.center.crypt.dapter.WaterfallBean
 import net.sourceforge.pinyin4j.PinyinHelper
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat
@@ -41,18 +42,24 @@ import kotlin.time.Duration
  */
 object Single {
 
-    // 数据库表名
-    const val TABLE_NAME = "image_info"
 
-    // 列名
-    const val COLUMN_ID = "id"
-    const val COLUMN_IMAGE_NAME = "image_name"
-    const val COLUMN_IMAGE_DESCRIPTION = "image_description"
-    const val COLUMN_AUTHOR = "author"
-    const val COLUMN_TEXT = "text"
-    const val COLUMN_IMAGE_DATA = "image_data"
+//
+//    // 数据库表名
+//    const val TABLE_NAME = "image_info"
+//
+//    // 列名
+//    const val COLUMN_ID = "id"
+//    const val COLUMN_IMAGE_NAME = "image_name"
+//    const val COLUMN_IMAGE_DESCRIPTION = "image_description"
+//    const val COLUMN_AUTHOR = "author"
+//    const val COLUMN_TEXT = "text"
+//    const val COLUMN_IMAGE_DATA = "image_data"
+//
+//    const val COLUMN_NAME = "name_data"
+//    const val COLUMN_DESCRIPTION = "description_data"
 
 
+    var tag=0
 
     fun generateRandomColors(): Triple<String, String, String> {
         val colorSet = HashSet<Int>()
@@ -333,6 +340,37 @@ object Single {
         val dialog = builder.create()
         dialog.show()
     }
+
+
+    /**
+     * 提取一段字符串 "<"前面的字符
+     *
+     */
+    fun extractTextBeforeDelimiter(line: String, delimiter: String): String {
+        val index = line.indexOf(delimiter)
+        return if (index != -1) {
+            line.substring(0, index)
+        } else {
+            line
+        }
+    }
+
+    /**
+     * 将一个字符从某个位置分割开来
+     */
+    fun splitStringAtFirstTag(str: String,tag:String): Array<String> {
+        val firstSIndex = str.indexOf(tag)
+
+        return if (firstSIndex != -1) {
+            arrayOf(
+                str.substring(0, firstSIndex).trim(),
+                str.substring(firstSIndex).trim()
+            )
+        } else {
+            arrayOf(str, "")
+        }
+    }
+
 
 
 }

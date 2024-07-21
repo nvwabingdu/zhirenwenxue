@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newzr.R
@@ -34,10 +35,10 @@ open class WaterfallAdapter(private var mContent: Context,
 
 
 
-//        /**预加载回调*/
-//        if (dataList.size > 6 && position == dataList.size - 6) {
-//            mWaterfallAdapterInterface!!.onPreload(position)
-//        }
+        /**预加载回调*/
+        if (dataList.size > 6 && position == dataList.size - 6) {
+            mWaterfallAdapterInterface!!.onPreload()
+        }
 //
 //        Log.e("21212121",dataList[position].toString())
 //        if (dataList[position].type==1){
@@ -162,19 +163,19 @@ open class WaterfallAdapter(private var mContent: Context,
 //        }
 //
 //
-//        if (dataList[position].title!=null&&!dataList[position].title.equals("")){
-//            holder.attentionContent.visibility=View.VISIBLE
-//            holder.attentionContent.text = dataList[position].title
-//        }else{
-//            holder.attentionContent.visibility=View.GONE
-//        }
+        if (dataList[position].description != ""){
+            holder.attentionContent.visibility=View.VISIBLE
+            holder.attentionContent.text = dataList[position].description
+        }else{
+            holder.attentionContent.visibility=View.GONE
+        }
 //
-//        if (dataList[position].userInfo.nickName.equals("")){
-//            holder.attentionUsername.visibility=View.GONE
-//        }else{
-//            holder.attentionUsername.visibility=View.VISIBLE
-//            holder.attentionUsername.text = dataList[position].userInfo.nickName
-//        }
+        if (dataList[position].author == ""){
+            holder.attentionUsername.visibility=View.GONE
+        }else{
+            holder.attentionUsername.visibility=View.VISIBLE
+            holder.attentionUsername.text = dataList[position].author
+        }
 //
 //        /**
 //         * 点赞逻辑
@@ -216,9 +217,9 @@ open class WaterfallAdapter(private var mContent: Context,
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var attentionImg: ImageView = itemView.findViewById(R.id.attention_img)//图片
 //        var attentionYours: View = itemView.findViewById(R.id.recommend_yours_attention)//你的关注
-//        var attentionContent: TextView = itemView.findViewById(R.id.recommend_content)//原来这就是30岁的温柔和气质……
+        var attentionContent: TextView = itemView.findViewById(R.id.recommend_content)//原来这就是30岁的温柔和气质……
 //        var attentionUserIcon: ImageView = itemView.findViewById(R.id.recommend_usericon)//头像
-//        var attentionUsername: TextView = itemView.findViewById(R.id.recommend_username)//陈阿姨smile
+        var attentionUsername: TextView = itemView.findViewById(R.id.recommend_username)//陈阿姨smile
 //        var attentionLaudImg: ImageView = itemView.findViewById(R.id.recommend_laud)//点赞
 //        var recommendVideoPlayImg: ImageView = itemView.findViewById(R.id.recommend_video_play_img)//视频图标
 //        var attentionLaudCount: TextView = itemView.findViewById(R.id.recommend_laud_count)//点赞数量
@@ -240,8 +241,10 @@ open class WaterfallAdapter(private var mContent: Context,
 
 
     interface WaterfallAdapterInterface {
-        //内容反馈回调
+
         fun onCallBack(position: Int, txt: String)
+
+        fun onPreload()
     }
     private var mWaterfallAdapterInterface: WaterfallAdapterInterface? = null
 

@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newzr.R
 import com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
+import com.example.zrwenxue.app.Single
 import com.example.zrwenxue.moudel.BaseFragment
 import com.example.zrwenxue.moudel.main.center.crypt.CryptActivity
+import com.example.zrwenxue.moudel.main.home.dict.OtherDictActivity
 import com.example.zrwenxue.moudel.main.home.eng.SearchWordActivity
 import com.example.zrwenxue.moudel.main.home.led.LEDActivity
 import com.example.zrwenxue.moudel.main.home.lottery.LotteryActivity
@@ -87,11 +89,12 @@ class TetrisListFragment : BaseFragment() {
 //        for (i in 0..10){
 //            temp4(i, Singleton.getInstance().fileLines!![i].split("：")[0])
 //        }
-        temp4(0, "智人币")
+        temp4(0, "智人社区")
         temp4(1, "智人涂鸦")
         temp4(2, "短语学习")
         temp4(3, "认识音标")
         temp4(4, "幸运彩票")
+        temp4(5, "各类词典")
 
 
         m1 = rootView!!.findViewById(R.id.tetris_1)
@@ -411,9 +414,15 @@ class TetrisListFragment : BaseFragment() {
                         //跳转抽奖页面
                         MyStatic.setActivityString(activity, LotteryActivity::class.java, "", "")
                     }
-
-
-
+                    5->{
+                        if (Single.tag==12){
+                            Single.tag=0
+                        }else{
+                            Single.tag += 1
+                        }
+                        //跳转各类词典
+                        MyStatic.setActivityString(activity, OtherDictActivity::class.java, "", "")
+                    }
                 }
 
                 return true
