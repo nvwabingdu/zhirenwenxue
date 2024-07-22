@@ -27,6 +27,10 @@
             android:scrollbars="none"
             tools:ignore="MissingConstraints" />
 
+        <View
+            android:background="#eee"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
 
         <LinearLayout
             android:orientation="horizontal"

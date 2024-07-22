@@ -29,45 +29,47 @@ class OtherDictActivity : BaseActivity() {
         mWeb!!.isVerticalScrollBarEnabled = true
         mWeb!!.isHorizontalScrollBarEnabled = false
 
+        //获取传递过来的值
+        val receivedValue = intent.getStringExtra("dict")
 
-        //各类词典
-        val flag = Single.tag
-        when (flag) {
-            0 -> {
-                setData(flag,"中医方剂大全","各类词典/中医方剂大全.txt")
-            }
-            1 -> {
-                setData(flag,"佛学大辞典","各类词典/佛学大辞典.txt")
-            }
-            2 -> {
-                setData(flag,"全唐诗","各类词典/全唐诗.txt")
-            }
-            3 -> {
-                setData(flag,"古汉语常用词典","各类词典/古汉语常用词典.txt")
-            }
-            4 -> {
-                setData(flag,"唐诗三百首","各类词典/唐诗三百首.txt")
-            }
-            5 -> {
-                setData(flag,"姓氏起源","各类词典/姓氏起源.txt")
-            }
-            6 -> {
-                setData(flag,"宋词鉴赏大辞典","各类词典/宋词鉴赏大辞典.txt")
-            }
-            7 -> {
-                setData(flag,"家常菜","各类词典/家常菜.txt")
-            }
-            8 -> {
-                setData(flag,"成语词典","各类词典/成语词典.txt")
-            }
-            9 -> {
-                setData(flag,"掌上法律库","各类词典/掌上法律库.txt")
-            }
-            10 -> {
-                setData(flag,"本草纲目","各类词典/本草纲目.txt")
-            }
-            11 -> {
-                setData(flag,"脑筋急转弯","各类词典/脑筋急转弯.txt")
+        if (receivedValue != null) {
+            when (val flag=receivedValue.toInt()) {
+                0 -> {
+                    setData(flag,"中医方剂大全","各类词典/中医方剂大全.txt")
+                }
+                1 -> {
+                    setData(flag,"佛学大辞典","各类词典/佛学大辞典.txt")
+                }
+                2 -> {
+                    setData(flag,"全唐诗","各类词典/全唐诗.txt")
+                }
+                3 -> {
+                    setData(flag,"古汉语常用词典","各类词典/古汉语常用词典.txt")
+                }
+                4 -> {
+                    setData(flag,"唐诗三百首","各类词典/唐诗三百首.txt")
+                }
+                5 -> {
+                    setData(flag,"姓氏起源","各类词典/姓氏起源.txt")
+                }
+                6 -> {
+                    setData(flag,"宋词鉴赏大辞典","各类词典/宋词鉴赏大辞典.txt")
+                }
+                7 -> {
+                    setData(flag,"家常菜","各类词典/家常菜.txt")
+                }
+                8 -> {
+                    setData(flag,"成语词典","各类词典/成语词典.txt")
+                }
+                9 -> {
+                    setData(flag,"掌上法律库","各类词典/掌上法律库.txt")
+                }
+                10 -> {
+                    setData(flag,"本草纲目","各类词典/本草纲目.txt")
+                }
+                11 -> {
+                    setData(flag,"脑筋急转弯","各类词典/脑筋急转弯.txt")
+                }
             }
         }
     }
@@ -82,9 +84,26 @@ class OtherDictActivity : BaseActivity() {
         //左边返回
         topView!!.setOnclickLeft(
             View.VISIBLE,
-            View.OnClickListener { finish() })
+            View.OnClickListener {
+                if (mRv1 != null && mRv1!!.getVisibility() == View.GONE) {
+                    mRv1!!.setVisibility(View.VISIBLE)
+                } else {
+                    finish()
+                }
+            }
+        )
         //右边弹出pop
         topView!!.setOnclickRight(View.INVISIBLE, View.OnClickListener { })
+
+        topView!!.setOnclickRight(
+            View.VISIBLE, resources.getDrawable(R.drawable.show_yb2)
+        ) { //                showShapeDialog();
+            if (mRv1 != null && mRv1!!.getVisibility() == View.GONE) {
+                mRv1!!.setVisibility(View.VISIBLE)
+            } else {
+                mRv1!!.setVisibility(View.GONE)
+            }
+        }
     }
 
 
@@ -120,9 +139,12 @@ class OtherDictActivity : BaseActivity() {
                 mList!!.add(
                     OtherDictBean(
                         Single.splitStringAtFirstTag(line.toString(), "<")[0],
-                        Single.splitStringAtFirstTag(line.toString(), "<")[1].replace("\\n", "")
+                        Single.splitStringAtFirstTag(line.toString(), "<")[1].replace("\\n", ""),
+                        false
                     )
                 )
+
+                mList!![0].isOnclick=true
             }
             reader.close()
 
@@ -130,14 +152,12 @@ class OtherDictActivity : BaseActivity() {
             mRv1!!.isNestedScrollingEnabled = false//解决滑动冲突
             mLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
             mRv1!!.layoutManager = mLayoutManager
-            mAdapter = OtherDictAdapter(mList!!)
+            mAdapter = OtherDictAdapter(this,mList!!)
             mRv1!!.adapter = mAdapter
 
         } catch (e: Exception) {
             Log.e("tag", e.toString())
         }
-
-
         //加载第一次
         mWeb!!.loadDataWithBaseURL(null, firstWebText, "text/html", "UTF-8", null)
 

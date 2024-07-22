@@ -64,11 +64,11 @@ class TetrisListFragment : BaseFragment() {
     private var m5List: MutableList<TetrisBean>? = null
     private var m6List: MutableList<TetrisBean>? = null
 
-    private val transparentColor:String="#00ffffff"//透明色 用于占位item
+    private val transparentColor: String = "#00ffffff"//透明色 用于占位item
 
-    val h1=200
-    val h2=400
-    val h3=800
+    val h1 = 200
+    val h2 = 400
+    val h3 = 800
 
     /**
      * 初始化view
@@ -89,13 +89,9 @@ class TetrisListFragment : BaseFragment() {
 //        for (i in 0..10){
 //            temp4(i, Singleton.getInstance().fileLines!![i].split("：")[0])
 //        }
-        temp4(0, "智人社区")
-        temp4(1, "智人涂鸦")
-        temp4(2, "短语学习")
-        temp4(3, "认识音标")
-        temp4(4, "幸运彩票")
-        temp4(5, "各类词典")
 
+        //设置集合
+        setList()
 
         m1 = rootView!!.findViewById(R.id.tetris_1)
         m1!!.isNestedScrollingEnabled = false//禁止滑动 解决滑动冲突
@@ -189,241 +185,61 @@ class TetrisListFragment : BaseFragment() {
         m6!!.adapter = adapter6
     }
 
-    /**
-     * 六个集合高度一致的情况  齐平
-     */
-    private fun addOne(type: Int,pos_:Int,str:String) {//可以添加9种布局
-        when (type) {
-            11 -> {
-                m1List!!.add(TetrisBean(getRandomHexColor(), str,h1,pos_,true))
-                m4List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-                m6List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-            }
-            12 -> {
-                m1List!!.add(TetrisBean(getRandomHexColor(), str,h2,pos_,true))
-                m4List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-                m6List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-            }
-            13 -> {
-                m1List!!.add(TetrisBean(getRandomHexColor(), str,h3,pos_,true))
-                m4List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-                m6List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-            }
-            21 -> {
-                m1List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-                m2List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-                m4List!!.add(TetrisBean(getRandomHexColor(), str,h1,pos_,true))
-                m5List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-                m6List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-            }
-            22 -> {
-                m1List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-                m2List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-                m4List!!.add(TetrisBean(getRandomHexColor(), str,h2,pos_,true))
-                m5List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-                m6List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-            }
-            23 -> {
-                m1List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-                m2List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-                m4List!!.add(TetrisBean(getRandomHexColor(), str,h3,pos_,true))
-                m5List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-                m6List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-            }
-            31 -> {
-                m1List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-                m2List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-                m3List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-                m4List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-                m5List!!.add(TetrisBean(transparentColor, "",  h1,pos_))//添加占位
-                m6List!!.add(TetrisBean(getRandomHexColor(), str,h1,pos_,true))
-            }
-            32 -> {
-                m1List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-                m2List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-                m3List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-                m4List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-                m5List!!.add(TetrisBean(transparentColor, "",  h2,pos_))//添加占位
-                m6List!!.add(TetrisBean(getRandomHexColor(), str,h2,pos_,true))
-            }
-            33 -> {
-                m1List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-                m2List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-                m3List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-                m4List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-                m5List!!.add(TetrisBean(transparentColor, "",  h3,pos_))//添加占位
-                m6List!!.add(TetrisBean(getRandomHexColor(), str,h3,pos_,true))
-            }
-        }
-    }
-
-    private fun temp4(pos_: Int,str: String){
-        //获取各集合高度
-        var a1=getListHeight(m1List!!)
-        var a2=getListHeight(m2List!!)
-        var a3=getListHeight(m3List!!)
-        var a4=getListHeight(m4List!!)
-        var a5=getListHeight(m5List!!)
-        var a6=getListHeight(m6List!!)
-        if(a1==a2&&a2==a3&&a3==a4&&a4==a5&&a5==a6){//齐平的情况下 随机选择一种
-            addOne(getType(),pos_,str)//第一步 齐平的情况下  随机9中格式的添加一个
-        }else{//不平的情况下
-            /**从m1--m6这个顺序 找高度低于前面的集合  然后添加其 或可以其 的一个*/
-            if (a1>a2){//说明m2可以添加  m5  可以添加
-                if(a3>a2){
-                    val tempH=getRandomHeight()//可以随机高度
-                    m2List!!.add(TetrisBean(getRandomHexColor(), str,tempH,pos_,true))
-                    //m4 m5 m6 重叠
-                    setListAddHeightDiff((a2+tempH)-a4,m4List!!,pos_)
-                    setListAddHeightDiff((a2+tempH)-a5,m5List!!,pos_)
-                    setListAddHeightDiff((a2+tempH)-a6,m6List!!,pos_)
-                    return
-                }
-                if (a2>a3){//说明m3可以添加
-                    val tempH=getRandomHeight()//可以随机高度
-                    m3List!!.add(TetrisBean(getRandomHexColor(), str,tempH,pos_,true))
-                    //m5 m6 重叠
-                    setListAddHeightDiff((a3+tempH)-a5,m5List!!,pos_)
-                    setListAddHeightDiff((a3+tempH)-a6,m6List!!,pos_)
-                    return
-                }
-                when (Random().nextInt(2)) {
-                    0 -> {//m2添加
-                        val tempH=getRandomHeight()//可以随机高度
-                        m2List!!.add(TetrisBean(getRandomHexColor(), str,tempH,pos_,true))
-                        //m4 m5 m6 重叠
-                        setListAddHeightDiff((a2+tempH)-a4,m4List!!,pos_)
-                        setListAddHeightDiff((a2+tempH)-a5,m5List!!,pos_)
-                        setListAddHeightDiff((a2+tempH)-a6,m6List!!,pos_)
-                    }
-
-
-                    1 -> {//m5添加
-                        val tempH=getRandomHeight()//可以随机高度
-                        m5List!!.add(TetrisBean(getRandomHexColor(), str,tempH,pos_,true))
-                        //m2 m3 m6 重叠
-                        setListAddHeightDiff((a5+tempH)-a2,m2List!!,pos_)
-                        setListAddHeightDiff((a5+tempH)-a3,m3List!!,pos_)
-                        setListAddHeightDiff((a5+tempH)-a6,m6List!!,pos_)
-                    }
-                }
-
-                return
-            }
-
-            if (a2>a1){
-                val tempH=getRandomHeight()//可以随机高度
-                m1List!!.add(TetrisBean(getRandomHexColor(), str,tempH,pos_,true))
-                //m4  m6 重叠
-                setListAddHeightDiff((a1+tempH)-a4,m4List!!,pos_)
-                setListAddHeightDiff((a1+tempH)-a6,m6List!!,pos_)
-                return
-            }
-
-            if(a1==a2){
-                if (a2>a3){//说明m3可以添加
-                    val tempH=getRandomHeight()//可以随机高度
-                    m3List!!.add(TetrisBean(getRandomHexColor(), str,tempH,pos_,true))
-                    //m5 m6 重叠
-                    setListAddHeightDiff((a3+tempH)-a5,m5List!!,pos_)
-                    setListAddHeightDiff((a3+tempH)-a6,m6List!!,pos_)
-                    return
-                }
-
-                when (Random().nextInt(2)) {
-                    0 -> {//m1添加
-                        val tempH=getRandomHeight()//可以随机高度
-                        m1List!!.add(TetrisBean(getRandomHexColor(), str,tempH,pos_,true))
-                        //m4  m6 重叠
-                        setListAddHeightDiff((a1+tempH)-a4,m4List!!,pos_)
-                        setListAddHeightDiff((a1+tempH)-a6,m6List!!,pos_)
-                        return
-                    }
-
-                    1 -> {//m4添加
-                        val tempH=getRandomHeight()//可以随机高度
-                        m4List!!.add(TetrisBean(getRandomHexColor(), str,tempH,pos_,true))
-                        //m1  m6 重叠
-                        setListAddHeightDiff((a4+tempH)-a1,m1List!!,pos_)
-                        setListAddHeightDiff((a4+tempH)-a2,m2List!!,pos_)
-                        setListAddHeightDiff((a4+tempH)-a6,m6List!!,pos_)
-                        return
-                    }
-
-                }
-            }
-        }
-    }
-    /**
-     * 设置重叠集合添加高度差
-     */
-    private fun setListAddHeightDiff(heightDiff:Int, ttlist:MutableList<TetrisBean>, pos_: Int){
-        if (heightDiff>0){
-            ttlist.add(TetrisBean(transparentColor, "",  heightDiff,pos_))//添加占位
-        }
-    }
 
     /**
-     * 获取集合所占高度
+     * 用于简化下面操作的类
      */
-    private fun getListHeight(list:MutableList<TetrisBean>):Int{
-        var height = 0
-        for (i in 0 until list.size){
-            height += list[i].height
+    data class SetBean(
+        val str: String,
+        val mClass: Class<*>,
+        val tag: String,
+        val content: String
+
+    )
+
+    var setClassList: MutableList<SetBean>? = null
+
+    private fun setList() {
+
+        /**
+         * 以后仅修改这里
+         */
+        setClassList = mutableListOf(
+            SetBean("智人社区", CryptActivity::class.java, "", ""),
+            SetBean("智人涂鸦", DoodleViewActivity::class.java, "", ""),
+            SetBean("短语学习", PhraseActivity::class.java, "", ""),
+            SetBean("认识音标", MemoryActivity::class.java, "", ""),
+            SetBean("幸运彩票", LotteryActivity::class.java, "", ""),
+            SetBean("中医方剂大全", OtherDictActivity::class.java, "dict", "0"),
+            SetBean("佛学大辞典", OtherDictActivity::class.java, "dict", "1"),
+            SetBean("全唐诗", OtherDictActivity::class.java, "dict", "2"),
+            SetBean("古汉语常用词典", OtherDictActivity::class.java, "dict", "3"),
+            SetBean("唐诗三百首", OtherDictActivity::class.java, "dict", "4"),
+            SetBean("姓氏起源", OtherDictActivity::class.java, "dict", "5"),
+            SetBean("宋词鉴赏大辞典", OtherDictActivity::class.java, "dict", "6"),
+            SetBean("家常菜", OtherDictActivity::class.java, "dict", "7"),
+            SetBean("成语词典", OtherDictActivity::class.java, "dict", "8"),
+            SetBean("掌上法律库", OtherDictActivity::class.java, "dict", "9"),
+            SetBean("本草纲目", OtherDictActivity::class.java, "dict", "10"),
+//            SetBean("脑筋急转弯", OtherDictActivity::class.java, "dict", "11"),
+        )
+
+        for (i in 0..<setClassList!!.size) {
+            temp4(i, setClassList!![i].str)
         }
-        return height
+
     }
+
     /**
      * 点击事件
      */
-    fun setOnclick(tempList: MutableList<TetrisBean>, tempPosition: Int, listType: Int):Boolean{
-        tempList.forEach{
-            if (it.mPosition==tempPosition&&it.content!=""){
+    fun setOnclick(tempList: MutableList<TetrisBean>, tempPosition: Int, listType: Int): Boolean {
 
-//                Log.e("dadada21da","点击了集合${listType}  这是第${tempPosition}个   ${it.content}")
-//                Toast.makeText(activity!!,"点击了集合${listType}  这是第${tempPosition}个   ${it.content}",
-//                    Toast.LENGTH_SHORT).show()
-                when(tempPosition){
-                    0->{
 
-                        //智人币
-                        MyStatic.setActivityString(activity, CryptActivity::class.java, "", "")
+        tempList.forEach {
+            if (it.mPosition == tempPosition && it.content != "") {
 
-                    }
-//                    1->{
-//                        //跳转LED页面
-//                        MyStatic.setActivityString(activity, LEDActivity::class.java, "", "")
-//                    }
-                    1->{
-                        //跳转涂鸦页面
-                        MyStatic.setActivityString(
-                            activity,
-                            DoodleViewActivity::class.java, "", ""
-                        )
-
-                    }
-                    2->{
-                        //跳转短语页面
-                        MyStatic.setActivityString(activity, PhraseActivity::class.java, "", "")
-                    }
-                    3->{
-                        //跳转短语页面
-                        MyStatic.setActivityString(activity, MemoryActivity::class.java, "", "")
-                    }
-                    4->{
-                        //跳转抽奖页面
-                        MyStatic.setActivityString(activity, LotteryActivity::class.java, "", "")
-                    }
-                    5->{
-                        if (Single.tag==12){
-                            Single.tag=0
-                        }else{
-                            Single.tag += 1
-                        }
-                        //跳转各类词典
-                        MyStatic.setActivityString(activity, OtherDictActivity::class.java, "", "")
-                    }
-                }
+                MyStatic.setActivityString(activity, setClassList!![tempPosition].mClass, setClassList!![tempPosition].tag, setClassList!![tempPosition].content)
 
                 return true
             }
@@ -431,6 +247,201 @@ class TetrisListFragment : BaseFragment() {
 
         return false
     }
+
+    /**
+     * 六个集合高度一致的情况  齐平
+     */
+    private fun addOne(type: Int, pos_: Int, str: String) {//可以添加9种布局
+        when (type) {
+            11 -> {
+                m1List!!.add(TetrisBean(getRandomHexColor(), str, h1, pos_, true))
+                m4List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+                m6List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+            }
+
+            12 -> {
+                m1List!!.add(TetrisBean(getRandomHexColor(), str, h2, pos_, true))
+                m4List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+                m6List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+            }
+
+            13 -> {
+                m1List!!.add(TetrisBean(getRandomHexColor(), str, h3, pos_, true))
+                m4List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+                m6List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+            }
+
+            21 -> {
+                m1List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+                m2List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+                m4List!!.add(TetrisBean(getRandomHexColor(), str, h1, pos_, true))
+                m5List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+                m6List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+            }
+
+            22 -> {
+                m1List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+                m2List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+                m4List!!.add(TetrisBean(getRandomHexColor(), str, h2, pos_, true))
+                m5List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+                m6List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+            }
+
+            23 -> {
+                m1List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+                m2List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+                m4List!!.add(TetrisBean(getRandomHexColor(), str, h3, pos_, true))
+                m5List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+                m6List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+            }
+
+            31 -> {
+                m1List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+                m2List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+                m3List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+                m4List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+                m5List!!.add(TetrisBean(transparentColor, "", h1, pos_))//添加占位
+                m6List!!.add(TetrisBean(getRandomHexColor(), str, h1, pos_, true))
+            }
+
+            32 -> {
+                m1List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+                m2List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+                m3List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+                m4List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+                m5List!!.add(TetrisBean(transparentColor, "", h2, pos_))//添加占位
+                m6List!!.add(TetrisBean(getRandomHexColor(), str, h2, pos_, true))
+            }
+
+            33 -> {
+                m1List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+                m2List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+                m3List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+                m4List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+                m5List!!.add(TetrisBean(transparentColor, "", h3, pos_))//添加占位
+                m6List!!.add(TetrisBean(getRandomHexColor(), str, h3, pos_, true))
+            }
+        }
+    }
+
+    private fun temp4(pos_: Int, str: String) {
+        //获取各集合高度
+        var a1 = getListHeight(m1List!!)
+        var a2 = getListHeight(m2List!!)
+        var a3 = getListHeight(m3List!!)
+        var a4 = getListHeight(m4List!!)
+        var a5 = getListHeight(m5List!!)
+        var a6 = getListHeight(m6List!!)
+        if (a1 == a2 && a2 == a3 && a3 == a4 && a4 == a5 && a5 == a6) {//齐平的情况下 随机选择一种
+            addOne(getType(), pos_, str)//第一步 齐平的情况下  随机9中格式的添加一个
+        } else {//不平的情况下
+            /**从m1--m6这个顺序 找高度低于前面的集合  然后添加其 或可以其 的一个*/
+            if (a1 > a2) {//说明m2可以添加  m5  可以添加
+                if (a3 > a2) {
+                    val tempH = getRandomHeight()//可以随机高度
+                    m2List!!.add(TetrisBean(getRandomHexColor(), str, tempH, pos_, true))
+                    //m4 m5 m6 重叠
+                    setListAddHeightDiff((a2 + tempH) - a4, m4List!!, pos_)
+                    setListAddHeightDiff((a2 + tempH) - a5, m5List!!, pos_)
+                    setListAddHeightDiff((a2 + tempH) - a6, m6List!!, pos_)
+                    return
+                }
+                if (a2 > a3) {//说明m3可以添加
+                    val tempH = getRandomHeight()//可以随机高度
+                    m3List!!.add(TetrisBean(getRandomHexColor(), str, tempH, pos_, true))
+                    //m5 m6 重叠
+                    setListAddHeightDiff((a3 + tempH) - a5, m5List!!, pos_)
+                    setListAddHeightDiff((a3 + tempH) - a6, m6List!!, pos_)
+                    return
+                }
+                when (Random().nextInt(2)) {
+                    0 -> {//m2添加
+                        val tempH = getRandomHeight()//可以随机高度
+                        m2List!!.add(TetrisBean(getRandomHexColor(), str, tempH, pos_, true))
+                        //m4 m5 m6 重叠
+                        setListAddHeightDiff((a2 + tempH) - a4, m4List!!, pos_)
+                        setListAddHeightDiff((a2 + tempH) - a5, m5List!!, pos_)
+                        setListAddHeightDiff((a2 + tempH) - a6, m6List!!, pos_)
+                    }
+
+
+                    1 -> {//m5添加
+                        val tempH = getRandomHeight()//可以随机高度
+                        m5List!!.add(TetrisBean(getRandomHexColor(), str, tempH, pos_, true))
+                        //m2 m3 m6 重叠
+                        setListAddHeightDiff((a5 + tempH) - a2, m2List!!, pos_)
+                        setListAddHeightDiff((a5 + tempH) - a3, m3List!!, pos_)
+                        setListAddHeightDiff((a5 + tempH) - a6, m6List!!, pos_)
+                    }
+                }
+
+                return
+            }
+
+            if (a2 > a1) {
+                val tempH = getRandomHeight()//可以随机高度
+                m1List!!.add(TetrisBean(getRandomHexColor(), str, tempH, pos_, true))
+                //m4  m6 重叠
+                setListAddHeightDiff((a1 + tempH) - a4, m4List!!, pos_)
+                setListAddHeightDiff((a1 + tempH) - a6, m6List!!, pos_)
+                return
+            }
+
+            if (a1 == a2) {
+                if (a2 > a3) {//说明m3可以添加
+                    val tempH = getRandomHeight()//可以随机高度
+                    m3List!!.add(TetrisBean(getRandomHexColor(), str, tempH, pos_, true))
+                    //m5 m6 重叠
+                    setListAddHeightDiff((a3 + tempH) - a5, m5List!!, pos_)
+                    setListAddHeightDiff((a3 + tempH) - a6, m6List!!, pos_)
+                    return
+                }
+
+                when (Random().nextInt(2)) {
+                    0 -> {//m1添加
+                        val tempH = getRandomHeight()//可以随机高度
+                        m1List!!.add(TetrisBean(getRandomHexColor(), str, tempH, pos_, true))
+                        //m4  m6 重叠
+                        setListAddHeightDiff((a1 + tempH) - a4, m4List!!, pos_)
+                        setListAddHeightDiff((a1 + tempH) - a6, m6List!!, pos_)
+                        return
+                    }
+
+                    1 -> {//m4添加
+                        val tempH = getRandomHeight()//可以随机高度
+                        m4List!!.add(TetrisBean(getRandomHexColor(), str, tempH, pos_, true))
+                        //m1  m6 重叠
+                        setListAddHeightDiff((a4 + tempH) - a1, m1List!!, pos_)
+                        setListAddHeightDiff((a4 + tempH) - a2, m2List!!, pos_)
+                        setListAddHeightDiff((a4 + tempH) - a6, m6List!!, pos_)
+                        return
+                    }
+
+                }
+            }
+        }
+    }
+
+    /**
+     * 设置重叠集合添加高度差
+     */
+    private fun setListAddHeightDiff(heightDiff: Int, ttlist: MutableList<TetrisBean>, pos_: Int) {
+        if (heightDiff > 0) {
+            ttlist.add(TetrisBean(transparentColor, "", heightDiff, pos_))//添加占位
+        }
+    }
+
+    /**
+     * 获取集合所占高度
+     */
+    private fun getListHeight(list: MutableList<TetrisBean>): Int {
+        var height = 0
+        for (i in 0 until list.size) {
+            height += list[i].height
+        }
+        return height
+    }
+
     /**
      * 随机高度
      */
@@ -439,6 +450,7 @@ class TetrisListFragment : BaseFragment() {
         val values = listOf(h1, h2, h3)
         return values.random()
     }
+
     /**
      * 随机9种模式
      */
@@ -446,6 +458,7 @@ class TetrisListFragment : BaseFragment() {
         val values = listOf(11, 12, 13, 21, 22, 23, 31, 32, 33)
         return values.random()
     }
+
     /**
      * 不带透明度的随机颜色
      */
@@ -453,9 +466,6 @@ class TetrisListFragment : BaseFragment() {
         val color = (0..10000000).random() // 生成一个 0 到 16777215 之间的随机整数
         return String.format("#%06X", color) // 将整数转换为 6 位十六进制字符串
     }
-
-
-
 
     /**
      * 带透明度的随机颜色
@@ -499,6 +509,7 @@ class TetrisListFragment : BaseFragment() {
         val random = Random()
         return imageUrls[random.nextInt(imageUrls.size)]
     }
+
     /**
      * 随机图片
      */
@@ -519,8 +530,6 @@ class TetrisListFragment : BaseFragment() {
         val random = Random()
         return imageUrls[random.nextInt(imageUrls.size)]
     }
-
-
 
 
 }

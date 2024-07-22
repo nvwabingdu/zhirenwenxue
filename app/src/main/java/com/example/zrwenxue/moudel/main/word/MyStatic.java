@@ -922,6 +922,38 @@ public class MyStatic {
         return new Random().nextInt(0xffffff) + 0xff000000;
     }
 
+    //随机背景和字体颜色
+//    public static int[] getContrastingColors() {
+//        // 生成随机的背景颜色
+//        int backgroundColor = new Random().nextInt(0xffffff) | 0xff000000;
+//
+//        // 计算背景色的反色
+//        int fontColor = ~backgroundColor & 0xFFFFFF | 0xFF000000;
+//
+//        return new int[] { backgroundColor, fontColor };
+//    }
+
+    public static int[] getContrastingColors() {
+        // 生成随机的背景颜色
+        int backgroundColor = new Random().nextInt(0xffffff) | 0xff000000;
+
+        // 计算与背景颜色有足够差异的字体颜色
+        int fontColor = calculateContrastingColor(backgroundColor);
+
+        return new int[] { backgroundColor, fontColor };
+    }
+
+    private static int calculateContrastingColor(int backgroundColor) {
+        int red = (backgroundColor >> 16) & 0xFF;
+        int green = (backgroundColor >> 8) & 0xFF;
+        int blue = backgroundColor & 0xFF;
+
+        // 计算颜色的亮度
+        double luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+
+        // 如果背景色较暗,则选择较亮的字体颜色
+        return luminance < 128 ? 0xFFFFFFFF : 0xFF000000;
+    }
 
     /**
      * 延时操作方法------------------temp

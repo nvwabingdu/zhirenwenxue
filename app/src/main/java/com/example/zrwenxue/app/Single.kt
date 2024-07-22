@@ -59,7 +59,7 @@ object Single {
 //    const val COLUMN_DESCRIPTION = "description_data"
 
 
-    var tag=0
+
 
     fun generateRandomColors(): Triple<String, String, String> {
         val colorSet = HashSet<Int>()
