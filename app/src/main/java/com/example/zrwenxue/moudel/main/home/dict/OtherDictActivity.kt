@@ -130,7 +130,7 @@ class OtherDictActivity : BaseActivity() {
 
                 //用于第一次使用
                 if (isFirst){
-                    firstWebText=Single.splitStringAtFirstTag(line.toString(), "<")[1].replace("\\n", "")
+                    firstWebText=Single.splitStringAtFirstTag(line.toString(), "<")[1].replace("\\n", "").replace(Regex("\\[[A-Za-z0-9]{4}]"), "")
                     isFirst=false
                 }
 
@@ -139,7 +139,7 @@ class OtherDictActivity : BaseActivity() {
                 mList!!.add(
                     OtherDictBean(
                         Single.splitStringAtFirstTag(line.toString(), "<")[0],
-                        Single.splitStringAtFirstTag(line.toString(), "<")[1].replace("\\n", ""),
+                        Single.splitStringAtFirstTag(line.toString(), "<")[1].replace("\\n", "").replace(Regex("\\[[A-Za-z0-9]{4}]"), ""),
                         false
                     )
                 )
