@@ -200,7 +200,6 @@ class TetrisListFragment : BaseFragment() {
     var setClassList: MutableList<SetBean>? = null
 
     private fun setList() {
-
         /**
          * 以后仅修改这里
          */
@@ -221,7 +220,7 @@ class TetrisListFragment : BaseFragment() {
             SetBean("成语词典", OtherDictActivity::class.java, "dict", "8"),
             SetBean("掌上法律库", OtherDictActivity::class.java, "dict", "9"),
             SetBean("本草纲目", OtherDictActivity::class.java, "dict", "10"),
-//            SetBean("脑筋急转弯", OtherDictActivity::class.java, "dict", "11"),
+            SetBean("唐代诗人简介", OtherDictActivity::class.java, "dict", "11"),
         )
 
         for (i in 0..<setClassList!!.size) {

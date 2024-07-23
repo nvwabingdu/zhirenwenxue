@@ -3919,4 +3919,3 @@
 鹖	</font> <font    color=red    size=5>鹖<br>\n</font> <font  color=red  size=5>hé<br></font><font   color=black   size=3><br>\n<名>一种善斗的鸟。《山海经·中山经》：“辉诸之山，……其鸟多～。” <br>\n【鹖鴠】一种报晓的鸟。《盐铁论·利议》：“～夜鸣，无益于明。”\n
 齼	</font> <font    color=red    size=5>齼<br>\n</font> <font  color=red  size=5>chǔ<br></font><font   color=black   size=3><br>\n<形>牙齿接触酸味时的感觉。曾几《曾宏甫分饷洞庭柑》诗：“莫向君家樊素口，瓠犀微～远山颦。”\n
 龁	</font> <font    color=red    size=5>龁<br>\n</font> <font  color=red  size=5>hé<br></font><font   color=black   size=3><br>\n<动>咬。《柳毅传》：“顾视之，则皆矫顾怒步，饮～甚异。”《促织》：“俄见小虫跃起，张尾伸须，直～敌颈。”\n
-	</font> <font    color=red    size=5><br>\n</font> <font  color=red  size=5>sǒng<br></font><font   color=black   size=3><br>\n①<动>挺；耸。杜甫《画鹰》：“～身思狡兔，侧目似愁胡。”②<动>推。《灌园叟晚逢仙女》：“向前叉开手，当胸一～，秋公站立不牢，踉踉跄跄，直撞过半边。” \n

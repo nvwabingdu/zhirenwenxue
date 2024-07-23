@@ -11,8 +11,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|left"
         android:background="#fff"
-        android:padding="20dp"
         android:text="ai"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:textStyle="bold" />
 
     <View

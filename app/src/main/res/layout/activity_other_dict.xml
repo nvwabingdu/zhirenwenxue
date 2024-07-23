@@ -19,24 +19,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:scrollbars="none"
-            tools:ignore="MissingConstraints" />
 
-        <View
-            android:background="#eee"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:id="@+id/temp_layout"
+            android:layout_weight="0.618"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+                android:id="@+id/rv_0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scrollbars="none"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:visibility="gone"
+                android:background="#eee"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.618"
+                android:scrollbars="none"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:background="#eee"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="7">
+            android:layout_weight="1">
             <WebView
                 android:padding="5dp"
                 android:id="@+id/web_1"
