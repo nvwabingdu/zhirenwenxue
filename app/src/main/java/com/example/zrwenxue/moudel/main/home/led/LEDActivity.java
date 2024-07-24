@@ -134,12 +134,13 @@ public class LEDActivity extends AppCompatActivity {
      */
     private PopupWindow popupWindow = null;
 
-    private boolean isShowPop=false;
+    private boolean isShowPop = false;
+
     private void showPopupWindow() {
-        if (isShowPop){
+        if (isShowPop) {
             return;
         }
-        isShowPop=true;
+        isShowPop = true;
 
         //先关闭
         if (animator != null) {
@@ -181,7 +182,7 @@ public class LEDActivity extends AppCompatActivity {
 
                     setCurrentAnim();
 
-                    isShowPop=false;
+                    isShowPop = false;
                 }
             });
         }
@@ -294,7 +295,7 @@ public class LEDActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //滑动
-                setAnima(LEDSingle.INSTANCE.getMTvSpeed(),1, ledPopTv);
+                setAnima(LEDSingle.INSTANCE.getMTvSpeed(), 1, ledPopTv);
                 LEDSingle.INSTANCE.setMTvAnimaType(1);
             }
         });
@@ -302,7 +303,7 @@ public class LEDActivity extends AppCompatActivity {
         ledDialogStatic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAnima(LEDSingle.INSTANCE.getMTvSpeed(),2, ledPopTv);
+                setAnima(LEDSingle.INSTANCE.getMTvSpeed(), 2, ledPopTv);
                 LEDSingle.INSTANCE.setMTvAnimaType(2);
             }
         });
@@ -310,7 +311,7 @@ public class LEDActivity extends AppCompatActivity {
         ledDialogTwinkle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAnima(LEDSingle.INSTANCE.getMTvSpeed(),3, ledPopTv);
+                setAnima(LEDSingle.INSTANCE.getMTvSpeed(), 3, ledPopTv);
                 LEDSingle.INSTANCE.setMTvAnimaType(3);
             }
         });
@@ -318,7 +319,7 @@ public class LEDActivity extends AppCompatActivity {
         ledDialogSlideTwinkle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAnima(LEDSingle.INSTANCE.getMTvSpeed(),4, ledPopTv);
+                setAnima(LEDSingle.INSTANCE.getMTvSpeed(), 4, ledPopTv);
                 LEDSingle.INSTANCE.setMTvAnimaType(4);
             }
         });
@@ -330,7 +331,6 @@ public class LEDActivity extends AppCompatActivity {
         maxRecyclerView.setLayoutManager(layoutManager);
 
         mList.clear();
-
 
 
         mList.add(new LedDoubleColorBean(85, 72, 127, 175, 209, 209, quotes[0]));
@@ -362,9 +362,8 @@ public class LEDActivity extends AppCompatActivity {
         mList.add(new LedDoubleColorBean(231, 183, 69, 199, 83, 64, quotes[25]));
         mList.add(new LedDoubleColorBean(52, 37, 72, 132, 193, 215, quotes[26]));
         mList.add(new LedDoubleColorBean(223, 93, 87, 144, 149, 210, quotes[27]));
-        mList.add(new LedDoubleColorBean(73, 31, 161, 73, 120, 195,quotes[28]));
+        mList.add(new LedDoubleColorBean(73, 31, 161, 73, 120, 195, quotes[28]));
         mList.add(new LedDoubleColorBean(67, 21, 130, 234, 185, 63, quotes[29]));
-
 
 
         mAdapter = new LEDdoubleAdapter(this, mList);
@@ -522,7 +521,7 @@ public class LEDActivity extends AppCompatActivity {
                         break;
                     case 7:
                         LEDSingle.INSTANCE.setMTvSpeed(progress + 1);
-                        setAnima(progress + 1,LEDSingle.INSTANCE.getMTvAnimaType(),ledPopTv);
+                        setAnima(progress + 1, LEDSingle.INSTANCE.getMTvAnimaType(), ledPopTv);
                         break;
                 }
 
@@ -540,7 +539,7 @@ public class LEDActivity extends AppCompatActivity {
     }
 
     //pop预览动画
-    void setAnima(int duration,int tag, View view) {
+    void setAnima(int duration, int tag, View view) {
         switch (tag) {
             case 1:
                 view.clearAnimation();//清除动画
@@ -550,7 +549,7 @@ public class LEDActivity extends AppCompatActivity {
                         TranslateAnimation.RELATIVE_TO_PARENT, 0.0f,
                         TranslateAnimation.RELATIVE_TO_PARENT, 0.0f);
                 mTranslateAnimation.setInterpolator(new LinearInterpolator());
-                mTranslateAnimation.setDuration(duration*1000);
+                mTranslateAnimation.setDuration(duration * 1000);
                 mTranslateAnimation.setRepeatCount(Integer.MAX_VALUE);
                 view.setAnimation(mTranslateAnimation);
                 break;
@@ -582,7 +581,7 @@ public class LEDActivity extends AppCompatActivity {
                         TranslateAnimation.RELATIVE_TO_PARENT, -1f,
                         TranslateAnimation.RELATIVE_TO_PARENT, 0.0f,
                         TranslateAnimation.RELATIVE_TO_PARENT, 0.0f);
-                mTranslateAnimation2.setDuration(duration*1000);
+                mTranslateAnimation2.setDuration(duration * 1000);
                 mTranslateAnimation2.setRepeatCount(Integer.MAX_VALUE);
                 mTranslateAnimation2.setInterpolator(new LinearInterpolator());
                 mAnimationSet.addAnimation(mTranslateAnimation2);//添加进组合动画
@@ -683,7 +682,7 @@ public class LEDActivity extends AppCompatActivity {
 
         switch (animType) {
             case 1:
-                setAnima(duration,1,mTextView);
+                setAnima(duration, 1, mTextView);
 //                // 创建属性动画
 //                animator = ObjectAnimator.ofFloat(mTextView, "translationX", screenWidth, -textWidth);
 //                animator.setDuration(duration * 1000); // 设置动画时长，单位为毫秒
@@ -694,11 +693,11 @@ public class LEDActivity extends AppCompatActivity {
 //                animator.start();
                 break;
             case 2:
-                setAnima(duration,2,mTextView);
+                setAnima(duration, 2, mTextView);
 
                 break;
             case 3:
-                setAnima(duration,3,mTextView);
+                setAnima(duration, 3, mTextView);
 //                // 渐隐动画
 //                animator = ObjectAnimator.ofFloat(mTextView, "alpha", 0f, 1f);
 //                animator.setDuration(500); // 设置动画时长，单位为毫秒
@@ -710,7 +709,7 @@ public class LEDActivity extends AppCompatActivity {
 //                animator.start();
                 break;
             case 4:
-                setAnima(duration,4,mTextView);
+                setAnima(duration, 4, mTextView);
 //                // 渐隐动画
 //                ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(mTextView, "alpha", 0f, 1f);
 //                alphaAnimator.setDuration(500);

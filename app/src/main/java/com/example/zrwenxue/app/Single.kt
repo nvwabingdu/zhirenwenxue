@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.Application
+import android.app.WallpaperManager
 import android.content.Context
-import android.os.Build
+import android.graphics.Bitmap
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -18,21 +20,19 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import com.example.newzr.R
-import com.example.zrwenxue.moudel.main.center.crypt.dapter.WaterfallBean
+import com.example.zrwenxue.moudel.main.word.MyStatic
 import net.sourceforge.pinyin4j.PinyinHelper
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination
+import java.io.IOException
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
-import java.time.Instant
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
 import kotlin.random.Random
-import kotlin.time.Duration
 
 
 /**
@@ -372,5 +372,26 @@ object Single {
     }
 
 
+    /**
+     * 设置壁纸
+     */
+    fun setWallpaper(activity :Activity,wallpaperManager: WallpaperManager, bitmap: Bitmap) {
+        try {
+            wallpaperManager.setBitmap(bitmap)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            MyStatic.showToast(activity,"未知异常")
+            // 处理异常
+        }
+    }
+
+    fun setScreensaver(activity :Activity,wallpaperManager: WallpaperManager,bitmap: Bitmap) {
+        try {
+            wallpaperManager.setBitmap(bitmap, Rect(0, 0, bitmap.width, bitmap.height),true)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            MyStatic.showToast(activity,"未知异常")
+        }
+    }
 
 }

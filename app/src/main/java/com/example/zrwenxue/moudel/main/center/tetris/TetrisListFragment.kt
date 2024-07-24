@@ -1,54 +1,26 @@
 package com.example.zrwenxue.moudel.main.center.tetris
 
-import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newzr.R
 import com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
-import com.example.zrwenxue.app.Single
 import com.example.zrwenxue.moudel.BaseFragment
 import com.example.zrwenxue.moudel.main.center.crypt.CryptActivity
 import com.example.zrwenxue.moudel.main.home.dict.OtherDictActivity
-import com.example.zrwenxue.moudel.main.home.eng.SearchWordActivity
 import com.example.zrwenxue.moudel.main.home.led.LEDActivity
 import com.example.zrwenxue.moudel.main.home.lottery.LotteryActivity
 import com.example.zrwenxue.moudel.main.home.phrase.PhraseActivity
 import com.example.zrwenxue.moudel.main.memory.MemoryActivity
-import com.example.zrwenxue.moudel.main.memory.MemoryViewModel
 import com.example.zrwenxue.moudel.main.word.MyStatic
 import com.example.zrwenxue.others.zrdrawingboard.DoodleViewActivity
+import com.example.zrwenxue.others.zrdrawingboard.SetDoodleInfoActivity
 import java.util.Arrays
 import java.util.Random
 
 class TetrisListFragment : BaseFragment() {
 
-    companion object {
-        fun newInstance() = TetrisListFragment()
-    }
-
-    private lateinit var viewModel: MemoryViewModel
 
     override fun setLayout(): Int = R.layout.fragment_tetris_list
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(activity!!).get(MemoryViewModel::class.java)
-//        setTopView()
-    }
-
-//    /**
-//     * 设置顶部
-//     */
-//    var topView: TitleBarView? = null
-//    private fun setTopView() {
-//        topView = view!!.findViewById(R.id.title_view)
-//        topView!!.setTitle("一百种记忆方法")
-//        //左边返回
-//        topView!!.setOnclickLeft(View.INVISIBLE, View.OnClickListener { })
-//        //右边弹出pop
-//        topView!!.setOnclickRight(View.INVISIBLE, View.OnClickListener { })
-//    }
 
     //拼块布局
     var m1: MaxRecyclerView? = null
@@ -74,6 +46,8 @@ class TetrisListFragment : BaseFragment() {
      * 初始化view
      */
     override fun initView() {
+
+
 //        if ( Singleton.getInstance().fileLines.size==0){
 //            //这里加载记忆一百法
 //            Singleton.getInstance().fileLines= AssetsUtils.readTextFileFromAssets(activity!!, "记忆100.txt") as ArrayList<String>
@@ -209,6 +183,7 @@ class TetrisListFragment : BaseFragment() {
             SetBean("短语学习", PhraseActivity::class.java, "", ""),
             SetBean("认识音标", MemoryActivity::class.java, "", ""),
             SetBean("幸运彩票", LotteryActivity::class.java, "", ""),
+            SetBean("LED滚动", LEDActivity::class.java, "", ""),
             SetBean("中医方剂大全", OtherDictActivity::class.java, "dict", "0"),
             SetBean("佛学大辞典", OtherDictActivity::class.java, "dict", "1"),
             SetBean("全唐诗", OtherDictActivity::class.java, "dict", "2"),
@@ -221,6 +196,10 @@ class TetrisListFragment : BaseFragment() {
             SetBean("掌上法律库", OtherDictActivity::class.java, "dict", "9"),
             SetBean("本草纲目", OtherDictActivity::class.java, "dict", "10"),
             SetBean("唐代诗人简介", OtherDictActivity::class.java, "dict", "11"),
+            SetBean("小众佛学", OtherDictActivity::class.java, "dict", "12"),
+            SetBean("中日词典", OtherDictActivity::class.java, "dict", "13"),
+            SetBean("日汉大辞典", OtherDictActivity::class.java, "dict", "14"),
+            SetBean("设置", SetDoodleInfoActivity::class.java, "", ""),
         )
 
         for (i in 0..<setClassList!!.size) {

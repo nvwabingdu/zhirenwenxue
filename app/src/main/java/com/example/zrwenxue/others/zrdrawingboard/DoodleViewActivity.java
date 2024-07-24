@@ -4,6 +4,8 @@ package com.example.zrwenxue.others.zrdrawingboard;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.SearchableInfo;
+import android.app.WallpaperManager;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import com.blankj.utilcode.util.BarUtils;
 import com.example.newzr.R;
 import com.example.zrdrawingboard.PaintSingle;
 import com.example.zrtool.ui.noslidingconflictview.NoScrollGridView;
+import com.example.zrwenxue.app.Single;
 import com.example.zrwenxue.app.TitleBarView;
 import com.example.zrwenxue.moudel.main.center.crypt.database.MyDatabaseHelper;
 import com.example.zrwenxue.moudel.main.home.led.LEDSingle;
@@ -114,17 +117,42 @@ public class DoodleViewActivity extends AppCompatActivity {
             }
         });
 
+
+        WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
+        Activity mActivity=this;
+
+
+
         //保存
         tv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /**
+                 * 弹出对话框
+                 */
+
+
+                /**
+                 * 修改
+                 */
+
+
+
 
                 //ID是作者的app使用时间搓+当前时间戳+名字
+                /**
+                 * 保存到数据库 实现持久化
+                 */
                 MyStatic.insertData(dbHelper,
                         System.currentTimeMillis()+"",
                         "张小娟",
                         "杜鹃花,娇艳绚丽,如火焰般盛放。它们簇拥在枝头,争妍斗艳,犹如天上的明星点缀大地。它们的花瓣如丝,轻柔如绒,羞怯地低垂,又骄傲地昂首,散发着迷人的芳香,让人流连忘返。",
                         MyStatic.getBase64String(mDoodleView.getBitmap()));// 插入数据
+
+
+                Single.INSTANCE.setWallpaper(mActivity,wallpaperManager,mDoodleView.getBitmap());
+                Single.INSTANCE.setScreensaver(mActivity,wallpaperManager,mDoodleView.getBitmap());
+
 
                 MyStatic.showToast(getApplicationContext(),"已保存");
             }
@@ -143,6 +171,7 @@ public class DoodleViewActivity extends AppCompatActivity {
                 finish();
             }
         });
+
         topView.setOnclickRight(View.VISIBLE, getResources().getDrawable(R.drawable.show_yb2), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -354,12 +383,12 @@ public class DoodleViewActivity extends AppCompatActivity {
 //                        "===="+LEDSingle.INSTANCE.getMTvColorG()+
 //                "===="+LEDSingle.INSTANCE.getMTvColorB());
 
-                Log.e("tag124654", toHexString(Color.argb(
-                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
-                        LEDSingle.INSTANCE.getMTvColorR(),
-                        LEDSingle.INSTANCE.getMTvColorG(),
-                        LEDSingle.INSTANCE.getMTvColorB()
-                )));
+//                Log.e("tag124654", toHexString(Color.argb(
+//                        LEDSingle.INSTANCE.getMDoodleViewColorAlpha(),
+//                        LEDSingle.INSTANCE.getMTvColorR(),
+//                        LEDSingle.INSTANCE.getMTvColorG(),
+//                        LEDSingle.INSTANCE.getMTvColorB()
+//                )));
 
 
             }

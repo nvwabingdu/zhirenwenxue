@@ -120,4 +120,19 @@
     <string name="PaintShape">画笔形状</string>
     <string name="Reset">重画</string>
     <string name="Save">保存</string>
+
+
+    <!--其他-->
+    <color name="color_7F7F7F">#7F7F7F</color>
+    <color name="color_202020">#202020</color>
+    <color name="color_a16355">#a16355</color>
+    <color name="color_ec6262">#ec6262</color>
+
+    <color name="gray_AFADAD">#AFADAD</color>
+    <color name="black_222222">#222222</color>
+    <color name="gray_E6E6E6">#E6E6E6</color>
+    <color name="gray_B3B3B3">#B3B3B3</color>
+    <color name="gray_F6F6F6">#F6F6F6</color>
+    <color name="gray_F0F0F0">#F0F0F0</color>
+    <color name="color_0066FF">#0066FF</color>
 </resources>

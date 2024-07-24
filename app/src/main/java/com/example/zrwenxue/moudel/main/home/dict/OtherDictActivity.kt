@@ -84,6 +84,15 @@ class OtherDictActivity : BaseActivity() {
             11 -> {
                 setData(flag, "唐代诗人简介", "各类词典/唐代诗人简介.txt")
             }
+            12 -> {
+                setData(flag, "小众佛学", "各类词典/小众佛学.txt")
+            }
+            13 -> {
+                setData(flag, "中日词典", "各类词典/中日词典.txt")
+            }
+            14 -> {
+                setData(flag, "日汉大辞典", "各类词典/日汉大辞典.txt")
+            }
         }
     }
 
@@ -157,6 +166,7 @@ class OtherDictActivity : BaseActivity() {
                 }
 
 
+
                 //一条一条的装
                 mList!!.add(
                     OtherDictBean(
@@ -167,6 +177,10 @@ class OtherDictActivity : BaseActivity() {
                 )
 
                 mList!![0].isOnclick = true
+
+                if (receivedValue.toInt()==14&&num>=1000){
+                    break
+                }
             }
             reader.close()
 
