@@ -4,17 +4,22 @@ package com.example.zrwenxue.others.zrdrawingboard;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.SearchableInfo;
 import android.app.WallpaperManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.SeekBar;
@@ -51,7 +56,7 @@ import java.util.ArrayList;
 
 public class DoodleViewActivity extends AppCompatActivity {
     private DoodleView mDoodleView;
-    private MyDatabaseHelper dbHelper;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,7 +75,7 @@ public class DoodleViewActivity extends AppCompatActivity {
         setTopView("涂鸦板");
 
         //数据库
-        dbHelper = new MyDatabaseHelper(this);
+
 
     }
 
@@ -143,18 +148,15 @@ public class DoodleViewActivity extends AppCompatActivity {
                 /**
                  * 保存到数据库 实现持久化
                  */
-                MyStatic.insertData(dbHelper,
-                        System.currentTimeMillis()+"",
-                        "张小娟",
-                        "杜鹃花,娇艳绚丽,如火焰般盛放。它们簇拥在枝头,争妍斗艳,犹如天上的明星点缀大地。它们的花瓣如丝,轻柔如绒,羞怯地低垂,又骄傲地昂首,散发着迷人的芳香,让人流连忘返。",
-                        MyStatic.getBase64String(mDoodleView.getBitmap()));// 插入数据
 
+//
+//
+//                Single.INSTANCE.setWallpaper(mActivity,wallpaperManager,mDoodleView.getBitmap());
+//                Single.INSTANCE.setScreensaver(mActivity,wallpaperManager,mDoodleView.getBitmap());
 
-                Single.INSTANCE.setWallpaper(mActivity,wallpaperManager,mDoodleView.getBitmap());
-                Single.INSTANCE.setScreensaver(mActivity,wallpaperManager,mDoodleView.getBitmap());
-
-
-                MyStatic.showToast(getApplicationContext(),"已保存");
+// 使用示例
+// 使用示例
+                Single.INSTANCE.showSetNameAndDescriptionPop(mActivity,MyStatic.getBase64String(mDoodleView.getBitmap()));
             }
         });
     }

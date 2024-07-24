@@ -99,6 +99,7 @@
                 android:layout_height="20dp" />
 
             <TextView
+                android:text="98675789788789790"
                 android:id="@+id/recommend_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

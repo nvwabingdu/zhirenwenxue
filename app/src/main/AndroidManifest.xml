@@ -21,10 +21,6 @@
         tools:replace="android:allowBackup"
         tools:targetApi="31">
         <activity
-            android:name="com.example.zrwenxue.others.zrdrawingboard.SetDoodleInfoActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
             android:name="com.example.zrwenxue.moudel.main.home.dict.OtherDictActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

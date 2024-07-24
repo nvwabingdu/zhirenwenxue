@@ -9,18 +9,29 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Rect
 import android.os.Bundle
+import android.text.Editable
+import android.text.InputFilter
+import android.text.Spanned
+import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.webkit.WebView
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.graphics.createBitmap
+import com.blankj.utilcode.util.ToastUtils
 import com.example.newzr.R
+import com.example.zrwenxue.moudel.main.center.crypt.database.MyDatabaseHelper
 import com.example.zrwenxue.moudel.main.word.MyStatic
 import net.sourceforge.pinyin4j.PinyinHelper
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType
@@ -57,8 +68,6 @@ object Single {
 //
 //    const val COLUMN_NAME = "name_data"
 //    const val COLUMN_DESCRIPTION = "description_data"
-
-
 
 
     fun generateRandomColors(): Triple<String, String, String> {
@@ -98,9 +107,8 @@ object Single {
     }
 
 
-
     @SuppressLint("MissingInflatedId")
-    fun showHtml(mActivity: Activity, textContent:String){
+    fun showHtml(mActivity: Activity, textContent: String) {
         val inflate = LayoutInflater.from(mActivity).inflate(R.layout.dialog_html, null)
         val webView = inflate.findViewById<WebView>(R.id.dialog_web_view)
         val v1 = inflate.findViewById<View>(R.id.v1)
@@ -122,7 +130,6 @@ object Single {
         // 设置 WebView 可滚动
         webView.isVerticalScrollBarEnabled = true
         webView.isHorizontalScrollBarEnabled = false
-
 
 
         //动画
@@ -207,18 +214,16 @@ object Single {
     }
 
 
-    fun extractTextBetweenTags(input: String,leftStr:String,rightStr:String): String {
+    fun extractTextBetweenTags(input: String, leftStr: String, rightStr: String): String {
         val startIndex = input.indexOf(leftStr)
         val endIndex = input.indexOf(rightStr)
 
         return if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
             input.substring(startIndex + leftStr.length, endIndex)
-        }else{
+        } else {
             ""
         }
     }
-
-
 
 
     /**
@@ -253,7 +258,8 @@ object Single {
     }
 
     private fun ByteArray.toHexString() = joinToString("") { "%02x".format(it) }
-    private fun String.hexStringToByteArray() = chunked(2).map { it.toInt(16).toByte() }.toByteArray()
+    private fun String.hexStringToByteArray() =
+        chunked(2).map { it.toInt(16).toByte() }.toByteArray()
 
 
     /**
@@ -327,7 +333,13 @@ object Single {
         }
     }
 
-    fun showConfirmationDialog(context: Context, title: String, message: String, onConfirm: () -> Unit, onCancel: () -> Unit) {
+    fun showConfirmationDialog(
+        context: Context,
+        title: String,
+        message: String,
+        onConfirm: () -> Unit,
+        onCancel: () -> Unit
+    ) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(title)
         builder.setMessage(message)
@@ -358,7 +370,7 @@ object Single {
     /**
      * 将一个字符从某个位置分割开来
      */
-    fun splitStringAtFirstTag(str: String,tag:String): Array<String> {
+    fun splitStringAtFirstTag(str: String, tag: String): Array<String> {
         val firstSIndex = str.indexOf(tag)
 
         return if (firstSIndex != -1) {
@@ -375,23 +387,229 @@ object Single {
     /**
      * 设置壁纸
      */
-    fun setWallpaper(activity :Activity,wallpaperManager: WallpaperManager, bitmap: Bitmap) {
+    fun setWallpaper(activity: Activity, wallpaperManager: WallpaperManager, bitmap: Bitmap) {
         try {
             wallpaperManager.setBitmap(bitmap)
         } catch (e: IOException) {
             e.printStackTrace()
-            MyStatic.showToast(activity,"未知异常")
+            MyStatic.showToast(activity, "未知异常")
             // 处理异常
         }
     }
 
-    fun setScreensaver(activity :Activity,wallpaperManager: WallpaperManager,bitmap: Bitmap) {
+    fun setScreensaver(activity: Activity, wallpaperManager: WallpaperManager, bitmap: Bitmap) {
         try {
-            wallpaperManager.setBitmap(bitmap, Rect(0, 0, bitmap.width, bitmap.height),true)
+            wallpaperManager.setBitmap(bitmap, Rect(0, 0, bitmap.width, bitmap.height), true)
         } catch (e: IOException) {
             e.printStackTrace()
-            MyStatic.showToast(activity,"未知异常")
+            MyStatic.showToast(activity, "未知异常")
         }
+    }
+
+    /**
+     * 衣装弹窗
+     */
+    fun showSetNameAndDescriptionPop(
+        mActivity: Activity,
+        bitmapStr: String
+    ) {
+        val inflate = LayoutInflater.from(mActivity).inflate(R.layout.dialog_info_edit, null)
+        val popClose = inflate.findViewById<ImageView>(R.id.pop_close)
+
+        val mPopupWindow = PopupWindow(
+            inflate,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            true
+        )
+
+        setNameAndDescription(inflate, mActivity, mPopupWindow, bitmapStr)
+
+        popClose.setOnClickListener {
+            mPopupWindow.dismiss()
+        }
+
+
+        mPopupWindow.animationStyle = R.style.BottomDialogAnimation
+
+
+        //动画
+        if (mPopupWindow.isShowing) {//如果正在显示，关闭弹窗。
+            mPopupWindow.dismiss()
+        } else {
+            mPopupWindow.isOutsideTouchable = true
+            mPopupWindow.isTouchable = true
+            mPopupWindow.isFocusable = true
+            mPopupWindow.showAtLocation(
+                inflate,
+                Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL,
+                0,
+                0
+            )
+            bgAlpha(mActivity, 0.5f) //设置透明度0.5
+        }
+
+        mPopupWindow.setOnDismissListener {
+            bgAlpha(mActivity, 1f) //恢复透明度
+        }
+        //在pause时关闭
+        lifeCycleSet(mActivity, mPopupWindow)
+    }
+
+
+    private fun setNameAndDescription(
+        inflate: View,
+        mActivity: Activity,
+        mPopupWindow: PopupWindow,
+        bitmapStr: String
+    ) {
+        val mSave: Button = inflate.findViewById(R.id.but_save)
+        val mNickname: EditText = inflate.findViewById(R.id.et_nickname)
+        val mNickNameCount: TextView = inflate.findViewById(R.id.tv_nickname_count)
+        mNickNameCount.text = "${mNickname.text.length}/20"
+        mNickname.setOnKeyListener { _, keyCode, event ->
+            if ((keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_SPACE) && event.action == KeyEvent.ACTION_DOWN) {
+                // 拦截换行符和空格输入
+                return@setOnKeyListener true
+            }
+            return@setOnKeyListener false
+        }
+
+        val blockCharacterSet = " \n" // 定义要阻止输入的字符集合
+
+        /**禁止输入换行和空格*/
+        mNickname.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                // 不需要实现
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+                // 每次用户输入字符时进行检查
+                if (count > 0 && blockCharacterSet.indexOf(s[start]) >= 0) {
+                    // 如果用户输入的字符是空格或换行符，则立即删除该字符
+                    val newText =
+                        s.subSequence(0, start).toString() + s.subSequence(start + count, s.length)
+                            .toString()
+                    mNickname.setText(newText)
+                    mNickname.setSelection(start) // 设置光标位置
+                }
+
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                // 不需要实现
+                mNickNameCount.text = "${s?.length}/20"
+            }
+        })
+
+        //修改签名
+        val mDescription: EditText = inflate.findViewById(R.id.et_description)
+        val mDescriptionCount: TextView = inflate.findViewById(R.id.tv_description_count)
+        mDescriptionCount.text = "${mDescription.text.length}"
+
+        mDescription.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 在文本改变之前执行的操作
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                mDescriptionCount.text = "${s?.length}"
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 在文本变化之后执行的逻辑
+                val text = s.toString()
+                // 不能以空格开头
+                if (text.startsWith(" ")) {
+                    // 删除首个字符（即空格）
+                    s!!.delete(0, 1)
+                }
+                //不能以换行开头
+                if (text.startsWith("\r")) {
+                    // 删除首个字符（即空格）
+                    s!!.delete(0, 1)
+                }
+                //不能以换行开头
+                if (text.startsWith("\n")) {
+                    // 删除首个字符（即空格）
+                    s!!.delete(0, 1)
+                }
+                //不能以换行开头
+                if (text.startsWith("\r\n")) {
+                    // 删除首个字符（即空格）
+                    s!!.delete(0, 1)
+                }
+            }
+        })
+
+        //设置最大行数
+        val maxLines = 6
+        setMaxLinesWithFilter(mDescription, maxLines, mActivity)
+
+        val dbHelper = MyDatabaseHelper(mActivity)//实例化数据库
+        val sharedPreferences = mActivity.getSharedPreferences("user_info", Context.MODE_PRIVATE)
+        val time = sharedPreferences.getString("time", null)
+        val name= sharedPreferences.getString("name", null)
+
+        mSave.setOnClickListener {
+            if (
+                mNickname.text.contains(">")
+                || mNickname.text.contains("<")
+                || mNickname.text.contains("@")
+                || mNickname.text.contains("/")
+                || mNickname.text.contains("#")
+            ) {
+                ToastUtils.showShort("昵称包含@、#等特殊字符,请重新输入")
+                return@setOnClickListener
+            }
+
+            if (mDescription.text.toString() != "" && mNickname.text.toString() != "") {
+
+                /**
+                 * 保存到数据库 实现持久化
+                 * ID是作者的app使用时间搓+当前时间戳+画作名字
+                 * description     介绍|名称|持有人|持有人密码|是否售卖|售卖次数|价值|
+                 */
+                // TODO: 需要修改
+                MyStatic.insertData(
+                    dbHelper,
+                    time +System.currentTimeMillis().toString() +  mDescription.text.toString(),
+                    mNickname.text.toString()+"",
+                    mDescription.text.toString()+"|"+mNickname.text.toString()+"|"+name,
+                    bitmapStr+""
+                ) // 插入数据
+
+                mPopupWindow.dismiss()
+
+                MyStatic.showToast(mActivity, "保存成功")
+            } else {
+                MyStatic.showToast(mActivity, "名称和介绍不能为空")
+            }
+        }
+    }
+
+    private fun setMaxLinesWithFilter(editText: EditText, maxLines: Int, mActivity: Activity) {
+        val filter =
+            InputFilter { source: CharSequence, start: Int, end: Int, dest: Spanned?, dstart: Int, dend: Int ->
+                // 检查输入的字符是否为回车或换行符
+                for (i in start until end) {
+                    val character = source[i]
+                    if (character == '\n' || character == '\r') {
+                        // 获取当前编辑框中已有的行数
+                        val lines = editText.lineCount
+                        // 如果已有行数达到最大行数，则禁止输入回车符
+                        if (lines >= maxLines) {
+                            MyStatic.showToast(mActivity, "最多输入${maxLines}行")
+                            return@InputFilter ""
+                        }
+                    }
+                }
+                null // 允许输入字符
+            }
+
+        // 应用过滤器
+        editText.filters = arrayOf(filter)
     }
 
 }

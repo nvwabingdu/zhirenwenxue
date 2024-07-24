@@ -165,16 +165,16 @@ open class WaterfallAdapter(private var mContent: Context,
 //
         if (dataList[position].description != ""){
             holder.attentionContent.visibility=View.VISIBLE
-            holder.attentionContent.text = dataList[position].description
+            holder.attentionContent.text = dataList[position].description.split("|")[0]
         }else{
             holder.attentionContent.visibility=View.GONE
         }
 //
-        if (dataList[position].author == ""){
+        if (dataList[position].name == ""){
             holder.attentionUsername.visibility=View.GONE
         }else{
             holder.attentionUsername.visibility=View.VISIBLE
-            holder.attentionUsername.text = dataList[position].author
+            holder.attentionUsername.text = dataList[position].name
         }
 //
 //        /**
