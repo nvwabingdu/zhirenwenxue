@@ -90,16 +90,17 @@ class C0Fragment : BaseFragment() {
         //将此数据装入集合
        val tempList: MutableList<WaterfallBean> = ArrayList()
         splitData.forEach {
-//            Log.e("bitmap_key212","bitmap_key:=====  "+it[0])
+//            Log.e("bitmap_key212","bitmap_key:=====  "+it[0])   介绍|画作名称|画作作者|持有人|持有人密码|售卖次数|历史最高价|创建时间|价值
             tempList.add(WaterfallBean(
-                it[0],
+                ""+it[0],
                 "",
-                it[1],
-                it[2],
-                true,
-                464L,
-                "",
-                0.0,
+                ""+it[1],
+                ""+it[2].split("|")[0],
+                it[2].split("|")[7].toLong(),
+                ""+it[2].split("|")[3],
+                it[2].split("|")[6].toDouble(),
+                it[2].split("|")[5].toInt(),
+                it[2].split("|")[8].toDouble(),
                 MyStatic.getBase64Bitmap(it[3])))
         }
         return tempList

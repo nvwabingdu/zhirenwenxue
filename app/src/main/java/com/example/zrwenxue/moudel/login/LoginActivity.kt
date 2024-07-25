@@ -114,6 +114,7 @@ class LoginActivity : BaseActivity() {
                     || name.contains("/")
                     || name.contains("#")
                     || name.contains("|")
+                    || name.contains("|")
                 ) {
                     ToastUtils.showShort("昵称包含</|>@#等特殊字符,请重新输入")
                     return@setOnClickListener
@@ -125,6 +126,7 @@ class LoginActivity : BaseActivity() {
                     || password.contains("@")
                     || password.contains("/")
                     || password.contains("#")
+                    || password.contains("|")
                     || password.contains("|")
                 ) {
                     ToastUtils.showShort("密码包含</|>@#等特殊字符,请重新输入")

@@ -551,14 +551,19 @@ object Single {
         val sharedPreferences = mActivity.getSharedPreferences("user_info", Context.MODE_PRIVATE)
         val time = sharedPreferences.getString("time", null)
         val name= sharedPreferences.getString("name", null)
+        val password = sharedPreferences.getString("password", null)
 
         mSave.setOnClickListener {
             if (
                 mNickname.text.contains(">")
                 || mNickname.text.contains("<")
+                || mNickname.text.contains("|")
+                || mNickname.text.contains("|")
                 || mNickname.text.contains("@")
                 || mNickname.text.contains("/")
                 || mNickname.text.contains("#")
+                || mDescription.text.contains("|")
+                || mDescription.text.contains("|")
             ) {
                 ToastUtils.showShort("昵称包含@、#等特殊字符,请重新输入")
                 return@setOnClickListener
@@ -569,14 +574,23 @@ object Single {
                 /**
                  * 保存到数据库 实现持久化
                  * ID是作者的app使用时间搓+当前时间戳+画作名字
-                 * description     介绍|名称|持有人|持有人密码|是否售卖|售卖次数|价值|
+                 * description     介绍|画作名称|画作作者|持有人|持有人密码|售卖次数|历史最高价|创建时间|价值
                  */
-                // TODO: 需要修改
+                //Single.INSTANCE.setWallpaper(mActivity,wallpaperManager,mDoodleView.getBitmap());
+                //Single.INSTANCE.setScreensaver(mActivity,wallpaperManager,mDoodleView.getBitmap());
                 MyStatic.insertData(
                     dbHelper,
                     time +System.currentTimeMillis().toString() +  mDescription.text.toString(),
                     mNickname.text.toString()+"",
-                    mDescription.text.toString()+"|"+mNickname.text.toString()+"|"+name,
+                    mDescription.text.toString()+"|"+
+                            mNickname.text.toString()+"|"+
+                            name+"|"+
+                            name+"|"+
+                            password+ "|"+
+                            "5"+ "|"+
+                            "1.0"+ "|"+
+                            System.currentTimeMillis()+ "|"+
+                            "1.0"+ "|",
                     bitmapStr+""
                 ) // 插入数据
 

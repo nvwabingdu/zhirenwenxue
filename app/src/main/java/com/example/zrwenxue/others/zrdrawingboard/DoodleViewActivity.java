@@ -132,30 +132,6 @@ public class DoodleViewActivity extends AppCompatActivity {
         tv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /**
-                 * 弹出对话框
-                 */
-
-
-                /**
-                 * 修改
-                 */
-
-
-
-
-                //ID是作者的app使用时间搓+当前时间戳+名字
-                /**
-                 * 保存到数据库 实现持久化
-                 */
-
-//
-//
-//                Single.INSTANCE.setWallpaper(mActivity,wallpaperManager,mDoodleView.getBitmap());
-//                Single.INSTANCE.setScreensaver(mActivity,wallpaperManager,mDoodleView.getBitmap());
-
-// 使用示例
-// 使用示例
                 Single.INSTANCE.showSetNameAndDescriptionPop(mActivity,MyStatic.getBase64String(mDoodleView.getBitmap()));
             }
         });

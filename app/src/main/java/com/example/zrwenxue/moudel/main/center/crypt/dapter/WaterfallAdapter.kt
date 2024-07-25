@@ -24,7 +24,7 @@ open class WaterfallAdapter(private var mContent: Context,
                             ) : RecyclerView.Adapter<WaterfallAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.home_item_recommend, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_zrb_doodle, parent, false)
         return MyViewHolder(view)
     }
 
@@ -161,22 +161,24 @@ open class WaterfallAdapter(private var mContent: Context,
 //        }else{
 //            holder.attentionYours.visibility=View.GONE
 //        }
-//
-//
-        if (dataList[position].description != ""){
+
+        holder.tvDoodleName.text=dataList[position].doodleName
+        holder.attentionLaudCount.text=dataList[position].value.toString()
+
+
+        if (dataList[position].doodleDescription != ""){
             holder.attentionContent.visibility=View.VISIBLE
-            holder.attentionContent.text = dataList[position].description.split("|")[0]
+            holder.attentionContent.text = dataList[position].doodleDescription
         }else{
             holder.attentionContent.visibility=View.GONE
         }
 //
-        if (dataList[position].name == ""){
+        if (dataList[position].owner == ""){
             holder.attentionUsername.visibility=View.GONE
         }else{
             holder.attentionUsername.visibility=View.VISIBLE
-            holder.attentionUsername.text = dataList[position].name
+            holder.attentionUsername.text = dataList[position].owner
         }
-//
 //        /**
 //         * 点赞逻辑
 //         */
@@ -216,13 +218,13 @@ open class WaterfallAdapter(private var mContent: Context,
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var attentionImg: ImageView = itemView.findViewById(R.id.attention_img)//图片
-//        var attentionYours: View = itemView.findViewById(R.id.recommend_yours_attention)//你的关注
+        var tvDoodleName: TextView = itemView.findViewById(R.id.tv_doodle_name)//涂鸦名字
         var attentionContent: TextView = itemView.findViewById(R.id.recommend_content)//原来这就是30岁的温柔和气质……
 //        var attentionUserIcon: ImageView = itemView.findViewById(R.id.recommend_usericon)//头像
         var attentionUsername: TextView = itemView.findViewById(R.id.recommend_username)//陈阿姨smile
 //        var attentionLaudImg: ImageView = itemView.findViewById(R.id.recommend_laud)//点赞
 //        var recommendVideoPlayImg: ImageView = itemView.findViewById(R.id.recommend_video_play_img)//视频图标
-//        var attentionLaudCount: TextView = itemView.findViewById(R.id.recommend_laud_count)//点赞数量
+        var attentionLaudCount: TextView = itemView.findViewById(R.id.recommend_laud_count)//价值
 //        var laudLayout: View = itemView.findViewById(R.id.laud_layout)//点赞数量
     }
 

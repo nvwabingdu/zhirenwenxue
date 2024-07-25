@@ -41,22 +41,16 @@
             android:layout_marginRight="8dp" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/recommend_yours_attention"
-        android:layout_width="50dp"
-        android:layout_height="16dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center">
 
         <TextView
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_doodle_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
             android:text="你的关注"
-            android:textColor="#226B4D"
-            android:textSize="10sp" />
-    </LinearLayout>
+            android:textColor="#226B4D"/>
 
     <View
         android:layout_width="match_parent"
@@ -80,35 +74,23 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:layout_height="30dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingBottom="10dp">
+        android:gravity="center_vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="44dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/recommend_usericon"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
 
             <TextView
-                android:text="98675789788789790"
+                android:layout_marginRight="80dp"
+                android:text="4546545"
                 android:id="@+id/recommend_username"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="#939393"
                 android:textSize="12sp" />
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/laud_layout"
@@ -117,8 +99,12 @@
             android:layout_alignParentRight="true"
             android:gravity="center_vertical">
 
-            <ImageView
-                android:id="@+id/recommend_laud"
+            <TextView
+                android:textColor="@color/white"
+                android:text="ZR"
+                android:gravity="center"
+                android:background="@drawable/circle_with_text"
+                android:textSize="7sp"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginLeft="2dp" />
@@ -128,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
-                android:text="1234"
+                android:text="1.0"
                 android:textColor="#939393"
                 android:textSize="12sp" />
 
