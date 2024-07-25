@@ -6,5 +6,5 @@ package com.example.zrwenxue.others.zrdrawingboard.doodleview;
  * @TIME 14:51
  */
 public enum ActionType {
-    Point, Path, Line, Rect, Circle, FillEcRect, FilledCircle
+    Point, Path, Line, Rect, Circle, FillEcRect, FilledCircle,Triangle,FillTriangle
 }

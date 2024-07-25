@@ -156,6 +156,13 @@ public class DoodleView extends SurfaceView implements SurfaceHolder.Callback {
             case FilledCircle:
                 curAction = new MyFillCircle(x, y, currentSize, currentColor);
                 break;
+
+            case Triangle:
+                curAction = new MyTriangle(x, y, currentSize, currentColor);
+                break;
+            case FillTriangle:
+                curAction = new MyFillTriangle(x, y, currentSize, currentColor);
+                break;
             default:
                 break;
         }

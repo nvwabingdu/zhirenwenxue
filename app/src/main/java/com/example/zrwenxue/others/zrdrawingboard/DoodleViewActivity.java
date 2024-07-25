@@ -526,7 +526,9 @@ public class DoodleViewActivity extends AppCompatActivity {
         if (mShapeDialog == null) {
             mShapeDialog = new AlertDialog.Builder(this)
                     .setTitle("选择形状")
-                    .setSingleChoiceItems(new String[]{"点", "线", "矩形", "圆", "实心矩形", "实心圆"}, 0,
+//                    .setSingleChoiceItems(new String[]{"点", "线", "矩形", "圆", "实心矩形", "实心圆","三角形","实心三角形"},
+                    .setSingleChoiceItems(new String[]{"点", "线", "长方形","圆环","方块", "圆形"},
+                            0,
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -548,6 +550,12 @@ public class DoodleViewActivity extends AppCompatActivity {
                                             break;
                                         case 5:
                                             mDoodleView.setType(ActionType.FilledCircle);
+                                            break;
+                                        case 6:
+                                            mDoodleView.setType(ActionType.Triangle);
+                                            break;
+                                        case 7:
+                                            mDoodleView.setType(ActionType.FillTriangle);
                                             break;
                                         default:
                                             break;

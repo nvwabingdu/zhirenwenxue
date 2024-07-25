@@ -318,21 +318,31 @@ class MyTriangle extends BaseAction {
     private float startY;
     private float stopX;
     private float stopY;
+    private float radius;
     private int size;
 
     MyTriangle() {
-        this.startX = 0;
-        this.startY = 0;
-        this.stopX = 0;
-        this.stopY = 0;
+        startX = 0;
+        startY = 0;
+        stopX = 0;
+        stopY = 0;
+        radius = 0;
     }
 
     MyTriangle(float x, float y, int size, int color) {
+//        super(color);
+//        this.startX = x;
+//        this.startY = y;
+//        this.stopX = x;
+//        this.stopY = y;
+//        this.radius = 0;
+//        this.size = size;
+
         super(color);
         this.startX = x;
         this.startY = y;
-        this.stopX = x;
-        this.stopY = y;
+        this.stopX = x + size / 2;
+        this.stopY = y + (float) (size * Math.sqrt(3) / 2);
         this.size = size;
     }
 
@@ -344,18 +354,50 @@ class MyTriangle extends BaseAction {
         paint.setColor(color);
         paint.setStrokeWidth(size);
 
-        Path path = new Path();
-        path.moveTo(startX, startY);
-        path.lineTo(stopX - size / 2, stopY);
-        path.lineTo(stopX + size / 2, stopY);
-        path.close();
-        canvas.drawPath(path, paint);
+//        canvas.drawCircle((startX + stopX) / 2, (startY + stopY) / 2, radius, paint);
+//
+//        Paint paint = new Paint();
+//        paint.setAntiAlias(true);
+//        paint.setStyle(Paint.Style.STROKE);
+//        paint.setColor(color);
+//        paint.setStrokeWidth(size);
+//
+//        Path path = new Path();
+//        path.moveTo(startX, startY);
+//        path.lineTo(stopX - size / 2, stopY);
+//        path.lineTo(stopX + size / 2, stopY);
+//        path.close();
+//        canvas.drawPath(path, paint);
+//
+//
+//
+//        // 计算三角形顶点坐标
+//        int centerX = getWidth() / 2;
+//        int centerY = getHeight() / 2;
+//        float sx = centerX;
+//        float sy = centerY - size;
+//        float x2 = centerX - size * (float) Math.sqrt(3) / 2;
+//        float y2 = centerY + size / 2;
+//        float x3 = centerX + size * (float) Math.sqrt(3) / 2;
+//        float y3 = y2;
+//
+//        // 绘制等边三角形
+//        Path path = new Path();
+//        path.moveTo(sx, sy);
+//        path.lineTo(x2, y2);
+//        path.lineTo(x3, y3);
+//        path.close();
+//        canvas.drawPath(path, paint);
+//
+
     }
 
     @Override
     public void move(float mx, float my) {
         stopX = mx;
         stopY = my;
+        radius = (float) ((Math.sqrt((mx - startX) * (mx - startX)
+                + (my - startY) * (my - startY))) / 2);
     }
 }
 
