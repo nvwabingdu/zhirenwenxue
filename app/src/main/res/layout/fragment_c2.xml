@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.zrwenxue.moudel.main.center.crypt.C2Fragment">
+    tools:context="com.example.zrwenxue.moudel.main.center.zr.C2Fragment">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

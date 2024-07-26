@@ -25,7 +25,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.zrwenxue.moudel.main.center.crypt.CryptActivity"
+            android:name="com.example.zrwenxue.moudel.main.center.zr.ZrActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

@@ -1,13 +1,13 @@
-package com.example.zrwenxue.moudel.main.center.crypt
+package com.example.zrwenxue.moudel.main.center.zr
 
 
 import com.example.newzr.R
 import com.example.zrwenxue.moudel.BaseFragment
 
-class C4Fragment : BaseFragment() {
+class C5Fragment : BaseFragment() {
 
     override fun setLayout(): Int {
-        return R.layout.fragment_c4
+        return R.layout.fragment_c5
     }
 
     override fun initView() {

@@ -1,6 +1,4 @@
-package com.example.zrwenxue.moudel.main.center.crypt
-
-import android.util.Log
+package com.example.zrwenxue.moudel.main.center.zr
 
 
 fun main(){

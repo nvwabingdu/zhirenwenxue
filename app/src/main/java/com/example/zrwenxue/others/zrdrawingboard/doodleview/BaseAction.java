@@ -313,23 +313,15 @@ class MyFillCircle extends BaseAction {
 /**
  * 三角形
  */
-class MyTriangle extends BaseAction {
-    private float startX;
-    private float startY;
-    private float stopX;
-    private float stopY;
-    private float radius;
-    private int size;
 
-    MyTriangle() {
-        startX = 0;
-        startY = 0;
-        stopX = 0;
-        stopY = 0;
-        radius = 0;
-    }
-
-    MyTriangle(float x, float y, int size, int color) {
+//class MyTriangle extends BaseAction {
+//    private float startX, startY; // 固定顶点
+//    private float stopX, stopY; // 拖动时的顶点
+//    private float radius;
+//    private int size;
+//    private float angle = 0f; // 旋转角度
+//
+//    public MyTriangle(float x, float y, int size, int color) {
 //        super(color);
 //        this.startX = x;
 //        this.startY = y;
@@ -337,12 +329,51 @@ class MyTriangle extends BaseAction {
 //        this.stopY = y;
 //        this.radius = 0;
 //        this.size = size;
+//    }
+//
+//    @Override
+//    public void draw(Canvas canvas) {
+//        Paint paint = new Paint();
+//        paint.setAntiAlias(true);
+//        paint.setStyle(Paint.Style.STROKE);
+//        paint.setColor(color);
+//        paint.setStrokeWidth(size);
+//
+//        Path path = new Path();
+//        path.moveTo(startX, startY);
+//        path.lineTo((float)(startX - radius * Math.cos(angle + Math.PI / 3)), (float)(startY + radius * Math.sin(angle + Math.PI / 3)));
+//        path.lineTo((float)(startX + radius * Math.cos(angle + Math.PI / 3)), (float)(startY + radius * Math.sin(angle + Math.PI / 3)));
+//        path.close();
+//        canvas.drawPath(path, paint);
+//    }
+//
+//    @Override
+//    public void move(float mx, float my) {
+//        stopX = mx;
+//        stopY = my;
+//        radius = (float) ((Math.sqrt((mx - startX) * (mx - startX)
+//                + (my - startY) * (my - startY))) / (2 * Math.sqrt(3)));
+//
+//        // 计算旋转角度
+//        float dx = mx - startX;
+//        float dy = my - startY;
+//        angle = (float)Math.atan2(dy, dx);
+//    }
+//}
 
+class MyTriangle extends BaseAction {
+    private float startX, startY; // 固定顶点
+    private float stopX, stopY; // 拖动时的顶点
+    private float radius;
+    private int size;
+
+    public MyTriangle(float x, float y, int size, int color) {
         super(color);
         this.startX = x;
         this.startY = y;
-        this.stopX = x + size / 2;
-        this.stopY = y + (float) (size * Math.sqrt(3) / 2);
+        this.stopX = x;
+        this.stopY = y;
+        this.radius = 0;
         this.size = size;
     }
 
@@ -354,42 +385,12 @@ class MyTriangle extends BaseAction {
         paint.setColor(color);
         paint.setStrokeWidth(size);
 
-//        canvas.drawCircle((startX + stopX) / 2, (startY + stopY) / 2, radius, paint);
-//
-//        Paint paint = new Paint();
-//        paint.setAntiAlias(true);
-//        paint.setStyle(Paint.Style.STROKE);
-//        paint.setColor(color);
-//        paint.setStrokeWidth(size);
-//
-//        Path path = new Path();
-//        path.moveTo(startX, startY);
-//        path.lineTo(stopX - size / 2, stopY);
-//        path.lineTo(stopX + size / 2, stopY);
-//        path.close();
-//        canvas.drawPath(path, paint);
-//
-//
-//
-//        // 计算三角形顶点坐标
-//        int centerX = getWidth() / 2;
-//        int centerY = getHeight() / 2;
-//        float sx = centerX;
-//        float sy = centerY - size;
-//        float x2 = centerX - size * (float) Math.sqrt(3) / 2;
-//        float y2 = centerY + size / 2;
-//        float x3 = centerX + size * (float) Math.sqrt(3) / 2;
-//        float y3 = y2;
-//
-//        // 绘制等边三角形
-//        Path path = new Path();
-//        path.moveTo(sx, sy);
-//        path.lineTo(x2, y2);
-//        path.lineTo(x3, y3);
-//        path.close();
-//        canvas.drawPath(path, paint);
-//
-
+        Path path = new Path();
+        path.moveTo(startX, startY);
+        path.lineTo((float)(startX - radius * Math.cos(Math.PI / 3)), (float)(startY + radius * Math.sin(Math.PI / 3)));
+        path.lineTo((float)(startX + radius * Math.cos(Math.PI / 3)), (float)(startY + radius * Math.sin(Math.PI / 3)));
+        path.close();
+        canvas.drawPath(path, paint);
     }
 
     @Override
@@ -397,7 +398,7 @@ class MyTriangle extends BaseAction {
         stopX = mx;
         stopY = my;
         radius = (float) ((Math.sqrt((mx - startX) * (mx - startX)
-                + (my - startY) * (my - startY))) / 2);
+                + (my - startY) * (my - startY))) / (2 * Math.sqrt(3)));
     }
 }
 
@@ -405,25 +406,14 @@ class MyTriangle extends BaseAction {
  * 实心三角形
  */
 class MyFillTriangle extends BaseAction {
-    private float startX;
-    private float startY;
-    private float stopX;
-    private float stopY;
-    private int size;
+    private float x1, y1; // 固定顶点
+    private float size;
+    private float angle = 0f;
 
-    MyFillTriangle() {
-        this.startX = 0;
-        this.startY = 0;
-        this.stopX = 0;
-        this.stopY = 0;
-    }
-
-    MyFillTriangle(float x, float y, int size, int color) {
+    public MyFillTriangle(float x, float y, float size, int color) {
         super(color);
-        this.startX = x;
-        this.startY = y;
-        this.stopX = x;
-        this.stopY = y;
+        this.x1 = x;
+        this.y1 = y;
         this.size = size;
     }
 
@@ -433,27 +423,27 @@ class MyFillTriangle extends BaseAction {
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(color);
-        paint.setStrokeWidth(size);
 
         Path path = new Path();
-        path.moveTo(startX, startY);
-        path.lineTo(stopX - size / 2, stopY);
-        path.lineTo(stopX + size / 2, stopY);
+        path.moveTo(x1, y1);
+        path.lineTo((float)(x1 - size / 2 * Math.cos(angle)), (float)(y1 + size / 2 * Math.sin(angle)));
+        path.lineTo((float)(x1 + size / 2 * Math.cos(angle)), (float)(y1 + size / 2 * Math.sin(angle)));
         path.close();
         canvas.drawPath(path, paint);
     }
 
     @Override
     public void move(float mx, float my) {
-        stopX = mx;
-        stopY = my;
+        float dx = mx - x1;
+        float dy = my - y1;
+
+        // 计算缩放比例
+        size = (float)Math.sqrt(dx * dx + dy * dy) / (float)Math.sqrt(3);
+
+        // 计算旋转角度
+        angle = (float)Math.atan2(dy, dx);
     }
 }
-
-
-
-
-
 
 
 

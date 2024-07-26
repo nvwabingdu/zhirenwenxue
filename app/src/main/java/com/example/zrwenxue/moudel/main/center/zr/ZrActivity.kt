@@ -1,4 +1,4 @@
-package com.example.zrwenxue.moudel.main.center.crypt
+package com.example.zrwenxue.moudel.main.center.zr
 
 
 import android.view.View
@@ -10,8 +10,8 @@ import com.example.zrwenxue.moudel.BaseActivity
 import com.example.zrwenxue.moudel.main.word.singleworddetails.tabwebview.ViewPagerFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 
-class CryptActivity : BaseActivity() {
-    override fun layoutResId(): Int = R.layout.activity_crypt
+class ZrActivity : BaseActivity() {
+    override fun layoutResId(): Int = R.layout.activity_zr
 
     override fun init() {
         //设置顶部

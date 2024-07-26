@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_down"
-    tools:context="com.example.zrwenxue.moudel.main.center.crypt.C3Fragment">
+    tools:context="com.example.zrwenxue.moudel.main.center.zr.C3Fragment">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

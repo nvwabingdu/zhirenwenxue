@@ -28,10 +28,9 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.graphics.createBitmap
 import com.blankj.utilcode.util.ToastUtils
 import com.example.newzr.R
-import com.example.zrwenxue.moudel.main.center.crypt.database.MyDatabaseHelper
+import com.example.zrwenxue.moudel.main.center.zr.database.MyDatabaseHelper
 import com.example.zrwenxue.moudel.main.word.MyStatic
 import net.sourceforge.pinyin4j.PinyinHelper
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType
@@ -150,14 +149,6 @@ object Single {
         lifeCycleSet(mActivity, mPopupWindow)
     }
 
-    /**
-     * 透明度
-     */
-    fun bgAlpha(context: Activity, f: Float) { //透明函数
-        val lp: WindowManager.LayoutParams = context.window.attributes
-        lp.alpha = f
-        context.window.attributes = lp
-    }
 
     /**
      * 获取app的生命周期，包括所有activity  找到现在使用的 并进行 防止内存泄露的操作  一般用于关闭pop
@@ -399,7 +390,7 @@ object Single {
 
     fun setScreensaver(activity: Activity, wallpaperManager: WallpaperManager, bitmap: Bitmap) {
         try {
-            wallpaperManager.setBitmap(bitmap, Rect(0, 0, bitmap.width, bitmap.height), true)
+            wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK)
         } catch (e: IOException) {
             e.printStackTrace()
             MyStatic.showToast(activity, "未知异常")
@@ -407,7 +398,7 @@ object Single {
     }
 
     /**
-     * 衣装弹窗
+     * 保存画作
      */
     fun showSetNameAndDescriptionPop(
         mActivity: Activity,
@@ -576,8 +567,6 @@ object Single {
                  * ID是作者的app使用时间搓+当前时间戳+画作名字
                  * description     介绍|画作名称|画作作者|持有人|持有人密码|售卖次数|历史最高价|创建时间|价值
                  */
-                //Single.INSTANCE.setWallpaper(mActivity,wallpaperManager,mDoodleView.getBitmap());
-                //Single.INSTANCE.setScreensaver(mActivity,wallpaperManager,mDoodleView.getBitmap());
                 MyStatic.insertData(
                     dbHelper,
                     time +System.currentTimeMillis().toString() +  mDescription.text.toString(),
@@ -624,6 +613,16 @@ object Single {
 
         // 应用过滤器
         editText.filters = arrayOf(filter)
+    }
+
+
+    /**
+     * 透明度
+     */
+    fun bgAlpha(context: Activity, f: Float) { //透明函数
+        val lp: WindowManager.LayoutParams = context.window.attributes
+        lp.alpha = f
+        context.window.attributes = lp
     }
 
 }

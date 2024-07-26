@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newzr.R
 import com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
 import com.example.zrwenxue.moudel.BaseFragment
-import com.example.zrwenxue.moudel.main.center.crypt.CryptActivity
+import com.example.zrwenxue.moudel.main.center.zr.ZrActivity
 import com.example.zrwenxue.moudel.main.home.dict.OtherDictActivity
 import com.example.zrwenxue.moudel.main.home.led.LEDActivity
 import com.example.zrwenxue.moudel.main.home.lottery.LotteryActivity
@@ -177,7 +177,7 @@ class TetrisListFragment : BaseFragment() {
          * 以后仅修改这里
          */
         setClassList = mutableListOf(
-            SetBean("智人社区", CryptActivity::class.java, "", ""),
+            SetBean("智人社区", ZrActivity::class.java, "", ""),
             SetBean("智人涂鸦", DoodleViewActivity::class.java, "", ""),
             SetBean("短语学习", PhraseActivity::class.java, "", ""),
             SetBean("认识音标", MemoryActivity::class.java, "", ""),

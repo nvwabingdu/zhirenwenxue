@@ -5,21 +5,14 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.WallpaperManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.SeekBar;
@@ -36,7 +29,6 @@ import com.example.zrdrawingboard.PaintSingle;
 import com.example.zrtool.ui.noslidingconflictview.NoScrollGridView;
 import com.example.zrwenxue.app.Single;
 import com.example.zrwenxue.app.TitleBarView;
-import com.example.zrwenxue.moudel.main.center.crypt.database.MyDatabaseHelper;
 import com.example.zrwenxue.moudel.main.home.led.LEDSingle;
 import com.example.zrwenxue.moudel.main.word.MyStatic;
 import com.example.zrwenxue.others.zrdrawingboard.brushviewdemo.AdapterColors;
@@ -123,7 +115,7 @@ public class DoodleViewActivity extends AppCompatActivity {
         });
 
 
-        WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
+
         Activity mActivity=this;
 
 
@@ -526,8 +518,8 @@ public class DoodleViewActivity extends AppCompatActivity {
         if (mShapeDialog == null) {
             mShapeDialog = new AlertDialog.Builder(this)
                     .setTitle("选择形状")
-//                    .setSingleChoiceItems(new String[]{"点", "线", "矩形", "圆", "实心矩形", "实心圆","三角形","实心三角形"},
-                    .setSingleChoiceItems(new String[]{"点", "线", "长方形","圆环","方块", "圆形"},
+//                    .setSingleChoiceItems(new String[]{"点", "线", "长方形","环形","方块", "圆形","三角形","三角块"},
+                    .setSingleChoiceItems(new String[]{"点", "线", "长方形","环形","方块", "圆形"},
                             0,
                             new DialogInterface.OnClickListener() {
                                 @Override

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.zrwenxue.moudel.main.center.crypt.C1Fragment">
+    tools:context="com.example.zrwenxue.moudel.main.center.zr.C1Fragment">
 
     <ScrollView
         android:layout_width="match_parent"
