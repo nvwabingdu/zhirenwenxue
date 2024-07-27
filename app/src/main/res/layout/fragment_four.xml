@@ -9,47 +9,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5" />
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_weight="33"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:scrollbars="none" />
-
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5" />
-
+        android:layout_height="match_parent">
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_gravity="center"
-            android:id="@+id/RecyclerView_ABC"
-            android:layout_weight="3"
-            android:layout_width="0dp"
-            android:background="@drawable/bg_letter_all"
-            android:scrollbars="none"
-            android:layout_height="wrap_content" />
-
-
-        <View
-            android:layout_width="0dp"
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="40dp"
+            android:scrollbars="none" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecyclerView_ABC"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/bg_letter_all"
+            android:scrollbars="none" />
+
+    </RelativeLayout>
 
 
 </LinearLayout>

@@ -39,9 +39,6 @@ class TwoFragment : Fragment() {
 
         setTopView()
 
-
-
-
         return mRootView
     }
 
@@ -62,7 +59,7 @@ class TwoFragment : Fragment() {
 
         //右边弹出pop
         topView!!.setOnclickRight(
-            View.VISIBLE, resources.getDrawable(R.drawable.hp_icon_search)
+            View.INVISIBLE, resources.getDrawable(R.drawable.hp_icon_search)
         ) {
 
 

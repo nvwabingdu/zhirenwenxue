@@ -2,6 +2,7 @@ package com.example.zrwenxue.moudel.main.pagefour
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.graphics.Color
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,11 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.newzr.R
 import com.example.zrwenxue.app.Single
 import com.example.zrwenxue.app.Single.extractTextBetweenTags
+import com.example.zrwenxue.moudel.main.word.MyStatic
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -39,51 +42,100 @@ open class DicAdapter_four(
         holder.hanzi.text = dataList[position].hanzi
         holder.num.text = dataList[position].num.toString()
 
+        //用拼音设置 是否开启
 
-        //设置适配器
-        val m = StaggeredGridLayoutManager(6, StaggeredGridLayoutManager.VERTICAL)
-        holder.recyclerView_dic.layoutManager = m
-        holder.recyclerView_dic.isNestedScrollingEnabled = false//解决滑动冲突
-        val mAdapter = DicAdapter(dataList[position].list)
-        holder.recyclerView_dic.adapter = mAdapter
 
-        //回调
-        mAdapter.setDicAdapterCallBack(object : DicAdapter.InnerInterface {
-            override fun onclick(hanzi: String) {
+        if (dataList[position].pinyin == "open") {
 
-                var isHave=true
-                val assetManager = mActivity.assets
-                try {
-                    val inputStream = assetManager.open("dict/新华字典-整理后.txt")
-                    val reader = BufferedReader(InputStreamReader(inputStream))
+            holder.recyclerView_dic.visibility = View.VISIBLE
 
-                    var line: String?
-                    while (reader.readLine().also { line = it } != null) {
-                        if (extractTextBetweenTags(line!!,"<1>","<2>").contains(hanzi)){
-                            Single.showHtml(mActivity,extractTextBetweenTags(line!!,"<2>","<3>"))
-                            isHave=false
-                            break
+            val mColor= MyStatic.getContrastingColors()
+
+            if (position!=0&&position!=1){
+                holder.itemLayout.setBackgroundColor(mColor[0])
+                holder.hanzi.setTextColor(mColor[1])
+                holder.num.setTextColor(mColor[1])
+            }
+
+
+            //设置适配器
+            val m = StaggeredGridLayoutManager(6, StaggeredGridLayoutManager.VERTICAL)
+            holder.recyclerView_dic.layoutManager = m
+//        holder.recyclerView_dic.isNestedScrollingEnabled = false//解决滑动冲突
+            val mAdapter = DicAdapter(dataList[position].list)
+            holder.recyclerView_dic.adapter = mAdapter
+
+            //回调
+            mAdapter.setDicAdapterCallBack(object : DicAdapter.InnerInterface {
+                override fun onclick(hanzi: String) {
+
+                    var isHave = true
+                    val assetManager = mActivity.assets
+                    try {
+                        val inputStream = assetManager.open("dict/新华字典-整理后.txt")
+                        val reader = BufferedReader(InputStreamReader(inputStream))
+
+                        var line: String?
+                        while (reader.readLine().also { line = it } != null) {
+                            if (extractTextBetweenTags(line!!, "<1>", "<2>").contains(hanzi)) {
+                                Single.showHtml(
+                                    mActivity,
+                                    extractTextBetweenTags(line!!, "<2>", "<3>")
+                                )
+                                isHave = false
+                                break
+                            }
                         }
-                    }
-                    reader.close()
+                        reader.close()
 
-                    if(isHave){
-                        Single.showHtml(mActivity,"暂未收录")
+                        if (isHave) {
+                            Single.showHtml(mActivity, "暂未收录")
+                        }
+                    } catch (e: Exception) {
+                        Log.e("tag11", "DicAdapter_four" + e.toString())
                     }
-                } catch (e: Exception) {
-                    Log.e("tag11", "DicAdapter_four"+e.toString())
+                }
+            })
+
+        } else {
+            holder.itemLayout.setBackgroundColor(ContextCompat.getColor(mActivity, R.color.theme_up))
+            holder.hanzi.setTextColor(Color.BLACK)
+            holder.num.setTextColor(Color.BLACK)
+
+            holder.recyclerView_dic.visibility = View.GONE
+        }
+
+
+        //点击事件
+        holder.itemLayout.setOnClickListener {
+
+            if(position!=0&&position!=1){
+                if (dataList[position].pinyin == "open") {
+                    dataList[position].pinyin = "close"
+                } else {
+                    dataList[position].pinyin = "open"
                 }
 
-
-
-
+                for (i in dataList.indices){
+                    if (position!=i){
+                        dataList[i].pinyin = "close"
+                    }
+                }
+                dataList[0].pinyin = "open"
+                dataList[1].pinyin = "open"
+                notifyDataSetChanged()
+            }else{
+                MyStatic.showToast(mActivity,"固定[a][ai]为打开状态")
             }
-        })
+
+        }
+
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var hanzi: TextView = itemView.findViewById(R.id.tv1)
         var num: TextView = itemView.findViewById(R.id.tv2)
+        var itemLayout: View = itemView.findViewById(R.id.item_layout)
         var recyclerView_dic: RecyclerView = itemView.findViewById(R.id.recyclerView_dic)
     }
 

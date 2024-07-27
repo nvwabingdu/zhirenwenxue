@@ -437,6 +437,7 @@ open class HomeSearchHistoryActivity : BaseActivity() {
     private var mFlexboxLayoutManager: FlexBoxLayoutMaxLines? = null
     private var mHistoryAdapter: HistorySearchAdapter? = null
     private var mHistoryList: MutableList<HistoryBean.Item>? = ArrayList()
+
     private var isHistoryOpen = false//历史搜索是否展开
     private var imgBack: ImageView? = null
     private var historyArrow: ImageView? = null

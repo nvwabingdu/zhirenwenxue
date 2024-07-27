@@ -53,7 +53,6 @@ import kotlin.random.Random
 object Single {
 
 
-//
 //    // 数据库表名
 //    const val TABLE_NAME = "image_info"
 //

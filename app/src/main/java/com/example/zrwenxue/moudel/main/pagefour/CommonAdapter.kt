@@ -29,7 +29,6 @@ open class CommonAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.hanzi.text = dataList[position].hanzi
 
-        //点击回调事件用于  全唐诗作者
         holder.hanzi.setOnClickListener {
             mInterface!!.onclick(dataList[position].num.toString())
         }

@@ -138,7 +138,6 @@ class OneFragment : Fragment() {
             override fun onclick(item: String) {
                 s2 = item
 
-
                 mList3!!.clear()
 //                mList4!!.clear()
 
@@ -190,7 +189,6 @@ class OneFragment : Fragment() {
             override fun onclick(item: String) {
                 s4 = item
 
-
                 mList4 = mList3!!.subList(s4.split("-")[0].toInt(), s4.split("-")[1].toInt())
                 //适配器1
                 mLayoutManager = LinearLayoutManager(context)
@@ -199,7 +197,6 @@ class OneFragment : Fragment() {
                 mRecyclerview!!.adapter = mAdapter
             }
         })
-
     }
 
     private fun groupNumbersAndGetRanges(numbers: List<Int>, groupSize: Int): List<String> {
@@ -224,7 +221,6 @@ class OneFragment : Fragment() {
         return mRootView
     }
 
-
     /**
      * 设置顶部
      */
@@ -237,9 +233,10 @@ class OneFragment : Fragment() {
             View.INVISIBLE,
             View.OnClickListener { })
         //右边弹出pop
-        topView!!.setOnclickRight(View.VISIBLE, View.OnClickListener { })
-    }
+        topView!!.setOnclickRight(View.INVISIBLE, View.OnClickListener {
 
+        })
+    }
 
     @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -248,7 +245,6 @@ class OneFragment : Fragment() {
         set2()
         setData()
     }
-
 
     var mSize = 1
 
@@ -285,7 +281,6 @@ class OneFragment : Fragment() {
                 Log.e("111111111", e.toString())
             }
         }
-
 
         //3 开始筛选
         for (item in mList!!) {

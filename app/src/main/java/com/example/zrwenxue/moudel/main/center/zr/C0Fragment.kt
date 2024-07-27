@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.newzr.R
@@ -108,8 +107,7 @@ class C0Fragment : BaseFragment() {
     /**
      * 2.举报子级弹窗
      */
-
-    private var replayPopupWindow: PopupWindow? = null//举报子级评论
+    private var replayPopupWindow: PopupWindow? = null
     private fun replayPopup(position:Int,bitmap: Bitmap) {
 
 
@@ -234,8 +232,5 @@ class C0Fragment : BaseFragment() {
             replayPopupWindow!!.dismiss()
         }
     }
-
-
-
 
 }
