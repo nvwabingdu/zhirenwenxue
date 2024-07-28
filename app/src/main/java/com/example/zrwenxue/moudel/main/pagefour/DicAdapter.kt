@@ -10,6 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.newzr.R
+import com.example.zrwenxue.moudel.main.word.MyStatic
 
 /**
  * @Author wq
@@ -30,6 +31,12 @@ open class DicAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.hanzi.text = dataList[position].hanzi
 
+
+//        val mColor= MyStatic.getContrastingColors()
+//        holder.hanzi.setBackgroundColor(mColor[0])
+//        holder.hanzi.setTextColor(mColor[1])
+
+
         //点击回调事件用于  全唐诗作者
         holder.hanzi.setOnClickListener {
             mInterface!!.onclick(dataList[position].hanzi)
@@ -37,6 +44,8 @@ open class DicAdapter(
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+
         var hanzi: TextView = itemView.findViewById(R.id.tv1)
     }
 

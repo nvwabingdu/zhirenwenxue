@@ -49,13 +49,12 @@ open class DicAdapter_four(
 
             holder.recyclerView_dic.visibility = View.VISIBLE
 
-            val mColor= MyStatic.getContrastingColors()
-
-            if (position!=0&&position!=1){
-                holder.itemLayout.setBackgroundColor(mColor[0])
-                holder.hanzi.setTextColor(mColor[1])
-                holder.num.setTextColor(mColor[1])
-            }
+//            val mColor= MyStatic.getContrastingColors()
+//            if (position!=0&&position!=1){
+//                holder.itemLayout.setBackgroundColor(mColor[0])
+//                holder.hanzi.setTextColor(mColor[0])
+//                holder.num.setTextColor(mColor[0])
+//            }
 
 
             //设置适配器
@@ -98,9 +97,9 @@ open class DicAdapter_four(
             })
 
         } else {
-            holder.itemLayout.setBackgroundColor(ContextCompat.getColor(mActivity, R.color.theme_up))
-            holder.hanzi.setTextColor(Color.BLACK)
-            holder.num.setTextColor(Color.BLACK)
+//            holder.itemLayout.setBackgroundColor(ContextCompat.getColor(mActivity, R.color.theme_up))
+//            holder.hanzi.setTextColor(Color.BLACK)
+//            holder.num.setTextColor(Color.BLACK)
 
             holder.recyclerView_dic.visibility = View.GONE
         }
