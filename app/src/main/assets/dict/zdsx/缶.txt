@@ -1,0 +1,17 @@
+bo=缽
+fou=缶-缹-缻
+gang=缸-罁
+guan=罆-罐
+hou=缿
+lei=罍
+lu=罏
+ping=缾
+qing=罄-罊
+que=缺-缼
+tan=罈-罎
+weng=罋
+xia=罅
+xie=缷
+ying=罂-罃-罌
+zun=罇
+unknown=罀-罉

@@ -1,0 +1,6 @@
+dang=当
+gui=归
+hui=彗-彚
+huo=彟-彠
+ji=彐
+lu=录

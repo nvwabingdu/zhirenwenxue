@@ -1,0 +1,14 @@
+bi=鼻
+ge=齃
+han=鼾
+hou=齁
+hui=鼿
+nang=齉
+nong=齈
+weng=齆
+wu=齀
+xi=齂
+xiu=齅
+yan=鼽
+yao=鼼
+zha=齄-齇

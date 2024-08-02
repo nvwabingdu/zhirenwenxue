@@ -1,0 +1,10 @@
+ban=辦-辬
+bian=辡-辧-辨-辩-辫-辮-辯
+ci=辝-辞-辤-辭
+gu=辜
+la=辢-辣
+pi=辟
+xin=辛
+xue=辥
+zui=辠
+unknown=辪

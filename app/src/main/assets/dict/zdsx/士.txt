@@ -1,0 +1,15 @@
+hu=壶-壷-壺
+kun=壸-壼
+mai=売
+mang=壾
+qiao=壳
+ren=壬
+sheng=声
+shi=士
+shou=壽-夀
+xu=壻
+yi=壱-壹-夁
+zhu=壴
+zhuang=壮-壯-壵
+zun=壿
+unknown=壭

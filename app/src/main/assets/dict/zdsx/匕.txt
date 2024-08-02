@@ -1,0 +1,4 @@
+bei=北
+bi=匕
+chi=匙
+nao=匘

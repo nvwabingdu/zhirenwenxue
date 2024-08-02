@@ -1,0 +1,3 @@
+gen=艮
+jian=艰-艱
+liang=良

@@ -1,0 +1,8 @@
+fu=乀
+jue=亅
+pie=丿
+shu=丨
+yi=一-乁-乙
+yin=乚
+zhu=丶
+unknown=乛

@@ -1,0 +1,8 @@
+cha=差
+gong=工-巩
+ju=巨
+qiao=巧
+qiu=巯-巰
+wu=巫
+zuo=左
+unknown=巪-巬-巭

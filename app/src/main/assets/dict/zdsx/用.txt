@@ -1,0 +1,7 @@
+beng=甭
+fu=甫
+lu=甪
+ning=甯
+shuai=甩
+yong=用-甬
+unknown=甮

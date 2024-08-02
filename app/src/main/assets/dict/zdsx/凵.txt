@@ -1,0 +1,10 @@
+ao=凹
+chu=出
+dang=凼
+han=函-凾
+ji=击
+kuai=凷
+qu=凵
+tu=凸
+xiong=凶
+zao=凿

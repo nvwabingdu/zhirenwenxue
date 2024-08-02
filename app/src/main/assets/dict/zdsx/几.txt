@@ -1,0 +1,12 @@
+chu=処
+deng=凳
+fan=凡-凢-凣
+feng=凤-凨-凬-凮
+fu=凫
+gan=凲
+huang=凰
+ji=几
+ju=凥
+kai=凯
+ping=凭-凴
+unknown=凧-凩-凪

@@ -1,0 +1,5 @@
+lu=玈
+lu:=率
+miao=玅
+xuan=玄
+zi=玆

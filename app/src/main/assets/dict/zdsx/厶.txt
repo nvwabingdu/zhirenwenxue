@@ -1,0 +1,14 @@
+ai=叆
+can=参-參-叅
+dai=叇
+du=厾
+lei=厽
+lin=厸
+qi=亝
+qiu=厹
+qu=厺-去
+san=叁-叄
+si=厶-厷
+xian=县
+zhuan=叀
+unknown=厼

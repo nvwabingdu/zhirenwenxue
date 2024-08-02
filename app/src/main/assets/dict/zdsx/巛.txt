@@ -1,0 +1,6 @@
+chao=巢-巣
+chuan=巛
+gui=巜
+jing=巠
+lie=巤
+xun=巡

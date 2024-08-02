@@ -1,0 +1,17 @@
+cun=寸
+dao=导-導
+dui=对-対-對
+feng=封
+fu=尃
+jiang=将-將
+ke=尅
+lu:=寽
+po=尀
+she=射
+shou=寿
+shu=尌
+si=寺
+wei=尉
+xun=寻-尋
+zhuan=専-專
+zun=尊

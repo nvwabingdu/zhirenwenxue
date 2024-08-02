@@ -1,0 +1,17 @@
+ang=卬
+e=卾
+ji=即-卽
+jie=卩-卪
+luan=卵
+mao=卯
+qing=卿
+qiong=卭
+que=却-卻
+shao=卲
+shi=卶
+wei=卫
+xi=厀
+xie=卸
+xu=卹
+yin=印
+unknown=厁

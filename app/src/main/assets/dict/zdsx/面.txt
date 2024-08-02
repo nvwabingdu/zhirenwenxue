@@ -1,0 +1,5 @@
+hui=靧
+mian=面
+pao=靤
+tian=靦
+ye=靥-靨

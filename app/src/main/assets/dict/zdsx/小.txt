@@ -1,0 +1,17 @@
+chang=尝
+chen=尘
+er=尒-尓-尔
+ga=尕-尜
+gong=恭
+ji=尐
+jian=尖
+liao=尞
+mu=慕
+shang=尙-尚
+shao=少
+shu=尗
+tian=忝
+xian=尟-尠
+xiao=小
+yuan=尛
+unknown=尡

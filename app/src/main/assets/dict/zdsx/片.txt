@@ -1,0 +1,15 @@
+ban=版
+bang=牓-牕
+bian=牑
+bo=牔
+die=牒
+du=牍-牘
+jian=牋
+pai=牌
+pan=牉
+pian=片
+shao=牊
+tou=牏-牐
+yong=牎
+you=牖
+unknown=牗

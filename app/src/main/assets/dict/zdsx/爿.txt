@@ -1,0 +1,6 @@
+chuan=牀
+die=牅
+ke=牁
+pan=爿
+qiang=牄-牆
+zang=牂-牃

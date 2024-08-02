@@ -1,0 +1,9 @@
+jing=丼
+ju=举
+ni=屰
+shu=鼡
+wei=为
+yi=义
+zhi=之
+zhu=丶-主
+unknown=丷

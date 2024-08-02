@@ -31,7 +31,6 @@ open class DicAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.hanzi.text = dataList[position].hanzi
 
-
 //        val mColor= MyStatic.getContrastingColors()
 //        holder.hanzi.setBackgroundColor(mColor[0])
 //        holder.hanzi.setTextColor(mColor[1])

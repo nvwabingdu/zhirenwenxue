@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
 import android.widget.TextView
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,7 +43,6 @@ class FourFragment : Fragment() {
     //右侧字母列表
     // 创建一个包含大写字母的数组
     val letters = ('A'..'Z').toList()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,6 +55,12 @@ class FourFragment : Fragment() {
         return mRootView
     }
 
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setData2(title)
+    }
 
     /**
      * 设置顶部
@@ -69,10 +75,6 @@ class FourFragment : Fragment() {
             View.OnClickListener { })
         //右边弹出pop
         topView!!.setOnclickRight(View.VISIBLE, resources.getDrawable(R.drawable.show_yb2)) {
-
-
-            Log.e("dadadsd", "进来了")
-
             //侧边逻辑
             if (mDrawerLayout!!.isOpen) {
                 mDrawerLayout!!.close()
@@ -82,16 +84,14 @@ class FourFragment : Fragment() {
         }
     }
 
-
+    /**
+     * 设置侧滑布局
+     */
     private var mDrawerLayout: MyDrawerLayout? = null
     private var drawerRecyclerView: RecyclerView? = null
     private var mDrawerList: MutableList<DicBean>? = ArrayList()
     private var mDrawerLayoutManager: LinearLayoutManager? = null
-
-
-    /**
-     * 设置侧滑布局
-     */
+    private var title="通用字"
     private fun setDrawerLayout() {
         //设置侧滑布局
         mDrawerLayout = mRootView?.findViewById<MyDrawerLayout>(R.id.drawer)
@@ -134,7 +134,6 @@ class FourFragment : Fragment() {
             Log.e("TAG", e.toString())
         }
 
-
         //设置适配器
         mDrawerLayoutManager = LinearLayoutManager(requireActivity())
         drawerRecyclerView!!.layoutManager = mDrawerLayoutManager
@@ -147,60 +146,53 @@ class FourFragment : Fragment() {
             override fun onclick(str: String) {
                 //点击后隐藏侧边布局
                 mDrawerLayout!!.closeDrawer(Gravity.LEFT)
-                //重新开始筛选
-                setData2(str)
-
+                title=str
             }
         })
 
-
-    }
-
-
-    @Deprecated("Deprecated in Java")
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        tempSelect = ArrayList()
-        setData1("dict/字典_笔画.txt")
-        setData1("dict/字典_部首.txt")
-        Log.e("dadadadada",tempSelect!!.size.toString())
-        setData2("通用字")
-    }
-
-
-    /**
-     * 用于取出  字典笔画    字典部首 两个集合
-     */
-    private var tempSelect: MutableList<String>? = null
-    private fun setData1(pathStr:String){
-        //第一步：读取assets文件夹下的文本内容
-        //第二步：取出相应的内容装在集合
-        val assetManager = context!!.assets
-        try {
-
-//            val inputStream = assetManager.open("dict/汉字字典2万.txt")
-            val inputStream = assetManager.open(pathStr)
-            val reader = BufferedReader(InputStreamReader(inputStream))
-
-            var line: String?
-            while (reader.readLine().also { line = it } != null) {
-
-                tempSelect!!.add(
-                    line!!
-                )
-
+        mDrawerLayout!!.addDrawerListener(object : DrawerLayout.DrawerListener {
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+                // 抽屉滑动时的回调
             }
 
-        }catch (e: Exception) {
-            Log.e("TAG", e.toString())
-        }
+            override fun onDrawerOpened(drawerView: View) {
+                // 抽屉打开时的回调
+            }
+
+            override fun onDrawerClosed(drawerView: View) {
+                // 抽屉关闭时的回调
+                when(title){
+                    "全选"->{
+                        topView!!.title="字典"
+                    }
+                    "常用字"->{
+                        topView!!.title=title
+                    }
+                    "通用字"->{
+                        topView!!.title=title
+                    }
+                    "次常用字"->{
+                        topView!!.title=title
+                    }
+                    "生僻字"->{
+                        topView!!.title=title
+                    }
+                    else->{
+                        topView!!.title="字典("+title+")"
+                    }
+                }
+
+                setData2(title)
+            }
+
+            override fun onDrawerStateChanged(newState: Int) {
+                // 抽屉状态改变时的回调
+            }
+        })
     }
-
-
 
     private var tempL: MutableList<DicBean.Item>? = null
     private var tempLetters: MutableList<String>? = null
-
     @SuppressLint("NotifyDataSetChanged")
     fun setData2(tag: String) {
         mList!!.clear()
@@ -210,7 +202,7 @@ class FourFragment : Fragment() {
         val assetManager = context!!.assets
         try {
 
-            val inputStream = assetManager.open("dict/汉字字典2万.txt")
+            val inputStream = assetManager.open("dict/zdsx/$tag.txt")
             val reader = BufferedReader(InputStreamReader(inputStream))
 
             var line: String?
@@ -221,12 +213,15 @@ class FourFragment : Fragment() {
                     line!!.split("=")[0]
                 )
 
-
                 tempL = ArrayList()
                 line!!.split("=")[1].split("-").forEach {
-
-                    //操作刷选
-                    setTag(tag,it,line.toString())
+                    tempL!!.add(
+                        DicBean.Item(
+                            it,
+                            "",
+                            "",
+                        )
+                    )
 
                 }
 
@@ -234,7 +229,7 @@ class FourFragment : Fragment() {
                     mList!!.add(
                         DicBean(
                             extractStringBeforePlus(line!!),
-                            "close",
+                            "open",
                             tempL!!.size,
                             tempL!!
                         )
@@ -251,9 +246,6 @@ class FourFragment : Fragment() {
                 //设置适配器
                 charLinearLayoutManager = LinearLayoutManager(requireActivity())
                 mRecyclerview!!.layoutManager = charLinearLayoutManager
-                mList!![0].pinyin = "open"
-                mList!![1].pinyin = "open"
-                mList!![2].pinyin = "open"
                 val mAdapter = DicAdapter_four(mList!!, requireActivity())
                 mRecyclerview!!.adapter = mAdapter
 
@@ -261,141 +253,15 @@ class FourFragment : Fragment() {
                 setData3()
             }
 
-
         } catch (e: Exception) {
             Log.e("TAG", e.toString())
         }
     }
 
-
     /**
-     * 筛选
+     * 设置右侧列表
      */
-    private fun setTag(tag:String, hanzi:String,line:String){
-        when (tag) {
-            "通用字" -> {
-                if (Single.TYZ.contains(hanzi.trim())) {
-                    tempL!!.add(
-                        DicBean.Item(
-                            hanzi,
-                            "",
-                            "",
-                        )
-                    )
-                }
-            }
-
-            "常用字" -> {
-                if (Single.CYZ.contains(hanzi.trim())) {
-                    tempL!!.add(
-                        DicBean.Item(
-                            hanzi,
-                            "",
-                            "",
-                        )
-                    )
-                }
-            }
-
-            "次常用字" -> {
-                if (Single.CCYZ.contains(hanzi.trim())) {
-                    tempL!!.add(
-                        DicBean.Item(
-                            hanzi,
-                            "",
-                            "",
-                        )
-                    )
-                }
-            }
-            "生僻字" -> {
-                if (Single.CPZ.contains(hanzi.trim())) {
-                    tempL!!.add(
-                        DicBean.Item(
-                            hanzi,
-                            "",
-                            "",
-                        )
-                    )
-                }
-            }
-
-            "全选" -> {
-                tempL!!.add(
-                    DicBean.Item(
-                        hanzi,
-                        "",
-                        "",
-                    )
-                )
-            }
-            else->{
-                if (tag.contains("画")){//表示查找的笔画
-                    tempSelect!!.forEach {
-                        if (it.contains("-")&&it.split("-")[0]==tag){
-                            if (it.split("-")[1].contains(hanzi)){
-                                tempL!!.add(
-                                    DicBean.Item(
-                                        hanzi,
-                                        "",
-                                        "",
-                                    )
-                                )
-                            }
-                        }
-                    }
-
-                }else{//表示查找的部首了
-                    tempSelect!!.forEach {
-                        if (it.contains("|")&&it.split("|")[0]==tag){
-                            if (it.split("|")[1].contains(hanzi)){
-                                tempL!!.add(
-                                    DicBean.Item(
-                                        hanzi,
-                                        "",
-                                        "",
-                                    )
-                                )
-                            }
-                        }
-                    }
-
-                }
-            }
-        }
-    }
-
-
-
     private var charLinearLayoutManager: LinearLayoutManager? = null
-    private var isflag = true
-
-
-    private fun extractTextBetweenTags(input: String, leftStr: String, rightStr: String): String {
-        val startIndex = input.indexOf(leftStr)
-        val endIndex = input.indexOf(rightStr)
-
-        return if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
-            input.substring(startIndex + leftStr.length, endIndex)
-        } else {
-            ""
-        }
-    }
-
-
-    fun extractStringBeforePlus(inputString: String): String {
-        val plusIndex = inputString.indexOf('=')
-        return if (plusIndex != -1) {
-            inputString.substring(0, plusIndex)
-        } else {
-            inputString
-        }
-    }
-
-
-    /**
-     * 设置右边弹窗
-     */
     private fun setData3() {
         lettersList!!.clear()
         //装入letters
@@ -456,75 +322,16 @@ class FourFragment : Fragment() {
         })
     }
 
-
     /**
-     * 弹窗
+     * 用于截取
      */
-    private var mPyRecyclerview: MaxRecyclerView? = null
-    private var pyCancel: TextView? = null
-    private var mPyFlexboxLayoutManager: FlexBoxLayoutMaxLines? = null
-    private var mPyAdapter: PyAdapter? = null
-    private var mPyWindow: PopupWindow? = null
-
-    fun setPyPop(mPyList: MutableList<LettersBean.Item>, count: Int) {
-        val inflateView: View = layoutInflater.inflate(R.layout.dialog_py, null)
-        mPyRecyclerview = inflateView.findViewById(R.id.re_py)
-        pyCancel = inflateView.findViewById(R.id.py_cancel)
-
-
-//        val mColor= MyStatic.getContrastingColors()
-//        pyCancel!!.setBackgroundColor(mColor[0])
-//        pyCancel!!.setTextColor(mColor[1])
-
-        //设置适配器
-        mPyRecyclerview!!.isNestedScrollingEnabled = false//禁止滑动 解决滑动冲突
-        mPyFlexboxLayoutManager = FlexBoxLayoutMaxLines(requireActivity())
-        mPyFlexboxLayoutManager!!.flexWrap = FlexWrap.WRAP // 设置换行方式为换行
-        mPyRecyclerview!!.layoutManager = mPyFlexboxLayoutManager
-        mPyRecyclerview!!.setHasFixedSize(false)//设置item大小是否固定 关键参数  这里设置为不固定
-        mPyAdapter = PyAdapter(requireActivity(), mPyList)
-        mPyRecyclerview!!.adapter = mPyAdapter
-
-
-        /**
-         * 再次定位
-         */
-        mPyAdapter!!.setPyAdapterCallBack(object : PyAdapter.InnerInterface {
-            override fun onclick(pinyin: String, position: Int) {
-                charLinearLayoutManager!!.scrollToPosition(count + position)
-                mPyWindow!!.dismiss()
-            }
-
-        })
-
-        /**
-         * pop实例
-         */
-        mPyWindow = PopupWindow(
-            inflateView,
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            true
-        )
-
-        pyCancel!!.setOnClickListener {
-            mPyWindow!!.dismiss()
-        }
-
-        //动画
-//        mPyWindow!!.animationStyle = R.style.BottomDialogAnimation
-        mPyWindow?.setOnDismissListener {
-            Single.bgAlpha(requireActivity(), 1f) //恢复透明度
-        }
-        if (mPyWindow!!.isShowing) {//如果正在显示，关闭弹窗。
-            mPyWindow!!.dismiss()
+    private fun extractStringBeforePlus(inputString: String): String {
+        val plusIndex = inputString.indexOf('=')
+        return if (plusIndex != -1) {
+            inputString.substring(0, plusIndex)
         } else {
-            mPyWindow!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))//?????这
-            mPyWindow!!.isOutsideTouchable = true
-            mPyWindow!!.isTouchable = true
-            mPyWindow!!.isFocusable = true
-            mPyWindow!!.showAtLocation(inflateView, Gravity.CENTER, 0, 0)
-            Single.bgAlpha(requireActivity(), 0.3f) //设置透明度0.5
+            inputString
         }
     }
+
 }

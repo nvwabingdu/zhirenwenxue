@@ -1,0 +1,7 @@
+fen=黂
+hui=麾
+ma=麻-麼
+mo=麽
+nen=黁
+zou=黀
+unknown=麿

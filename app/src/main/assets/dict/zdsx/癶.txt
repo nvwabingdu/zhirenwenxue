@@ -1,0 +1,6 @@
+bo=癶
+deng=登
+fa=発-發
+gui=癸
+po=癹
+unknown=癷

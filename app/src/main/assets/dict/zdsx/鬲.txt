@@ -1,0 +1,9 @@
+fu=鬴
+gui=鬶-鬹
+juan=鬳
+li=鬲
+liu=鬸
+qian=鬵
+shang=鬺
+yu=鬻
+zong=鬷
