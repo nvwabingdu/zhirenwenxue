@@ -83,7 +83,7 @@
             android:name="com.example.zrwenxue.moudel.main.home.led.LEDActivity"
             android:exported="true"
             android:screenOrientation="landscape"
-            tools:ignore="WrongManifestParent" />
+            tools:ignore="DiscouragedApi,WrongManifestParent" />
         <activity
             android:name="com.example.zrwenxue.moudel.main.home.lottery.LotteryActivity"
             android:exported="true"

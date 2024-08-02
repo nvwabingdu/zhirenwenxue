@@ -30,12 +30,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newzr.R;
 import com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView;
 import com.example.zrtool.utilsjava.ScreenUtils;
+import com.example.zrwenxue.moudel.main.pagefour.DicAdapter;
+import com.example.zrwenxue.moudel.main.pagefour.DicBean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Android Studio.
@@ -214,8 +218,29 @@ public class LEDActivity extends AppCompatActivity {
     private Button ledDialogSlideTwinkle;
 
     private MaxRecyclerView maxRecyclerView;
+    private HorizontalScrollView re45;
 
     private void popViewInit(View rootView) {
+
+
+
+
+
+
+
+        re45 = rootView.findViewById(R.id.re45);
+//        re45.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+//
+//        List<DicBean.Item> data = new ArrayList<>();
+//
+//        for (int i = 1; i <= 30; i++) {
+//            data.add(new DicBean.Item("Item " + i,"",""));
+//        }
+//
+//        DicAdapter adapter = new DicAdapter(data);
+//        re45.setAdapter(adapter);
+
+
         /**
          * Getting Colors from resources and add to ArrayList
          */
@@ -295,7 +320,11 @@ public class LEDActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //滑动
-                setAnima(LEDSingle.INSTANCE.getMTvSpeed(), 1, ledPopTv);
+//                setAnima(LEDSingle.INSTANCE.getMTvSpeed(), 1, ledPopTv);
+
+                setAnima(LEDSingle.INSTANCE.getMTvSpeed(), 1, re45);
+
+
                 LEDSingle.INSTANCE.setMTvAnimaType(1);
             }
         });

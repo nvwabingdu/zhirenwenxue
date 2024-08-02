@@ -38,12 +38,26 @@
                 android:background="@color/black"
                 android:gravity="center">
 
+
+                    <com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
+
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+
+                <HorizontalScrollView
+                    android:id="@+id/re45"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/led_pop_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="智人单词"
                     android:textColor="@color/white" />
+                </HorizontalScrollView>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -198,6 +198,7 @@ class TetrisListFragment : BaseFragment() {
             SetBean("小众佛学", OtherDictActivity::class.java, "dict", "12"),
             SetBean("中日词典", OtherDictActivity::class.java, "dict", "13"),
             SetBean("日汉大辞典", OtherDictActivity::class.java, "dict", "14"),
+            SetBean("常识", OtherDictActivity::class.java, "dict", "15"),
         )
 
         for (i in 0..<setClassList!!.size) {

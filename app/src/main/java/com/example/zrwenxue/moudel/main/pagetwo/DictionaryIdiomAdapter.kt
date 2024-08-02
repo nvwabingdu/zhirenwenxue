@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.newzr.R
+import com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
 import com.example.zrwenxue.app.Single
 import java.io.BufferedReader
 import java.io.InputStreamReader

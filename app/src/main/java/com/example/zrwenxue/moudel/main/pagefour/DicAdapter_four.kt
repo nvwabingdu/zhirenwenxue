@@ -2,7 +2,6 @@ package com.example.zrwenxue.moudel.main.pagefour
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.graphics.Color
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,13 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.newzr.R
+import com.example.zrprint.extractTextBeforeDelimiter
+import com.example.zrprint.extractTextBeforeDelimiter2
 import com.example.zrwenxue.app.Single
-import com.example.zrwenxue.app.Single.extractTextBetweenTags
-import com.example.zrwenxue.moudel.main.word.MyStatic
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -56,7 +54,6 @@ open class DicAdapter_four(
 //                holder.num.setTextColor(mColor[0])
 //            }
 
-
             //设置适配器
             val m = StaggeredGridLayoutManager(6, StaggeredGridLayoutManager.VERTICAL)
             holder.recyclerView_dic.layoutManager = m
@@ -71,16 +68,19 @@ open class DicAdapter_four(
                     var isHave = true
                     val assetManager = mActivity.assets
                     try {
-                        val inputStream = assetManager.open("dict/新华字典-整理后.txt")
+                        val inputStream = assetManager.open("dict/字典.txt")
                         val reader = BufferedReader(InputStreamReader(inputStream))
 
                         var line: String?
                         while (reader.readLine().also { line = it } != null) {
-                            if (extractTextBetweenTags(line!!, "<1>", "<2>").contains(hanzi)) {
+
+                            if (extractTextBeforeDelimiter(line!!, "<").contains(hanzi)) {
+
                                 Single.showHtml(
                                     mActivity,
-                                    extractTextBetweenTags(line!!, "<2>", "<3>")
+                                    extractTextBeforeDelimiter2(line!!, "<")
                                 )
+
                                 isHave = false
                                 break
                             }
@@ -108,23 +108,19 @@ open class DicAdapter_four(
         //点击事件
         holder.itemLayout.setOnClickListener {
 
-            if(position!=0&&position!=1){
+            if(position!=0&&position!=1&&position!=2){
                 if (dataList[position].pinyin == "open") {
                     dataList[position].pinyin = "close"
                 } else {
                     dataList[position].pinyin = "open"
                 }
 
-                for (i in dataList.indices){
-                    if (position!=i){
-                        dataList[i].pinyin = "close"
-                    }
-                }
                 dataList[0].pinyin = "open"
                 dataList[1].pinyin = "open"
+                dataList[2].pinyin = "open"
                 notifyDataSetChanged()
             }else{
-                MyStatic.showToast(mActivity,"固定[a][ai]为打开状态")
+//                MyStatic.showToast(mActivity,"固定[a][ai]为打开状态")
             }
 
         }

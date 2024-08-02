@@ -136,6 +136,7 @@ public class SearchWordActivity extends BaseActivity {
         img2.setOnClickListener(new View.OnClickListener() {//设置Drawerlayout的开关
             @Override
             public void onClick(View view) {
+
                 if(mDrawerLayout.isOpen()){
                     mDrawerLayout.close();
                 }else {

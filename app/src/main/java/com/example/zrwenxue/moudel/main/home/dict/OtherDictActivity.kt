@@ -93,6 +93,9 @@ class OtherDictActivity : BaseActivity() {
             14 -> {
                 setData(flag, "日汉大辞典", "各类词典/日汉大辞典.txt")
             }
+            15 -> {
+                setData(flag, "常识", "各类词典/常识.txt")
+            }
         }
     }
 

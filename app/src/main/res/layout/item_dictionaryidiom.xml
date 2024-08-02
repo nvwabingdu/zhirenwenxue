@@ -14,7 +14,7 @@
         android:text="ai"
         android:textStyle="bold" />
 
-    <com.example.zrwenxue.moudel.main.pagetwo.MaxRecyclerView
+    <com.example.zrtool.ui.noslidingconflictview.MaxRecyclerView
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

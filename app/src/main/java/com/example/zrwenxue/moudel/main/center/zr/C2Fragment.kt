@@ -16,7 +16,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-
 class C2Fragment : BaseFragment() {
     
     override fun setLayout(): Int {

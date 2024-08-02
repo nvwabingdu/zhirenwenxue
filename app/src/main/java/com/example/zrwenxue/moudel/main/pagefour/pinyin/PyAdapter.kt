@@ -29,9 +29,9 @@ class PyAdapter (
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvPy.text = dataList[position].pinyin
 
-        val mColor= MyStatic.getContrastingColors()
-        holder.tvPy.setBackgroundColor(mColor[0])
-        holder.tvPy.setTextColor(mColor[1])
+//        val mColor= MyStatic.getContrastingColors()
+//        holder.tvPy.setBackgroundColor(mColor[0])
+//        holder.tvPy.setTextColor(mColor[1])
 
         //点击回调事件
         holder.tvPy.setOnClickListener {

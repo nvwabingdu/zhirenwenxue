@@ -14,7 +14,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newzr.R
+import com.example.zrtool.ui.custom.MyDrawerLayout
+import com.example.zrwenxue.app.Single
 import com.example.zrwenxue.app.TitleBarView
+import com.example.zrwenxue.moudel.main.drawer.DrawerAdapter
+import com.example.zrwenxue.moudel.main.pagefour.DicAdapter_four
+import com.example.zrwenxue.moudel.main.pagefour.DicBean
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -38,7 +43,7 @@ class TwoFragment : Fragment() {
         mRecyclerview = mRootView?.findViewById(R.id.recyclerView)
 
         setTopView()
-
+        setDrawerLayout()
         return mRootView
     }
 
@@ -59,15 +64,84 @@ class TwoFragment : Fragment() {
 
         //右边弹出pop
         topView!!.setOnclickRight(
-            View.INVISIBLE, resources.getDrawable(R.drawable.hp_icon_search)
+            View.VISIBLE, resources.getDrawable(R.drawable.show_yb2)
         ) {
-
+            //侧边逻辑
+            if (mDrawerLayout!!.isOpen) {
+                mDrawerLayout!!.close()
+            } else {
+                mDrawerLayout!!.open()
+            }
 
         }
 
 
 
     }
+
+
+    private var mDrawerLayout: MyDrawerLayout? = null
+    private var drawerRecyclerView: RecyclerView? = null
+    private var mDrawerList: MutableList<DicBean>? = ArrayList()
+    private var tempL: MutableList<DicBean.Item>? = null
+    private var mDrawerLayoutManager:LinearLayoutManager?=null
+    /**
+     * 设置侧滑布局
+     */
+    private fun setDrawerLayout(){
+        //设置侧滑布局
+        mDrawerLayout = mRootView?.findViewById<MyDrawerLayout>(R.id.drawer)
+        drawerRecyclerView = mRootView?.findViewById<RecyclerView>(R.id.ll_re)
+
+        val assetManager = context!!.assets
+        try {
+            val inputStream = assetManager.open("dict/成语索引.txt")
+            val reader = BufferedReader(InputStreamReader(inputStream))
+
+            var line: String?
+            while (reader.readLine().also { line = it } != null) {
+
+                tempL = ArrayList()
+                line!!.split("|")[1].split("-").forEach {
+                    //先装子集合
+                    tempL!!.add(
+                        DicBean.Item(
+                            it,
+                            "",
+                            "",
+                        )
+                    )
+                }
+
+                //再装大集合
+                if (tempL!!.size!=0){
+                    mDrawerList!!.add(
+                        DicBean(
+                            line!!.split("|")[0],
+                            "open",
+                            tempL!!.size,
+                            tempL!!
+                        )
+                    )
+                }
+
+            }
+            reader.close()
+        }catch (e:Exception){
+            Log.e("TAG", e.toString())
+        }
+
+
+
+        //设置适配器
+        mDrawerLayoutManager = LinearLayoutManager(requireActivity())
+        drawerRecyclerView!!.layoutManager = mDrawerLayoutManager
+        val mDrawerAdapter = DrawerAdapter(mDrawerList!!, requireActivity())
+        drawerRecyclerView!!.adapter = mDrawerAdapter
+
+    }
+
+
 
     @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {

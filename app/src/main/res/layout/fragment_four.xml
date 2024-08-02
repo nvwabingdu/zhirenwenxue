@@ -9,7 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <RelativeLayout
+
+    <com.example.zrtool.ui.custom.MyDrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -36,5 +42,23 @@
 
     </RelativeLayout>
 
+        <!--侧或菜单界面-->
+        <LinearLayout
+            android:id="@+id/ll_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ll_re"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center" />
+
+        </LinearLayout>
+    </com.example.zrtool.ui.custom.MyDrawerLayout>
 </LinearLayout>

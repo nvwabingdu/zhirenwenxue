@@ -37,8 +37,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent">
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:rotation="90"
                         android:background="@drawable/ic_baseline_arrow_downward_24" />
                 </LinearLayout>
@@ -53,8 +53,8 @@
 
                     <ImageView
                         android:id="@+id/eng_img2"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:background="@drawable/ic_baseline_format_list_bulleted_24" />
                 </LinearLayout>
                 <EditText
@@ -76,8 +76,8 @@
 
                     <ImageView
                         android:id="@+id/eng_img"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:background="@drawable/home_search_1" />
                 </LinearLayout>
             </LinearLayout>
