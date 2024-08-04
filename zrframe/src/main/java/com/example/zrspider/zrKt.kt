@@ -24,26 +24,29 @@ const val TYZ = "一丁七万丈三上下不与丐丑专且丕世丘丙业丛东
 fun main(){
 
     //读取每一行的内容提取到集合中
-    val lines = File("C:\\Users\\1\\Desktop\\字典_笔画.txt").readLines()
-    val zidian = File("C:\\Users\\1\\Desktop\\汉字字典2万.txt").readLines()
+    val lines = File("C:\\Users\\1\\Desktop\\成语词典_索引.txt").readLines()
+    val zidian = File("C:\\Users\\1\\Desktop\\成语词典_索引.txt").readLines()
 
-
+//-ABCB式-ABCA式
+    val temp1="ABCA式"
 
     for(b in zidian.indices){
-        val first=zidian[b].split("=")[0]//a                   a=吖-啊-嗄-腌-錒-锕-阿
+        val first=zidian[b].split("|")[0]//a                   a=吖-啊-嗄-腌-錒-锕-阿
 
 
         var temp=""
 //                zidian[b].split("=")[1]//吖-啊-嗄-腌-錒-锕-阿            a=吖-啊-嗄-腌-錒-锕-阿
-        zidian[b].split("=")[1].split("-").forEach {
-            if (TYZ.contains(it)){//丶丷为主丼举义之屰鼡  包含  吖
+        zidian[b].split("|")[1].split("-").forEach {
+
+            if (it.length==4&& isABCAPattern(it)){//丶丷为主丼举义之屰鼡  包含  吖
                 temp= "$temp$it-"
             }
+
         }
 
 
         if (temp!=""){
-            fileAppendText("C:\\Users\\1\\Desktop\\1\\通用字.txt",first+"="+temp.substring(0,temp.length-1))
+            fileAppendText("C:\\Users\\1\\Desktop\\$temp1.txt",first+"|"+temp.substring(0,temp.length-1))
         }
 
     }
@@ -81,6 +84,38 @@ fun main(){
 //
 //        }
 
+}
+
+fun isAABBPattern(idiom: String): Boolean {
+    return idiom[0] == idiom[1] && idiom[2] == idiom[3]
+}
+
+fun isAABCPattern(idiom: String): Boolean {
+    return idiom[0] == idiom[1] && idiom[2] != idiom[3]
+}
+
+fun isABABPattern(idiom: String): Boolean {
+    return idiom[0] != idiom[1] && idiom[0] == idiom[2] && idiom[1] == idiom[3]
+}
+
+fun isABACPattern(idiom: String): Boolean {
+    return idiom[0] != idiom[1] && idiom[0] == idiom[2] && idiom[1] != idiom[3]
+}
+
+fun isABCCPattern(idiom: String): Boolean {
+    return idiom[0] != idiom[1] && idiom[1] != idiom[2] && idiom[2] == idiom[3]
+}
+
+fun isABBCPattern(idiom: String): Boolean {
+    return idiom[0] != idiom[1] && idiom[1] == idiom[2] && idiom[2] != idiom[3]
+}
+
+fun isABCBPattern(idiom: String): Boolean {
+    return idiom[0] != idiom[1] && idiom[1] != idiom[2] && idiom[2] == idiom[3]
+}
+
+fun isABCAPattern(idiom: String): Boolean {
+    return idiom[0] != idiom[1] && idiom[1] != idiom[2] && idiom[0] == idiom[3]
 }
 
 

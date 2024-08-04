@@ -160,29 +160,33 @@ class FourFragment : Fragment() {
             }
 
             override fun onDrawerClosed(drawerView: View) {
-                // 抽屉关闭时的回调
-                when(title){
-                    "全选"->{
-                        topView!!.title="字典"
-                    }
-                    "常用字"->{
-                        topView!!.title=title
-                    }
-                    "通用字"->{
-                        topView!!.title=title
-                    }
-                    "次常用字"->{
-                        topView!!.title=title
-                    }
-                    "生僻字"->{
-                        topView!!.title=title
-                    }
-                    else->{
-                        topView!!.title="字典("+title+")"
+
+                if(!topView!!.title.contains(title)){
+                    setData2(title)
+
+                    // 抽屉关闭时的回调
+                    when(title){
+                        "全选"->{
+                            topView!!.title="字典-($num)"
+                        }
+                        "常用字"->{
+                            topView!!.title=title+"("+num+")"
+                        }
+                        "通用字"->{
+                            topView!!.title=title+"("+num+")"
+                        }
+                        "次常用字"->{
+                            topView!!.title=title+"("+num+")"
+                        }
+                        "生僻字"->{
+                            topView!!.title=title+"("+num+")"
+                        }
+                        else->{
+                            topView!!.title="字典-"+title+"("+num+")"
+                        }
                     }
                 }
 
-                setData2(title)
             }
 
             override fun onDrawerStateChanged(newState: Int) {
@@ -193,8 +197,10 @@ class FourFragment : Fragment() {
 
     private var tempL: MutableList<DicBean.Item>? = null
     private var tempLetters: MutableList<String>? = null
+    var num=0
     @SuppressLint("NotifyDataSetChanged")
     fun setData2(tag: String) {
+        num=0
         mList!!.clear()
 
         //第一步：读取assets文件夹下的文本内容
@@ -226,6 +232,7 @@ class FourFragment : Fragment() {
                 }
 
                 if (tempL!!.size != 0) {
+                    num+=tempL!!.size
                     mList!!.add(
                         DicBean(
                             extractStringBeforePlus(line!!),

@@ -18,6 +18,7 @@ import com.example.zrwenxue.moudel.main.drawer.DrawerAdapter
 import com.example.zrwenxue.moudel.main.pagefour.DicBean
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.io.BufferedReader
+import java.io.InputStream
 import java.io.InputStreamReader
 
 
@@ -53,7 +54,7 @@ class TwoFragment : Fragment() {
         //左边返回
         topView!!.setOnclickLeft(
             View.INVISIBLE,
-            View.OnClickListener {  })
+            View.OnClickListener { })
         //右边弹出pop
         topView!!.setOnclickRight(
             View.VISIBLE, resources.getDrawable(R.drawable.show_yb2)
@@ -72,12 +73,13 @@ class TwoFragment : Fragment() {
     private var drawerRecyclerView: RecyclerView? = null
     private var mDrawerList: MutableList<DicBean>? = ArrayList()
     private var tempL: MutableList<DicBean.Item>? = null
-    private var mDrawerLayoutManager:LinearLayoutManager?=null
-    private var title="成语词典"
+    private var mDrawerLayoutManager: LinearLayoutManager? = null
+    private var title = "成语词典"
+
     /**
      * 设置侧滑布局
      */
-    private fun setDrawerLayout(){
+    private fun setDrawerLayout() {
         //设置侧滑布局
         mDrawerLayout = mRootView?.findViewById<MyDrawerLayout>(R.id.drawer)
         drawerRecyclerView = mRootView?.findViewById<RecyclerView>(R.id.ll_re)
@@ -103,7 +105,7 @@ class TwoFragment : Fragment() {
                 }
 
                 //再装大集合
-                if (tempL!!.size!=0){
+                if (tempL!!.size != 0) {
                     mDrawerList!!.add(
                         DicBean(
                             line!!.split("|")[0],
@@ -116,7 +118,7 @@ class TwoFragment : Fragment() {
 
             }
             reader.close()
-        }catch (e:Exception){
+        } catch (e: Exception) {
             Log.e("TAG", e.toString())
         }
 
@@ -132,7 +134,7 @@ class TwoFragment : Fragment() {
             override fun onclick(str: String) {
                 //点击后隐藏侧边布局
                 mDrawerLayout!!.closeDrawer(Gravity.LEFT)
-                title=str
+                title = str
             }
         })
 
@@ -147,60 +149,75 @@ class TwoFragment : Fragment() {
 
             override fun onDrawerClosed(drawerView: View) {
                 // 抽屉关闭时的回调
-                if (title=="全选"){
-                    topView!!.title= "成语词典"
-                }else{
-                    topView!!.title= "成语词典($title)"
-                }
+                if(!topView!!.title.contains(title)){
 
-                setData(title)
+                    setData(title)
+
+
+                    if (title == "全选") {
+                        topView!!.title = "成语词典-($num)"
+                    } else {
+                        topView!!.title = "成语词典-$title($num)"
+                    }
+
+                }
             }
 
             override fun onDrawerStateChanged(newState: Int) {
                 // 抽屉状态改变时的回调
             }
         })
-
     }
-
-
 
     @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setData("全选")
-        Log.e("tag123",""+mList!!.size)
     }
 
 
-    private var mItemList: MutableList<DictionaryIdiomIBean.Item>? =null
-    @OptIn(DelicateCoroutinesApi::class)
+    private var mItemList: MutableList<DictionaryIdiomIBean.Item>? = null
+
+    var num=0
+    var isOpen=true
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(tag:String){
+    fun setData(tag: String) {
+        isOpen = !(tag=="四字"||tag=="全选")
+
+        num=0
         mList!!.clear()
         //第一步：读取assets文件夹下的文本内容
         //第二步：取出相应的内容装在集合
         val assetManager = context!!.assets
         try {
-            val inputStream = assetManager.open("dict/zgcycd_pinyin_index.txt")
+
+            var inputStream: InputStream? = null
+            inputStream =
+                if (tag.length == 5 && "AABB式-AABC式-ABAB式-ABAC式-ABCC式-ABBC式-ABCB式-ABCA式".contains(tag)) {
+                    assetManager.open("dict/cysy/$tag.txt")
+                } else {
+                    assetManager.open("dict/成语词典_索引.txt")
+                }
+
             val reader = BufferedReader(InputStreamReader(inputStream))
 
             var line: String?
             while (reader.readLine().also { line = it } != null) {
                 //第一步先取出成语集合
 
-                mItemList= ArrayList()
-                extractTextBetweenTags(line!!,"<2>","<3>").split("\\").forEach{
+                mItemList = ArrayList()
+                line!!.split("|")[1].split("-").forEach {
                     //筛选操作
-                    setData2(tag,it)
+                    setData2(tag.trim(), it)
                 }
 
-                if (mItemList!!.size!=0){
+                if (mItemList!!.size != 0) {
+                    num+=mItemList!!.size//统计一下数量
                     //一条一条的装
                     mList!!.add(
                         DictionaryIdiomIBean(
-                            extractTextBetweenTags(line!!,"<1>","<2>"),
-                            false,
+                            line!!.split("|")[0],
+                            isOpen,
                             mItemList!!
                         )
                     )
@@ -209,139 +226,184 @@ class TwoFragment : Fragment() {
             reader.close()
 
             //适配器
-            mRecyclerview!!.isNestedScrollingEnabled=false//解决滑动冲突
-            mLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+            mRecyclerview!!.isNestedScrollingEnabled = false//解决滑动冲突
+            mLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             mRecyclerview!!.layoutManager = mLayoutManager
-            mAdapter = DictionaryIdiomAdapter(requireActivity(),mList!!)
+            mAdapter = DictionaryIdiomAdapter(requireActivity(), mList!!)
             mRecyclerview!!.adapter = mAdapter
 
         } catch (e: Exception) {
-            Log.e("111111111", e.toString())
+            Log.e("tag", e.toString())
         }
+
     }
 
 
     /**
      *
      */
-    private fun setData2(tag:String,item:String){
-        if (item != ""){
-            when(tag){
-                "全选"->{
-                    mItemList!!.add(DictionaryIdiomIBean.Item(
-                        item
-                    ))
-                }
-                "AABB式"->{
-                    if (isAABBPattern(item)){
-                        mItemList!!.add(DictionaryIdiomIBean.Item(
-                            item
-                        ))
+    private fun setData2(tag: String, item: String) {
+        if (item != "") {
+
+            when (tag.length) {
+                1 -> {//单字的直接匹配
+                    if (item.contains(tag)) {
+                        mItemList!!.add(
+                            DictionaryIdiomIBean.Item(
+                                item
+                            )
+                        )
                     }
                 }
-                "AABC式"->{
-                    if (isAABCPattern(item)){
-                        mItemList!!.add(DictionaryIdiomIBean.Item(
-                            item
-                        ))
+                else -> {//多个字的
+                    when (tag) {
+                        "全选" -> {
+                            mItemList!!.add(
+                                DictionaryIdiomIBean.Item(
+                                    item
+                                )
+                            )
+                        }
+
+                        "三字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 3) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+
+                        "四字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 4) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+
+                        "五字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 5) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+
+                        "六字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 6) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+
+                        "七字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 7) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+
+                        "八字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 8) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+
+                        "九字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 9) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+
+                        "十字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 10) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+
+                        "十一字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 11) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+
+                        "十二字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 12) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+
+                        "十四字" -> {
+                            if (countCharsWithoutPunctuation(item.trim()) == 14) {
+                                mItemList!!.add(
+                                    DictionaryIdiomIBean.Item(
+                                        item
+                                    )
+                                )
+                            }
+                        }
+                        else -> {
+                            mItemList!!.add(
+                                DictionaryIdiomIBean.Item(
+                                    item
+                                )
+                            )
+                        }
                     }
-                }
-                "ABAB式"->{
-                    if (isABABPattern(item)){
-                        mItemList!!.add(DictionaryIdiomIBean.Item(
-                            item
-                        ))
-                    }
-                }
-                "ABAC式"->{
-                    if (isABACPattern(item)){
-                        mItemList!!.add(DictionaryIdiomIBean.Item(
-                            item
-                        ))
-                    }
-                }
-                "ABCC式"->{
-                    if (isABCCPattern(item)){
-                        mItemList!!.add(DictionaryIdiomIBean.Item(
-                            item
-                        ))
-                    }
-                }
-                "ABBC式"->{
-                    if (isABBCPattern(item)){
-                        mItemList!!.add(DictionaryIdiomIBean.Item(
-                            item
-                        ))
-                    }
-                }
-                "ABCB式"->{
-                    if (isABCBPattern(item)){
-                        mItemList!!.add(DictionaryIdiomIBean.Item(
-                            item
-                        ))
-                    }
-                }
-                "ABCA式"->{
-                    if (isABCAPattern(item)){
-                        mItemList!!.add(DictionaryIdiomIBean.Item(
-                            item
-                        ))
-                    }
-                }
-                else->{
-                    mItemList!!.add(DictionaryIdiomIBean.Item(
-                        item
-                    ))
+
                 }
             }
-
-
         }
     }
 
-    private fun isAABBPattern(idiom: String): Boolean {
-        return idiom[0] == idiom[1] && idiom[2] == idiom[3]
+    private fun countCharsWithoutPunctuation(str: String): Int {
+        return str.replace("，", "").length
     }
 
-    private fun isAABCPattern(idiom: String): Boolean {
-        return idiom[0] == idiom[1] && idiom[2] != idiom[3]
-    }
 
-    private fun isABABPattern(idiom: String): Boolean {
-        return idiom[0] != idiom[1] && idiom[0] == idiom[2] && idiom[1] == idiom[3]
-    }
-
-    private fun isABACPattern(idiom: String): Boolean {
-        return idiom[0] != idiom[1] && idiom[0] == idiom[2] && idiom[1] != idiom[3]
-    }
-
-    private fun isABCCPattern(idiom: String): Boolean {
-        return idiom[0] != idiom[1] && idiom[1] != idiom[2] && idiom[2] == idiom[3]
-    }
-
-    private fun isABBCPattern(idiom: String): Boolean {
-        return idiom[0] != idiom[1] && idiom[1] == idiom[2] && idiom[2] != idiom[3]
-    }
-
-    private fun isABCBPattern(idiom: String): Boolean {
-        return idiom[0] != idiom[1] && idiom[1] != idiom[2] && idiom[2] == idiom[3]
-    }
-
-    private fun isABCAPattern(idiom: String): Boolean {
-        return idiom[0] != idiom[1] && idiom[1] != idiom[2] && idiom[0] == idiom[3]
-    }
-
-    fun areFirstTwoCharsEqual(str: String,a1:Int,a2:Int): Boolean {
+    fun areFirstTwoCharsEqual(str: String, a1: Int, a2: Int): Boolean {
         return str.length >= 4 && str[a1] == str[a2]
     }
 
-    private fun extractTextBetweenTags(input: String, leftStr:String, rightStr:String): String {
+    private fun extractTextBetweenTags(input: String, leftStr: String, rightStr: String): String {
         val startIndex = input.indexOf(leftStr)
         val endIndex = input.indexOf(rightStr)
 
         return if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
             input.substring(startIndex + leftStr.length, endIndex)
-        }else{
+        } else {
             ""
         }
     }
