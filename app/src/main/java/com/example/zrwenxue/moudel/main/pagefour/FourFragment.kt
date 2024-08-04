@@ -71,16 +71,19 @@ class FourFragment : Fragment() {
         topView!!.title = "字典"
         //左边返回
         topView!!.setOnclickLeft(
-            View.INVISIBLE,
-            View.OnClickListener { })
-        //右边弹出pop
-        topView!!.setOnclickRight(View.VISIBLE, resources.getDrawable(R.drawable.show_yb2)) {
+            View.VISIBLE,
+            resources.getDrawable(R.drawable.ic_baseline_format_list_bulleted_24)
+        ){
             //侧边逻辑
             if (mDrawerLayout!!.isOpen) {
                 mDrawerLayout!!.close()
             } else {
                 mDrawerLayout!!.open()
             }
+        }
+        //右边弹出pop
+        topView!!.setOnclickRight(View.VISIBLE, resources.getDrawable(R.drawable.home_search)) {
+
         }
     }
 

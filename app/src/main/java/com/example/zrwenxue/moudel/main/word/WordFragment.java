@@ -76,7 +76,7 @@ public class WordFragment extends Fragment {
             }
         });
         //右边弹出pop
-        topView.setOnclickRight(View.VISIBLE, getResources().getDrawable(R.drawable.hp_icon_search), new View.OnClickListener() {
+        topView.setOnclickRight(View.VISIBLE, getResources().getDrawable(R.drawable.home_search), new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //跳转查找单词页面

@@ -16,7 +16,6 @@ import com.example.zrtool.ui.custom.MyDrawerLayout
 import com.example.zrwenxue.app.TitleBarView
 import com.example.zrwenxue.moudel.main.drawer.DrawerAdapter
 import com.example.zrwenxue.moudel.main.pagefour.DicBean
-import kotlinx.coroutines.DelicateCoroutinesApi
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
@@ -53,18 +52,20 @@ class TwoFragment : Fragment() {
         topView!!.title = "成语词典"
         //左边返回
         topView!!.setOnclickLeft(
-            View.INVISIBLE,
-            View.OnClickListener { })
-        //右边弹出pop
-        topView!!.setOnclickRight(
-            View.VISIBLE, resources.getDrawable(R.drawable.show_yb2)
-        ) {
+            View.VISIBLE,
+            resources.getDrawable(R.drawable.ic_baseline_format_list_bulleted_24)
+            ){
             //侧边逻辑
             if (mDrawerLayout!!.isOpen) {
                 mDrawerLayout!!.close()
             } else {
                 mDrawerLayout!!.open()
             }
+        }
+        //右边弹出pop
+        topView!!.setOnclickRight(
+            View.VISIBLE, resources.getDrawable(R.drawable.home_search)
+        ) {
 
         }
     }

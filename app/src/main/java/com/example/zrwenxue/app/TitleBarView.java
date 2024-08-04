@@ -1,6 +1,8 @@
 package com.example.zrwenxue.app;
 
 
+import static com.example.zrwenxue.app.ZrApp.context;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -8,6 +10,8 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.example.newzr.R;
 
@@ -46,6 +50,18 @@ public class TitleBarView extends RelativeLayout {
      */
     public void setOnclickLeft(int visible,OnClickListener listener) {
         top_left.setVisibility(visible);
+        top_left_layout.setOnClickListener(listener);
+    }
+
+    /**
+     * toolbar左侧back返回点击事件
+     * @param listener
+     */
+    public void setOnclickLeft(int visible,Drawable drawable,OnClickListener listener) {
+        top_left.setVisibility(visible);
+        if(drawable!=null){
+            top_left.setImageDrawable(drawable);
+        }
         top_left_layout.setOnClickListener(listener);
     }
 

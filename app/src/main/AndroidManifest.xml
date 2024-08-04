@@ -41,6 +41,7 @@
         <activity
             android:name="com.example.zrwenxue.moudel.main.center.CenterActivity"
             android:exported="false"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             tools:ignore="WrongManifestParent" />
         <activity
